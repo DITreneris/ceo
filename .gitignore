@@ -20,12 +20,11 @@ Desktop.ini
 
 # ─── Cursor / plans (development) ───
 .cursor/
-.cursorrules
 
-# ─── Development docs & markdown (ne į repo) ───
-*.md
-!README.md
-docs/
+# ─── Docs ───
+# Dokumentacija laikoma repo (README, CHANGELOG, docs/, ir t. t.).
+# Jei reikia lokalių juodraščių – naudok atskirą sufiksą ir ignoruok čia.
+*.local.md
 
 # ─── Temporary & build ───
 *.tmp
@@ -39,7 +38,6 @@ build/
 
 # ─── Node ───
 node_modules/
-package-lock.json
 yarn.lock
 npm-debug.log*
 

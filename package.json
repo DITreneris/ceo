@@ -1,19 +1,25 @@
 {
-  "name": "di-promptu-biblioteka",
+  "name": "di-operacinis-centras",
   "version": "1.0.0",
   "private": true,
-  "description": "DI Promptų Biblioteka – statinė HTML platforma",
+  "description": "DI Operacinis Centras – strateginis DI asistentas TOP vadovams (CEO/COO)",
   "scripts": {
     "test": "node tests/structure.test.js && npm run lint:html && npm run lint:js",
     "test:structure": "node tests/structure.test.js",
+    "test:smoke": "start-server-and-test \"serve -s . -l 3000\" http://127.0.0.1:3000/ \"playwright test tests/e2e/smoke.spec.js\"",
+    "test:e2e": "start-server-and-test \"serve -s . -l 3000\" http://127.0.0.1:3000/ \"playwright test tests/e2e/core-flow.spec.js\"",
+    "test:mixed": "npm run test && npm run test:smoke && npm run test:e2e && npm run test:a11y",
+    "test:a11y": "start-server-and-test \"serve -s . -l 3000\" http://127.0.0.1:3000/ \"pa11y http://127.0.0.1:3000/ --config .pa11yrc.json && pa11y http://127.0.0.1:3000/privatumas.html --config .pa11yrc.json\"",
     "lint:html": "npx html-validator-cli --file index.html",
     "lint:js": "eslint . --ext .js"
   },
   "devDependencies": {
+    "@playwright/test": "^1.53.2",
     "eslint": "^8.57.0",
     "html-validator-cli": "^7.0.0",
     "pa11y": "^6.2.3",
-"serve": "^14.2.1",
+    "serve": "^14.2.1",
+    "start-server-and-test": "^2.0.11",
     "wait-on": "^8.0.1"
-    }
+  }
 }

@@ -1,16 +1,29 @@
-# Personalas – HR atrankos promptai
+# DI Operacinis Centras
 
-Statinė HTML platforma: 10 promptų atrankai (skelbimas, pokalbiai, pasiūlymas ir kt.). Pasirinkti → kopijuoti → įklijuoti į ChatGPT/Claude.
+Trumpas įrankis CEO/COO darbui: iš įvestų verslo duomenų suformuoja aiškią DI užklausą (promptą), kurią gali iškart kopijuoti ir analizuoti.
 
-**Live:** [https://ditreneris.github.io/personalas/](https://ditreneris.github.io/personalas/)
+## Greitas startas
 
----
-
-**Deploy:** GitHub Pages iš `main` (Actions → Deploy to GitHub Pages).
-
-**Pirmą kartą** – įjunk Pages: [Settings → Pages](https://github.com/DITreneris/personalas/settings/pages) → **Build and deployment** → Source: **GitHub Actions**. Po to workflow „Deploy to GitHub Pages“ veiks ant kiekvieno push į `main`.
+- Atidaryk `index.html` naršyklėje.
+- Arba paleisk lokalų serverį:
 
 ```bash
-git remote add personalas https://github.com/DITreneris/personalas.git
-git push personalas main
+npx serve -s . -l 3000
 ```
+
+## Kasdienis workflow
+
+1. Pasirink režimą ir analizės gylį.
+2. Užpildyk pagrindinius laukus.
+3. Nukopijuok sugeneruotą promptą.
+4. Įklijuok į pasirinktą DI įrankį.
+
+## Kokybės vartai
+
+```bash
+npm test
+```
+
+## Dokumentacija
+
+Visas aktyvus docs įėjimas yra `docs/INDEX.md`.

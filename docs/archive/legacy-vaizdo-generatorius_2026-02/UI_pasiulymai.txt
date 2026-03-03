@@ -1,0 +1,149 @@
+Bottom line (kas lūš pirmiausia)
+
+Dabar UX “lūžta” per per didelį scroll’ą + neaiškią hierarchiją, o UI “lūžta” per nevienodą CTA logiką (kur spausti pirmiausia?) ir silpną informacijos kontrastą/akcentus (ypač tarp “mini generatoriaus”, šablonų, generatorių pasirinkimo ir “Pro režimo”).
+
+Tiesi kritika (kas neveikia ir kodėl)
+
+Per aukštas “hero” blokas (pirmas ekranas): gražu, bet suvalgo erdvę, o user’iui svarbiausia yra įvestis → promptas → kopijuoti → generuoti. Dabar jis nuslenka žemyn ieškoti realaus veiksmo.
+
+CTA hierarchija netolygi:
+
+“Pradėti kurti” vs “Paruošti šablonai” – abu atrodo kaip svarbūs, bet nėra aiškiai “primary/secondary”.
+
+“Kopijuoti promptą” kartojasi viršuje ir kortelėse, bet ne visada aišku ką kopijuoja (ar final promptą? ar šabloną?).
+
+Žingsniai (1–2–3) labiau dekoracija nei navigacija:
+
+nėra aiškios būsenos: kur esu, kas padaryta, ko trūksta, kas toliau.
+
+user’iui reikia “completion” logikos (pvz., 2 žingsnis užsirakina kol 1 neužpildytas, arba bent rodo “trūksta 2 laukų”).
+
+Formos layout’as per platus ir “plokščias”:
+
+daug pilkos/šviesios masės, mažai vizualinių “inkarų” (section headers + helper text + separators).
+
+placeholder’iai silpni: user’is nemato gero pavyzdžio kol nepradeda rašyti.
+
+Generatorių pasirinkimas – gražus, bet UX neaiškus:
+
+“spustelėkite ant įrankio – promptas nukopijuotas ir atidarytas” yra aukštos rizikos elgsena: netikėtas copy + new tab.
+
+“Rekomenduojama” žyma OK, bet trūksta “kodėl” (1 eilutė: “geriausiai laiko tekstą ant vaizdo” ir pan.).
+
+Pro režimo ekranas: gera kryptis, bet trūksta “kontrolės jausmo”
+
+dešinėje “Sugeneruotas promptas” kortelė gerai, bet “Stiprumas: 1/7 – Silpnas” – neaišku ką tai realiai keičia.
+
+“Eksperto patarimai” collapsible – super, bet jis per mažai pastebimas (atrodo kaip paprastas row).
+
+Geresnis variantas (mažai darbo, didelis efektas)
+1) Padaryk vieną aiškų “aukso kelią”
+
+Vienas pagrindinis kelias: Šablonas → Laukai → Prompt preview → Copy → Pasirink generatorių.
+
+Viršuje: vienas Primary CTA (pvz., “Sukurti promptą”), o visi kiti – secondary.
+
+Kiekvienam žingsniui: 1 pagrindinis veiksmas.
+
+2) Sumažink “hero”, padidink “darbinį” pirmą ekraną
+
+Hero palik, bet:
+
+sumažink jo aukštį ~25–35%
+
+padaryk, kad pirmame matomame ekrane būtų bent:
+
+“Pradėk nuo šablono” kortos
+
+pirmas input laukas (“Kas vaizduojama?”)
+
+3) Konsoliduok “Kopijuoti promptą”
+
+Dabar copy yra keliose vietose. Padaryk taip:
+
+vienas “Copy” mygtukas prie “Sugeneruotas promptas” (sticky / visada matomas)
+
+viršuje esantis “Kopijuoti promptą” tegul scroll’ina į preview ir highlight’ina jį (o ne kopijuoja tiesiogiai).
+
+Top “low hanging fruits” (konkretūs pataisymai)
+A. Informacijos hierarchija (greičiausias ROI)
+
+Sticky dešinė kortelė “Sugeneruotas promptas” (Pro režime) + sticky “Copy” mygtukas.
+
+Įvesk “Completion” indikatorius kiekvienai sekcijai:
+
+“Kampanijos kontekstas – 0/3 užpildyta”
+
+“Vizualo esmė – 1/2”
+
+Žingsnių juostoje rodyk būsenas: ✅ atlikta / ⚠ trūksta / ▶ aktyvu.
+
+B. CTA ir mygtukai (matomas premium šuolis)
+
+Visur suvienodink mygtukus:
+
+Primary: vienas stilius (fill)
+
+Secondary: outline
+
+Tertiary: ghost/link
+
+“KOPIJUOTI PROMPTĄ” – pridėk mikro-feedback:
+
+“Nukopijuota ✅”
+
+mini tooltip “Įklijuok į Ideogram/MJ”
+
+Generatoriuose vietoj “automatiškai kopijuoja ir atidaro”:
+
+pirmas click: pasirenka įrankį
+
+antras click / CTA: “Atidaryti + nukopijuoti” (user control = premium jausmas)
+
+C. Formos UX (mažiau trinties)
+
+Placeholder’ius pakeisk į pavyzdžius po lauku (helper text), nes placeholder dingsta.
+
+Pvz. po “Kas vaizduojama”: “Pvz.: prabangus rankinis laikrodis ant marmuro stalo…”
+
+“Dominuojanti spalva” – pridėk chips (pvz. “Mėlyna”, “Šilta”, “Monochrome”) + optional custom input.
+
+Dropdown’ams pridėk search (jei jų daugės) ir aiškias default reikšmes.
+
+D. Skaitomumas ir kontrastas (premium išvaizda)
+
+“Sugeneruotas promptas” kortelėje sumažink geltonos spalvos kiekį (dabar ji rėkia).
+
+Palik geltoną tik “key tokens” (platforma, tonas), o visa kita – normalus tekstas.
+
+Kortelėms padidink “micro-depth”: subtilus shadow + aiškesnis border (vienodai visur).
+
+Sekcijų antraštės: pridėk trumpą 1 eilutės “ką gausiu čia” tekstą (padeda UX be papildomo turinio).
+
+E. Navigacija ir scroll valdymas
+
+“Paruošti šablonai” – padaryk collapsible su aiškiu label (“4 šablonai”) ir išsaugok paskutinę būseną (atverta/užverta).
+
+Pridėk “Back to top” mini mygtuką (arba plaukiojantį “1/2/3”).
+
+Veiksmų planas (seka, kad realiai pasijaustų upgrade)
+
+CTA suvienodinimas (primary/secondary/tertiary) + “copy feedback”.
+
+Hero sumažinimas + pirmo ekrano “darbinės zonos” iškėlimas.
+
+Completion logika (0/3, 1/2, ✅) + žingsnių būsenos.
+
+Generatorių pasirinkimo UX (ne auto-copy+new tab per pirmą click).
+
+Sticky prompt preview + sticky copy (Pro režime).
+
+Helper text + chips spalvai.
+
+Top 3 pitfalls (kur dažniausiai susigadina)
+
+Per daug “fancy” efektų vietoj hierarchijos: premium = aiškus fokusas + kontrolė, ne gradientai.
+
+Auto-veiksmai be user kontrolės (auto-copy, auto-open tab) – atrodo kaip “hack”, ne kaip produktas.
+
+Nenuoseklus komponentų stilius: jei vienas dropdown turi kitokį border/shadow nei kiti – visas “SaaS premium” jausmas griūna.

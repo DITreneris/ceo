@@ -1,4 +1,4 @@
-# GitHub Pages deploy – statinė DI Promptų Biblioteka
+# GitHub Pages deploy – DI Operacinis Centras (statinė HTML)
 # Reikalavimas: Repo Settings → Pages → Build and deployment: GitHub Actions
 # Nuoroda: https://github.com/DITreneris/spinoff01 (QA standartas)
 
@@ -21,14 +21,20 @@ concurrency:
 jobs:
   test:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - run: npm install
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
       - run: npm test
+      - run: npm run test:smoke
+      - name: Accessibility check (pa11y)
+        run: npm run test:a11y
+        env:
+          CI: true
 
   deploy:
     needs: test
@@ -39,8 +45,12 @@ jobs:
       url: ${{ steps.deploy.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+      - name: Prepare Pages artifact
+        run: |
+          mkdir -p _site
+          cp index.html privatumas.html style.css generator.js copy.js favicon.svg _site/
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: _site
       - id: deploy
         uses: actions/deploy-pages@v4

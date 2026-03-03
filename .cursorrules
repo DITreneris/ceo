@@ -1,0 +1,25 @@
+# Cursor rules – DI Vaizdo Generatorius
+
+## Projektas
+- Statinė HTML aplikacija (`index.html` + `privatumas.html`).
+- Pagrindinė logika: `generator.js` (generatorius) ir `copy.js` (kopijavimas).
+- Stiliai: `style.css` (įskaitant dark mode).
+
+## Kalba ir tonas (vartotojui matomas tekstas)
+- Kreipinys: **Tu**.
+- Tekstas: **lakoniškai**, mažiau yra geriau.
+
+## Saugumas
+- Nekomituoti jokių secretų / raktų / tokenų.
+- Production kode: **be `console.log`** ir be jautrių duomenų log’inimo.
+
+## Kokybė
+- A11y: semantika, `aria-*` tik kur reikia, aiškus `:focus-visible`.
+- Kopijavimas: turi veikti ir su `navigator.clipboard`, ir su fallback.
+
+## Prieš merge / deploy
+- `npm test` praeina
+- Po deploy: `docs/TESTAVIMAS.md`
+
+## Dokumentacija
+- Jei keiti UX / flow / funkcijas: atnaujink `README.md`, `todo.md`, `roadmap.md`, `CHANGELOG.md`, `DEPLOYMENT.md` pagal poreikį.

@@ -11,16 +11,13 @@
   "parserOptions": { "ecmaVersion": 2022, "sourceType": "script" },
   "rules": {
     "no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }],
-    "no-console": ["warn", { "allow": ["warn", "error"] }]
+    "no-console": ["error", { "allow": ["warn", "error"] }]
   },
-  "ignorePatterns": ["node_modules/", "*.min.js"],
+  "ignorePatterns": ["node_modules/", "docs/archive/**", "*.min.js", "vaizdo_generatorius.txt"],
   "overrides": [
     {
-      "files": ["google-apps-script.js"],
-      "env": { "browser": false },
-      "rules": {
-        "no-unused-vars": ["warn", { "argsIgnorePattern": "^_", "varsIgnorePattern": "^(sendEmailNotification|test)$" }]
-      }
+      "files": ["playwright.config.js"],
+      "env": { "node": true, "es2022": true }
     },
     {
       "files": ["tests/**/*.js"],
