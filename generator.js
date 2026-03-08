@@ -4,6 +4,7 @@
     var APP_ID = 'di_ops_center';
     var MAX_SESSIONS = 5;
     var TEMPLATE_CHAR_LIMIT = 1100;
+    var LANG_KEY = APP_ID + '_lang';
     var THEME_KEY = APP_ID + '_theme';
     var DEPTH_KEY = APP_ID + '_depth';
     var SESSIONS_KEY = APP_ID + '_sessions';
@@ -17,25 +18,64 @@
         'claude.ai': true,
         'gemini.google.com': true
     };
+    var ANATOMY_URL = 'https://www.promptanatomy.app/';
 
     /* ===== CONSTANTS ===== */
 
+    function getLocaleFromPathname() {
+        try {
+            var path = (window.location.pathname || '').toLowerCase();
+            if (/\/lt(?:\/|$)/.test(path)) return 'lt';
+            if (/\/en(?:\/|$)/.test(path)) return 'en';
+            return '';
+        } catch (_) {
+            return '';
+        }
+    }
+
+    function getLangFromQuery() {
+        try {
+            var p = new URLSearchParams(window.location.search);
+            var qLang = String(p.get('lang') || '').toLowerCase();
+            if (qLang === 'lt' || qLang === 'en') return qLang;
+            return '';
+        } catch (_) {
+            return '';
+        }
+    }
+
+    function resolveLocale() {
+        var fromPath = getLocaleFromPathname();
+        if (fromPath) return fromPath;
+        var fromQuery = getLangFromQuery();
+        if (fromQuery) return fromQuery;
+        try {
+            var stored = String(localStorage.getItem(LANG_KEY) || '').toLowerCase();
+            if (stored === 'lt' || stored === 'en') return stored;
+        } catch (_) { /* ignore */ }
+        var nav = String(navigator.language || '').toLowerCase();
+        return nav.indexOf('lt') === 0 ? 'lt' : 'en';
+    }
+
+    var locale = resolveLocale();
+    try { localStorage.setItem(LANG_KEY, locale); } catch (_) { /* ignore */ }
+
     var MODES = {
         MASTER: {
-            label: 'STRATEGINIS',
-            desc: 'Strateginis savaitės/mėnesio kontekstas',
+            label: locale === 'lt' ? 'STRATEGINIS' : 'STRATEGIC',
+            desc: locale === 'lt' ? 'Strateginis savaitės/mėnesio kontekstas' : 'Strategic weekly/monthly context',
             formId: 'form-master',
             fields: ['goal', 'horizon', 'income', 'expenses', 'profit', 'cash', 'runway', 'facts', 'question']
         },
         DIENOS: {
-            label: 'DIENOS',
-            desc: 'Vakarykštės operacijos apžvalga',
+            label: locale === 'lt' ? 'DIENOS' : 'DAILY',
+            desc: locale === 'lt' ? 'Vakarykštės operacijos apžvalga' : 'Daily operations review',
             formId: 'form-dienos',
             fields: ['v_pajamos', 'v_klientai', 'v_islaidos', 'v_ivykiai', 'question']
         },
         SAVAITES: {
-            label: 'SAVAITĖS',
-            desc: 'Savaitės projektai ir veikimo rezervas',
+            label: locale === 'lt' ? 'SAVAITĖS' : 'WEEKLY',
+            desc: locale === 'lt' ? 'Savaitės projektai ir veikimo rezervas' : 'Weekly projects and runway',
             formId: 'form-savaites',
             fields: ['s_pajamos', 's_sanaudos', 's_likutis', 'projektai', 's_pipeline', 'question']
         }
@@ -43,23 +83,35 @@
 
     var DEPTH_LEVELS = {
         GREITA: {
-            label: 'Greita',
-            instruction: 'Atsakyk trumpai ir aiškiai: daugiausia 3 punktai, kiekvienas po 1-2 sakinius, be įžangos.',
-            format: '3 prioritetai + 3 veiksmai + 1 rizika'
+            label: locale === 'lt' ? 'Greita' : 'Fast',
+            instruction: locale === 'lt'
+                ? 'Atsakyk trumpai ir aiškiai: daugiausia 3 punktai, kiekvienas po 1-2 sakinius, be įžangos.'
+                : 'Answer briefly and clearly: max 3 points, each 1-2 sentences, no intro.',
+            format: locale === 'lt'
+                ? '3 prioritetai + 3 veiksmai + 1 rizika'
+                : '3 priorities + 3 actions + 1 risk'
         },
         GILU: {
-            label: 'Gilu',
-            instruction: 'Pateik išsamią analizę su kontekstu ir pagrindimu. Kiekvienam punktui nurodyk, kodėl svarbu ir koks poveikis. Remkis skaičiais.',
-            format: '3 prioritetai (su naudos pagrindimu) + 5 veiksmai (su terminais) + 2 rizikos (su mažinimo planais) + 1 ilgalaikė rekomendacija'
+            label: locale === 'lt' ? 'Gilu' : 'Deep',
+            instruction: locale === 'lt'
+                ? 'Pateik išsamią analizę su kontekstu ir pagrindimu. Kiekvienam punktui nurodyk, kodėl svarbu ir koks poveikis. Remkis skaičiais.'
+                : 'Provide deep analysis with context and reasoning. For each point explain why it matters and impact. Use numbers.',
+            format: locale === 'lt'
+                ? '3 prioritetai (su naudos pagrindimu) + 5 veiksmai (su terminais) + 2 rizikos (su mažinimo planais) + 1 ilgalaikė rekomendacija'
+                : '3 priorities (with rationale) + 5 actions (with timelines) + 2 risks (with mitigation) + 1 long-term recommendation'
         },
         BOARD: {
-            label: 'Valdybai',
-            instruction: 'Parenk valdybos lygio santrauką. Tik faktai ir skaičiai, be nuomonių. Struktūra: Santrauka -> Finansai -> Veiksmai -> Rizikos. Kalba formali.',
-            format: 'Santrauka (3 sakiniai) + Finansinė padėtis (lentelė) + TOP 3 prioritetai + 5 veiksmai su rodikliais + Rizikų matrica + Rekomendacija valdybai'
+            label: locale === 'lt' ? 'Valdybai' : 'Board',
+            instruction: locale === 'lt'
+                ? 'Parenk valdybos lygio santrauką. Tik faktai ir skaičiai, be nuomonių. Struktūra: Santrauka -> Finansai -> Veiksmai -> Rizikos. Kalba formali.'
+                : 'Prepare a board-level summary. Facts and numbers only. Structure: Summary -> Finance -> Actions -> Risks. Formal tone.',
+            format: locale === 'lt'
+                ? 'Santrauka (3 sakiniai) + Finansinė padėtis (lentelė) + TOP 3 prioritetai + 5 veiksmai su rodikliais + Rizikų matrica + Rekomendacija valdybai'
+                : 'Summary (3 sentences) + Financial status (table) + TOP 3 priorities + 5 KPI actions + Risk matrix + Board recommendation'
         }
     };
 
-    var LIBRARY_PROMPTS = [
+    var LIBRARY_PROMPTS = locale === 'lt' ? [
         {
             id: 'unit_economics',
             title: 'Vieneto ekonomika',
@@ -102,6 +154,49 @@
             icon: 'brain',
             prompt: 'Esi mano strateginis koučeris. Padėk man, kaip CEO, atlikti savaitės savirefleksiją remiantis faktais.\n\nKontekstas:\n- Šios savaitės tikslas: [tikslas]\n- Svarbiausi sprendimai: [sprendimai]\n- Ką padariau gerai: [stiprybės]\n- Kur strigau: [silpnos vietos]\n- Komandos signalai: [faktai]\n- Finansinis rezultatas: [pajamos / išlaidos / marža]\n\nPateik atsakymą 4 dalimis:\n1. 5 tikslūs klausimai man, kurių vengiu, bet turiu sau atsakyti\n2. 3 pagrindinės vadovo klaidos rizikos šioje situacijoje\n3. 3 sprendimai kitai savaitei su aiškiu prioritetu (A/B/C)\n4. Viena asmeninė disciplina 7 dienoms, kuri turės didžiausią poveikį'
         }
+    ] : [
+        {
+            id: 'unit_economics',
+            title: 'Unit economics',
+            desc: 'Unit economics analysis',
+            icon: 'calculator',
+            prompt: 'You are a finance analyst. My business metrics:\n- Average revenue per customer (ARPU): [amount]\n- Customer acquisition cost (CAC): [amount]\n- Lifetime value (LTV): [amount]\n- Gross margin: [%]\n\nDo a unit economics analysis:\n1. Evaluate the LTV/CAC ratio\n2. Estimate payback period\n3. Name highest-leverage drivers (ARPU up, CAC down, retention up)\n4. Suggest 3 specific actions'
+        },
+        {
+            id: 'augimo_svertai',
+            title: 'Growth levers',
+            desc: 'Identify growth opportunities',
+            icon: 'trending-up',
+            prompt: 'You are a growth strategist. My business context:\n- Current monthly revenue: [amount]\n- Target in [period]: [amount]\n- Current channels: [channels]\n- Conversion rate: [%]\n\nDefine top growth levers:\n1. Top 3 levers with highest impact potential\n2. For each: what to do, expected impact, and timing\n3. Quick wins (up to 2 weeks)\n4. Key risks and dependencies'
+        },
+        {
+            id: 'cash_runway',
+            title: 'Cash runway',
+            desc: 'Cash flow analysis and planning',
+            icon: 'wallet',
+            prompt: 'You are a finance consultant. My current situation:\n- Cash balance: [amount]\n- Monthly revenue: [amount]\n- Monthly expenses: [amount]\n- Expense trend: [up/down/stable]\n\nRun a cash runway analysis:\n1. Estimate current runway in months\n2. Provide optimistic / base / pessimistic scenarios\n3. Suggest 30/60/90 day cash improvement actions\n4. Define red-zone indicators and trigger points'
+        },
+        {
+            id: 'kainodara',
+            title: 'Pricing',
+            desc: 'Pricing strategy optimization',
+            icon: 'tag',
+            prompt: 'You are a pricing expert. My product/service:\n- Current price: [price]\n- Competitor range: [from-to]\n- Gross margin: [%]\n- Customer segments: [segments]\n\nProvide pricing recommendations:\n1. Evaluate current pricing in market context\n2. Justify value via customer outcomes\n3. Suggest multi-plan pricing options\n4. Propose a pricing test plan'
+        },
+        {
+            id: 'riziku_valdymas',
+            title: 'Risk management',
+            desc: 'Identify critical business risks',
+            icon: 'shield-alert',
+            prompt: 'You are a risk management specialist. My business context:\n- Industry: [industry]\n- Team size: [people]\n- Key customers: [count, concentration]\n- Revenue sources: [sources]\n\nPerform a risk audit:\n1. Top 5 risks (probability x impact)\n2. Prevention and mitigation plan per risk\n3. Early warning indicators\n4. Action plan if each risk materializes'
+        },
+        {
+            id: 'vadovo_savirefleksija',
+            title: 'CEO reflection',
+            desc: 'Review decision quality',
+            icon: 'brain',
+            prompt: 'You are my strategic coach. Help me run a fact-based weekly CEO reflection.\n\nContext:\n- Weekly goal: [goal]\n- Key decisions: [decisions]\n- What went well: [strengths]\n- Where I got stuck: [weaknesses]\n- Team signals: [facts]\n- Financial outcome: [revenue / expenses / margin]\n\nAnswer in 4 parts:\n1. 5 precise questions I avoid but must answer\n2. 3 main CEO decision risks in this situation\n3. 3 decisions for next week with clear priority (A/B/C)\n4. One personal 7-day discipline with biggest impact'
+        }
     ];
 
     function applyLibraryPromptLimit() {
@@ -124,7 +219,7 @@
 
     applyLibraryPromptLimit();
 
-    var RULES = [
+    var RULES = locale === 'lt' ? [
         { text: 'Kiekvienas sprendimas turi aiškų verslo naudos pagrindimą', icon: 'check-circle' },
         { text: 'Pinigų srautas > pelnas > pajamos: tokia prioritetų seka', icon: 'check-circle' },
         { text: 'Veikimo rezervas < 6 mėn. = raudona zona, reikia veiksmų plano', icon: 'alert-triangle' },
@@ -133,6 +228,15 @@
         { text: 'Valdybos ataskaitoje – tik faktai ir skaičiai, be nuomonių', icon: 'check-circle' },
         { text: 'Kiekvienas veiksmas turi terminą ir atsakingą asmenį', icon: 'check-circle' },
         { text: 'Savaitės peržiūra: kas pavyko, kas nepavyko, ką keičiame', icon: 'check-circle' }
+    ] : [
+        { text: 'Every decision must include a clear business value case', icon: 'check-circle' },
+        { text: 'Cash flow > profit > revenue: this is the decision sequence', icon: 'check-circle' },
+        { text: 'Runway < 6 months = red zone, require action plan', icon: 'alert-triangle' },
+        { text: 'Every week must have only 3 priorities', icon: 'check-circle' },
+        { text: 'Use 5 Whys to diagnose root causes', icon: 'check-circle' },
+        { text: 'Board report: facts and numbers only', icon: 'check-circle' },
+        { text: 'Each action needs an owner and deadline', icon: 'check-circle' },
+        { text: 'Weekly review: what worked, failed, and changes next', icon: 'check-circle' }
     ];
 
     /* ===== STATE ===== */
@@ -168,47 +272,351 @@
         return String(value || '').trim().length > 0;
     }
 
+    function uiText(lt, en) {
+        return locale === 'lt' ? lt : en;
+    }
+
+    function applyStaticLocaleText() {
+        document.documentElement.lang = locale;
+
+        var title = document.querySelector('title');
+        if (title) {
+            title.textContent = uiText(
+                'DI Operacinis Centras – TOP vadovams CEO / COO',
+                'DI Operations Center – for CEOs & COOs'
+            );
+        }
+
+        var skipLink = document.querySelector('a.skip-link');
+        if (skipLink) skipLink.textContent = uiText('Pereiti prie turinio', 'Skip to content');
+
+        var topNav = document.querySelector('.top-nav[aria-label]');
+        if (topNav) topNav.setAttribute('aria-label', uiText('Greita navigacija', 'Quick navigation'));
+
+        var stickyCopy = document.getElementById('stickyCopyBtn');
+        if (stickyCopy) stickyCopy.textContent = uiText('Kopijuoti užklausą', 'Copy prompt');
+
+        var brandLink = document.querySelector('.top-nav-brand');
+        if (brandLink) brandLink.setAttribute('aria-label', uiText('DI Operacinis Centras', 'DI Operations Center'));
+        var brandTextFull = document.querySelector('.top-nav-brand-text-full');
+        if (brandTextFull) brandTextFull.textContent = uiText('DI Operacinis Centras', 'DI Operations Center');
+
+        var h1 = document.querySelector('.header h1');
+        if (h1) h1.textContent = uiText('DI Operacinis Centras', 'DI Operations Center');
+
+        var badgeAnatomy = document.querySelector('.header-badges .badge[href]');
+        if (badgeAnatomy) badgeAnatomy.textContent = uiText('Promptų anatomija', 'Prompt anatomy');
+
+        var headerSteps = document.querySelectorAll('.header-step');
+        var stepLabels = [
+            uiText('Režimas', 'Mode'),
+            uiText('Forma', 'Form'),
+            uiText('Rezultatas', 'Result'),
+            uiText('Biblioteka', 'Library')
+        ];
+        headerSteps.forEach(function (el, i) {
+            if (stepLabels[i]) {
+                var num = el.querySelector('.header-step-num');
+                el.innerHTML = num ? ('<span class="header-step-num">' + num.textContent + '</span> ' + stepLabels[i]) : stepLabels[i];
+            }
+        });
+
+        var stepsList = document.querySelector('.header-steps');
+        if (stepsList) stepsList.setAttribute('aria-label', uiText('Darbo žingsniai', 'Work steps'));
+
+        var hLead = document.querySelector('.header p');
+        if (hLead) {
+            hLead.innerHTML = uiText(
+                'Per 5 min. gauk aiškius savaitės prioritetus ir veiksmus.<br>Įvesk skaičius ir išsisaugok CEO lygio DI užklausą.',
+                'Get clear weekly priorities and actions in 5 minutes.<br>Enter your numbers and generate an executive-grade AI prompt.'
+            );
+        }
+
+        var heroMeta = document.querySelector('.header-cta-meta');
+        if (heroMeta) heroMeta.textContent = uiText(
+            'Užtruksi iki 5 min. • Rezultatas: aiškūs savaitės prioritetai.',
+            'Under 5 min · Result: clear weekly priorities.'
+        );
+
+        var ctaPrimary = document.querySelector('.header-cta .cta-button');
+        if (ctaPrimary) {
+            ctaPrimary.textContent = uiText('Gauti savaitės prioritetus', 'Get weekly priorities');
+            ctaPrimary.setAttribute('aria-label', uiText('Gauti savaitės prioritetus operaciniame centre', 'Get weekly priorities in operations center'));
+        }
+        var ctaSecondary = document.querySelector('.header-cta .cta-button-outline');
+        if (ctaSecondary) {
+            ctaSecondary.textContent = uiText('Rinktis šabloną ↓', 'Browse templates ↓');
+            ctaSecondary.setAttribute('aria-label', uiText('Peržiūrėti paruoštus šablonus', 'Browse ready-made templates'));
+        }
+
+        var opsTitle = document.querySelector('.ops-center-header .collapsible-title');
+        if (opsTitle) opsTitle.textContent = uiText('Operacinis centras', 'Operations center');
+        var opsValue = document.querySelector('.ops-center-header .collapsible-value');
+        if (opsValue) opsValue.textContent = uiText('Pasirink režimą, užpildyk laukus – DI užklausa sugeneruojama automatiškai', 'Choose a mode, fill in the fields — your AI prompt is generated automatically.');
+
+        var modeTablist = document.querySelector('.mode-tabs[role="tablist"]');
+        if (modeTablist) modeTablist.setAttribute('aria-label', uiText('Režimo pasirinkimas', 'Mode selection'));
+
+        var depthLabel = document.querySelector('.depth-bar .depth-label');
+        if (depthLabel) depthLabel.innerHTML = '<i data-lucide="sliders-horizontal" class="icon icon--sm"></i> ' + uiText('Analizės gylis', 'Analysis depth');
+        var depthRadiogroup = document.querySelector('.depth-options[role="radiogroup"]');
+        if (depthRadiogroup) depthRadiogroup.setAttribute('aria-label', uiText('Promptų gylio lygis', 'Prompt depth level'));
+        var depthHelp = document.querySelector('.depth-bar .field-help');
+        if (depthHelp) depthHelp.textContent = uiText('Nežinai? Rinkis Greita.', 'Not sure? Start with Fast.');
+
+        var tabMaster = document.getElementById('tab-master');
+        var tabDienos = document.getElementById('tab-dienos');
+        var tabSavaites = document.getElementById('tab-savaites');
+        if (tabMaster) {
+            var masterLbl = tabMaster.querySelector('.mode-tab-label'); if (masterLbl) masterLbl.textContent = MODES.MASTER.label;
+            var masterDesc = tabMaster.querySelector('.mode-tab-desc'); if (masterDesc) masterDesc.textContent = MODES.MASTER.desc;
+        }
+        if (tabDienos) {
+            var dienosLbl = tabDienos.querySelector('.mode-tab-label'); if (dienosLbl) dienosLbl.textContent = MODES.DIENOS.label;
+            var dienosDesc = tabDienos.querySelector('.mode-tab-desc'); if (dienosDesc) dienosDesc.textContent = MODES.DIENOS.desc;
+        }
+        if (tabSavaites) {
+            var savaitesLbl = tabSavaites.querySelector('.mode-tab-label'); if (savaitesLbl) savaitesLbl.textContent = MODES.SAVAITES.label;
+            var savaitesDesc = tabSavaites.querySelector('.mode-tab-desc'); if (savaitesDesc) savaitesDesc.textContent = MODES.SAVAITES.desc;
+        }
+        var depthBtns = document.querySelectorAll('.depth-btn');
+        depthBtns.forEach(function (btn) {
+            var d = btn.getAttribute('data-depth');
+            if (d && DEPTH_LEVELS[d]) {
+                var icon = btn.querySelector('i');
+                btn.innerHTML = icon ? ('<i data-lucide="' + icon.getAttribute('data-lucide') + '" class="icon icon--sm"></i> ' + DEPTH_LEVELS[d].label) : DEPTH_LEVELS[d].label;
+            }
+        });
+
+        var formSectionTitles = document.querySelectorAll('.ops-form-section-title');
+        var sectionTitleTexts = [
+            uiText('Strateginis kontekstas', 'Strategic context'),
+            uiText('Vakarykštės operacijos', 'Yesterday\'s operations'),
+            uiText('Savaitės apžvalga', 'Weekly overview')
+        ];
+        var sectionIcons = ['target', 'calendar', 'bar-chart-3'];
+        formSectionTitles.forEach(function (el, i) {
+            if (sectionTitleTexts[i]) el.innerHTML = '<i data-lucide="' + sectionIcons[i] + '" class="icon icon--sm"></i> ' + sectionTitleTexts[i];
+        });
+
+        setLabel('m-goal', uiText('Strateginis tikslas', 'Strategic goal'));
+        setLabel('m-horizon', uiText('Laiko horizontas', 'Time horizon'));
+        setLabel('m-income', uiText('Pajamos (mėn.)', 'Revenue (monthly)'));
+        setLabel('m-expenses', uiText('Išlaidos (mėn.)', 'Expenses (monthly)'));
+        setLabel('m-profit', uiText('Pelnas (mėn.)', 'Profit (monthly)'));
+        setLabel('m-cash', uiText('Grynieji likučiai', 'Cash balance'));
+        setLabel('m-runway', uiText('Veikimo rezervas (mėn.)', 'Runway (months)'));
+        setLabel('m-facts', uiText('Svarbūs faktai / kontekstas', 'Key facts / context'));
+        setLabel('m-question', uiText('Pagrindinis klausimas DI', 'Main AI question'));
+        setLabel('d-pajamos', uiText('Vakarykštės pajamos', 'Yesterday\'s revenue'));
+        setLabel('d-klientai', uiText('Nauji klientai / užklausos', 'New clients / leads'));
+        setLabel('d-islaidos', uiText('Vakarykštės išlaidos', 'Yesterday\'s expenses'));
+        setLabel('d-ivykiai', uiText('Svarbiausi įvykiai', 'Key events'));
+        setLabel('d-question', uiText('Klausimas DI', 'AI question'));
+        setLabel('s-pajamos', uiText('Savaitės pajamos', 'Weekly revenue'));
+        setLabel('s-sanaudos', uiText('Savaitės sąnaudos', 'Weekly costs'));
+        setLabel('s-likutis', uiText('Grynųjų likutis', 'Cash balance'));
+        setLabel('s-projektai', uiText('Aktyvūs projektai', 'Active projects'));
+        setLabel('s-pipeline', uiText('Pardavimų eilė', 'Sales pipeline'));
+        setLabel('s-question', uiText('Klausimas DI', 'AI question'));
+        function setLabel(forId, text) {
+            var lab = document.querySelector('label[for="' + forId + '"]');
+            if (lab) lab.textContent = text;
+        }
+
+        var horizonSelect = document.getElementById('m-horizon');
+        if (horizonSelect && horizonSelect.options.length >= 4) {
+            horizonSelect.options[0].text = uiText('Šis mėnuo', 'This month');
+            horizonSelect.options[1].text = uiText('Šis ketvirtis', 'This quarter');
+            horizonSelect.options[2].text = uiText('Šie metai', 'This year');
+            horizonSelect.options[3].text = uiText('3 metai', '3 years');
+        }
+        setPlaceholder('m-goal', uiText('Pvz.: Pasiekti 100K MRR per Q2', 'E.g.: Achieve 100K MRR by Q2'));
+        setPlaceholder('m-income', uiText('Pvz.: 45 000 €', 'E.g.: 45,000 €'));
+        setPlaceholder('m-expenses', uiText('Pvz.: 38 000 €', 'E.g.: 38,000 €'));
+        setPlaceholder('m-profit', uiText('Pvz.: 7 000 €', 'E.g.: 7,000 €'));
+        setPlaceholder('m-cash', uiText('Pvz.: 120 000 €', 'E.g.: 120,000 €'));
+        setPlaceholder('m-runway', uiText('Pvz.: 16 mėn.', 'E.g.: 16 months'));
+        setPlaceholder('m-facts', uiText('Pvz.: Praradome 2 klientus, bet pritraukėme 5 naujus. Naujas produktas paleidžiamas kitą mėnesį.', 'E.g.: Lost 2 clients but gained 5 new. New product launch next month.'));
+        setPlaceholder('m-question', uiText('Pvz.: Kokius 3 veiksmus turėčiau atlikti šią savaitę?', 'E.g.: What 3 actions should I take this week?'));
+        setPlaceholder('d-pajamos', uiText('Pvz.: 2 340 €', 'E.g.: 2,340 €'));
+        setPlaceholder('d-klientai', uiText('Pvz.: 3 naujos užklausos', 'E.g.: 3 new leads'));
+        setPlaceholder('d-islaidos', uiText('Pvz.: 1 200 €', 'E.g.: 1,200 €'));
+        setPlaceholder('d-ivykiai', uiText('Pvz.: Pasirašyta sutartis su X, atšauktas susitikimas su Y, serverio incidentas 2h', 'E.g.: Contract signed with X, meeting cancelled with Y, server incident 2h'));
+        setPlaceholder('d-question', uiText('Pvz.: Ką turėčiau daryti šiandien kitaip?', 'E.g.: What should I do differently today?'));
+        setPlaceholder('s-pajamos', uiText('Pvz.: 12 500 €', 'E.g.: 12,500 €'));
+        setPlaceholder('s-sanaudos', uiText('Pvz.: 9 800 €', 'E.g.: 9,800 €'));
+        setPlaceholder('s-likutis', uiText('Pvz.: 115 000 €', 'E.g.: 115,000 €'));
+        setPlaceholder('s-projektai', uiText('Pvz.: Naujo produkto paleidimas (70%), CRM migracija (45%), SEO optimizacija (20%)', 'E.g.: New product launch (70%), CRM migration (45%), SEO (20%)'));
+        setPlaceholder('s-pipeline', uiText('Pvz.: 3 pasiūlymai laukia atsakymo, 2 demo suplanuoti', 'E.g.: 3 proposals pending, 2 demos scheduled'));
+        setPlaceholder('s-question', uiText('Pvz.: Kuriuos projektus prioritetizuoti šią savaitę?', 'E.g.: Which projects to prioritize this week?'));
+        function setPlaceholder(id, text) {
+            var el = document.getElementById(id);
+            if (el) el.placeholder = text;
+        }
+        var runwayHelp = document.querySelector('#m-runway + .field-help');
+        if (runwayHelp) runwayHelp.textContent = uiText('Kiek mėnesių gali veikti su esamais pinigų likučiais', 'Months you can run with current cash.');
+
+        var opsOutputRegion = document.querySelector('.ops-output[role="region"]');
+        if (opsOutputRegion) opsOutputRegion.setAttribute('aria-label', uiText('Sugeneruota DI užklausa', 'Generated AI prompt'));
+        var outputCopyBtn = document.getElementById('outputCopyBtn');
+        if (outputCopyBtn) outputCopyBtn.setAttribute('aria-label', uiText('Kopijuoti sugeneruotą promptą', 'Copy generated prompt'));
+        var opsOutput = document.getElementById('opsOutput');
+        if (opsOutput) {
+            if (opsOutput.tagName === 'TEXTAREA') {
+                opsOutput.placeholder = uiText('Pasirink režimą ir užpildyk bent pagrindinius laukus – užklausa sugeneruojama automatiškai.', 'Choose a mode and fill the main fields — the prompt is generated automatically.');
+                opsOutput.setAttribute('aria-label', uiText('Sugeneruota DI užklausa – galite redaguoti', 'Generated AI prompt – you can edit'));
+            } else if (opsOutput.textContent.indexOf('Pasirink režimą') !== -1 || opsOutput.textContent.indexOf('Choose mode') !== -1 || opsOutput.textContent.indexOf('Choose a mode') !== -1) {
+                opsOutput.textContent = uiText('Pasirink režimą ir užpildyk bent pagrindinius laukus – užklausa sugeneruojama automatiškai.', 'Choose a mode and fill the main fields — the prompt is generated automatically.');
+            }
+        }
+        var opsOutputChars = document.querySelector('.ops-output-chars');
+        if (opsOutputChars && opsOutputChars.firstChild) opsOutputChars.firstChild.textContent = uiText('Simbolių: ', 'Characters: ');
+        var toolLaunchersLabel = document.querySelector('.ops-tool-launchers-label');
+        if (toolLaunchersLabel) toolLaunchersLabel.textContent = uiText('Nori tęsti analizę? Pasirink įrankį:', 'Continue in:');
+        var toolBtns = document.querySelectorAll('.ops-tool-btn');
+        var toolNames = [uiText('Atidaryti ChatGPT', 'Open ChatGPT'), uiText('Atidaryti Claude', 'Open Claude'), uiText('Atidaryti Gemini', 'Open Gemini')];
+        toolBtns.forEach(function (btn, i) {
+            if (toolNames[i]) {
+                btn.textContent = toolNames[i];
+                btn.setAttribute('aria-label', toolNames[i] + ' ' + uiText('naujame lange', 'in new tab'));
+            }
+        });
+        var toolLaunchersGroup = document.querySelector('.ops-tool-launchers[role="group"]');
+        if (toolLaunchersGroup) toolLaunchersGroup.setAttribute('aria-label', uiText('DI įrankių pasirinkimas', 'AI tool selection'));
+        var sessionList = document.getElementById('sessionList');
+        if (sessionList) sessionList.setAttribute('aria-label', uiText('Išsaugotos sesijos', 'Saved sessions'));
+
+        var libraryTitle = document.querySelector('#library .collapsible-title');
+        if (libraryTitle) libraryTitle.textContent = uiText('Šablonų biblioteka', 'Template library');
+        var libraryValue = document.querySelector('#library .collapsible-value');
+        if (libraryValue) libraryValue.textContent = uiText('Paruošti užklausų šablonai – taikyk formoje arba kopijuok', 'Ready-made prompt templates – apply in form or copy');
+        var rulesTitle = document.querySelector('#rules .collapsible-title');
+        if (rulesTitle) rulesTitle.textContent = uiText('Ekonominės drausmės taisyklės', 'Economic discipline rules');
+        var rulesValue = document.querySelector('#rules .collapsible-value');
+        if (rulesValue) rulesValue.textContent = uiText('Vadovo sprendimų sistema – kiekvienas promptas laikosi šių principų', 'Decision framework – every prompt follows these principles');
+
+        var outBadge = document.querySelector('.ops-output-badge span:last-child');
+        if (outBadge) outBadge.textContent = uiText('Sugeneruota užklausa', 'Generated prompt');
+
+        var outFooter = document.querySelector('.ops-output-footer p:last-of-type');
+        if (outFooter) outFooter.textContent = uiText(
+            'Galite redaguoti tekstą čia prieš kopijuojant. Nukopijuok ir įklijuok į ChatGPT arba Claude.',
+            'Edit here if needed, then copy and paste into ChatGPT or Claude.'
+        );
+
+        var outCta = document.querySelector('#outputCopyCta span');
+        if (outCta) outCta.textContent = uiText('KOPIJUOTI UŽKLAUSĄ IR ANALIZUOTI', 'Copy prompt & analyze');
+        var outputCopyCtaBtn = document.getElementById('outputCopyCta');
+        if (outputCopyCtaBtn) outputCopyCtaBtn.setAttribute('aria-label', uiText('Kopijuoti užklausą', 'Copy prompt'));
+
+        var sessionsTitle = document.querySelector('.ops-sessions-title');
+        if (sessionsTitle) sessionsTitle.innerHTML = '<i data-lucide="history" class="icon icon--sm"></i> ' + uiText('Sesijos', 'Sessions');
+
+        var saveBtn = document.getElementById('sessionSaveBtn');
+        if (saveBtn) saveBtn.innerHTML = '<i data-lucide="save" class="icon icon--sm"></i> ' + uiText('Išsaugoti', 'Save');
+
+        var clearBtn = document.getElementById('sessionClearBtn');
+        if (clearBtn) clearBtn.innerHTML = '<i data-lucide="trash-2" class="icon icon--sm"></i> ' + uiText('Ištrinti sesijas', 'Clear sessions');
+
+        var themeBtn = document.getElementById('themeToggleBtn');
+        if (themeBtn) themeBtn.setAttribute('aria-label', uiText('Perjungti tamsų režimą', 'Toggle dark mode'));
+
+        var langLtBtn = document.getElementById('langLtBtn');
+        var langEnBtn = document.getElementById('langEnBtn');
+        if (langLtBtn) langLtBtn.classList.toggle('is-active', locale === 'lt');
+        if (langEnBtn) langEnBtn.classList.toggle('is-active', locale === 'en');
+
+        var communityTitle = document.getElementById('community-title');
+        if (communityTitle) communityTitle.innerHTML = uiText('Promptas sukurtas.<br>Nori daugiau?', 'Prompt created.<br>Want more?');
+        var communityPrimary = document.querySelector('.community-cta-primary');
+        if (communityPrimary) {
+            communityPrimary.textContent = uiText('Prisijungti prie WhatsApp grupės', 'Join WhatsApp group');
+            communityPrimary.setAttribute('aria-label', uiText('Atidaryti Promptų anatomija WhatsApp grupę naujame lange', 'Open Prompt Anatomy WhatsApp group in new tab'));
+        }
+        var communitySecondary = document.querySelector('.community-cta-secondary');
+        if (communitySecondary) {
+            communitySecondary.textContent = uiText('Promptų anatomija →', 'Prompt anatomy →');
+            communitySecondary.setAttribute('aria-label', uiText('Pilna Promptų anatomija – interaktyvus mokymas (atidaroma naujame lange)', 'Full Prompt anatomy – interactive training (opens in new tab)'));
+            communitySecondary.setAttribute('href', ANATOMY_URL);
+        }
+        var footerH3 = document.querySelector('.footer h3');
+        if (footerH3) footerH3.innerHTML = uiText('Valdyk verslą su DI ', 'Run your business with AI ') + '<span class="icon-wrap" aria-hidden="true"><i data-lucide="sparkles" class="icon icon--md"></i></span>';
+        var footerP = document.querySelector('.footer p');
+        if (footerP && !footerP.classList.contains('footer-product-link')) footerP.textContent = uiText('Trys režimai. Trys gylio lygiai. Vienas tikslas – geresni sprendimai.', 'Three modes. Three depth levels. One goal – better decisions.');
+        var footerProductLink = document.querySelector('.footer-product-link');
+        if (footerProductLink) footerProductLink.textContent = uiText('Tai Spin-off Nr. 5 iš „Promptų anatomijos".', 'This is Spin-off No. 5 from "Prompt anatomy".');
+        var footerTags = document.querySelectorAll('.footer .tag');
+        var tagTexts = [
+            uiText('Operacinis centras', 'Operations center'),
+            'CEO / COO',
+            uiText('3 režimai', '3 modes'),
+            uiText('3 gylio lygiai', '3 depth levels')
+        ];
+        footerTags.forEach(function (tag, i) {
+            if (tagTexts[i] && tag.childNodes.length > 1) tag.childNodes[1].textContent = ' ' + tagTexts[i];
+        });
+        var privacyLink = document.querySelector('.copyright a[href="privatumas.html"]');
+        if (privacyLink) privacyLink.textContent = uiText('Privatumas', 'Privacy');
+        var copyrightText = document.querySelector('.copyright p');
+        if (copyrightText) copyrightText.innerHTML = '&copy; 2026 Tomas Staniulis. ' + uiText('Mokymų medžiaga. Visos teisės saugomos.', 'Training material. All rights reserved.') + ' <a href="privatumas.html">' + uiText('Privatumas', 'Privacy') + '</a>';
+        var hiddenTextarea = document.getElementById('hiddenTextarea');
+        if (hiddenTextarea) hiddenTextarea.setAttribute('aria-label', uiText('Kopijuojamo teksto laukas', 'Text to copy field'));
+        var toastAria = document.getElementById('toast');
+        if (toastAria) toastAria.setAttribute('aria-label', uiText('Pranešimas', 'Notification'));
+
+        if (window.lucide && typeof window.lucide.createIcons === 'function') {
+            window.lucide.createIcons({ root: document.body });
+        }
+    }
+
     /* ===== PROMPT GENERATION ===== */
 
     function buildMasterPrompt(data, depth) {
         var parts = [];
 
-        parts.push('ROLĖ: Esi strateginis verslo konsultantas, dirbantis su CEO/COO.');
+        parts.push(uiText(
+            'ROLĖ: Esi strateginis verslo konsultantas, dirbantis su CEO/COO.',
+            'ROLE: You are a strategic business consultant working with CEO/COO.'
+        ));
         parts.push('');
 
         if (isFilled(data.goal)) {
-            parts.push('KONTEKSTAS:');
-            parts.push('- Strateginis tikslas: ' + data.goal);
-            if (isFilled(data.horizon)) parts.push('- Laiko horizontas: ' + data.horizon);
+            parts.push(uiText('KONTEKSTAS:', 'CONTEXT:'));
+            parts.push(uiText('- Strateginis tikslas: ', '- Strategic objective: ') + data.goal);
+            if (isFilled(data.horizon)) parts.push(uiText('- Laiko horizontas: ', '- Time horizon: ') + data.horizon);
             parts.push('');
         }
 
         var hasFinancials = isFilled(data.income) || isFilled(data.expenses) || isFilled(data.profit) || isFilled(data.cash) || isFilled(data.runway);
         if (hasFinancials) {
-            parts.push('FINANSAI:');
-            if (isFilled(data.income)) parts.push('- Pajamos (mėn.): ' + data.income);
-            if (isFilled(data.expenses)) parts.push('- Išlaidos (mėn.): ' + data.expenses);
-            if (isFilled(data.profit)) parts.push('- Pelnas (mėn.): ' + data.profit);
-            if (isFilled(data.cash)) parts.push('- Grynieji likučiai: ' + data.cash);
-            if (isFilled(data.runway)) parts.push('- Veikimo rezervas (mėn.): ' + data.runway);
+            parts.push(uiText('FINANSAI:', 'FINANCE:'));
+            if (isFilled(data.income)) parts.push(uiText('- Pajamos (mėn.): ', '- Revenue (month): ') + data.income);
+            if (isFilled(data.expenses)) parts.push(uiText('- Išlaidos (mėn.): ', '- Expenses (month): ') + data.expenses);
+            if (isFilled(data.profit)) parts.push(uiText('- Pelnas (mėn.): ', '- Profit (month): ') + data.profit);
+            if (isFilled(data.cash)) parts.push(uiText('- Grynieji likučiai: ', '- Cash balance: ') + data.cash);
+            if (isFilled(data.runway)) parts.push(uiText('- Veikimo rezervas (mėn.): ', '- Runway (months): ') + data.runway);
             parts.push('');
         }
 
         if (isFilled(data.facts)) {
-            parts.push('FAKTAI: ' + data.facts);
+            parts.push(uiText('FAKTAI: ', 'FACTS: ') + data.facts);
             parts.push('');
         }
 
         if (isFilled(data.question)) {
-            parts.push('KLAUSIMAS: ' + data.question);
+            parts.push(uiText('KLAUSIMAS: ', 'QUESTION: ') + data.question);
         } else {
-            parts.push('KLAUSIMAS: Kokie yra 3 svarbiausi šios savaitės prioritetai ir veiksmai?');
+            parts.push(uiText(
+                'KLAUSIMAS: Kokie yra 3 svarbiausi šios savaitės prioritetai ir veiksmai?',
+                'QUESTION: What are the 3 most important priorities and actions this week?'
+            ));
         }
 
         parts.push('');
-        parts.push('GYLIS: ' + depth.instruction);
+        parts.push(uiText('GYLIS: ', 'DEPTH: ') + depth.instruction);
         parts.push('');
-        parts.push('IŠVESTIES FORMATAS: ' + depth.format);
+        parts.push(uiText('IŠVESTIES FORMATAS: ', 'OUTPUT FORMAT: ') + depth.format);
 
         return parts.join('\n');
     }
@@ -216,30 +624,36 @@
     function buildDienosPrompt(data, depth) {
         var parts = [];
 
-        parts.push('ROLĖ: Esi operacijų analitikas, padedantis CEO/COO įvertinti vakarykštę dieną.');
+        parts.push(uiText(
+            'ROLĖ: Esi operacijų analitikas, padedantis CEO/COO įvertinti vakarykštę dieną.',
+            'ROLE: You are an operations analyst helping CEO/COO evaluate yesterday.'
+        ));
         parts.push('');
 
-        parts.push('VAKARYKŠTĖS DUOMENYS:');
-        if (isFilled(data.v_pajamos)) parts.push('- Pajamos: ' + data.v_pajamos);
-        if (isFilled(data.v_klientai)) parts.push('- Nauji klientai / užklausos: ' + data.v_klientai);
-        if (isFilled(data.v_islaidos)) parts.push('- Išlaidos: ' + data.v_islaidos);
+        parts.push(uiText('VAKARYKŠTĖS DUOMENYS:', 'YESTERDAY DATA:'));
+        if (isFilled(data.v_pajamos)) parts.push(uiText('- Pajamos: ', '- Revenue: ') + data.v_pajamos);
+        if (isFilled(data.v_klientai)) parts.push(uiText('- Nauji klientai / užklausos: ', '- New clients / leads: ') + data.v_klientai);
+        if (isFilled(data.v_islaidos)) parts.push(uiText('- Išlaidos: ', '- Expenses: ') + data.v_islaidos);
         parts.push('');
 
         if (isFilled(data.v_ivykiai)) {
-            parts.push('SVARBIAUSI ĮVYKIAI: ' + data.v_ivykiai);
+            parts.push(uiText('SVARBIAUSI ĮVYKIAI: ', 'KEY EVENTS: ') + data.v_ivykiai);
             parts.push('');
         }
 
         if (isFilled(data.question)) {
-            parts.push('KLAUSIMAS: ' + data.question);
+            parts.push(uiText('KLAUSIMAS: ', 'QUESTION: ') + data.question);
         } else {
-            parts.push('KLAUSIMAS: Ką šiandien turėčiau daryti kitaip, remiantis vakarykščiais duomenimis?');
+            parts.push(uiText(
+                'KLAUSIMAS: Ką šiandien turėčiau daryti kitaip, remiantis vakarykščiais duomenimis?',
+                'QUESTION: What should I do differently today based on yesterday data?'
+            ));
         }
 
         parts.push('');
-        parts.push('GYLIS: ' + depth.instruction);
+        parts.push(uiText('GYLIS: ', 'DEPTH: ') + depth.instruction);
         parts.push('');
-        parts.push('IŠVESTIES FORMATAS: ' + depth.format);
+        parts.push(uiText('IŠVESTIES FORMATAS: ', 'OUTPUT FORMAT: ') + depth.format);
 
         return parts.join('\n');
     }
@@ -247,35 +661,41 @@
     function buildSavaitesPrompt(data, depth) {
         var parts = [];
 
-        parts.push('ROLĖ: Esi savaitės veiklos analitikas, rengiantis CEO/COO savaitės apžvalgą.');
+        parts.push(uiText(
+            'ROLĖ: Esi savaitės veiklos analitikas, rengiantis CEO/COO savaitės apžvalgą.',
+            'ROLE: You are a weekly operations analyst preparing a CEO/COO summary.'
+        ));
         parts.push('');
 
-        parts.push('SAVAITĖS DUOMENYS:');
-        if (isFilled(data.s_pajamos)) parts.push('- Pajamos: ' + data.s_pajamos);
-        if (isFilled(data.s_sanaudos)) parts.push('- Sąnaudos: ' + data.s_sanaudos);
-        if (isFilled(data.s_likutis)) parts.push('- Grynųjų likutis: ' + data.s_likutis);
+        parts.push(uiText('SAVAITĖS DUOMENYS:', 'WEEKLY DATA:'));
+        if (isFilled(data.s_pajamos)) parts.push(uiText('- Pajamos: ', '- Revenue: ') + data.s_pajamos);
+        if (isFilled(data.s_sanaudos)) parts.push(uiText('- Sąnaudos: ', '- Costs: ') + data.s_sanaudos);
+        if (isFilled(data.s_likutis)) parts.push(uiText('- Grynųjų likutis: ', '- Cash balance: ') + data.s_likutis);
         parts.push('');
 
         if (isFilled(data.projektai)) {
-            parts.push('AKTYVŪS PROJEKTAI: ' + data.projektai);
+            parts.push(uiText('AKTYVŪS PROJEKTAI: ', 'ACTIVE PROJECTS: ') + data.projektai);
             parts.push('');
         }
 
         if (isFilled(data.s_pipeline)) {
-            parts.push('PARDAVIMŲ EILĖ: ' + data.s_pipeline);
+            parts.push(uiText('PARDAVIMŲ EILĖ: ', 'SALES PIPELINE: ') + data.s_pipeline);
             parts.push('');
         }
 
         if (isFilled(data.question)) {
-            parts.push('KLAUSIMAS: ' + data.question);
+            parts.push(uiText('KLAUSIMAS: ', 'QUESTION: ') + data.question);
         } else {
-            parts.push('KLAUSIMAS: Kuriuos projektus prioritetizuoti ir kokie 3 svarbiausi šios savaitės veiksmai?');
+            parts.push(uiText(
+                'KLAUSIMAS: Kuriuos projektus prioritetizuoti ir kokie 3 svarbiausi šios savaitės veiksmai?',
+                'QUESTION: Which projects should be prioritized and what are the top 3 actions this week?'
+            ));
         }
 
         parts.push('');
-        parts.push('GYLIS: ' + depth.instruction);
+        parts.push(uiText('GYLIS: ', 'DEPTH: ') + depth.instruction);
         parts.push('');
-        parts.push('IŠVESTIES FORMATAS: ' + depth.format);
+        parts.push(uiText('IŠVESTIES FORMATAS: ', 'OUTPUT FORMAT: ') + depth.format);
 
         return parts.join('\n');
     }
@@ -301,7 +721,11 @@
         void el.offsetWidth;
         el.classList.add('is-refreshing');
 
-        el.textContent = prompt;
+        if (el.tagName === 'TEXTAREA') {
+            el.value = prompt;
+        } else {
+            el.textContent = prompt;
+        }
 
         var countEl = document.getElementById('outputCharCount');
         if (countEl) countEl.textContent = String(prompt.length);
@@ -431,7 +855,7 @@
             mode: activeMode,
             depth: activeDepth,
             data: JSON.parse(JSON.stringify(formData[activeMode])),
-            date: new Date().toLocaleString('lt-LT')
+            date: new Date().toLocaleString(locale === 'lt' ? 'lt-LT' : 'en-GB')
         };
 
         sessions.unshift(session);
@@ -488,7 +912,7 @@
                 '<span class="sessions-empty-icon" aria-hidden="true">' +
                     '<i data-lucide="sparkles" class="icon icon--sm"></i>' +
                 '</span>' +
-                'Sesijų dar nėra. Sukurk pirmą analizę.';
+                uiText('Sesijų dar nėra. Sukurk pirmą analizę.', 'No sessions yet. Save your first analysis.');
             list.appendChild(li);
             if (window.lucide && typeof window.lucide.createIcons === 'function') {
                 window.lucide.createIcons({ root: list });
@@ -501,14 +925,14 @@
             li.className = 'session-item';
             li.setAttribute('role', 'button');
             li.setAttribute('tabindex', '0');
-            li.setAttribute('aria-label', 'Įkelti ' + (MODES[session.mode] ? MODES[session.mode].label : session.mode) + ' sesiją nuo ' + session.date);
+            li.setAttribute('aria-label', uiText('Įkelti ', 'Load ') + (MODES[session.mode] ? MODES[session.mode].label : session.mode) + uiText(' sesiją nuo ', ' session from ') + session.date);
 
             li.innerHTML =
                 '<div class="session-item-info">' +
                     '<span class="session-item-mode">' + escapeHtml(MODES[session.mode] ? MODES[session.mode].label : session.mode) + '</span>' +
                     '<span class="session-item-date">' + escapeHtml(session.date) + '</span>' +
                 '</div>' +
-                '<span class="session-item-load">Įkelti →</span>';
+                '<span class="session-item-load">' + uiText('Įkelti →', 'Load →') + '</span>';
 
             li.addEventListener('click', function () { loadSession(session); });
             li.addEventListener('keydown', function (e) {
@@ -534,7 +958,7 @@
 
         var countEl = document.getElementById('libraryTemplateCount');
         if (countEl) {
-            countEl.textContent = LIBRARY_PROMPTS.length + ' šablonai';
+            countEl.textContent = LIBRARY_PROMPTS.length + ' ' + uiText('šablonai', 'templates');
         }
 
         grid.innerHTML = '';
@@ -554,12 +978,16 @@
                 '<div class="library-card-prompt">' + escapeHtml(item.prompt) + '</div>' +
                 '<div class="library-card-actions">' +
                     '<button type="button" class="library-btn library-btn--primary" data-library-apply="' + escapeHtml(item.id) + '">' +
-                        '<i data-lucide="file-input" class="icon icon--sm"></i> Taikyti formoje' +
+                        '<i data-lucide="file-input" class="icon icon--sm"></i> ' + uiText('Taikyti formoje', 'Apply to form') +
+                    '</button>' +
+                    '<button type="button" class="library-btn" data-library-output-only="' + escapeHtml(item.id) + '">' +
+                        '<i data-lucide="file-output" class="icon icon--sm"></i> ' + uiText('Tik į išvestį', 'To output only') +
                     '</button>' +
                     '<button type="button" class="library-btn" data-library-copy="' + escapeHtml(item.id) + '">' +
-                        '<i data-lucide="copy" class="icon icon--sm"></i> Kopijuoti' +
+                        '<i data-lucide="copy" class="icon icon--sm"></i> ' + uiText('Kopijuoti', 'Copy') +
                     '</button>' +
-                '</div>';
+                '</div>' +
+                '<p class="library-card-hint">' + uiText('Įrašo į lauką „Pagrindinis klausimas DI“ – redaguokite formoje. „Tik į išvestį“ – tik šablonas į išvesties lauką.', 'Writes to the main AI question field - edit in form. "To output only" – template only into output.') + '</p>';
 
             grid.appendChild(card);
         });
@@ -576,6 +1004,13 @@
                 return;
             }
 
+            var outputOnlyBtn = e.target.closest('[data-library-output-only]');
+            if (outputOnlyBtn) {
+                var outputOnlyId = outputOnlyBtn.getAttribute('data-library-output-only');
+                applyLibraryPromptToOutputOnly(outputOnlyId);
+                return;
+            }
+
             var copyBtn = e.target.closest('[data-library-copy]');
             if (copyBtn) {
                 var copyId = copyBtn.getAttribute('data-library-copy');
@@ -584,15 +1019,46 @@
         });
     }
 
+    function applyLibraryPromptToOutputOnly(id) {
+        var item = LIBRARY_PROMPTS.find(function (p) { return p.id === id; });
+        if (!item) return;
+
+        var el = document.getElementById('opsOutput');
+        if (!el) return;
+
+        if (el.tagName === 'TEXTAREA') {
+            el.value = item.prompt;
+        } else {
+            el.textContent = item.prompt;
+        }
+
+        var countEl = document.getElementById('outputCharCount');
+        if (countEl) countEl.textContent = String(item.prompt.length);
+
+        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        el.focus();
+
+        showToastIfAvailable(uiText('Šablonas įrašytas į išvestį. Redaguokite pagal poreikius.', 'Template inserted into output. Edit as needed.'));
+    }
+
     function applyLibraryPrompt(id) {
         var item = LIBRARY_PROMPTS.find(function (p) { return p.id === id; });
         if (!item) return;
 
         var questionField = document.querySelector('#' + MODES[activeMode].formId + ' [name="question"]');
+        if (questionField && isFilled(questionField.value)) {
+            if (!confirm(uiText('Šis laukas bus perrašytas šablonu. Tęsti?', 'This field will be overwritten by the template. Continue?'))) {
+                return;
+            }
+        }
+
         if (questionField) {
             questionField.value = item.prompt;
             formData[activeMode].question = item.prompt;
             updateOutput();
+            questionField.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            questionField.focus();
+            showToastIfAvailable(uiText('Šablonas įrašytas į klausimo lauką. Redaguokite formoje pagal poreikius.', 'Template inserted into question field. Edit as needed.'));
         }
     }
 
@@ -650,9 +1116,11 @@
         ta.style.opacity = '0';
     }
 
-    function showToastIfAvailable() {
+    function showToastIfAvailable(message) {
         var toast = document.getElementById('toast');
         if (!toast) return;
+        var msgEl = document.getElementById('toastMessage');
+        if (msgEl) msgEl.textContent = message !== undefined ? message : uiText('Nukopijuota.', 'Copied.');
         toast.classList.add('show');
         var progress = document.getElementById('toastProgress');
         if (progress) {
@@ -663,8 +1131,14 @@
         setTimeout(function () { toast.classList.remove('show'); }, 3000);
     }
 
+    function getCopyablePromptText() {
+        var el = document.getElementById('opsOutput');
+        if (!el) return getGeneratedPrompt();
+        return el.tagName === 'TEXTAREA' ? el.value : (el.textContent || getGeneratedPrompt());
+    }
+
     function doCopyOutput() {
-        var text = getGeneratedPrompt();
+        var text = getCopyablePromptText();
         if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
             navigator.clipboard.writeText(text).then(function () {
                 showToastIfAvailable();
@@ -736,6 +1210,18 @@
     /* ===== INIT ===== */
 
     document.addEventListener('DOMContentLoaded', function () {
+        applyStaticLocaleText();
+        var requestedMode = activeMode;
+        var requestedDepth = activeDepth;
+
+        var outputHelp = document.getElementById('opsOutput');
+        if (outputHelp && outputHelp.tagName === 'TEXTAREA' && !outputHelp.placeholder) {
+            outputHelp.placeholder = uiText(
+                'Pasirink režimą ir užpildyk bent pagrindinius laukus – užklausa sugeneruojama automatiškai.',
+                'Choose a mode and fill the main fields — the prompt is generated automatically.'
+            );
+        }
+
         // Restore depth
         try {
             var storedDepth = localStorage.getItem(DEPTH_KEY);
@@ -749,8 +1235,23 @@
             }
         } catch (_) { /* ignore */ }
 
+        try {
+            var params = new URLSearchParams(window.location.search);
+            var modeParam = params.get('mode');
+            if (modeParam && MODES[modeParam]) requestedMode = modeParam;
+            var depthParam = params.get('depth');
+            if (depthParam && DEPTH_LEVELS[depthParam]) requestedDepth = depthParam;
+        } catch (_) { /* ignore */ }
+
         // Mode tabs
         document.querySelectorAll('.mode-tab').forEach(function (tab) {
+            var tabMode = tab.getAttribute('data-mode');
+            var tabLabel = tab.querySelector('.mode-tab-label');
+            var tabDesc = tab.querySelector('.mode-tab-desc');
+            if (tabMode && MODES[tabMode]) {
+                if (tabLabel) tabLabel.textContent = MODES[tabMode].label;
+                if (tabDesc) tabDesc.textContent = MODES[tabMode].desc;
+            }
             tab.addEventListener('click', function () {
                 switchMode(tab.getAttribute('data-mode'));
             });
@@ -759,6 +1260,13 @@
 
         // Depth buttons
         document.querySelectorAll('.depth-btn').forEach(function (btn) {
+            var key = btn.getAttribute('data-depth');
+            var icon = btn.querySelector('i');
+            if (key && DEPTH_LEVELS[key]) {
+                btn.textContent = '';
+                if (icon) btn.appendChild(icon);
+                btn.appendChild(document.createTextNode(' ' + DEPTH_LEVELS[key].label));
+            }
             btn.addEventListener('click', function () {
                 switchDepth(btn.getAttribute('data-depth'));
             });
@@ -771,6 +1279,15 @@
             field.addEventListener('change', handleFormInput);
         });
 
+        // Output textarea: keep char count in sync when user edits
+        var opsOutputEl = document.getElementById('opsOutput');
+        if (opsOutputEl && opsOutputEl.tagName === 'TEXTAREA') {
+            opsOutputEl.addEventListener('input', function () {
+                var countEl = document.getElementById('outputCharCount');
+                if (countEl) countEl.textContent = String(opsOutputEl.value.length);
+            });
+        }
+
         // Copy buttons
         var copyBtn = document.getElementById('outputCopyBtn');
         var copyCta = document.getElementById('outputCopyCta');
@@ -780,6 +1297,31 @@
         if (copyCta) copyCta.addEventListener('click', doCopyOutput);
         if (stickyCopy) stickyCopy.addEventListener('click', doCopyOutput);
         setupAiToolLaunchers();
+
+        var ltBtn = document.getElementById('langLtBtn');
+        var enBtn = document.getElementById('langEnBtn');
+        function switchLanguage(nextLang) {
+            try { localStorage.setItem(LANG_KEY, nextLang); } catch (_) { /* ignore */ }
+            var params = new URLSearchParams(window.location.search);
+            params.set('lang', nextLang);
+            params.set('mode', activeMode);
+            params.set('depth', activeDepth);
+            var suffix = params.toString() ? ('?' + params.toString()) : '';
+            var hash = window.location.hash || '';
+            var pathname = (window.location.pathname || '');
+            var fromPath = getLocaleFromPathname();
+            if (fromPath) {
+                var path = pathname;
+                if (path.indexOf('/lt') !== -1) path = path.replace(/\/lt\/?/, '/' + nextLang + '/');
+                else if (path.indexOf('/en') !== -1) path = path.replace(/\/en\/?/, '/' + nextLang + '/');
+                if (path !== pathname) window.location.href = path + suffix + hash;
+                else window.location.href = '/' + nextLang + '/' + suffix + hash;
+                return;
+            }
+            window.location.href = './' + suffix + hash;
+        }
+        if (ltBtn) ltBtn.addEventListener('click', function () { switchLanguage('lt'); });
+        if (enBtn) enBtn.addEventListener('click', function () { switchLanguage('en'); });
 
         // Sessions
         var saveBtn = document.getElementById('sessionSaveBtn');
@@ -797,6 +1339,8 @@
         setupThemeToggle();
 
         // Initial output
+        switchMode(requestedMode);
+        switchDepth(requestedDepth);
         updateOutput();
     });
 })();

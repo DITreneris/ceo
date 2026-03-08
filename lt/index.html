@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="DI Operacinis Centras: LT ir EN versijos CEO/COO savaitės prioritetų analizei.">
+    
+    <link rel="canonical" href="/lt/">
+    <link rel="alternate" hreflang="lt" href="/lt/">
+    <link rel="alternate" hreflang="en" href="/en/">
+    <link rel="alternate" hreflang="x-default" href="/lt/">
+    <title>DI Operacinis Centras – TOP vadovams CEO / COO</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Pereiti prie turinio</a>
+
+    <nav class="top-nav" aria-label="Greita navigacija">
+        <div class="top-nav-inner">
+            <a href="#main-content" class="top-nav-brand" aria-label="DI Operacinis Centras">
+                <i data-lucide="command" class="icon icon--sm"></i>
+                <span class="top-nav-brand-text-full">DI Operacinis Centras</span>
+                <span class="top-nav-brand-text-short" aria-hidden="true">DI OC</span>
+            </a>
+            <div class="top-nav-actions">
+                <div class="lang-switcher" role="group" aria-label="Kalbos pasirinkimas">
+                    <button type="button" class="lang-btn" id="langLtBtn" data-lang="lt" aria-label="Perjungti į lietuvių kalbą">LT</button>
+                    <button type="button" class="lang-btn" id="langEnBtn" data-lang="en" aria-label="Switch to English">EN</button>
+                </div>
+                <button type="button" class="top-nav-icon-btn" id="themeToggleBtn" aria-label="Perjungti tamsų režimą">
+                    <i data-lucide="moon" class="icon icon--sm"></i>
+                </button>
+                <button type="button" class="top-nav-copy-btn" id="stickyCopyBtn">Kopijuoti užklausą</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <main id="main-content">
+
+        <!-- HERO -->
+        <header class="header">
+            <div class="header-badges">
+                <a href="https://www.promptanatomy.app/" class="badge" target="_blank" rel="noopener noreferrer" aria-label="Promptų anatomija – interaktyvus mokymas (atidaroma naujame lange)">Promptų anatomija</a>
+                <span class="badge badge-spinoff" role="status" aria-label="DI Operacinis Centras, Spin-off Nr. 5">Spin-off Nr. 5</span>
+            </div>
+            <h1>DI Operacinis Centras</h1>
+            <p>Per 5 min. gauk aiškius savaitės prioritetus ir veiksmus.<br>Įvesk skaičius ir išsisaugok CEO lygio DI užklausą.</p>
+            <ul class="header-steps" aria-label="Darbo žingsniai">
+                <li><a href="#operationsCenter" class="header-step is-active"><span class="header-step-num">1</span> Režimas</a></li>
+                <li><a href="#operationsCenter" class="header-step"><span class="header-step-num">2</span> Forma</a></li>
+                <li><a href="#operationsCenter" class="header-step"><span class="header-step-num">3</span> Rezultatas</a></li>
+                <li><a href="#library" class="header-step"><span class="header-step-num">4</span> Biblioteka</a></li>
+            </ul>
+            <div class="header-cta">
+                <a href="#operationsCenter" class="cta-button" aria-label="Gauti savaitės prioritetus operaciniame centre">Gauti savaitės prioritetus</a>
+                <a href="#library" class="cta-button-outline" aria-label="Peržiūrėti paruoštus šablonus">Rinktis šabloną ↓</a>
+                <p class="header-cta-meta">Užtruksi iki 5 min. • Rezultatas: aiškūs savaitės prioritetai.</p>
+            </div>
+        </header>
+
+        <!-- OPERATIONS CENTER -->
+        <section class="ops-center" id="operationsCenter">
+            <div class="ops-center-header">
+                <span class="step-badge" aria-hidden="true">1</span>
+                <div class="ops-center-header-text">
+                    <span class="collapsible-title">Operacinis centras</span>
+                    <span class="collapsible-value">Pasirink režimą, užpildyk laukus – DI užklausa sugeneruojama automatiškai</span>
+                </div>
+            </div>
+
+            <!-- Mode Tabs -->
+            <div class="mode-tabs" role="tablist" aria-label="Režimo pasirinkimas">
+                <button type="button" class="mode-tab is-active" role="tab" id="tab-master" aria-selected="true" aria-controls="form-master" data-mode="MASTER">
+                    <span class="mode-tab-label">STRATEGINIS</span>
+                    <span class="mode-tab-desc">Strateginis kontekstas</span>
+                </button>
+                <button type="button" class="mode-tab" role="tab" id="tab-dienos" aria-selected="false" aria-controls="form-dienos" data-mode="DIENOS">
+                    <span class="mode-tab-label">DIENOS</span>
+                    <span class="mode-tab-desc">Vakarykštės operacijos</span>
+                </button>
+                <button type="button" class="mode-tab" role="tab" id="tab-savaites" aria-selected="false" aria-controls="form-savaites" data-mode="SAVAITES">
+                    <span class="mode-tab-label">SAVAITĖS</span>
+                    <span class="mode-tab-desc">Projektai ir runway</span>
+                </button>
+            </div>
+
+            <!-- Depth Selector -->
+            <div class="depth-bar">
+                <span class="depth-label"><i data-lucide="sliders-horizontal" class="icon icon--sm"></i> Analizės gylis</span>
+                <div class="depth-options" role="radiogroup" aria-label="Promptų gylio lygis">
+                    <button type="button" class="depth-btn is-active" role="radio" aria-checked="true" data-depth="GREITA">
+                        <i data-lucide="zap" class="icon icon--sm"></i> Greita
+                    </button>
+                    <button type="button" class="depth-btn" role="radio" aria-checked="false" data-depth="GILU">
+                        <i data-lucide="layers" class="icon icon--sm"></i> Gilu
+                    </button>
+                    <button type="button" class="depth-btn" role="radio" aria-checked="false" data-depth="BOARD">
+                        <i data-lucide="briefcase" class="icon icon--sm"></i> Valdybai
+                    </button>
+                </div>
+                <div class="field-help">Nežinai? Rinkis Greita.</div>
+            </div>
+
+            <!-- Layout: Form + Output -->
+            <div class="ops-layout">
+                <!-- FORM AREA -->
+                <div class="ops-form" id="opsForm">
+
+                    <!-- MASTER Form -->
+                    <div id="form-master" role="tabpanel" aria-labelledby="tab-master">
+                        <div class="ops-form-section">
+                            <div class="ops-form-section-title">
+                                <i data-lucide="target" class="icon icon--sm"></i> Strateginis kontekstas
+                            </div>
+                            <div class="ops-form-grid">
+                                <div class="field-full">
+                                    <label class="field-label" for="m-goal">Strateginis tikslas</label>
+                                    <textarea id="m-goal" name="goal" class="field-textarea" rows="2" placeholder="Pvz.: Pasiekti 100K MRR per Q2"></textarea>
+                                </div>
+                                <div>
+                                    <label class="field-label" for="m-horizon">Laiko horizontas</label>
+                                    <select id="m-horizon" name="horizon" class="field-select">
+                                        <option>Šis mėnuo</option>
+                                        <option>Šis ketvirtis</option>
+                                        <option selected>Šie metai</option>
+                                        <option>3 metai</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="field-label" for="m-income">Pajamos (mėn.)</label>
+                                    <input type="text" id="m-income" name="income" class="field-input" placeholder="Pvz.: 45 000 €">
+                                </div>
+                                <div>
+                                    <label class="field-label" for="m-expenses">Išlaidos (mėn.)</label>
+                                    <input type="text" id="m-expenses" name="expenses" class="field-input" placeholder="Pvz.: 38 000 €">
+                                </div>
+                                <div>
+                                    <label class="field-label" for="m-profit">Pelnas (mėn.)</label>
+                                    <input type="text" id="m-profit" name="profit" class="field-input" placeholder="Pvz.: 7 000 €">
+                                </div>
+                                <div>
+                                    <label class="field-label" for="m-cash">Grynieji likučiai</label>
+                                    <input type="text" id="m-cash" name="cash" class="field-input" placeholder="Pvz.: 120 000 €">
+                                </div>
+                                <div>
+                                    <label class="field-label" for="m-runway">Veikimo rezervas (mėn.)</label>
+                                    <input type="text" id="m-runway" name="runway" class="field-input" placeholder="Pvz.: 16 mėn.">
+                                    <div class="field-help">Kiek mėnesių gali veikti su esamais pinigų likučiais</div>
+                                </div>
+                                <div class="field-full">
+                                    <label class="field-label" for="m-facts">Svarbūs faktai / kontekstas</label>
+                                    <textarea id="m-facts" name="facts" class="field-textarea" rows="3" placeholder="Pvz.: Praradome 2 klientus, bet pritraukėme 5 naujus. Naujas produktas paleidžiamas kitą mėnesį."></textarea>
+                                </div>
+                                <div class="field-full">
+                                    <label class="field-label" for="m-question">Pagrindinis klausimas DI</label>
+                                    <textarea id="m-question" name="question" class="field-textarea" rows="2" placeholder="Pvz.: Kokius 3 veiksmus turėčiau atlikti šią savaitę?"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- DIENOS Form -->
+                    <div id="form-dienos" role="tabpanel" aria-labelledby="tab-dienos" hidden>
+                        <div class="ops-form-section">
+                            <div class="ops-form-section-title">
+                                <i data-lucide="calendar" class="icon icon--sm"></i> Vakarykštės operacijos
+                            </div>
+                            <div class="ops-form-grid">
+                                <div>
+                                    <label class="field-label" for="d-pajamos">Vakarykštės pajamos</label>
+                                    <input type="text" id="d-pajamos" name="v_pajamos" class="field-input" placeholder="Pvz.: 2 340 €">
+                                </div>
+                                <div>
+                                    <label class="field-label" for="d-klientai">Nauji klientai / užklausos</label>
+                                    <input type="text" id="d-klientai" name="v_klientai" class="field-input" placeholder="Pvz.: 3 naujos užklausos">
+                                </div>
+                                <div>
+                                    <label class="field-label" for="d-islaidos">Vakarykštės išlaidos</label>
+                                    <input type="text" id="d-islaidos" name="v_islaidos" class="field-input" placeholder="Pvz.: 1 200 €">
+                                </div>
+                                <div class="field-full">
+                                    <label class="field-label" for="d-ivykiai">Svarbiausi įvykiai</label>
+                                    <textarea id="d-ivykiai" name="v_ivykiai" class="field-textarea" rows="3" placeholder="Pvz.: Pasirašyta sutartis su X, atšauktas susitikimas su Y, serverio incidentas 2h"></textarea>
+                                </div>
+                                <div class="field-full">
+                                    <label class="field-label" for="d-question">Klausimas DI</label>
+                                    <textarea id="d-question" name="question" class="field-textarea" rows="2" placeholder="Pvz.: Ką turėčiau daryti šiandien kitaip?"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SAVAITĖS Form -->
+                    <div id="form-savaites" role="tabpanel" aria-labelledby="tab-savaites" hidden>
+                        <div class="ops-form-section">
+                            <div class="ops-form-section-title">
+                                <i data-lucide="bar-chart-3" class="icon icon--sm"></i> Savaitės apžvalga
+                            </div>
+                            <div class="ops-form-grid">
+                                <div>
+                                    <label class="field-label" for="s-pajamos">Savaitės pajamos</label>
+                                    <input type="text" id="s-pajamos" name="s_pajamos" class="field-input" placeholder="Pvz.: 12 500 €">
+                                </div>
+                                <div>
+                                    <label class="field-label" for="s-sanaudos">Savaitės sąnaudos</label>
+                                    <input type="text" id="s-sanaudos" name="s_sanaudos" class="field-input" placeholder="Pvz.: 9 800 €">
+                                </div>
+                                <div>
+                                    <label class="field-label" for="s-likutis">Grynųjų likutis</label>
+                                    <input type="text" id="s-likutis" name="s_likutis" class="field-input" placeholder="Pvz.: 115 000 €">
+                                </div>
+                                <div class="field-full">
+                                    <label class="field-label" for="s-projektai">Aktyvūs projektai</label>
+                                    <textarea id="s-projektai" name="projektai" class="field-textarea" rows="3" placeholder="Pvz.: Naujo produkto paleidimas (70%), CRM migracija (45%), SEO optimizacija (20%)"></textarea>
+                                </div>
+                                <div class="field-full">
+                                    <label class="field-label" for="s-pipeline">Pardavimų eilė</label>
+                                    <textarea id="s-pipeline" name="s_pipeline" class="field-textarea" rows="2" placeholder="Pvz.: 3 pasiūlymai laukia atsakymo, 2 demo suplanuoti"></textarea>
+                                </div>
+                                <div class="field-full">
+                                    <label class="field-label" for="s-question">Klausimas DI</label>
+                                    <textarea id="s-question" name="question" class="field-textarea" rows="2" placeholder="Pvz.: Kuriuos projektus prioritetizuoti šią savaitę?"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- OUTPUT SIDEBAR -->
+                <div class="ops-sidebar">
+                    <div class="ops-output" role="region" aria-label="Sugeneruota DI užklausa">
+                        <div class="ops-output-header">
+                            <div class="ops-output-badge">
+                                <span class="pulse"></span>
+                                <span>Sugeneruota užklausa</span>
+                            </div>
+                            <span class="ops-output-depth" id="depthBadge">Greita</span>
+                            <button class="ops-output-copy" id="outputCopyBtn" aria-label="Kopijuoti sugeneruotą promptą">
+                                <i data-lucide="copy" class="icon icon--md"></i>
+                            </button>
+                        </div>
+                        <textarea class="ops-output-text" id="opsOutput" rows="10" aria-label="Sugeneruota DI užklausa – galite redaguoti" aria-live="polite"></textarea>
+                        <div class="ops-output-footer">
+                            <p class="ops-output-chars">Simbolių: <strong id="outputCharCount">0</strong></p>
+                            <p>Galite redaguoti tekstą čia prieš kopijuojant. Nukopijuok ir įklijuok į ChatGPT arba Claude.</p>
+                            <button class="ops-output-cta" id="outputCopyCta" aria-label="Kopijuoti užklausą">
+                                <span>KOPIJUOTI UŽKLAUSĄ IR ANALIZUOTI</span>
+                                <i data-lucide="arrow-right" class="icon icon--md"></i>
+                            </button>
+                            <div class="ops-tool-launchers" role="group" aria-label="DI įrankių pasirinkimas">
+                                <p class="ops-tool-launchers-label">Nori tęsti analizę? Pasirink įrankį:</p>
+                                <div class="ops-tool-launchers-list" role="group" aria-label="Atidaryti DI įrankį">
+                                    <button type="button" class="ops-tool-btn" data-ai-tool="chatgpt" aria-label="Atidaryti ChatGPT naujame lange">
+                                        Atidaryti ChatGPT
+                                    </button>
+                                    <button type="button" class="ops-tool-btn" data-ai-tool="claude" aria-label="Atidaryti Claude naujame lange">
+                                        Atidaryti Claude
+                                    </button>
+                                    <button type="button" class="ops-tool-btn" data-ai-tool="gemini" aria-label="Atidaryti Gemini naujame lange">
+                                        Atidaryti Gemini
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sessions -->
+                    <div class="ops-sessions" id="sessionsPanel">
+                        <div class="ops-sessions-header">
+                            <span class="ops-sessions-title">
+                                <i data-lucide="history" class="icon icon--sm"></i> Sesijos
+                            </span>
+                            <div class="ops-sessions-actions">
+                                <button type="button" class="session-btn" id="sessionSaveBtn">
+                                    <i data-lucide="save" class="icon icon--sm"></i> Išsaugoti
+                                </button>
+                                <button type="button" class="session-btn session-btn--danger" id="sessionClearBtn">
+                                    <i data-lucide="trash-2" class="icon icon--sm"></i> Ištrinti sesijas
+                                </button>
+                            </div>
+                        </div>
+                        <ul class="session-list" id="sessionList" aria-label="Išsaugotos sesijos">
+                            <li class="sessions-empty" id="sessionsEmpty">
+                                <span class="sessions-empty-icon" aria-hidden="true"><i data-lucide="sparkles" class="icon icon--sm"></i></span>
+                                Sesijų dar nėra. Sukurk pirmą analizę.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LIBRARY -->
+        <section class="library-section" id="library">
+            <h2 class="collapsible-heading">
+                <button class="collapsible-toggle" id="libraryToggle" type="button" aria-expanded="false" aria-controls="libraryBody">
+                    <span class="step-badge" aria-hidden="true">4</span>
+                    <span class="collapsible-title">Šablonų biblioteka</span>
+                    <span class="collapsible-value">Paruošti užklausų šablonai – taikyk formoje arba kopijuok</span>
+                    <span class="collapsible-count" id="libraryTemplateCount">6 šablonai</span>
+                    <span class="collapsible-chevron" aria-hidden="true">▾</span>
+                </button>
+            </h2>
+            <div class="library-body" id="libraryBody" hidden>
+                <div class="library-grid" id="libraryGrid">
+                    <!-- Populated by generator.js -->
+                </div>
+            </div>
+        </section>
+
+        <!-- RULES -->
+        <section class="rules-section" id="rules">
+            <h2 class="collapsible-heading">
+                <button class="collapsible-toggle" id="rulesToggle" type="button" aria-expanded="false" aria-controls="rulesBody">
+                    <span class="step-badge" aria-hidden="true"><i data-lucide="shield-check" class="icon icon--sm"></i></span>
+                    <span class="collapsible-title">Ekonominės drausmės taisyklės</span>
+                    <span class="collapsible-value">Vadovo sprendimų sistema – kiekvienas promptas laikosi šių principų</span>
+                    <span class="collapsible-chevron" aria-hidden="true">▾</span>
+                </button>
+            </h2>
+            <div class="rules-body" id="rulesBody" hidden>
+                <ul class="rules-list" id="rulesList">
+                    <!-- Populated by generator.js -->
+                </ul>
+            </div>
+        </section>
+
+        <!-- COMMUNITY -->
+        <section class="community" id="community" aria-labelledby="community-title">
+            <h2 id="community-title">Promptas sukurtas.<br>Nori daugiau?</h2>
+            <a href="https://chat.whatsapp.com/It49fzTl1n90huRCoWWkwu?mode=gi_t" class="community-cta-primary" target="_blank" rel="noopener noreferrer" aria-label="Atidaryti Promptų anatomija WhatsApp grupę naujame lange">Prisijungti prie WhatsApp grupės</a>
+            <a href="https://www.promptanatomy.app/" class="community-cta-secondary" target="_blank" rel="noopener noreferrer" aria-label="Pilna Promptų anatomija – interaktyvus mokymas (atidaroma naujame lange)">Promptų anatomija →</a>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <h3>Valdyk verslą su DI <span class="icon-wrap" aria-hidden="true"><i data-lucide="sparkles" class="icon icon--md"></i></span></h3>
+            <p>Trys režimai. Trys gylio lygiai. Vienas tikslas – geresni sprendimai.</p>
+            <p class="footer-product-link">Tai Spin-off Nr. 5 iš „Promptų anatomijos".</p>
+            <div class="tags" role="list">
+                <span class="tag" role="listitem"><span class="icon-wrap" aria-hidden="true"><i data-lucide="command" class="icon icon--sm"></i></span> Operacinis centras</span>
+                <span class="tag" role="listitem"><span class="icon-wrap" aria-hidden="true"><i data-lucide="trending-up" class="icon icon--sm"></i></span> CEO / COO</span>
+                <span class="tag" role="listitem"><span class="icon-wrap" aria-hidden="true"><i data-lucide="zap" class="icon icon--sm"></i></span> 3 režimai</span>
+                <span class="tag" role="listitem"><span class="icon-wrap" aria-hidden="true"><i data-lucide="layers" class="icon icon--sm"></i></span> 3 gylio lygiai</span>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2026 Tomas Staniulis. Mokymų medžiaga. Visos teisės saugomos. <a href="/privatumas.html">Privatumas</a></p>
+            </div>
+        </footer>
+
+        </main>
+    </div>
+
+    <textarea class="hidden" id="hiddenTextarea" aria-label="Kopijuojamo teksto laukas" aria-hidden="true"></textarea>
+
+    <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true" aria-label="Pranešimas">
+        <div class="toast-icon" aria-hidden="true"><i data-lucide="check" class="icon icon--lg"></i></div>
+        <span id="toastMessage">Nukopijuota.</span>
+        <span class="toast-progress" id="toastProgress" aria-hidden="true"></span>
+    </div>
+
+    <script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+    <script src="/generator.js"></script>
+    <script src="/copy.js"></script>
+</body>
+</html>
