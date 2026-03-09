@@ -5,6 +5,8 @@
  * Usage: node scripts/build-locale-pages.js
  * Optional: BASE_PATH=/repo-name node scripts/build-locale-pages.js for GitHub Pages project site.
  */
+/* eslint-env node */
+/* eslint-disable no-console */
 
 const fs = require('fs');
 const path = require('path');

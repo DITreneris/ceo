@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="DI Operacinis Centras: LT ir EN versijos CEO/COO savaitės prioritetų analizei.">
+    <link rel="alternate" hreflang="lt" href="./lt/">
+    <link rel="alternate" hreflang="en" href="./en/">
+    <link rel="alternate" hreflang="x-default" href="./lt/">
     <title>DI Operacinis Centras – TOP vadovams CEO / COO</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="style.css">
@@ -21,6 +25,10 @@
                 <span class="top-nav-brand-text-short" aria-hidden="true">DI OC</span>
             </a>
             <div class="top-nav-actions">
+                <div class="lang-switcher" role="group" aria-label="Kalbos pasirinkimas">
+                    <button type="button" class="lang-btn" id="langLtBtn" data-lang="lt" aria-label="Perjungti į lietuvių kalbą">LT</button>
+                    <button type="button" class="lang-btn" id="langEnBtn" data-lang="en" aria-label="Switch to English">EN</button>
+                </div>
                 <button type="button" class="top-nav-icon-btn" id="themeToggleBtn" aria-label="Perjungti tamsų režimą">
                     <i data-lucide="moon" class="icon icon--sm"></i>
                 </button>
@@ -35,7 +43,7 @@
         <!-- HERO -->
         <header class="header">
             <div class="header-badges">
-                <a href="https://ditreneris.github.io/anatomija/" class="badge" target="_blank" rel="noopener noreferrer" aria-label="Promptų anatomija – interaktyvus mokymas (atidaroma naujame lange)">Promptų anatomija</a>
+                <a href="https://www.promptanatomy.app/" class="badge" target="_blank" rel="noopener noreferrer" aria-label="Promptų anatomija – interaktyvus mokymas (atidaroma naujame lange)">Promptų anatomija</a>
                 <span class="badge badge-spinoff" role="status" aria-label="DI Operacinis Centras, Spin-off Nr. 5">Spin-off Nr. 5</span>
             </div>
             <h1>DI Operacinis Centras</h1>
@@ -93,7 +101,7 @@
                         <i data-lucide="briefcase" class="icon icon--sm"></i> Valdybai
                     </button>
                 </div>
-                <div class="field-help">Nežinai, nuo ko pradėti? Rinkis „Greita“.</div>
+                <div class="field-help">Nežinai? Rinkis Greita.</div>
             </div>
 
             <!-- Layout: Form + Output -->
@@ -235,12 +243,10 @@
                                 <i data-lucide="copy" class="icon icon--md"></i>
                             </button>
                         </div>
-                        <div class="ops-output-text" id="opsOutput" aria-live="polite">
-                            Pasirink režimą ir užpildyk bent pagrindinius laukus – užklausa sugeneruojama automatiškai.
-                        </div>
+                        <textarea class="ops-output-text" id="opsOutput" rows="10" aria-label="Sugeneruota DI užklausa – galite redaguoti" aria-live="polite"></textarea>
                         <div class="ops-output-footer">
                             <p class="ops-output-chars">Simbolių: <strong id="outputCharCount">0</strong></p>
-                            <p>Nukopijuok užklausą, įklijuok į ChatGPT arba Claude ir paleisk analizę.</p>
+                            <p>Galite redaguoti tekstą čia prieš kopijuojant. Nukopijuok ir įklijuok į ChatGPT arba Claude.</p>
                             <button class="ops-output-cta" id="outputCopyCta" aria-label="Kopijuoti užklausą">
                                 <span>KOPIJUOTI UŽKLAUSĄ IR ANALIZUOTI</span>
                                 <i data-lucide="arrow-right" class="icon icon--md"></i>
@@ -327,7 +333,7 @@
         <section class="community" id="community" aria-labelledby="community-title">
             <h2 id="community-title">Promptas sukurtas.<br>Nori daugiau?</h2>
             <a href="https://chat.whatsapp.com/It49fzTl1n90huRCoWWkwu?mode=gi_t" class="community-cta-primary" target="_blank" rel="noopener noreferrer" aria-label="Atidaryti Promptų anatomija WhatsApp grupę naujame lange">Prisijungti prie WhatsApp grupės</a>
-            <a href="https://ditreneris.github.io/anatomija/" class="community-cta-secondary" target="_blank" rel="noopener noreferrer" aria-label="Pilna Promptų anatomija – interaktyvus mokymas (atidaroma naujame lange)">Promptų anatomija →</a>
+            <a href="https://www.promptanatomy.app/" class="community-cta-secondary" target="_blank" rel="noopener noreferrer" aria-label="Pilna Promptų anatomija – interaktyvus mokymas (atidaroma naujame lange)">Promptų anatomija →</a>
         </section>
 
         <!-- FOOTER -->
@@ -351,9 +357,9 @@
 
     <textarea class="hidden" id="hiddenTextarea" aria-label="Kopijuojamo teksto laukas" aria-hidden="true"></textarea>
 
-    <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true" aria-label="Kopijavimo pranešimas">
+    <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true" aria-label="Pranešimas">
         <div class="toast-icon" aria-hidden="true"><i data-lucide="check" class="icon icon--lg"></i></div>
-        <span>Nukopijuota.</span>
+        <span id="toastMessage">Nukopijuota.</span>
         <span class="toast-progress" id="toastProgress" aria-hidden="true"></span>
     </div>
 

@@ -9,7 +9,7 @@ module.exports = defineConfig({
   fullyParallel: false,
   reporter: 'list',
   use: {
-    baseURL: 'http://127.0.0.1:3000',
+    baseURL: 'http://127.0.0.1:3300',
     trace: 'retain-on-failure'
   },
   projects: [

@@ -4,11 +4,11 @@ Trumpas įrankis CEO/COO darbui: iš įvestų verslo duomenų suformuoja aiški�
 
 ## Greitas startas
 
-- Atidaryk `index.html` naršyklėje.
-- Arba paleisk lokalų serverį:
+- Atidaryk `index.html` naršyklėje arba locale puslapius: `/lt/`, `/en/` (po `npm run build`).
+- Lokaliam serveriui:
 
 ```bash
-npx serve -s . -l 3000
+npx serve . -l 3000
 ```
 
 ## Kasdienis workflow
@@ -18,10 +18,21 @@ npx serve -s . -l 3000
 3. Nukopijuok sugeneruotą promptą.
 4. Įklijuok į pasirinktą DI įrankį.
 
-## Kokybės vartai
+## Kalbų architektūra (LT/EN) — Phase 2
+
+- **Path-based locale:** `/lt/` ir `/en/` yra tikri statiniai puslapiai (pilnas app HTML), be client-side redirect. Locale sprendžiamas pirmiausia iš `pathname`, paskui iš query, `localStorage` ir naršyklės kalbos.
+- **Vienas šaltinis, build:** root `index.html` yra šablonas; `npm run build` generuoja `lt/index.html` ir `en/index.html` su teisingais `lang`, title, meta, canonical, hreflang ir asset keliais. Prieš deploy paleisk `npm run build` (arba CI step).
+- **Kalbos perjungiklis:** iš `/lt/` perjungus į EN atidaro `/en/` (ir atvirkščiai) su išsaugotu `mode`, `depth` ir hash.
+- **Root:** `/` ir `index.html?lang=…` lieka kaip alternatyvus įėjimas (query/localStorage/navigator).
+- Dinaminis turinys (`MODES`, `DEPTH_LEVELS`, `LIBRARY_PROMPTS`, `RULES`) valdomas viename šaltinyje `generator.js`.
+
+## Build ir kokybės vartai
 
 ```bash
-npm test
+npm run build   # generuoja lt/index.html, en/index.html iš root index.html
+npm test        # struktūra, lint
+npm run test:smoke
+npm run test:e2e
 ```
 
 ## Golden Standard (UI)

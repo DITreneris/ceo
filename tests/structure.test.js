@@ -14,6 +14,8 @@ const PRIVATUMAS_PATH = path.join(__dirname, '..', 'privatumas.html');
 const STYLE_PATH = path.join(__dirname, '..', 'style.css');
 const GENERATOR_PATH = path.join(__dirname, '..', 'generator.js');
 const COPY_PATH = path.join(__dirname, '..', 'copy.js');
+const LT_ENTRY_PATH = path.join(__dirname, '..', 'lt', 'index.html');
+const EN_ENTRY_PATH = path.join(__dirname, '..', 'en', 'index.html');
 
 function readFile(filePath) {
   try {
@@ -97,7 +99,11 @@ function run() {
   else failed++;
 
   // --- Kopijavimo mygtukas ---
-  if (assert(html.includes('Kopijuoti užklaus') || html.includes('Kopijuoti prompt'), 'Kopijavimo mygtukas egzistuoja')) passed++;
+  if (assert(html.includes('Kopijuoti užklaus') || html.includes('Kopijuoti prompt') || html.includes('Copy prompt'), 'Kopijavimo mygtukas egzistuoja')) passed++;
+  else failed++;
+
+  // --- Kalbos jungiklis ---
+  if (assert(html.includes('id="langLtBtn"') && html.includes('id="langEnBtn"'), 'Kalbos jungiklis LT/EN egzistuoja')) passed++;
   else failed++;
 
   // --- Prieinamumas / semantika ---
@@ -108,6 +114,8 @@ function run() {
   if (assert(html.includes('id="toast"') && html.includes('role="status"'), 'Toast pranešimas')) passed++;
   else failed++;
   if (assert(html.includes('privatumas.html'), 'Nuoroda į privatumas.html')) passed++;
+  else failed++;
+  if (assert(html.includes('promptanatomy.app'), 'Nuoroda į Prompt Anatomy (promptanatomy.app)')) passed++;
   else failed++;
   if (assert(html.includes('lang="lt"'), 'HTML lang="lt"')) passed++;
   else failed++;
@@ -142,6 +150,26 @@ function run() {
   const copyFile = readFile(COPY_PATH);
   if (assert(copyFile !== null && copyFile.length > 0, 'copy.js failas egzistuoja')) passed++;
   else failed++;
+  const ltEntryFile = readFile(LT_ENTRY_PATH);
+  if (assert(ltEntryFile !== null && ltEntryFile.length > 0, 'lt/index.html egzistuoja')) passed++;
+  else failed++;
+  const enEntryFile = readFile(EN_ENTRY_PATH);
+  if (assert(enEntryFile !== null && enEntryFile.length > 0, 'en/index.html egzistuoja')) passed++;
+  else failed++;
+
+  // --- Phase 2: lt/en pilnas app markup (ne redirect), lang ir canonical ---
+  if (assert(ltEntryFile && ltEntryFile.includes('id="operationsCenter"') && ltEntryFile.includes('id="main-content"'), 'lt/index.html turi pilną app markup')) passed++;
+  else failed++;
+  if (assert(enEntryFile && enEntryFile.includes('id="operationsCenter"') && enEntryFile.includes('id="main-content"'), 'en/index.html turi pilną app markup')) passed++;
+  else failed++;
+  if (assert(ltEntryFile && /<html\s+lang="lt"/.test(ltEntryFile), 'lt/index.html lang="lt"')) passed++;
+  else failed++;
+  if (assert(enEntryFile && /<html\s+lang="en"/.test(enEntryFile), 'en/index.html lang="en"')) passed++;
+  else failed++;
+  if (assert(ltEntryFile && !ltEntryFile.includes('window.location.replace'), 'lt/index.html be client-side redirect')) passed++;
+  else failed++;
+  if (assert(enEntryFile && !enEntryFile.includes('window.location.replace'), 'en/index.html be client-side redirect')) passed++;
+  else failed++;
 
   // --- Privatumas.html egzistuoja ---
   const privatumas = readFile(PRIVATUMAS_PATH);
@@ -156,6 +184,8 @@ function run() {
   if (assert(generatorFile && generatorFile.includes('DEPTH_LEVELS'), 'DEPTH_LEVELS apibrėžti (generator.js)')) passed++;
   else failed++;
   if (assert(generatorFile && generatorFile.includes('MODES'), 'MODES apibrėžti (generator.js)')) passed++;
+  else failed++;
+  if (assert(generatorFile && generatorFile.includes('LANG_KEY'), 'LANG_KEY naudojamas kalbos sticky logikai')) passed++;
   else failed++;
 
   // --- CSS kintamieji ---
