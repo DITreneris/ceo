@@ -283,7 +283,7 @@
         if (title) {
             title.textContent = uiText(
                 'DI Operacinis Centras – TOP vadovams CEO / COO',
-                'DI Operations Center – for CEOs & COOs'
+                'AI Operations Center – for CEOs & COOs'
             );
         }
 
@@ -297,15 +297,20 @@
         if (stickyCopy) stickyCopy.textContent = uiText('Kopijuoti užklausą', 'Copy prompt');
 
         var brandLink = document.querySelector('.top-nav-brand');
-        if (brandLink) brandLink.setAttribute('aria-label', uiText('DI Operacinis Centras', 'DI Operations Center'));
+        if (brandLink) brandLink.setAttribute('aria-label', uiText('DI Operacinis Centras', 'AI Operations Center'));
         var brandTextFull = document.querySelector('.top-nav-brand-text-full');
-        if (brandTextFull) brandTextFull.textContent = uiText('DI Operacinis Centras', 'DI Operations Center');
+        if (brandTextFull) brandTextFull.textContent = uiText('DI Operacinis Centras', 'AI Operations Center');
+        var brandTextShort = document.querySelector('.top-nav-brand-text-short');
+        if (brandTextShort) brandTextShort.textContent = uiText('DI OC', 'AI OC');
 
         var h1 = document.querySelector('.header h1');
-        if (h1) h1.textContent = uiText('DI Operacinis Centras', 'DI Operations Center');
+        if (h1) h1.textContent = uiText('DI Operacinis Centras', 'AI Operations Center');
 
         var badgeAnatomy = document.querySelector('.header-badges .badge[href]');
         if (badgeAnatomy) badgeAnatomy.textContent = uiText('Promptų anatomija', 'Prompt anatomy');
+        var badgeSpinoff = document.querySelector('.header-badges .badge-spinoff');
+        if (badgeSpinoff) badgeSpinoff.textContent = uiText('Spin-off Nr. 5', 'Spin-off No. 5');
+        if (badgeSpinoff) badgeSpinoff.setAttribute('aria-label', uiText('DI Operacinis Centras, Spin-off Nr. 5', 'AI Operations Center, Spin-off No. 5'));
 
         var headerSteps = document.querySelectorAll('.header-step');
         var stepLabels = [

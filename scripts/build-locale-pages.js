@@ -22,7 +22,7 @@ const LOCALE_META = {
   },
   en: {
     lang: 'en',
-    title: 'DI Operations Center – for CEOs & COOs',
+    title: 'AI Operations Center – for CEOs & COOs',
     description: 'Get clear weekly priorities in 5 minutes. CEO/COO-ready AI prompts. Available in LT & EN.'
   }
 };
@@ -93,14 +93,16 @@ function buildLocaleHtml(locale) {
     // 8. EN static body (language audit: EN page in English, DI→AI for prompts/tools)
     html = html.replace('>Pereiti prie turinio</a>', '>Skip to content</a>');
     html = html.replace('aria-label="Greita navigacija"', 'aria-label="Quick navigation"');
-    html = html.replace('aria-label="DI Operacinis Centras"', 'aria-label="DI Operations Center"');
-    html = html.replace('>DI Operacinis Centras</span>', '>DI Operations Center</span>');
+    html = html.replace('aria-label="DI Operacinis Centras"', 'aria-label="AI Operations Center"');
+    html = html.replace('>DI Operacinis Centras</span>', '>AI Operations Center</span>');
+    html = html.replace('>DI OC</span>', '>AI OC</span>');
     html = html.replace('aria-label="Kalbos pasirinkimas"', 'aria-label="Language selection"');
     html = html.replace('aria-label="Perjungti į lietuvių kalbą"', 'aria-label="Switch to Lithuanian"');
     html = html.replace('aria-label="Perjungti tamsų režimą"', 'aria-label="Toggle dark mode"');
     html = html.replace('>Kopijuoti užklausą</button>', '>Copy prompt</button>');
-    html = html.replace('aria-label="DI Operacinis Centras, Spin-off Nr. 5"', 'aria-label="DI Operations Center, Spin-off No. 5"');
-    html = html.replace('</div>\n            <h1>DI Operacinis Centras</h1>', '</div>\n            <h1>DI Operations Center</h1>');
+    html = html.replace('aria-label="DI Operacinis Centras, Spin-off Nr. 5"', 'aria-label="AI Operations Center, Spin-off No. 5"');
+    html = html.replace('>Spin-off Nr. 5</span>', '>Spin-off No. 5</span>'); // EN: No. not Nr.
+    html = html.replace('</div>\n            <h1>DI Operacinis Centras</h1>', '</div>\n            <h1>AI Operations Center</h1>');
     html = html.replace(
       '<p>Per 5 min. gauk aiškius savaitės prioritetus ir veiksmus.<br>Įvesk skaičius ir išsisaugok CEO lygio DI užklausą.</p>',
       '<p>Get clear weekly priorities and actions in 5 minutes.<br>Enter your numbers and generate an executive-grade AI prompt.</p>'
