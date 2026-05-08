@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="lt">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="description" content="DI Operacinis Centras: LT ir EN versijos CEO/COO savaitės prioritetų analizei.">
+    <meta name="description" content="Get clear weekly priorities in 5 minutes. CEO/COO-ready AI prompts. Available in LT & EN.">
     <link rel="alternate" hreflang="lt" href="./lt/">
     <link rel="alternate" hreflang="en" href="./en/">
-    <link rel="alternate" hreflang="x-default" href="./lt/">
-    <title>DI Operacinis Centras – TOP vadovams CEO / COO</title>
+    <link rel="alternate" hreflang="x-default" href="./en/">
+    <title>AI Operations Center – for CEOs & COOs</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,24 +15,24 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <a href="#main-content" class="skip-link">Pereiti prie turinio</a>
+    <a href="#main-content" class="skip-link">Skip to content</a>
 
-    <nav class="top-nav" aria-label="Greita navigacija">
+    <nav class="top-nav" aria-label="Quick navigation">
         <div class="top-nav-inner">
-            <a href="#main-content" class="top-nav-brand" aria-label="DI Operacinis Centras">
+            <a href="#main-content" class="top-nav-brand" aria-label="AI Operations Center">
                 <i data-lucide="command" class="icon icon--sm"></i>
-                <span class="top-nav-brand-text-full">DI Operacinis Centras</span>
-                <span class="top-nav-brand-text-short" aria-hidden="true">DI OC</span>
+                <span class="top-nav-brand-text-full">AI Operations Center</span>
+                <span class="top-nav-brand-text-short" aria-hidden="true">AI OC</span>
             </a>
             <div class="top-nav-actions">
-                <div class="lang-switcher" role="group" aria-label="Kalbos pasirinkimas">
-                    <button type="button" class="lang-btn" id="langLtBtn" data-lang="lt" aria-label="Perjungti į lietuvių kalbą">LT</button>
+                <div class="lang-switcher" role="group" aria-label="Language selection">
+                    <button type="button" class="lang-btn" id="langLtBtn" data-lang="lt" aria-label="Switch to Lithuanian">LT</button>
                     <button type="button" class="lang-btn" id="langEnBtn" data-lang="en" aria-label="Switch to English">EN</button>
                 </div>
-                <button type="button" class="top-nav-icon-btn" id="themeToggleBtn" aria-label="Perjungti tamsų režimą">
+                <button type="button" class="top-nav-icon-btn" id="themeToggleBtn" aria-label="Toggle dark mode">
                     <i data-lucide="moon" class="icon icon--sm"></i>
                 </button>
-                <button type="button" class="top-nav-copy-btn" id="stickyCopyBtn">Kopijuoti užklausą</button>
+                <button type="button" class="top-nav-copy-btn" id="stickyCopyBtn">Copy prompt</button>
             </div>
         </div>
     </nav>
@@ -43,21 +43,21 @@
         <!-- HERO -->
         <header class="header">
             <div class="header-badges">
-                <a href="https://www.promptanatomy.app/" class="badge" target="_blank" rel="noopener noreferrer" aria-label="Promptų anatomija – interaktyvus mokymas (atidaroma naujame lange)">Promptų anatomija</a>
-                <span class="badge badge-spinoff" role="status" aria-label="Promptų anatomija Hub modulis: Operacijos (CEO/COO)">Hub modulis: Operacijos</span>
+                <a href="https://www.promptanatomy.app/" class="badge" target="_blank" rel="noopener noreferrer" aria-label="Prompt anatomy – interactive training (opens in new tab)">Prompt anatomy</a>
+                <span class="badge badge-spinoff" role="status" aria-label="Prompt Anatomy Hub module: Operations (CEO/COO)">Hub module: Operations</span>
             </div>
-            <h1>DI Operacinis Centras</h1>
-            <p>Per 5 min. gauk aiškius savaitės prioritetus ir veiksmus.<br>Įvesk skaičius ir išsisaugok CEO lygio DI užklausą.</p>
-            <ul class="header-steps" aria-label="Darbo žingsniai">
-                <li><a href="#operationsCenter" class="header-step is-active"><span class="header-step-num">1</span> Režimas</a></li>
-                <li><a href="#operationsCenter" class="header-step"><span class="header-step-num">2</span> Forma</a></li>
-                <li><a href="#operationsCenter" class="header-step"><span class="header-step-num">3</span> Rezultatas</a></li>
-                <li><a href="#library" class="header-step"><span class="header-step-num">4</span> Biblioteka</a></li>
+            <h1>AI Operations Center</h1>
+            <p>Get clear weekly priorities and actions in 5 minutes.<br>Enter your numbers and generate an executive-grade AI prompt.</p>
+            <ul class="header-steps" aria-label="Work steps">
+                <li><a href="#operationsCenter" class="header-step is-active"><span class="header-step-num">1</span> Mode</a></li>
+                <li><a href="#operationsCenter" class="header-step"><span class="header-step-num">2</span> Form</a></li>
+                <li><a href="#operationsCenter" class="header-step"><span class="header-step-num">3</span> Result</a></li>
+                <li><a href="#library" class="header-step"><span class="header-step-num">4</span> Library</a></li>
             </ul>
             <div class="header-cta">
-                <a href="#operationsCenter" class="cta-button" aria-label="Gauti savaitės prioritetus operaciniame centre">Gauti savaitės prioritetus</a>
-                <a href="#library" class="cta-button-outline" aria-label="Peržiūrėti paruoštus šablonus">Rinktis šabloną ↓</a>
-                <p class="header-cta-meta">Užtruksi iki 5 min. • Rezultatas: aiškūs savaitės prioritetai.</p>
+                <a href="#operationsCenter" class="cta-button" aria-label="Get weekly priorities in operations center">Get weekly priorities</a>
+                <a href="#library" class="cta-button-outline" aria-label="Browse ready-made templates">Browse templates ↓</a>
+                <p class="header-cta-meta">Under 5 min · Result: clear weekly priorities.</p>
             </div>
         </header>
 
@@ -342,21 +342,34 @@
 
         <!-- FOOTER -->
         <footer class="footer">
-            <h3>Valdyk verslą su DI <span class="icon-wrap" aria-hidden="true"><i data-lucide="sparkles" class="icon icon--md"></i></span></h3>
-            <p>Trys režimai. Trys gylio lygiai. Vienas tikslas – geresni sprendimai.</p>
-            <p class="footer-product-link">Dalis Promptų anatomijos – DI operacinės sistemos. Modulis: Operacinis centras (CEO/COO).</p>
+            <h3>Run your business with AI <span class="icon-wrap" aria-hidden="true"><i data-lucide="sparkles" class="icon icon--md"></i></span></h3>
+            <p class="footer-summary">A 5‑minute operations prompt generator for CEOs &amp; COOs.</p>
+            <p class="footer-product-link">Part of Prompt Anatomy (AI Operating System) — Operations module.</p>
+
+            <div class="footer-faq" role="group" aria-label="FAQ">
+                <details class="footer-faq-item">
+                    <summary class="footer-faq-q">What is this?</summary>
+                    <div class="footer-faq-a">A lightweight Operations Center that turns your inputs into a copy‑ready AI prompt.</div>
+                </details>
+                <details class="footer-faq-item">
+                    <summary class="footer-faq-q">Who is it for?</summary>
+                    <div class="footer-faq-a">CEOs and COOs who need weekly priorities, actions, and risks in a consistent format.</div>
+                </details>
+                <details class="footer-faq-item">
+                    <summary class="footer-faq-q">How do I use it?</summary>
+                    <div class="footer-faq-a">Pick a mode (Strategic/Daily/Weekly), choose depth (Fast/Deep/Board), fill the form, copy the prompt.</div>
+                </details>
+            </div>
             <div class="tags" role="list">
-                <span class="tag" role="listitem"><span class="icon-wrap" aria-hidden="true"><i data-lucide="command" class="icon icon--sm"></i></span> Operacinis centras</span>
                 <span class="tag" role="listitem"><span class="icon-wrap" aria-hidden="true"><i data-lucide="trending-up" class="icon icon--sm"></i></span> CEO / COO</span>
-                <span class="tag" role="listitem"><span class="icon-wrap" aria-hidden="true"><i data-lucide="zap" class="icon icon--sm"></i></span> 3 režimai</span>
-                <span class="tag" role="listitem"><span class="icon-wrap" aria-hidden="true"><i data-lucide="layers" class="icon icon--sm"></i></span> 3 gylio lygiai</span>
+                <span class="tag" role="listitem"><span class="icon-wrap" aria-hidden="true"><i data-lucide="layers" class="icon icon--sm"></i></span> 3 modes · 3 depths</span>
             </div>
             <nav class="hub-map" aria-label="Promptų anatomijos Hub moduliai">
                 <span class="hub-map-label">Hub:</span>
-                <a href="https://www.promptanatomy.app/" class="hub-map-item" target="_blank" rel="noopener noreferrer" data-module="library">Library</a>
-                <a href="https://www.promptanatomy.app/" class="hub-map-item" target="_blank" rel="noopener noreferrer" data-module="content">Content</a>
-                <a href="https://www.promptanatomy.app/" class="hub-map-item" target="_blank" rel="noopener noreferrer" data-module="recruitment">Recruitment</a>
-                <span class="hub-map-item is-active" aria-current="page" data-module="operations">Operations <span class="hub-map-here">jūs čia</span></span>
+                <a href="https://promptanatomy.info/" class="hub-map-item" target="_blank" rel="noopener noreferrer" data-module="library">Library</a>
+                <a href="https://www.promptanatomy.space/" class="hub-map-item" target="_blank" rel="noopener noreferrer" data-module="content">Content</a>
+                <a href="https://promptanatomy.cloud/" class="hub-map-item" target="_blank" rel="noopener noreferrer" data-module="free-lesson">Free Lesson</a>
+                <span class="hub-map-item is-active" aria-current="page" data-module="operations">Operations <span class="hub-map-here">you are here</span></span>
             </nav>
             <div class="copyright">
                 <p>&copy; 2026 Tomas Staniulis. Mokymų medžiaga. Visos teisės saugomos. <a href="privatumas.html">Privatumas</a></p>

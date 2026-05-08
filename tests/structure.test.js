@@ -115,9 +115,9 @@ function run() {
   else failed++;
   if (assert(html.includes('privatumas.html'), 'Nuoroda į privatumas.html')) passed++;
   else failed++;
-  if (assert(html.includes('promptanatomy.app'), 'Nuoroda į Prompt Anatomy (promptanatomy.app)')) passed++;
+  if (assert(html.includes('promptanatomy.app') || html.includes('promptanatomy.info') || html.includes('promptanatomy.space') || html.includes('promptanatomy.cloud'), 'Nuoroda į Prompt Anatomy (hub)')) passed++;
   else failed++;
-  if (assert(html.includes('lang="lt"'), 'HTML lang="lt"')) passed++;
+  if (assert(html.includes('lang="en"'), 'HTML lang="en"')) passed++;
   else failed++;
 
   // --- ARIA ---

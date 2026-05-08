@@ -53,8 +53,8 @@
             var stored = String(localStorage.getItem(LANG_KEY) || '').toLowerCase();
             if (stored === 'lt' || stored === 'en') return stored;
         } catch (_) { /* ignore */ }
-        var nav = String(navigator.language || '').toLowerCase();
-        return nav.indexOf('lt') === 0 ? 'lt' : 'en';
+        // Default language across the whole website is EN.
+        return 'en';
     }
 
     var locale = resolveLocale();
@@ -548,16 +548,20 @@
         }
         var footerH3 = document.querySelector('.footer h3');
         if (footerH3) footerH3.innerHTML = uiText('Valdyk verslą su DI ', 'Run your business with AI ') + '<span class="icon-wrap" aria-hidden="true"><i data-lucide="sparkles" class="icon icon--md"></i></span>';
-        var footerP = document.querySelector('.footer p');
-        if (footerP && !footerP.classList.contains('footer-product-link')) footerP.textContent = uiText('Trys režimai. Trys gylio lygiai. Vienas tikslas – geresni sprendimai.', 'Three modes. Three depth levels. One goal – better decisions.');
+        var footerSummary = document.querySelector('.footer .footer-summary');
+        if (footerSummary) footerSummary.textContent = uiText(
+            '5 min. operacinių promptų generatorius CEO ir COO.',
+            'A 5‑minute operations prompt generator for CEOs & COOs.'
+        );
         var footerProductLink = document.querySelector('.footer-product-link');
-        if (footerProductLink) footerProductLink.textContent = uiText('Dalis Promptų anatomijos – DI operacinės sistemos. Modulis: Operacinis centras (CEO/COO).', 'Part of Prompt Anatomy – the AI Operating System. Module: Operations Center (CEO/COO).');
+        if (footerProductLink) footerProductLink.textContent = uiText(
+            'Promptų anatomijos (DI operacinės sistemos) dalis — Operacijų modulis.',
+            'Part of Prompt Anatomy (AI Operating System) — Operations module.'
+        );
         var footerTags = document.querySelectorAll('.footer .tag');
         var tagTexts = [
-            uiText('Operacinis centras', 'Operations center'),
             'CEO / COO',
-            uiText('3 režimai', '3 modes'),
-            uiText('3 gylio lygiai', '3 depth levels')
+            uiText('3 režimai · 3 gylio lygiai', '3 modes · 3 depths')
         ];
         footerTags.forEach(function (tag, i) {
             if (tagTexts[i] && tag.childNodes.length > 1) tag.childNodes[1].textContent = ' ' + tagTexts[i];
@@ -584,6 +588,27 @@
 
         var hubMap = document.querySelector('.hub-map');
         if (hubMap) hubMap.setAttribute('aria-label', uiText('Promptų anatomijos Hub moduliai', 'Prompt Anatomy Hub modules'));
+
+        var footerFaq = document.querySelector('.footer-faq');
+        if (footerFaq) {
+            footerFaq.setAttribute('aria-label', uiText('DUK', 'FAQ'));
+            footerFaq.innerHTML = uiText(
+                '<details class="footer-faq-item"><summary class="footer-faq-q">Kas tai?</summary><div class="footer-faq-a">Operacinis centras, kuris iš tavo įvesties suformuoja kopijuojamą DI promptą.</div></details>' +
+                '<details class="footer-faq-item"><summary class="footer-faq-q">Kam skirta?</summary><div class="footer-faq-a">CEO ir COO, kuriems reikia savaitės prioritetų, veiksmų ir rizikų vienodu formatu.</div></details>' +
+                '<details class="footer-faq-item"><summary class="footer-faq-q">Kaip naudoti?</summary><div class="footer-faq-a">Pasirink režimą (Strateginis / Dienos / Savaitės), gylį (Greita / Gilu / Valdybai), užpildyk formą, nukopijuok promptą.</div></details>',
+                '<details class="footer-faq-item"><summary class="footer-faq-q">What is this?</summary><div class="footer-faq-a">A lightweight Operations Center that turns your inputs into a copy‑ready AI prompt.</div></details>' +
+                '<details class="footer-faq-item"><summary class="footer-faq-q">Who is it for?</summary><div class="footer-faq-a">CEOs and COOs who need weekly priorities, actions, and risks in a consistent format.</div></details>' +
+                '<details class="footer-faq-item"><summary class="footer-faq-q">How do I use it?</summary><div class="footer-faq-a">Pick a mode (Strategic/Daily/Weekly), choose depth (Fast/Deep/Board), fill the form, copy the prompt.</div></details>'
+            );
+        }
+
+        // Hub map URLs (keep consistent across locales and runtime switches)
+        document.querySelectorAll('.hub-map-item[data-module]').forEach(function (el) {
+            var mod = el.getAttribute('data-module');
+            if (mod === 'library') el.setAttribute('href', 'https://promptanatomy.info/');
+            if (mod === 'content') el.setAttribute('href', 'https://www.promptanatomy.space/');
+            if (mod === 'free-lesson') el.setAttribute('href', 'https://promptanatomy.cloud/');
+        });
 
         if (window.lucide && typeof window.lucide.createIcons === 'function') {
             window.lucide.createIcons({ root: document.body });

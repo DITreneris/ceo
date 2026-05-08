@@ -1734,6 +1734,55 @@ textarea.ops-output-text {
     color: var(--primary);
 }
 
+/* ===== FOOTER FAQ (details/summary) ===== */
+.footer-summary {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 12px;
+}
+.footer-faq {
+    text-align: left;
+    max-width: 720px;
+    margin: 0 auto 18px;
+    display: grid;
+    gap: 8px;
+}
+.footer-faq-item {
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+    background: var(--surface-2);
+    overflow: hidden;
+}
+.footer-faq-q {
+    cursor: pointer;
+    padding: 12px 14px;
+    font-weight: 800;
+    color: var(--text);
+    list-style: none;
+}
+.footer-faq-q::-webkit-details-marker { display: none; }
+.footer-faq-q::after {
+    content: '▾';
+    float: right;
+    color: var(--text-light);
+    transition: transform var(--duration-normal) var(--ease-out);
+}
+.footer-faq-item[open] .footer-faq-q::after {
+    transform: rotate(180deg);
+}
+.footer-faq-a {
+    padding: 0 14px 12px;
+    color: var(--text-light);
+    line-height: 1.55;
+    font-size: 14px;
+}
+.footer-faq-q:focus-visible {
+    outline: 3px solid var(--accent-gold);
+    outline-offset: 2px;
+    border-radius: 10px;
+}
+
 .hub-map {
     display: flex;
     flex-wrap: wrap;

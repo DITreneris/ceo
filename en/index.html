@@ -8,7 +8,7 @@
     <link rel="canonical" href="/en/">
     <link rel="alternate" hreflang="lt" href="/lt/">
     <link rel="alternate" hreflang="en" href="/en/">
-    <link rel="alternate" hreflang="x-default" href="/lt/">
+    <link rel="alternate" hreflang="x-default" href="/en/">
     <title>AI Operations Center – for CEOs & COOs</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="stylesheet" href="/style.css">
@@ -68,39 +68,42 @@
             <div class="ops-center-header">
                 <span class="step-badge" aria-hidden="true">1</span>
                 <div class="ops-center-header-text">
-                    <span class="collapsible-title">Operations center</span>
-                    <span class="collapsible-value">Choose a mode, fill in the fields — your AI prompt is generated automatically.</span>
+                    <span class="collapsible-title">Operacinis centras</span>
+                    <span class="collapsible-value">Pasirink režimą, užpildyk laukus – DI užklausa sugeneruojama automatiškai</span>
                 </div>
             </div>
 
             <!-- Mode Tabs -->
-            <div class="mode-tabs" role="tablist" aria-label="Mode selection">
+            <div class="mode-tabs" role="tablist" aria-label="Režimo pasirinkimas">
                 <button type="button" class="mode-tab is-active" role="tab" id="tab-master" aria-selected="true" aria-controls="form-master" data-mode="MASTER">
-                    <span class="mode-tab-label">STRATEGIC</span>
-                    <span class="mode-tab-desc">Strategic context</span>
+                    <span class="mode-tab-label">STRATEGINIS</span>
+                    <span class="mode-tab-desc">Strateginis kontekstas</span>
                 </button>
                 <button type="button" class="mode-tab" role="tab" id="tab-dienos" aria-selected="false" aria-controls="form-dienos" data-mode="DIENOS">
-                    <span class="mode-tab-label">DAILY</span>
-                    <span class="mode-tab-desc">Yesterday's operations</span>
+                    <span class="mode-tab-label">DIENOS</span>
+                    <span class="mode-tab-desc">Vakarykštės operacijos</span>
                 </button>
                 <button type="button" class="mode-tab" role="tab" id="tab-savaites" aria-selected="false" aria-controls="form-savaites" data-mode="SAVAITES">
-                    <span class="mode-tab-label">WEEKLY</span>
-                    <span class="mode-tab-desc">Projects and runway</span>
+                    <span class="mode-tab-label">SAVAITĖS</span>
+                    <span class="mode-tab-desc">Projektai ir runway</span>
                 </button>
             </div>
 
             <!-- Depth Selector -->
             <div class="depth-bar">
-                <span class="depth-label"><i data-lucide="sliders-horizontal" class="icon icon--sm"></i> Analysis depth</span>
-                <div class="depth-options" role="radiogroup" aria-label="Prompt depth level">
+                <span class="depth-label"><i data-lucide="sliders-horizontal" class="icon icon--sm"></i> Analizės gylis</span>
+                <div class="depth-options" role="radiogroup" aria-label="Promptų gylio lygis">
                     <button type="button" class="depth-btn is-active" role="radio" aria-checked="true" data-depth="GREITA">
-                        <i data-lucide="zap" class="icon icon--sm"></i> Fast<//button>
+                        <i data-lucide="zap" class="icon icon--sm"></i> Greita
+                    </button>
                     <button type="button" class="depth-btn" role="radio" aria-checked="false" data-depth="GILU">
-                        <i data-lucide="layers" class="icon icon--sm"></i> Deep<//button>
+                        <i data-lucide="layers" class="icon icon--sm"></i> Gilu
+                    </button>
                     <button type="button" class="depth-btn" role="radio" aria-checked="false" data-depth="BOARD">
-                        <i data-lucide="briefcase" class="icon icon--sm"></i> Board<//button>
+                        <i data-lucide="briefcase" class="icon icon--sm"></i> Valdybai
+                    </button>
                 </div>
-                <div class="field-help">Not sure? Start with Fast.</div>
+                <div class="field-help">Nežinai? Rinkis Greita.</div>
             </div>
 
             <!-- Layout: Form + Output -->
@@ -231,36 +234,36 @@
 
                 <!-- OUTPUT SIDEBAR -->
                 <div class="ops-sidebar">
-                    <div class="ops-output" role="region" aria-label="Generated AI prompt">
+                    <div class="ops-output" role="region" aria-label="Sugeneruota DI užklausa">
                         <div class="ops-output-header">
                             <div class="ops-output-badge">
                                 <span class="pulse"></span>
                                 <span>Sugeneruota užklausa</span>
                             </div>
-                            <span class="ops-output-depth" id="depthBadge">Fast</span>
-                            <button class="ops-output-copy" id="outputCopyBtn" aria-label="Copy generated prompt">
+                            <span class="ops-output-depth" id="depthBadge">Greita</span>
+                            <button class="ops-output-copy" id="outputCopyBtn" aria-label="Kopijuoti sugeneruotą promptą">
                                 <i data-lucide="copy" class="icon icon--md"></i>
                             </button>
                         </div>
-                        <textarea class="ops-output-text" id="opsOutput" rows="10" aria-label="Generated AI prompt – you can edit" aria-live="polite"></textarea>
+                        <textarea class="ops-output-text" id="opsOutput" rows="10" aria-label="Sugeneruota DI užklausa – galite redaguoti" aria-live="polite"></textarea>
                         <div class="ops-output-footer">
                             <p class="ops-output-chars">Simbolių: <strong id="outputCharCount">0</strong></p>
                             <p>Galite redaguoti tekstą čia prieš kopijuojant. Nukopijuok ir įklijuok į ChatGPT arba Claude.</p>
-                            <button class="ops-output-cta" id="outputCopyCta" aria-label="Copy prompt">
-                                <span>Copy prompt & analyze</span>
+                            <button class="ops-output-cta" id="outputCopyCta" aria-label="Kopijuoti užklausą">
+                                <span>KOPIJUOTI UŽKLAUSĄ IR ANALIZUOTI</span>
                                 <i data-lucide="arrow-right" class="icon icon--md"></i>
                             </button>
-                            <div class="ops-tool-launchers" role="group" aria-label="AI tool selection">
-                                <p class="ops-tool-launchers-label">Continue in:</p>
-                                <div class="ops-tool-launchers-list" role="group" aria-label="Open AI tool">
-                                    <button type="button" class="ops-tool-btn" data-ai-tool="chatgpt" aria-label="Open ChatGPT in new tab">
-                                        Open ChatGPT
+                            <div class="ops-tool-launchers" role="group" aria-label="DI įrankių pasirinkimas">
+                                <p class="ops-tool-launchers-label">Nori tęsti analizę? Pasirink įrankį:</p>
+                                <div class="ops-tool-launchers-list" role="group" aria-label="Atidaryti DI įrankį">
+                                    <button type="button" class="ops-tool-btn" data-ai-tool="chatgpt" aria-label="Atidaryti ChatGPT naujame lange">
+                                        Atidaryti ChatGPT
                                     </button>
-                                    <button type="button" class="ops-tool-btn" data-ai-tool="claude" aria-label="Open Claude in new tab">
-                                        Open Claude
+                                    <button type="button" class="ops-tool-btn" data-ai-tool="claude" aria-label="Atidaryti Claude naujame lange">
+                                        Atidaryti Claude
                                     </button>
-                                    <button type="button" class="ops-tool-btn" data-ai-tool="gemini" aria-label="Open Gemini in new tab">
-                                        Open Gemini
+                                    <button type="button" class="ops-tool-btn" data-ai-tool="gemini" aria-label="Atidaryti Gemini naujame lange">
+                                        Atidaryti Gemini
                                     </button>
                                 </div>
                             </div>
@@ -282,10 +285,10 @@
                                 </button>
                             </div>
                         </div>
-                        <ul class="session-list" id="sessionList" aria-label="Saved sessions">
+                        <ul class="session-list" id="sessionList" aria-label="Išsaugotos sesijos">
                             <li class="sessions-empty" id="sessionsEmpty">
                                 <span class="sessions-empty-icon" aria-hidden="true"><i data-lucide="sparkles" class="icon icon--sm"></i></span>
-                                No sessions yet. Create your first analysis.
+                                Sesijų dar nėra. Sukurk pirmą analizę.
                             </li>
                         </ul>
                     </div>
@@ -298,8 +301,8 @@
             <h2 class="collapsible-heading">
                 <button class="collapsible-toggle" id="libraryToggle" type="button" aria-expanded="false" aria-controls="libraryBody">
                     <span class="step-badge" aria-hidden="true">4</span>
-                    <span class="collapsible-title">Template library</span>
-                    <span class="collapsible-value">Ready-made prompt templates – apply in form or copy</span>
+                    <span class="collapsible-title">Šablonų biblioteka</span>
+                    <span class="collapsible-value">Paruošti užklausų šablonai – taikyk formoje arba kopijuok</span>
                     <span class="collapsible-count" id="libraryTemplateCount">6 šablonai</span>
                     <span class="collapsible-chevron" aria-hidden="true">▾</span>
                 </button>
@@ -316,8 +319,8 @@
             <h2 class="collapsible-heading">
                 <button class="collapsible-toggle" id="rulesToggle" type="button" aria-expanded="false" aria-controls="rulesBody">
                     <span class="step-badge" aria-hidden="true"><i data-lucide="shield-check" class="icon icon--sm"></i></span>
-                    <span class="collapsible-title">Economic discipline rules</span>
-                    <span class="collapsible-value">Decision framework – every prompt follows these principles</span>
+                    <span class="collapsible-title">Ekonominės drausmės taisyklės</span>
+                    <span class="collapsible-value">Vadovo sprendimų sistema – kiekvienas promptas laikosi šių principų</span>
                     <span class="collapsible-chevron" aria-hidden="true">▾</span>
                 </button>
             </h2>
@@ -326,7 +329,7 @@
                     <!-- Populated by generator.js -->
                 </ul>
                 <p class="rules-anatomy-hint">
-                    These rules follow <a href="https://www.promptanatomy.app/" target="_blank" rel="noopener noreferrer">Prompt Anatomy</a>'s 6-block methodology:
+                    Šios taisyklės grindžiamos <a href="https://www.promptanatomy.app/" target="_blank" rel="noopener noreferrer">Promptų anatomijos</a> 6-block metodologija:
                     <span class="rules-anatomy-blocks">Meta · Input · Output · Reasoning · Quality · Advanced</span>
                 </p>
             </div>
@@ -334,40 +337,53 @@
 
         <!-- COMMUNITY -->
         <section class="community" id="community" aria-labelledby="community-title">
-            <h2 id="community-title">Prompt created.<br>Want more?</h2>
-            <a href="https://t.me/prompt_anatomy" class="community-cta-primary" target="_blank" rel="noopener noreferrer" aria-label="Open Prompt Anatomy Telegram community in new tab">Join Telegram community</a>
-            <a href="https://www.promptanatomy.app/" class="community-cta-secondary" target="_blank" rel="noopener noreferrer" aria-label="Explore the full Prompt Anatomy AI OS – all Hub modules (opens in new tab)">Explore all Hub modules →</a>
+            <h2 id="community-title">Promptas sukurtas.<br>Nori daugiau?</h2>
+            <a href="https://t.me/prompt_anatomy" class="community-cta-primary" target="_blank" rel="noopener noreferrer" aria-label="Atidaryti Promptų anatomija Telegram bendruomenę naujame lange">Prisijungti prie Telegram bendruomenės</a>
+            <a href="https://www.promptanatomy.app/" class="community-cta-secondary" target="_blank" rel="noopener noreferrer" aria-label="Atrask visą Promptų anatomijos AI OS – visus Hub modulius (atidaroma naujame lange)">Atrask visus Hub modulius →</a>
         </section>
 
         <!-- FOOTER -->
         <footer class="footer">
             <h3>Run your business with AI <span class="icon-wrap" aria-hidden="true"><i data-lucide="sparkles" class="icon icon--md"></i></span></h3>
-            <p>Three modes. Three depth levels. One goal – better decisions.</p>
-            <p class="footer-product-link">Part of Prompt Anatomy – the AI Operating System. Module: Operations Center (CEO/COO).</p>
-            <div class="tags" role="list">
-                <span class="tag" role="listitem"><span class="icon-wrap" aria-hidden="true"><i data-lucide="command" class="icon icon--sm"></i></span> Operations center</span>
-                <span class="tag" role="listitem"><span class="icon-wrap" aria-hidden="true"><i data-lucide="trending-up" class="icon icon--sm"></i></span> CEO / COO</span>
-                <span class="tag" role="listitem"><span class="icon-wrap" aria-hidden="true"><i data-lucide="zap" class="icon icon--sm"></i></span> 3 modes</span>
-                <span class="tag" role="listitem"><span class="icon-wrap" aria-hidden="true"><i data-lucide="layers" class="icon icon--sm"></i></span> 3 depth levels</span>
+            <p class="footer-summary">A 5‑minute operations prompt generator for CEOs &amp; COOs.</p>
+            <p class="footer-product-link">Part of Prompt Anatomy (AI Operating System) — Operations module.</p>
+
+            <div class="footer-faq" aria-label="FAQ">
+                <details class="footer-faq-item">
+                    <summary class="footer-faq-q">What is this?</summary>
+                    <div class="footer-faq-a">A lightweight Operations Center that turns your inputs into a copy‑ready AI prompt.</div>
+                </details>
+                <details class="footer-faq-item">
+                    <summary class="footer-faq-q">Who is it for?</summary>
+                    <div class="footer-faq-a">CEOs and COOs who need weekly priorities, actions, and risks in a consistent format.</div>
+                </details>
+                <details class="footer-faq-item">
+                    <summary class="footer-faq-q">How do I use it?</summary>
+                    <div class="footer-faq-a">Pick a mode (Strategic/Daily/Weekly), choose depth (Fast/Deep/Board), fill the form, copy the prompt.</div>
+                </details>
             </div>
-            <nav class="hub-map" aria-label="Prompt Anatomy Hub modules">
+            <div class="tags" role="list">
+                <span class="tag" role="listitem"><span class="icon-wrap" aria-hidden="true"><i data-lucide="trending-up" class="icon icon--sm"></i></span> CEO / COO</span>
+                <span class="tag" role="listitem"><span class="icon-wrap" aria-hidden="true"><i data-lucide="layers" class="icon icon--sm"></i></span> 3 modes · 3 depths</span>
+            </div>
+            <nav class="hub-map" aria-label="Promptų anatomijos Hub moduliai">
                 <span class="hub-map-label">Hub:</span>
-                <a href="https://www.promptanatomy.app/" class="hub-map-item" target="_blank" rel="noopener noreferrer" data-module="library">Library</a>
-                <a href="https://www.promptanatomy.app/" class="hub-map-item" target="_blank" rel="noopener noreferrer" data-module="content">Content</a>
-                <a href="https://www.promptanatomy.app/" class="hub-map-item" target="_blank" rel="noopener noreferrer" data-module="recruitment">Recruitment</a>
+                <a href="https://promptanatomy.info/" class="hub-map-item" target="_blank" rel="noopener noreferrer" data-module="library">Library</a>
+                <a href="https://www.promptanatomy.space/" class="hub-map-item" target="_blank" rel="noopener noreferrer" data-module="content">Content</a>
+                <a href="https://promptanatomy.cloud/" class="hub-map-item" target="_blank" rel="noopener noreferrer" data-module="free-lesson">Free Lesson</a>
                 <span class="hub-map-item is-active" aria-current="page" data-module="operations">Operations <span class="hub-map-here">you are here</span></span>
             </nav>
             <div class="copyright">
-                <p>&copy; 2026 Tomas Staniulis. Training material. All rights reserved. <a href="/privatumas.html">Privacy</a></p>
+                <p>&copy; 2026 Tomas Staniulis. Mokymų medžiaga. Visos teisės saugomos. <a href="/privatumas.html">Privatumas</a></p>
             </div>
         </footer>
 
         </main>
     </div>
 
-    <textarea class="hidden" id="hiddenTextarea" aria-label="Text to copy field" aria-hidden="true"></textarea>
+    <textarea class="hidden" id="hiddenTextarea" aria-label="Kopijuojamo teksto laukas" aria-hidden="true"></textarea>
 
-    <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true" aria-label="Notification">
+    <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true" aria-label="Pranešimas">
         <div class="toast-icon" aria-hidden="true"><i data-lucide="check" class="icon icon--lg"></i></div>
         <span id="toastMessage">Nukopijuota.</span>
         <span class="toast-progress" id="toastProgress" aria-hidden="true"></span>
