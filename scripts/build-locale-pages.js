@@ -13,6 +13,7 @@ const path = require('path');
 
 const ROOT = path.resolve(__dirname, '..');
 const BASE_PATH = (process.env.BASE_PATH || '').replace(/\/$/, '');
+const SITE_URL = (process.env.SITE_URL || 'https://www.promptanatomy.ceo').replace(/\/$/, '');
 
 const LOCALE_META = {
   lt: {
@@ -44,7 +45,7 @@ function buildLocaleHtml(locale) {
   );
 
   // 4. canonical (ensure one; replace or add)
-  const canonical = BASE_PATH + '/' + meta.lang + '/';
+  const canonical = SITE_URL + BASE_PATH + '/' + meta.lang + '/';
   if (/<link\s+rel="canonical"/.test(html)) {
     html = html.replace(/<link\s+rel="canonical"\s+href="[^"]*"\s*\/?>\s*/i, '');
   }
@@ -54,8 +55,8 @@ function buildLocaleHtml(locale) {
   );
 
   // 5. hreflang – point to absolute path (with optional base)
-  const hrefLt = BASE_PATH + '/lt/';
-  const hrefEn = BASE_PATH + '/en/';
+  const hrefLt = SITE_URL + BASE_PATH + '/lt/';
+  const hrefEn = SITE_URL + BASE_PATH + '/en/';
   html = html.replace(
     /<link\s+rel="alternate"\s+hreflang="lt"\s+href="[^"]*"\s*\/?>/,
     '<link rel="alternate" hreflang="lt" href="' + hrefLt + '">'

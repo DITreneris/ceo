@@ -21,7 +21,7 @@ npx serve . -l 3000
 ## Kalbų architektūra (LT/EN) — Phase 2
 
 - **Path-based locale:** `/lt/` ir `/en/` yra tikri statiniai puslapiai (pilnas app HTML), be client-side redirect. Locale sprendžiamas pirmiausia iš `pathname`, paskui iš query, `localStorage` ir naršyklės kalbos.
-- **Vienas šaltinis, build:** root `index.html` yra šablonas; `npm run build` generuoja `lt/index.html` ir `en/index.html` su teisingais `lang`, title, meta, canonical, hreflang ir asset keliais. Prieš deploy paleisk `npm run build` (arba CI step).
+- **Vienas šaltinis, build:** root `index.html` yra šablonas (EN-default); `npm run build` generuoja `lt/index.html` ir `en/index.html` su teisingais `lang`, title, meta, canonical, hreflang ir asset keliais. Prieš deploy paleisk `npm run build` (arba CI step).
 - **Kalbos perjungiklis:** iš `/lt/` perjungus į EN atidaro `/en/` (ir atvirkščiai) su išsaugotu `mode`, `depth` ir hash.
 - **Root:** `/` ir `index.html?lang=…` lieka kaip alternatyvus įėjimas (query/localStorage/navigator).
 - Dinaminis turinys (`MODES`, `DEPTH_LEVELS`, `LIBRARY_PROMPTS`, `RULES`) valdomas viename šaltinyje `generator.js`.
@@ -34,6 +34,11 @@ npm test        # struktūra, lint
 npm run test:smoke
 npm run test:e2e
 ```
+
+## Deploy (Vercel)
+
+- **Web Analytics**: statiniam puslapiui įdėtas Vercel Web Analytics script į `index.html` (`/_vercel/insights/script.js`). Įjungus Analytics Vercel UI ir redeploy'inus, duomenys pradės kauptis.
+- **Canonical/hreflang**: `scripts/build-locale-pages.js` generuoja absoliučius canonical ir hreflang URL pagal `SITE_URL` (default: `https://www.promptanatomy.ceo`). Jei reikia kito domeno, deploy metu nustatyk `SITE_URL` env.
 
 ## Golden Standard (UI)
 
