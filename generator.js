@@ -309,8 +309,8 @@
         var badgeAnatomy = document.querySelector('.header-badges .badge[href]');
         if (badgeAnatomy) badgeAnatomy.textContent = uiText('Promptų anatomija', 'Prompt anatomy');
         var badgeSpinoff = document.querySelector('.header-badges .badge-spinoff');
-        if (badgeSpinoff) badgeSpinoff.textContent = uiText('Spin-off Nr. 5', 'Spin-off No. 5');
-        if (badgeSpinoff) badgeSpinoff.setAttribute('aria-label', uiText('DI Operacinis Centras, Spin-off Nr. 5', 'AI Operations Center, Spin-off No. 5'));
+        if (badgeSpinoff) badgeSpinoff.textContent = uiText('Hub modulis: Operacijos', 'Hub module: Operations');
+        if (badgeSpinoff) badgeSpinoff.setAttribute('aria-label', uiText('Promptų anatomija Hub modulis: Operacijos (CEO/COO)', 'Prompt Anatomy Hub module: Operations (CEO/COO)'));
 
         var headerSteps = document.querySelectorAll('.header-step');
         var stepLabels = [
@@ -536,13 +536,14 @@
         if (communityTitle) communityTitle.innerHTML = uiText('Promptas sukurtas.<br>Nori daugiau?', 'Prompt created.<br>Want more?');
         var communityPrimary = document.querySelector('.community-cta-primary');
         if (communityPrimary) {
-            communityPrimary.textContent = uiText('Prisijungti prie WhatsApp grupės', 'Join WhatsApp group');
-            communityPrimary.setAttribute('aria-label', uiText('Atidaryti Promptų anatomija WhatsApp grupę naujame lange', 'Open Prompt Anatomy WhatsApp group in new tab'));
+            communityPrimary.textContent = uiText('Prisijungti prie Telegram bendruomenės', 'Join Telegram community');
+            communityPrimary.setAttribute('aria-label', uiText('Atidaryti Promptų anatomija Telegram bendruomenę naujame lange', 'Open Prompt Anatomy Telegram community in new tab'));
+            communityPrimary.setAttribute('href', 'https://t.me/prompt_anatomy');
         }
         var communitySecondary = document.querySelector('.community-cta-secondary');
         if (communitySecondary) {
-            communitySecondary.textContent = uiText('Promptų anatomija →', 'Prompt anatomy →');
-            communitySecondary.setAttribute('aria-label', uiText('Pilna Promptų anatomija – interaktyvus mokymas (atidaroma naujame lange)', 'Full Prompt anatomy – interactive training (opens in new tab)'));
+            communitySecondary.textContent = uiText('Atrask visus Hub modulius →', 'Explore all Hub modules →');
+            communitySecondary.setAttribute('aria-label', uiText('Atrask visą Promptų anatomijos AI OS – visus Hub modulius (atidaroma naujame lange)', 'Explore the full Prompt Anatomy AI OS – all Hub modules (opens in new tab)'));
             communitySecondary.setAttribute('href', ANATOMY_URL);
         }
         var footerH3 = document.querySelector('.footer h3');
@@ -550,7 +551,7 @@
         var footerP = document.querySelector('.footer p');
         if (footerP && !footerP.classList.contains('footer-product-link')) footerP.textContent = uiText('Trys režimai. Trys gylio lygiai. Vienas tikslas – geresni sprendimai.', 'Three modes. Three depth levels. One goal – better decisions.');
         var footerProductLink = document.querySelector('.footer-product-link');
-        if (footerProductLink) footerProductLink.textContent = uiText('Tai Spin-off Nr. 5 iš „Promptų anatomijos".', 'This is Spin-off No. 5 from "Prompt anatomy".');
+        if (footerProductLink) footerProductLink.textContent = uiText('Dalis Promptų anatomijos – DI operacinės sistemos. Modulis: Operacinis centras (CEO/COO).', 'Part of Prompt Anatomy – the AI Operating System. Module: Operations Center (CEO/COO).');
         var footerTags = document.querySelectorAll('.footer .tag');
         var tagTexts = [
             uiText('Operacinis centras', 'Operations center'),
@@ -569,6 +570,20 @@
         if (hiddenTextarea) hiddenTextarea.setAttribute('aria-label', uiText('Kopijuojamo teksto laukas', 'Text to copy field'));
         var toastAria = document.getElementById('toast');
         if (toastAria) toastAria.setAttribute('aria-label', uiText('Pranešimas', 'Notification'));
+
+        var rulesHint = document.querySelector('.rules-anatomy-hint');
+        if (rulesHint) {
+            rulesHint.innerHTML = uiText(
+                'Šios taisyklės grindžiamos <a href="' + ANATOMY_URL + '" target="_blank" rel="noopener noreferrer">Promptų anatomijos</a> 6-block metodologija: <span class="rules-anatomy-blocks">Meta · Input · Output · Reasoning · Quality · Advanced</span>',
+                'These rules follow <a href="' + ANATOMY_URL + '" target="_blank" rel="noopener noreferrer">Prompt Anatomy</a>\'s 6-block methodology: <span class="rules-anatomy-blocks">Meta · Input · Output · Reasoning · Quality · Advanced</span>'
+            );
+        }
+
+        var hubHere = document.querySelector('.hub-map-here');
+        if (hubHere) hubHere.textContent = uiText('jūs čia', 'you are here');
+
+        var hubMap = document.querySelector('.hub-map');
+        if (hubMap) hubMap.setAttribute('aria-label', uiText('Promptų anatomijos Hub moduliai', 'Prompt Anatomy Hub modules'));
 
         if (window.lucide && typeof window.lucide.createIcons === 'function') {
             window.lucide.createIcons({ root: document.body });

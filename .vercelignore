@@ -1,0 +1,14 @@
+node_modules/
+tests/
+test-results/
+playwright-report/
+.github/
+docs/
+.cursor/
+.eslintrc.json
+.pa11yrc.json
+playwright.config.js
+*.test.js
+*.local.md
+AGENTS.md
+todo.md

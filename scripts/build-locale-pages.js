@@ -80,14 +80,14 @@ function buildLocaleHtml(locale) {
   // 7. For en: anatomy link text and aria-labels in static HTML (a11y/crawlers)
   if (locale === 'en') {
     html = html.replace(
-      'aria-label="Pilna Promptų anatomija – interaktyvus mokymas (atidaroma naujame lange)"',
-      'aria-label="Full Prompt anatomy – interactive training (opens in new tab)"'
+      'aria-label="Atrask visą Promptų anatomijos AI OS – visus Hub modulius (atidaroma naujame lange)"',
+      'aria-label="Explore the full Prompt Anatomy AI OS – all Hub modules (opens in new tab)"'
     );
     html = html.replace(
       'aria-label="Promptų anatomija – interaktyvus mokymas (atidaroma naujame lange)"',
       'aria-label="Prompt anatomy – interactive training (opens in new tab)"'
     );
-    html = html.replace('>Promptų anatomija →</a>', '>Prompt anatomy →</a>');
+    html = html.replace('>Atrask visus Hub modulius →</a>', '>Explore all Hub modules →</a>');
     html = html.replace('>Promptų anatomija</a>', '>Prompt anatomy</a>');
 
     // 8. EN static body (language audit: EN page in English, DI→AI for prompts/tools)
@@ -100,8 +100,8 @@ function buildLocaleHtml(locale) {
     html = html.replace('aria-label="Perjungti į lietuvių kalbą"', 'aria-label="Switch to Lithuanian"');
     html = html.replace('aria-label="Perjungti tamsų režimą"', 'aria-label="Toggle dark mode"');
     html = html.replace('>Kopijuoti užklausą</button>', '>Copy prompt</button>');
-    html = html.replace('aria-label="DI Operacinis Centras, Spin-off Nr. 5"', 'aria-label="AI Operations Center, Spin-off No. 5"');
-    html = html.replace('>Spin-off Nr. 5</span>', '>Spin-off No. 5</span>'); // EN: No. not Nr.
+    html = html.replace('aria-label="Promptų anatomija Hub modulis: Operacijos (CEO/COO)"', 'aria-label="Prompt Anatomy Hub module: Operations (CEO/COO)"');
+    html = html.replace('>Hub modulis: Operacijos</span>', '>Hub module: Operations</span>');
     html = html.replace('</div>\n            <h1>DI Operacinis Centras</h1>', '</div>\n            <h1>AI Operations Center</h1>');
     html = html.replace(
       '<p>Per 5 min. gauk aiškius savaitės prioritetus ir veiksmus.<br>Įvesk skaičius ir išsisaugok CEO lygio DI užklausą.</p>',
@@ -149,11 +149,11 @@ function buildLocaleHtml(locale) {
     html = html.replace('>Paruošti užklausų šablonai – taikyk formoje arba kopijuok</span>', '>Ready-made prompt templates – apply in form or copy</span>');
     html = html.replace('>Ekonominės drausmės taisyklės</span>', '>Economic discipline rules</span>');
     html = html.replace('>Vadovo sprendimų sistema – kiekvienas promptas laikosi šių principų</span>', '>Decision framework – every prompt follows these principles</span>');
-    html = html.replace('aria-label="Atidaryti Promptų anatomija WhatsApp grupę naujame lange">Prisijungti prie WhatsApp grupės</a>', 'aria-label="Open Prompt Anatomy WhatsApp group in new tab">Join WhatsApp group</a>');
+    html = html.replace('aria-label="Atidaryti Promptų anatomija Telegram bendruomenę naujame lange">Prisijungti prie Telegram bendruomenės</a>', 'aria-label="Open Prompt Anatomy Telegram community in new tab">Join Telegram community</a>');
     html = html.replace('>Promptas sukurtas.<br>Nori daugiau?</h2>', '>Prompt created.<br>Want more?</h2>');
     html = html.replace('>Valdyk verslą su DI <span', '>Run your business with AI <span');
     html = html.replace('>Trys režimai. Trys gylio lygiai. Vienas tikslas – geresni sprendimai.</p>', '>Three modes. Three depth levels. One goal – better decisions.</p>');
-    html = html.replace('>Tai Spin-off Nr. 5 iš „Promptų anatomijos".</p>', '>This is Spin-off No. 5 from "Prompt anatomy".</p>');
+    html = html.replace('>Dalis Promptų anatomijos – DI operacinės sistemos. Modulis: Operacinis centras (CEO/COO).</p>', '>Part of Prompt Anatomy – the AI Operating System. Module: Operations Center (CEO/COO).</p>');
     html = html.replace(' Operacinis centras</span>', ' Operations center</span>');
     html = html.replace(' 3 režimai</span>', ' 3 modes</span>');
     html = html.replace(' 3 gylio lygiai</span>', ' 3 depth levels</span>');
@@ -161,6 +161,12 @@ function buildLocaleHtml(locale) {
     html = html.replace('>Privatumas</a>', '>Privacy</a>');
     html = html.replace('aria-label="Kopijuojamo teksto laukas"', 'aria-label="Text to copy field"');
     html = html.replace('aria-label="Pranešimas"', 'aria-label="Notification"');
+
+    // Brand additions: 6-block hint + Hub map
+    html = html.replace('Šios taisyklės grindžiamos <a', 'These rules follow <a');
+    html = html.replace('>Promptų anatomijos</a> 6-block metodologija:', '>Prompt Anatomy</a>\'s 6-block methodology:');
+    html = html.replace('aria-label="Promptų anatomijos Hub moduliai"', 'aria-label="Prompt Anatomy Hub modules"');
+    html = html.replace('>jūs čia</span>', '>you are here</span>');
   }
 
   return html;
