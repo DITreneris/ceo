@@ -173,9 +173,23 @@ function run() {
   if (assert(enEntryFile && !enEntryFile.includes('window.location.replace'), 'en/index.html be client-side redirect')) passed++;
   else failed++;
 
+  // --- LT build: valid depth buttons (no broken </button> from regex) ---
+  if (assert(ltEntryFile && !ltEntryFile.includes('<//button>'), 'lt/index.html be sugadintų &lt;//button&gt; žymių')) passed++;
+  else failed++;
+  if (assert(ltEntryFile && ltEntryFile.includes('Greita</button>'), 'lt/index.html depth: Greita su galiojančiu </button>')) passed++;
+  else failed++;
+  if (assert(ltEntryFile && ltEntryFile.includes('Gilu</button>'), 'lt/index.html depth: Gilu su galiojančiu </button>')) passed++;
+  else failed++;
+  if (assert(ltEntryFile && ltEntryFile.includes('Valdybai</button>'), 'lt/index.html depth: Valdybai su galiojančiu </button>')) passed++;
+  else failed++;
+  if (assert(ltEntryFile && ltEntryFile.includes('Per 5 min. paversk KPI į aiškius savaitės prioritetus.') && ltEntryFile.includes('property="og:title"'), 'lt/index.html LT social og:title')) passed++;
+  else failed++;
+
   // --- Privatumas.html egzistuoja ---
   const privatumas = readFile(PRIVATUMAS_PATH);
   if (assert(privatumas !== null && privatumas.length > 0, 'privatumas.html egzistuoja')) passed++;
+  else failed++;
+  if (assert(privatumas && privatumas.includes('class="legal-page"') && privatumas.includes('href="style.css"'), 'privatumas.html naudoja style.css ir legal-page')) passed++;
   else failed++;
 
   // --- generator.js tikrinimas ---
@@ -192,6 +206,8 @@ function run() {
 
   // --- CSS kintamieji ---
   if (assert(styleFile && styleFile.includes('--primary: #4A148C'), 'CSS kintamasis --primary: #4A148C')) passed++;
+  else failed++;
+  if (assert(styleFile && styleFile.includes('--radius-md:'), 'CSS kintamasis --radius-md')) passed++;
   else failed++;
 
   // --- Open Graph kortelė (social preview) ---

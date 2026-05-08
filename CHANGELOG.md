@@ -19,6 +19,7 @@ Formatas pagal [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), versija
 - **Kalbos auditas EN: DI→AI** – anglų versijoje visur naudojama „AI“ vietoj „DI“: produkto pavadinimas „AI Operations Center“, trumpas „AI OC“, „AI prompt“, „AI question“, „AI tool selection“, „Run your business with AI“. LT lieka „DI Operacinis Centras“ ir „DI“ terminija.
 - **Brand alignment (MUST/SHOULD)** – pridėtas lineage į Promptų anatomijos AI OS ekosistemą: Hub badge („Hub modulis: Operacijos“), AI OS framing footer'yje, patikslintas secondary CTA į Hub modulius, 6-block metodologijos užuomina taisyklėse, Hub mini-map footer'yje, mono „01–04“ hero žingsniai ir auksinis active mode-tab akcentas.
 - **Vercel Web Analytics** – įdėtas tracking script statiniam HTML (`/_vercel/insights/script.js`).
+- **Legal page stiliaus suvienodinimas** – `privatumas.html` perkelta ant bendro dizaino sistemos pagrindo: įtrauktas `style.css`, pridėta `body.legal-page` + `.legal-back` stiliai, pašalintas inline CSS.
 
 ### Pakeista
 - **Bendruomenės CTA: WhatsApp → Telegram** – `index.html`, `lt/index.html`, `en/index.html` `community-cta-primary` nuoroda pakeista iš `https://chat.whatsapp.com/...` į `https://t.me/prompt_anatomy`. Tekstai: LT „Prisijungti prie Telegram bendruomenės“ (aria-label „Atidaryti Promptų anatomija Telegram bendruomenę naujame lange“), EN „Join Telegram community“ (aria-label „Open Prompt Anatomy Telegram community in new tab“). `generator.js` runtime `uiText()` reikšmės atnaujintos, papildomai pridėtas `href` setAttribute, kad runtime locale switch'as išlaikytų Telegram URL. `scripts/build-locale-pages.js` EN replace pattern'as atnaujintas atitinkamai.
@@ -29,6 +30,11 @@ Formatas pagal [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), versija
 - **scripts/build-locale-pages.js** – atnaujintas `LOCALE_META.en` (Title/Description) ir pridėtos LT replės naujam SEO/GEO blokui, kad `/lt/` pirmas paint nebūtų maišytos kalbos.
 - **ESLint** – `scripts/build-locale-pages.js` viršuje pridėta `/* eslint-env node */` ir `/* eslint-disable no-console */`, kad lint praeitų (require, __dirname, process, console.log).
 - **Canonical/hreflang** – build metu generuojami absoliutūs URL pagal `SITE_URL` (default `https://www.promptanatomy.ceo`).
+- **EN first paint (community)** – root `index.html` community blokas suvienodintas su EN (kad crawleriai/slow-load nematytų LT teksto EN šablone).
+- **LT social meta** – `scripts/build-locale-pages.js` LT build'ui lokalizuoja `og:title`, `og:description`, `twitter:title`, `twitter:description` (ne tik `og:url` ir `og:locale`).
+- **Border token konsistencija** – formos field'ams `border` perjungtas į `var(--border)` vietoj hardcoded `#E2E5EF`.
 
 ### Pataisyta
 - **Lint** – build skripte pašalintos klaidos: 'process' is not defined, '__dirname' is not defined, 'require' is not defined, Unexpected console statement.
+- **LT locale build** – sutvarkytas gylio mygtukų tekstų replace, kuris sugadindavo `</button>` ir generuodavo `<//button>` `lt/index.html` (pridėti regresiniai testai).
+- **CSS tokenai** – pridėtas `--radius-md` ir suvienodintas `:root` shadow set'as (pašalintas dublis).

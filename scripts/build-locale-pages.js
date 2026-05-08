@@ -15,6 +15,13 @@ const ROOT = path.resolve(__dirname, '..');
 const BASE_PATH = (process.env.BASE_PATH || '').replace(/\/$/, '');
 const SITE_URL = (process.env.SITE_URL || 'https://www.promptanatomy.ceo').replace(/\/$/, '');
 
+/** LT-only strings for social previews (root index.html is EN-first). */
+const LT_SOCIAL = {
+  ogTitle: 'Per 5 min. paversk KPI į aiškius savaitės prioritetus.',
+  ogDescription:
+    'Sugeneruok kopijuojamą operacinės peržiūros promptą CEO ir COO. Įklijuok į ChatGPT, Claude arba Gemini.'
+};
+
 const LOCALE_META = {
   lt: {
     lang: 'lt',
@@ -85,6 +92,22 @@ function buildLocaleHtml(locale) {
       /<meta\s+property="og:locale:alternate"\s+content="lt_LT"\s*\/?>/,
       '<meta property="og:locale:alternate" content="en_US">'
     );
+    html = html.replace(
+      /<meta\s+property="og:title"\s+content="[^"]*"\s*\/?>/,
+      '<meta property="og:title" content="' + LT_SOCIAL.ogTitle + '">'
+    );
+    html = html.replace(
+      /<meta\s+property="og:description"\s+content="[^"]*"\s*\/?>/,
+      '<meta property="og:description" content="' + LT_SOCIAL.ogDescription + '">'
+    );
+    html = html.replace(
+      /<meta\s+name="twitter:title"\s+content="[^"]*"\s*\/?>/,
+      '<meta name="twitter:title" content="' + LT_SOCIAL.ogTitle + '">'
+    );
+    html = html.replace(
+      /<meta\s+name="twitter:description"\s+content="[^"]*"\s*\/?>/,
+      '<meta name="twitter:description" content="' + LT_SOCIAL.ogDescription + '">'
+    );
   }
 
   // 6. Asset paths: root-relative so they resolve from /lt/ or /en/ (and with BASE_PATH for GitHub Pages)
@@ -141,9 +164,19 @@ function buildLocaleHtml(locale) {
     html = html.replace('Analysis depth', 'Analizės gylis');
     html = html.replace('aria-label="Prompt depth level"', 'aria-label="Promptų gylio lygis"');
     html = html.replace('Not sure? Start with Fast.', 'Nežinai? Rinkis Greita.');
-    html = html.replace(/\s+Fast\s*</g, ' Greita</');
-    html = html.replace(/\s+Deep\s*</g, ' Gilu</');
-    html = html.replace(/\s+Board\s*</g, ' Valdybai</');
+    // Match label + closing tag (regex literal cannot use unescaped `/` before `</button>`).
+    html = html.replace(
+      /(<i data-lucide="zap" class="icon icon--sm"><\/i>)\s*Fast\s*<\/button>/,
+      '$1 Greita</button>'
+    );
+    html = html.replace(
+      /(<i data-lucide="layers" class="icon icon--sm"><\/i>)\s*Deep\s*<\/button>/,
+      '$1 Gilu</button>'
+    );
+    html = html.replace(
+      /(<i data-lucide="briefcase" class="icon icon--sm"><\/i>)\s*Board\s*<\/button>/,
+      '$1 Valdybai</button>'
+    );
 
     html = html.replace('aria-label="Open Prompt Anatomy Telegram community in new tab"', 'aria-label="Atidaryti Promptų anatomija Telegram bendruomenę naujame lange"');
     html = html.replace('>Join Telegram community</a>', '>Prisijungti prie Telegram bendruomenės</a>');
