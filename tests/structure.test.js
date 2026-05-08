@@ -16,6 +16,8 @@ const GENERATOR_PATH = path.join(__dirname, '..', 'generator.js');
 const COPY_PATH = path.join(__dirname, '..', 'copy.js');
 const LT_ENTRY_PATH = path.join(__dirname, '..', 'lt', 'index.html');
 const EN_ENTRY_PATH = path.join(__dirname, '..', 'en', 'index.html');
+const OG_SVG_PATH = path.join(__dirname, '..', 'assets', 'og', 'og-cover.svg');
+const OG_PNG_PATH = path.join(__dirname, '..', 'assets', 'og', 'og-cover.png');
 
 function readFile(filePath) {
   try {
@@ -191,6 +193,25 @@ function run() {
   // --- CSS kintamieji ---
   if (assert(styleFile && styleFile.includes('--primary: #4A148C'), 'CSS kintamasis --primary: #4A148C')) passed++;
   else failed++;
+
+  // --- Open Graph kortelė (social preview) ---
+  if (assert(html.includes('<meta property="og:image"') && html.includes('/assets/og/og-cover.png'), 'index.html turi og:image -> /assets/og/og-cover.png')) passed++;
+  else failed++;
+  if (assert(html.includes('<meta property="og:image:width" content="1200"') && html.includes('<meta property="og:image:height" content="630"'), 'index.html og:image dydis 1200x630')) passed++;
+  else failed++;
+  if (assert(html.includes('<meta name="twitter:image"') && html.includes('<meta property="og:url"'), 'index.html turi twitter:image ir og:url')) passed++;
+  else failed++;
+  if (assert(ltEntryFile && /<meta\s+property="og:url"\s+content="[^"]*\/lt\/"/.test(ltEntryFile) && ltEntryFile.includes('content="lt_LT"'), 'lt/index.html og:url baigiasi /lt/ ir og:locale=lt_LT')) passed++;
+  else failed++;
+  if (assert(enEntryFile && /<meta\s+property="og:url"\s+content="[^"]*\/en\/"/.test(enEntryFile) && enEntryFile.includes('content="en_US"'), 'en/index.html og:url baigiasi /en/ ir og:locale=en_US')) passed++;
+  else failed++;
+  if (assert(fs.existsSync(OG_SVG_PATH), 'assets/og/og-cover.svg šaltinis egzistuoja')) passed++;
+  else failed++;
+
+  // Soft warning: PNG turi būti eksportuotas prieš deploy (žr. assets/og/README.md).
+  if (!fs.existsSync(OG_PNG_PATH)) {
+    console.warn('\u26A0\uFE0F  WARN: assets/og/og-cover.png nerastas. Eksportuok prieš deploy: npx -y svgexport assets/og/og-cover.svg assets/og/og-cover.png 1200:630');
+  }
 
   console.log('\n---');
   console.log(`Rezultatas: ${passed} praeina, ${failed} nepraeina.`);

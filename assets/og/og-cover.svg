@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" preserveAspectRatio="xMidYMid meet" role="img" aria-label="AI Operations Center - Run AI like ops. Strategy, Process, Execution. promptanatomy.ceo">
+  <title>AI Operations Center - Run AI like ops</title>
+  <desc>Premium dark social preview card. A 3-layer stack metaphor (Strategy, Process, Execution) for the AI Operations Center, part of the Prompt Anatomy AI Operating System. promptanatomy.ceo.</desc>
+
+  <defs>
+    <radialGradient id="violetGlow" cx="70%" cy="48%" r="58%">
+      <stop offset="0%" stop-color="#4A148C" stop-opacity="0.30"/>
+      <stop offset="55%" stop-color="#4A148C" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#0B0B12" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="cardSurface" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1A1A26"/>
+      <stop offset="100%" stop-color="#15151F"/>
+    </linearGradient>
+    <linearGradient id="cardSurfaceHi" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1F1F2D"/>
+      <stop offset="100%" stop-color="#181824"/>
+    </linearGradient>
+    <filter id="cardShadow" x="-25%" y="-25%" width="150%" height="150%">
+      <feDropShadow dx="0" dy="12" stdDeviation="20" flood-color="#000000" flood-opacity="0.55"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="630" fill="#0B0B12"/>
+  <rect width="1200" height="630" fill="url(#violetGlow)"/>
+
+  <g transform="translate(80, 80)">
+    <rect width="384" height="46" rx="23" ry="23" fill="#15151F" stroke="#262633" stroke-width="1.5"/>
+    <circle cx="24" cy="23" r="4" fill="#FFB300"/>
+    <text x="44" y="30" font-family="'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="14" font-weight="700" fill="#C8C8D2" letter-spacing="0.16em">PROMPT ANATOMY - OPERATIONS MODULE</text>
+  </g>
+
+  <text x="80" y="305" font-family="'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="96" font-weight="800" fill="#F5F5F7" letter-spacing="-0.03em">Run AI</text>
+  <text x="80" y="405" font-family="'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="96" font-weight="800" fill="#F5F5F7" letter-spacing="-0.03em">like ops.</text>
+
+  <g transform="translate(680, 150)">
+    <rect x="0" y="0" rx="18" ry="18" width="440" height="100" fill="url(#cardSurface)" stroke="#262633" stroke-width="1.5" filter="url(#cardShadow)"/>
+    <text x="32" y="62" font-family="'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="28" font-weight="700" fill="#F5F5F7">Strategy</text>
+
+    <rect x="0" y="115" rx="18" ry="18" width="440" height="100" fill="url(#cardSurfaceHi)" stroke="#FFB300" stroke-width="2" filter="url(#cardShadow)"/>
+    <text x="32" y="177" font-family="'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="28" font-weight="700" fill="#F5F5F7">Process</text>
+    <circle cx="412" cy="165" r="5" fill="#FFB300"/>
+
+    <rect x="0" y="230" rx="18" ry="18" width="440" height="100" fill="url(#cardSurface)" stroke="#262633" stroke-width="1.5" filter="url(#cardShadow)"/>
+    <text x="32" y="292" font-family="'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="28" font-weight="700" fill="#F5F5F7">Execution</text>
+  </g>
+
+  <text x="600" y="582" text-anchor="middle" font-family="'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="22" font-weight="600" fill="#C8C8D2" letter-spacing="0.20em">PROMPTANATOMY.CEO</text>
+</svg>

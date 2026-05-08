@@ -436,22 +436,22 @@
             horizonSelect.options[2].text = uiText('Šie metai', 'This year');
             horizonSelect.options[3].text = uiText('3 metai', '3 years');
         }
-        setPlaceholder('m-goal', uiText('Pvz.: Pasiekti 100K MRR per Q2', 'E.g.: Achieve 100K MRR by Q2'));
-        setPlaceholder('m-income', uiText('Pvz.: 45 000 €', 'E.g.: 45,000 €'));
-        setPlaceholder('m-expenses', uiText('Pvz.: 38 000 €', 'E.g.: 38,000 €'));
-        setPlaceholder('m-profit', uiText('Pvz.: 7 000 €', 'E.g.: 7,000 €'));
-        setPlaceholder('m-cash', uiText('Pvz.: 120 000 €', 'E.g.: 120,000 €'));
+        setPlaceholder('m-goal', uiText('Pvz.: Pasiekti 100K MRR per Q2', 'E.g.: Reach $100K MRR by Q2'));
+        setPlaceholder('m-income', uiText('Pvz.: 45 000 €', 'E.g.: $45,000'));
+        setPlaceholder('m-expenses', uiText('Pvz.: 38 000 €', 'E.g.: $38,000'));
+        setPlaceholder('m-profit', uiText('Pvz.: 7 000 €', 'E.g.: $7,000'));
+        setPlaceholder('m-cash', uiText('Pvz.: 120 000 €', 'E.g.: $120,000'));
         setPlaceholder('m-runway', uiText('Pvz.: 16 mėn.', 'E.g.: 16 months'));
         setPlaceholder('m-facts', uiText('Pvz.: Praradome 2 klientus, bet pritraukėme 5 naujus. Naujas produktas paleidžiamas kitą mėnesį.', 'E.g.: Lost 2 clients but gained 5 new. New product launch next month.'));
         setPlaceholder('m-question', uiText('Pvz.: Kokius 3 veiksmus turėčiau atlikti šią savaitę?', 'E.g.: What 3 actions should I take this week?'));
-        setPlaceholder('d-pajamos', uiText('Pvz.: 2 340 €', 'E.g.: 2,340 €'));
+        setPlaceholder('d-pajamos', uiText('Pvz.: 2 340 €', 'E.g.: $2,340'));
         setPlaceholder('d-klientai', uiText('Pvz.: 3 naujos užklausos', 'E.g.: 3 new leads'));
-        setPlaceholder('d-islaidos', uiText('Pvz.: 1 200 €', 'E.g.: 1,200 €'));
+        setPlaceholder('d-islaidos', uiText('Pvz.: 1 200 €', 'E.g.: $1,200'));
         setPlaceholder('d-ivykiai', uiText('Pvz.: Pasirašyta sutartis su X, atšauktas susitikimas su Y, serverio incidentas 2h', 'E.g.: Contract signed with X, meeting cancelled with Y, server incident 2h'));
         setPlaceholder('d-question', uiText('Pvz.: Ką turėčiau daryti šiandien kitaip?', 'E.g.: What should I do differently today?'));
-        setPlaceholder('s-pajamos', uiText('Pvz.: 12 500 €', 'E.g.: 12,500 €'));
-        setPlaceholder('s-sanaudos', uiText('Pvz.: 9 800 €', 'E.g.: 9,800 €'));
-        setPlaceholder('s-likutis', uiText('Pvz.: 115 000 €', 'E.g.: 115,000 €'));
+        setPlaceholder('s-pajamos', uiText('Pvz.: 12 500 €', 'E.g.: $12,500'));
+        setPlaceholder('s-sanaudos', uiText('Pvz.: 9 800 €', 'E.g.: $9,800'));
+        setPlaceholder('s-likutis', uiText('Pvz.: 115 000 €', 'E.g.: $115,000'));
         setPlaceholder('s-projektai', uiText('Pvz.: Naujo produkto paleidimas (70%), CRM migracija (45%), SEO optimizacija (20%)', 'E.g.: New product launch (70%), CRM migration (45%), SEO (20%)'));
         setPlaceholder('s-pipeline', uiText('Pvz.: 3 pasiūlymai laukia atsakymo, 2 demo suplanuoti', 'E.g.: 3 proposals pending, 2 demos scheduled'));
         setPlaceholder('s-question', uiText('Pvz.: Kuriuos projektus prioritetizuoti šią savaitę?', 'E.g.: Which projects to prioritize this week?'));
@@ -595,10 +595,14 @@
             footerFaq.innerHTML = uiText(
                 '<details class="footer-faq-item"><summary class="footer-faq-q">Kas tai?</summary><div class="footer-faq-a">Operacinis centras, kuris iš tavo įvesties suformuoja kopijuojamą DI promptą.</div></details>' +
                 '<details class="footer-faq-item"><summary class="footer-faq-q">Kam skirta?</summary><div class="footer-faq-a">CEO ir COO, kuriems reikia savaitės prioritetų, veiksmų ir rizikų vienodu formatu.</div></details>' +
-                '<details class="footer-faq-item"><summary class="footer-faq-q">Kaip naudoti?</summary><div class="footer-faq-a">Pasirink režimą (Strateginis / Dienos / Savaitės), gylį (Greita / Gilu / Valdybai), užpildyk formą, nukopijuok promptą.</div></details>',
+                '<details class="footer-faq-item"><summary class="footer-faq-q">Kaip naudoti?</summary><div class="footer-faq-a">Pasirink režimą (Strateginis / Dienos / Savaitės), gylį (Greita / Gilu / Valdybai), užpildyk formą, nukopijuok promptą.</div></details>' +
+                '<details class="footer-faq-item"><summary class="footer-faq-q">Ar jūs saugote mano duomenis?</summary><div class="footer-faq-a">Sesijos išsaugomos tik tavo naršyklėje (localStorage). Šis puslapis nieko neįkelia į serverį.</div></details>' +
+                '<details class="footer-faq-item"><summary class="footer-faq-q">Kuo skiriasi Greita, Gilu ir Valdybai?</summary><div class="footer-faq-a">Greita pateikia trumpą prioritetų sąrašą. Gilu prideda analizę ir pagrindimą. Valdybai suformuoja trumpą formalią santrauką su rizikomis ir veiksmais.</div></details>',
                 '<details class="footer-faq-item"><summary class="footer-faq-q">What is this?</summary><div class="footer-faq-a">A lightweight Operations Center that turns your inputs into a copy‑ready AI prompt.</div></details>' +
                 '<details class="footer-faq-item"><summary class="footer-faq-q">Who is it for?</summary><div class="footer-faq-a">CEOs and COOs who need weekly priorities, actions, and risks in a consistent format.</div></details>' +
-                '<details class="footer-faq-item"><summary class="footer-faq-q">How do I use it?</summary><div class="footer-faq-a">Pick a mode (Strategic/Daily/Weekly), choose depth (Fast/Deep/Board), fill the form, copy the prompt.</div></details>'
+                '<details class="footer-faq-item"><summary class="footer-faq-q">How do I use it?</summary><div class="footer-faq-a">Pick a mode (Strategic/Daily/Weekly), choose depth (Fast/Deep/Board), fill the form, copy the prompt.</div></details>' +
+                '<details class="footer-faq-item"><summary class="footer-faq-q">Do you store my data?</summary><div class="footer-faq-a">Saved sessions are stored locally in your browser (localStorage). This page does not upload your inputs to a server.</div></details>' +
+                '<details class="footer-faq-item"><summary class="footer-faq-q">What is the difference between Fast, Deep, and Board?</summary><div class="footer-faq-a">Fast gives a short prioritized answer, Deep adds analysis and rationale, and Board formats a concise executive summary with risks and actions.</div></details>'
             );
         }
 
@@ -900,7 +904,7 @@
             mode: activeMode,
             depth: activeDepth,
             data: JSON.parse(JSON.stringify(formData[activeMode])),
-            date: new Date().toLocaleString(locale === 'lt' ? 'lt-LT' : 'en-GB')
+            date: new Date().toLocaleString(locale === 'lt' ? 'lt-LT' : 'en-US')
         };
 
         sessions.unshift(session);

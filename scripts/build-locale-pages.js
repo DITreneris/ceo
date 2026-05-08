@@ -23,8 +23,8 @@ const LOCALE_META = {
   },
   en: {
     lang: 'en',
-    title: 'AI Operations Center – for CEOs & COOs',
-    description: 'Get clear weekly priorities in 5 minutes. CEO/COO-ready AI prompts. Available in LT & EN.'
+    title: 'Weekly Operations Priorities Generator for CEOs & COOs | AI Operations Center',
+    description: 'Turn KPIs into weekly priorities in under 5 minutes. Generate a copy-ready operations review prompt for ChatGPT or Claude.'
   }
 };
 
@@ -70,6 +70,23 @@ function buildLocaleHtml(locale) {
     '<link rel="alternate" hreflang="x-default" href="' + hrefEn + '">'
   );
 
+  // 5b. Open Graph: locale-aware og:url + og:locale swap. Image stays EN (single universal asset).
+  var ogUrl = SITE_URL + BASE_PATH + '/' + meta.lang + '/';
+  html = html.replace(
+    /<meta\s+property="og:url"\s+content="[^"]*"\s*\/?>/,
+    '<meta property="og:url" content="' + ogUrl + '">'
+  );
+  if (locale === 'lt') {
+    html = html.replace(
+      /<meta\s+property="og:locale"\s+content="en_US"\s*\/?>/,
+      '<meta property="og:locale" content="lt_LT">'
+    );
+    html = html.replace(
+      /<meta\s+property="og:locale:alternate"\s+content="lt_LT"\s*\/?>/,
+      '<meta property="og:locale:alternate" content="en_US">'
+    );
+  }
+
   // 6. Asset paths: root-relative so they resolve from /lt/ or /en/ (and with BASE_PATH for GitHub Pages)
   var base = BASE_PATH || '';
   html = html.replace(/\bhref="favicon\.svg"/, 'href="' + base + '/favicon.svg"');
@@ -108,6 +125,18 @@ function buildLocaleHtml(locale) {
     html = html.replace('aria-label="Get weekly priorities in operations center">Get weekly priorities</a>', 'aria-label="Gauti savaitės prioritetus operaciniame centre">Gauti savaitės prioritetus</a>');
     html = html.replace('aria-label="Browse ready-made templates">Browse templates ↓</a>', 'aria-label="Peržiūrėti paruoštus šablonus">Rinktis šabloną ↓</a>');
     html = html.replace('>Under 5 min · Result: clear weekly priorities.</p>', '>Užtruksi iki 5 min. • Rezultatas: aiškūs savaitės prioritetai.</p>');
+
+    // SEO / GEO block
+    html = html.replace('Turn KPIs into weekly priorities—in 5 minutes.', 'Per 5 min. paversk KPI į aiškius savaitės prioritetus.');
+    html = html.replace('AI Operations Center is a prompt generator for CEOs and COOs. Enter revenue, expenses, cash, runway, and context—then copy a ready-to-run operations review prompt into ChatGPT, Claude, or Gemini.', 'DI Operacinis Centras – promptų generatorius CEO ir COO. Įvesk pajamas, išlaidas, grynuosius, veikimo rezervą ir kontekstą – tuomet nukopijuok paruoštą operacinės peržiūros promptą į ChatGPT, Claude arba Gemini.');
+    html = html.replace('Who it’s for', 'Kam skirta');
+    html = html.replace('Founders, CEOs, COOs, and operators who run a weekly operating cadence.', 'Įkūrėjams, CEO, COO ir vadovams, kurie turi savaitinę operacinę peržiūrą.');
+    html = html.replace('What you get', 'Ką gausi');
+    html = html.replace('Clear priorities, next actions, and key risks—Fast, Deep, or Board-ready.', 'Aiškius prioritetus, veiksmus ir svarbiausias rizikas – Greita, Gilu arba Valdybai.');
+    html = html.replace('How it works', 'Kaip tai veikia');
+    html = html.replace('Choose a mode → set depth → enter numbers → copy the prompt.', 'Pasirink režimą → nustatyk gylį → įvesk skaičius → nukopijuok promptą.');
+    html = html.replace('Want the full AI Operating System?', 'Nori pilnos DI operacinės sistemos?');
+    html = html.replace('Explore Prompt Anatomy →', 'Atrask Promptų anatomiją →');
 
     html = html.replace('Analysis depth', 'Analizės gylis');
     html = html.replace('aria-label="Prompt depth level"', 'aria-label="Promptų gylio lygis"');
