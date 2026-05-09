@@ -20,6 +20,7 @@ Formatas pagal [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), versija
 - **Brand alignment (MUST/SHOULD)** – pridėtas lineage į Promptų anatomijos AI OS ekosistemą: Hub badge („Hub modulis: Operacijos“), AI OS framing footer'yje, patikslintas secondary CTA į Hub modulius, 6-block metodologijos užuomina taisyklėse, Hub mini-map footer'yje, mono „01–04“ hero žingsniai ir auksinis active mode-tab akcentas.
 - **Vercel Web Analytics** – įdėtas tracking script statiniam HTML (`/_vercel/insights/script.js`).
 - **Legal page stiliaus suvienodinimas** – `privatumas.html` perkelta ant bendro dizaino sistemos pagrindo: įtrauktas `style.css`, pridėta `body.legal-page` + `.legal-back` stiliai, pašalintas inline CSS.
+- **`npm run trace:og`** – `scripts/trace-og.js`: prod HEAD (`/` ir OG PNG) su `Twitterbot/1.0` UA; env `SITE_URL` kitam domenui.
 
 ### Pakeista
 - **Bendruomenės CTA: WhatsApp → Telegram** – `index.html`, `lt/index.html`, `en/index.html` `community-cta-primary` nuoroda pakeista iš `https://chat.whatsapp.com/...` į `https://t.me/prompt_anatomy`. Tekstai: LT „Prisijungti prie Telegram bendruomenės“ (aria-label „Atidaryti Promptų anatomija Telegram bendruomenę naujame lange“), EN „Join Telegram community“ (aria-label „Open Prompt Anatomy Telegram community in new tab“). `generator.js` runtime `uiText()` reikšmės atnaujintos, papildomai pridėtas `href` setAttribute, kad runtime locale switch'as išlaikytų Telegram URL. `scripts/build-locale-pages.js` EN replace pattern'as atnaujintas atitinkamai.
@@ -35,6 +36,7 @@ Formatas pagal [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), versija
 - **Border token konsistencija** – formos field'ams `border` perjungtas į `var(--border)` vietoj hardcoded `#E2E5EF`.
 
 ### Pataisyta
+- **X (Twitter) OG / root canonical** – Prod trace: OG PNG su crawler UA grąžina `200` ir `image/png` — serveris neblokuoja. Šakninis `index.html`: `og:url` = `https://www.promptanatomy.ceo/` (sutampa su dažnai dalijamu root URL, anksčiau buvo `/en/`). `og:image` / `secure_url` / `twitter:image` su `.../og-cover.png?v=2` — cache-bust po deploy, kad X perkrautų seną „be paveikslo“ cache.
 - **Lint** – build skripte pašalintos klaidos: 'process' is not defined, '__dirname' is not defined, 'require' is not defined, Unexpected console statement.
 - **LT locale build** – sutvarkytas gylio mygtukų tekstų replace, kuris sugadindavo `</button>` ir generuodavo `<//button>` `lt/index.html` (pridėti regresiniai testai).
 - **CSS tokenai** – pridėtas `--radius-md` ir suvienodintas `:root` shadow set'as (pašalintas dublis).

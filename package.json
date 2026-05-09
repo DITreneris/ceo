@@ -5,6 +5,7 @@
   "description": "DI Operacinis Centras – strateginis DI asistentas TOP vadovams (CEO/COO)",
   "scripts": {
     "build": "node scripts/build-locale-pages.js",
+    "trace:og": "node scripts/trace-og.js",
     "test": "node tests/structure.test.js && npm run lint:html && npm run lint:js",
     "test:structure": "node tests/structure.test.js",
     "test:smoke": "start-server-and-test \"serve . -l 3300\" http://127.0.0.1:3300/ \"playwright test tests/e2e/smoke.spec.js\"",
