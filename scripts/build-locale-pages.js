@@ -149,18 +149,6 @@ function buildLocaleHtml(locale) {
     html = html.replace('aria-label="Browse ready-made templates">Browse templates ↓</a>', 'aria-label="Peržiūrėti paruoštus šablonus">Rinktis šabloną ↓</a>');
     html = html.replace('>Under 5 min · Result: clear weekly priorities.</p>', '>Užtruksi iki 5 min. • Rezultatas: aiškūs savaitės prioritetai.</p>');
 
-    // SEO / GEO block
-    html = html.replace('Turn KPIs into weekly priorities—in 5 minutes.', 'Per 5 min. paversk KPI į aiškius savaitės prioritetus.');
-    html = html.replace('AI Operations Center is a prompt generator for CEOs and COOs. Enter revenue, expenses, cash, runway, and context—then copy a ready-to-run operations review prompt into ChatGPT, Claude, or Gemini.', 'DI Operacinis Centras – promptų generatorius CEO ir COO. Įvesk pajamas, išlaidas, grynuosius, veikimo rezervą ir kontekstą – tuomet nukopijuok paruoštą operacinės peržiūros promptą į ChatGPT, Claude arba Gemini.');
-    html = html.replace('Who it’s for', 'Kam skirta');
-    html = html.replace('Founders, CEOs, COOs, and operators who run a weekly operating cadence.', 'Įkūrėjams, CEO, COO ir vadovams, kurie turi savaitinę operacinę peržiūrą.');
-    html = html.replace('What you get', 'Ką gausi');
-    html = html.replace('Clear priorities, next actions, and key risks—Fast, Deep, or Board-ready.', 'Aiškius prioritetus, veiksmus ir svarbiausias rizikas – Greita, Gilu arba Valdybai.');
-    html = html.replace('How it works', 'Kaip tai veikia');
-    html = html.replace('Choose a mode → set depth → enter numbers → copy the prompt.', 'Pasirink režimą → nustatyk gylį → įvesk skaičius → nukopijuok promptą.');
-    html = html.replace('Want the full AI Operating System?', 'Nori pilnos DI operacinės sistemos?');
-    html = html.replace('Explore Prompt Anatomy →', 'Atrask Promptų anatomiją →');
-
     html = html.replace('Analysis depth', 'Analizės gylis');
     html = html.replace('aria-label="Prompt depth level"', 'aria-label="Promptų gylio lygis"');
     html = html.replace('Not sure? Start with Fast.', 'Nežinai? Rinkis Greita.');
@@ -192,9 +180,49 @@ function buildLocaleHtml(locale) {
     html = html.replace('>What is this?</summary>', '>Kas tai?</summary>');
     html = html.replace('>Who is it for?</summary>', '>Kam skirta?</summary>');
     html = html.replace('>How do I use it?</summary>', '>Kaip naudoti?</summary>');
-    html = html.replace('A lightweight Operations Center that turns your inputs into a copy‑ready AI prompt.', 'Operacinis centras, kuris iš tavo įvesties suformuoja kopijuojamą DI promptą.');
-    html = html.replace('CEOs and COOs who need weekly priorities, actions, and risks in a consistent format.', 'CEO ir COO, kuriems reikia savaitės prioritetų, veiksmų ir rizikų vienodu formatu.');
+    html = html.replace('>Want the full AI Operating System?</summary>', '>Nori pilnos DI operacinės sistemos?</summary>');
+    html = html.replace('>Do you store my data?</summary>', '>Ar jūs saugote mano duomenis?</summary>');
+    html = html.replace(
+      '>What is the difference between Fast, Deep, and Board?</summary>',
+      '>Kuo skiriasi Greita, Gilu ir Valdybai?</summary>'
+    );
+    html = html.replace(
+      'AI Operations Center is a prompt generator for CEOs and COOs. Enter revenue, expenses, cash, runway, and context—then copy a ready-to-run operations review prompt into ChatGPT, Claude, or Gemini.',
+      'DI Operacinis Centras – promptų generatorius CEO ir COO. Įvesk pajamas, išlaidas, grynuosius, veikimo rezervą ir kontekstą – tuomet nukopijuok paruoštą operacinės peržiūros promptą į ChatGPT, Claude arba Gemini.'
+    );
+    html = html.replace(
+      'Founders, CEOs, COOs, and operators who run a weekly operating cadence.',
+      'Įkūrėjams, CEO, COO ir vadovams, kurie turi savaitinę operacinę peržiūrą.'
+    );
+    html = html.replace(
+      'Explore the complete Prompt Anatomy training and all Hub modules at <a href="https://www.promptanatomy.app/" target="_blank" rel="noopener noreferrer">promptanatomy.app</a>.',
+      'Pilną Promptų anatomijos mokymą ir visus Hub modulius rasite <a href="https://www.promptanatomy.app/" target="_blank" rel="noopener noreferrer">promptanatomy.app</a>.'
+    );
+    html = html.replace(
+      'Saved sessions are stored locally in your browser (localStorage). This page does not upload your inputs to a server.',
+      'Sesijos išsaugomos tik tavo naršyklėje (localStorage). Šis puslapis neįkelia tavo įvesties į serverį.'
+    );
     html = html.replace('Pick a mode (Strategic/Daily/Weekly), choose depth (Fast/Deep/Board), fill the form, copy the prompt.', 'Pasirink režimą (Strateginis / Dienos / Savaitės), gylį (Greita / Gilu / Valdybai), užpildyk formą, nukopijuok promptą.');
+    html = html.replace(
+      'Fast gives a short prioritized answer, Deep adds analysis and rationale, and Board formats a concise executive summary with risks and actions.',
+      'Greita pateikia trumpą prioritetų sąrašą. Gilu prideda analizę ir pagrindimą. Valdybai suformuoja trumpą formalią santrauką su rizikomis ir veiksmais.'
+    );
+
+    // FAQ JSON-LD (LT)
+    html = html.replace('"name": "What is AI Operations Center?"', '"name": "Kas yra DI Operacinis Centras?"');
+    html = html.replace('"name": "Who is it for?"', '"name": "Kam skirta?"');
+    html = html.replace('"name": "How do I use it?"', '"name": "Kaip naudoti?"');
+    html = html.replace('"name": "Want the full AI Operating System?"', '"name": "Nori pilnos DI operacinės sistemos?"');
+    html = html.replace('"name": "Do you store my data?"', '"name": "Ar jūs saugote mano duomenis?"');
+    html = html.replace('"name": "What is the difference between Fast, Deep, and Board?"', '"name": "Kuo skiriasi Greita, Gilu ir Valdybai?"');
+    html = html.replace(
+      '"text": "Explore the complete Prompt Anatomy training and Hub modules at https://www.promptanatomy.app/"',
+      '"text": "Pilną Promptų anatomijos mokymą ir Hub modulius rasite https://www.promptanatomy.app/"'
+    );
+    html = html.replace(
+      '"text": "Saved sessions are stored locally in your browser (localStorage). This page does not upload your inputs to a server."',
+      '"text": "Sesijos saugomos tik tavo naršyklėje (localStorage). Šis puslapis neįkelia įvesties į serverį."'
+    );
 
     html = html.replace('>3 modes · 3 depths</span>', '>3 režimai · 3 gylio lygiai</span>');
     html = html.replace('aria-label="Prompt Anatomy Hub modules"', 'aria-label="Promptų anatomijos Hub moduliai"');
