@@ -14,6 +14,7 @@ const PRIVATUMAS_PATH = path.join(__dirname, '..', 'privatumas.html');
 const STYLE_PATH = path.join(__dirname, '..', 'style.css');
 const GENERATOR_PATH = path.join(__dirname, '..', 'generator.js');
 const COPY_PATH = path.join(__dirname, '..', 'copy.js');
+const LUCIDE_VENDOR_PATH = path.join(__dirname, '..', 'vendor', 'lucide.min.js');
 const LT_ENTRY_PATH = path.join(__dirname, '..', 'lt', 'index.html');
 const EN_ENTRY_PATH = path.join(__dirname, '..', 'en', 'index.html');
 const OG_SVG_PATH = path.join(__dirname, '..', 'assets', 'og', 'og-cover.svg');
@@ -139,6 +140,14 @@ function run() {
   else failed++;
   if (assert(html.includes('src="copy.js"'), 'Script src copy.js')) passed++;
   else failed++;
+  if (
+    assert(
+      html.includes('src="vendor/lucide.min.js"') && !html.includes('unpkg.com/lucide'),
+      'Lucide UMD lokaliai (vendor/lucide.min.js), ne unpkg CDN'
+    )
+  ) {
+    passed++;
+  } else failed++;
   if (assert(html.includes('hiddenTextarea'), 'Fallback textarea kopijavimui')) passed++;
   else failed++;
 
@@ -152,6 +161,17 @@ function run() {
   const copyFile = readFile(COPY_PATH);
   if (assert(copyFile !== null && copyFile.length > 0, 'copy.js failas egzistuoja')) passed++;
   else failed++;
+  const lucideVendorFile = readFile(LUCIDE_VENDOR_PATH);
+  if (
+    assert(
+      lucideVendorFile !== null &&
+        lucideVendorFile.length > 5000 &&
+        lucideVendorFile.includes('createIcons'),
+      'vendor/lucide.min.js egzistuoja ir turi createIcons'
+    )
+  ) {
+    passed++;
+  } else failed++;
   const ltEntryFile = readFile(LT_ENTRY_PATH);
   if (assert(ltEntryFile !== null && ltEntryFile.length > 0, 'lt/index.html egzistuoja')) passed++;
   else failed++;
@@ -170,6 +190,26 @@ function run() {
   else failed++;
   if (assert(ltEntryFile && !ltEntryFile.includes('window.location.replace'), 'lt/index.html be client-side redirect')) passed++;
   else failed++;
+  if (
+    assert(
+      ltEntryFile &&
+        ltEntryFile.includes('src="/vendor/lucide.min.js"') &&
+        !ltEntryFile.includes('unpkg.com/lucide'),
+      'lt/index.html Lucide iš /vendor/lucide.min.js'
+    )
+  ) {
+    passed++;
+  } else failed++;
+  if (
+    assert(
+      enEntryFile &&
+        enEntryFile.includes('src="/vendor/lucide.min.js"') &&
+        !enEntryFile.includes('unpkg.com/lucide'),
+      'en/index.html Lucide iš /vendor/lucide.min.js'
+    )
+  ) {
+    passed++;
+  } else failed++;
   if (assert(enEntryFile && !enEntryFile.includes('window.location.replace'), 'en/index.html be client-side redirect')) passed++;
   else failed++;
 

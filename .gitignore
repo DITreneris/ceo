@@ -36,6 +36,8 @@ dist/
 build/
 *.min.js
 *.min.css
+# Lucide UMD (vendored for deploy; do not ignore)
+!/vendor/lucide.min.js
 
 # ─── Node ───
 node_modules/
