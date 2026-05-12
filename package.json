@@ -12,13 +12,12 @@
     "test:e2e": "start-server-and-test \"serve . -l 3300\" http://127.0.0.1:3300/ \"playwright test tests/e2e/core-flow.spec.js\"",
     "test:mixed": "npm run test && npm run test:smoke && npm run test:e2e && npm run test:a11y",
     "test:a11y": "start-server-and-test \"serve . -l 3300\" http://127.0.0.1:3300/ \"pa11y http://127.0.0.1:3300/ --config .pa11yrc.json && pa11y http://127.0.0.1:3300/privatumas.html --config .pa11yrc.json\"",
-    "lint:html": "npx html-validator-cli --file index.html",
+    "lint:html": "node tests/html-lint.test.js",
     "lint:js": "eslint . --ext .js"
   },
   "devDependencies": {
     "@playwright/test": "^1.53.2",
     "eslint": "^8.57.0",
-    "html-validator-cli": "^7.0.0",
     "pa11y": "^6.2.3",
     "serve": "^14.2.1",
     "start-server-and-test": "^2.0.11",
