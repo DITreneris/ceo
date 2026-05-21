@@ -80,8 +80,8 @@ npm run pdf:assets        # export PDFs → preview PNGs → OG cover
 |------|------|
 | [`style.css`](../style.css) | Storefront stiliai |
 | [`docs/pdf-source/pdf-print.css`](pdf-source/pdf-print.css) | PDF print stylesheet (Letter, gradients, callouts) + `body.pdf-asset-export` mode (734×950 storefront preview) |
-| [`docs/pdf-source/operating-cadence.html`](pdf-source/operating-cadence.html) | 12-page operating PDF source |
-| [`docs/pdf-source/strategic-os.html`](pdf-source/strategic-os.html) | 28-page strategic PDF source |
+| [`docs/pdf-source/operating-cadence.html`](pdf-source/operating-cadence.html) | 18-page operating PDF source (v2.0) |
+| [`docs/pdf-source/strategic-os.html`](pdf-source/strategic-os.html) | 40-page strategic PDF source (v2.0) |
 | [`assets/og/og-cover.svg`](../assets/og/og-cover.svg) | OG card source (1200×630) |
 | [`scripts/render-pdf-preview-pages.js`](../scripts/render-pdf-preview-pages.js) | Playwright section-by-section PNG renderer (cover + p2/p3/p4) |
 | [`scripts/export-pdfs.js`](../scripts/export-pdfs.js) | Playwright PDF export (Letter, page-count assertion) |
@@ -103,8 +103,8 @@ npm run pdf:assets        # export PDFs → preview PNGs → OG cover
 Visi PDF + storefront + OG turi vieningą naming:
 
 - **Eyebrow:** `PROMPT ANATOMY · CEO AI SYSTEM`
-- **Operations product:** `CEO AI Operations Playbook` (12 pages, $9.99)
-- **Strategic product:** `CEO AI Strategy Playbook` (28 pages, $19.99)
+- **Operations product:** `CEO AI Operations Playbook` (18 pages, $9.99)
+- **Strategic product:** `CEO AI Strategy Playbook` (40 pages, $19.99)
 - **Legacy aliases** (do not use in new copy): `CEO Strategic AI Operating System`, `CEO Executive Strategic AI Playbook`, `Operations Hub`, `Hub module: Operations`, `Strategy Hub`, `OPERATIONS MODULE` — only `labelLegacy` SOT field for backward reference.
 
 ## 9. Seka su sister repo (DITreneris/teacher)

@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>CEO AI Strategy Playbook | Prompt Anatomy</title>
   <link rel="stylesheet" href="pdf-print.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -12,382 +13,1363 @@
   <div>
     <p class="cover-eyebrow">Prompt Anatomy · CEO AI System</p>
     <h1 class="cover-title">CEO AI Strategy Playbook</h1>
-    <p class="cover-subtitle">Decision frameworks, ROI logic, and governance-ready prompts</p>
+    <p class="cover-subtitle">Board-ready prompts, ROI discipline, and governance-lite execution</p>
     <div class="cover-positioning">
-      <strong>Run AI like strategy — not like software.</strong>
-      Turn executive judgment into repeatable decision workflows.
+      <strong>Run AI like strategy — not like search.</strong>
+      Turn executive judgment into repeatable decision workflows with CFO review gates.
     </div>
   </div>
-  <footer class="brand-footer"><span class="brand-footer-left">Prompt Anatomy</span><span class="brand-footer-right"><span class="brand-footer-url">www.promptanatomy.ceo</span><span class="cover-page-number"> · Page 1/28</span></span></footer>
+  <footer class="brand-footer">
+    <span class="brand-footer-left">Prompt Anatomy</span>
+    <span class="brand-footer-right"><span class="brand-footer-url">www.promptanatomy.ceo</span><span class="cover-page-number"> · Page 1/43</span></span>
+  </footer>
 </section>
 
 <section class="page">
   <div class="page-eyebrow"><span>Start</span><span class="page-eyebrow-tag">Summary</span></div>
   <h2>Executive summary</h2>
   <dl class="kv">
-    <dt>Audience</dt><dd>US founders, CEOs, COOs, and CFOs running board-level decisions.</dd>
-    <dt>Length</dt><dd>28 pages · Version 1.1 · May 2026</dd>
-    <dt>Format</dt><dd>Copy-paste prompts for ChatGPT, Claude, or Gemini.</dd>
+    <dt>Audience</dt><dd>US founders, CEOs, COOs, and CFOs running board-level and quarterly decisions.</dd>
+    <dt>Length</dt><dd>43 pages · Version 2.1 · May 2026</dd>
+    <dt>Format</dt><dd>Copy-paste prompts for ChatGPT, Claude, or Gemini — full blocks, no shorthand.</dd>
     <dt>Pair with</dt><dd>CEO AI Operations Playbook (daily and weekly cadence).</dd>
   </dl>
   <div class="pdf-exec-summary">
-    <h3>Who this is for</h3>
-    <p>US founders, CEOs, and COOs who need board-ready analysis, clear ownership of AI-assisted work, and repeatable strategic prompts—not another generic AI course.</p>
-    <h3>What you get</h3>
+    <h3>What you get (by asset)</h3>
     <ul>
-      <li>Structured STRATEGIC prompts (Fast, Deep, Board) with explicit output formats.</li>
-      <li>Finance, runway, pricing, and risk frameworks you can run with your CFO or COO.</li>
-      <li>30-day and 90-day implementation paths with human review gates.</li>
+      <li><strong>Master prompts (Fast / Deep / Board):</strong> Full ROLE–QUALITY GATE blocks for monthly, major, and board decisions.</li>
+      <li><strong>Board workflow + memo example:</strong> Checklist, CFO number gate, and a completed one-page board draft.</li>
+      <li><strong>Finance toolkit:</strong> Unit economics, ROI scorecard (with sample row), cash runway scenarios, pricing test criteria.</li>
+      <li><strong>Decision systems:</strong> Type 1/2 architecture, Automate/Assist/Avoid rules, risk matrix with owners, governance-lite gates.</li>
+      <li><strong>Implementation:</strong> AI maturity bands, 30-day weekly deliverables, 90-day phased rollout with success metrics.</li>
+      <li><strong>Function library:</strong> CEO, COO, CFO, and team-lead prompts — each complete and copy-paste ready.</li>
+      <li><strong>Worksheets:</strong> Printable templates plus filled samples for OKRs, finance one-pager, and decision review.</li>
     </ul>
     <h3>Monday morning</h3>
-    <p>Open promptanatomy.ceo → STRATEGIC mode → paste one Fast prompt with last month’s actuals. Review output; assign one owner and one deadline before noon.</p>
+    <p>Run Master Fast (page 11) with last month’s actuals. Review output; assign one owner and one deadline before noon. Schedule Board depth before your next exec or board meeting.</p>
   </div>
-  <footer class="brand-footer"><span class="brand-footer-left">CEO AI Strategy Playbook</span><span class="brand-footer-right">www.promptanatomy.ceo · Page 2/28</span></footer>
+  <footer class="brand-footer">
+    <span class="brand-footer-left">CEO AI Strategy Playbook</span>
+    <span class="brand-footer-right">www.promptanatomy.ceo · Page 2/43</span>
+  </footer>
+</section>
+
+<section class="page">
+  <div class="page-eyebrow"><span>Activate</span><span class="page-eyebrow-tag">First 7 days</span></div>
+  <h2>First 7 days with this PDF</h2>
+  <p class="lead">One asset per day. By day 7 you will have run strategic prompts, validated numbers with finance, and logged one board-ready draft.</p>
+  <table>
+    <tr><th>Day</th><th>Action</th><th>Page</th><th>Owner</th></tr>
+    <tr><td>1</td><td>Complete AI maturity diagnosis; note lowest-scoring dimension</td><td>4</td><td>CEO</td></tr>
+    <tr><td>2</td><td>Run Master Fast with last month revenue, expenses, cash, pipeline</td><td>11</td><td>CEO</td></tr>
+    <tr><td>3</td><td>Compare output to board memo example; fix weak inputs</td><td>15</td><td>CEO</td></tr>
+    <tr><td>4</td><td>CFO validates numbers on ROI scorecard; complete one sample row</td><td>17</td><td>CFO</td></tr>
+    <tr><td>5</td><td>Run cash runway prompt; fill scenario worksheet</td><td>19–20</td><td>CFO</td></tr>
+    <tr><td>6</td><td>Leadership team reviews AI delegation matrix; assign one Automate workflow</td><td>24</td><td>CEO + COO</td></tr>
+    <tr><td>7</td><td>Pin strategic workflow map; start week 1 of 30-day plan</td><td>5, 25</td><td>CEO</td></tr>
+  </table>
+  <div class="callout callout-warn gap-top">
+    <strong>CEO-in-the-loop rule</strong>
+    AI drafts analysis. You decide. Never paste cap tables, customer lists, or unreleased financials into public AI tools.
+  </div>
+  <footer class="brand-footer">
+    <span class="brand-footer-left">CEO AI Strategy Playbook</span>
+    <span class="brand-footer-right">www.promptanatomy.ceo · Page 3/43</span>
+  </footer>
 </section>
 
 <section class="page">
   <div class="page-eyebrow"><span>Diagnosis</span><span class="page-eyebrow-tag">Maturity</span></div>
   <h2>AI maturity diagnosis (leadership team)</h2>
-  <p class="lead">Rate your company 1–5. Honest scores beat aspirational ones—this drives where you invest next quarter.</p>
+  <p class="lead">Rate each dimension 1–5. Honest scores beat aspirational ones — this drives where you invest next quarter.</p>
   <table class="pdf-risk-matrix">
-    <tr><th>Dimension</th><th>1 — Ad hoc</th><th>5 — Repeatable</th><th>Your score</th></tr>
-    <tr><td>Cadence</td><td>Random ChatGPT</td><td>Daily/weekly CEO ritual</td><td>___</td></tr>
+    <tr><th>Dimension</th><th>1 — Ad hoc</th><th>5 — Repeatable</th><th>Score</th></tr>
+    <tr><td>Cadence</td><td>Random ChatGPT</td><td>Monthly strategic + weekly ops ritual</td><td>___</td></tr>
     <tr><td>Ownership</td><td>No reviewer named</td><td>COO/CFO signs off on externals</td><td>___</td></tr>
-    <tr><td>ROI tracking</td><td>No metric</td><td>Hours saved + decision speed</td><td>___</td></tr>
-    <tr><td>Board readiness</td><td>Unsupported claims</td><td>Facts-only board drafts</td><td>___</td></tr>
+    <tr><td>ROI tracking</td><td>No metric</td><td>Hours saved + decision speed logged</td><td>___</td></tr>
+    <tr><td>Board readiness</td><td>Unsupported claims</td><td>Facts-only board drafts + CFO gate</td><td>___</td></tr>
+    <tr><td>Data hygiene</td><td>PII in prompts</td><td>Redaction rules documented</td><td>___</td></tr>
   </table>
-  <p class="muted">Score ≤12: start with Operations Playbook cadence. Score 13–16: add this playbook’s Board prompts monthly. Score 17+: expand Automate workflows with strict review gates.</p>
-  <footer class="brand-footer"><span class="brand-footer-left">CEO AI Strategy Playbook</span><span class="brand-footer-right">www.promptanatomy.ceo · Page 3/28</span></footer>
+  <table class="gap-top">
+    <tr><th>Total score</th><th>Band</th><th>Next action (this quarter)</th></tr>
+    <tr><td>5–10</td><td>Foundational</td><td>Adopt Operations Playbook daily/weekly cadence first. One Master Fast per month only.</td></tr>
+    <tr><td>11–15</td><td>Structured</td><td>Add Master Deep for major decisions. CFO validates all finance tables monthly.</td></tr>
+    <tr><td>16–20</td><td>Board-ready</td><td>Board prompt before every exec meeting. One Automate workflow with review gate.</td></tr>
+    <tr><td>21–25</td><td>Scaled</td><td>Roll function-specific prompts to team leads. Track ROI scorecard monthly.</td></tr>
+  </table>
+  <footer class="brand-footer">
+    <span class="brand-footer-left">CEO AI Strategy Playbook</span>
+    <span class="brand-footer-right">www.promptanatomy.ceo · Page 4/43</span>
+  </footer>
 </section>
 
 <section class="page pdf-workflow-map">
   <div class="page-eyebrow"><span>Map</span><span class="page-eyebrow-tag">Workflow</span></div>
   <h2>Strategic workflow map</h2>
-  <table>
-    <tr><th>Step</th><th>When</th><th>Tool / depth</th><th>Output</th></tr>
-    <tr><td>1</td><td>Monthly or pre-board</td><td>STRATEGIC · Fast</td><td>3 priorities + actions</td></tr>
-    <tr><td>2</td><td>Major decision</td><td>STRATEGIC · Deep</td><td>Rationale + risks + timeline</td></tr>
-    <tr><td>3</td><td>Board / investors</td><td>STRATEGIC · Board</td><td>Summary table + risk matrix</td></tr>
-    <tr><td>4</td><td>Weekly ops</td><td>DAILY / WEEKLY</td><td>Operations Playbook</td></tr>
+  <p class="lead">Three horizons — strategic, board, and ops — with clear owners and outputs.</p>
+  <div class="workflow">
+    <div class="step"><span class="step-num">1</span><h4>Inputs</h4><p class="step-body">Monthly actuals, pipeline, risks</p></div>
+    <span class="arrow">→</span>
+    <div class="step"><span class="step-num">2</span><h4>Prompt</h4><p class="step-body">Fast / Deep / Board</p></div>
+    <span class="arrow">→</span>
+    <div class="step"><span class="step-num">3</span><h4>Review</h4><p class="step-body">CFO gate on numbers</p></div>
+    <span class="arrow">→</span>
+    <div class="step"><span class="step-num">4</span><h4>Decide</h4><p class="step-body">CEO signs Type 1</p></div>
+    <span class="arrow">→</span>
+    <div class="step"><span class="step-num">5</span><h4>Act</h4><p class="step-body">Owner + date on every action</p></div>
+  </div>
+  <table class="gap-top pdf-risk-matrix">
+    <tr><th>Flow</th><th>When</th><th>Depth</th><th>Owner</th><th>Output</th></tr>
+    <tr><td>Strategic</td><td>Monthly / pre-quarter</td><td>Fast or Deep</td><td>CEO</td><td>3 priorities + action table</td></tr>
+    <tr><td>Board</td><td>Pre-board / investors</td><td>Board</td><td>CEO + CFO</td><td>One-page memo + risk matrix</td></tr>
+    <tr><td>Ops</td><td>Daily / weekly</td><td>Fast / Deep</td><td>COO</td><td>Operations Playbook</td></tr>
+    <tr><td>Finance</td><td>Monthly close</td><td>Deep</td><td>CFO</td><td>Runway + ROI scorecard row</td></tr>
   </table>
-  <div class="callout gap-top"><strong>Ownership:</strong> CEO owns strategic prompts; COO owns operating cadence; CFO validates numbers before external use.</div>
-  <footer class="brand-footer"><span class="brand-footer-left">CEO AI Strategy Playbook</span><span class="brand-footer-right">www.promptanatomy.ceo · Page 4/28</span></footer>
+  <div class="callout-decision gap-top"><strong>CEO decision required:</strong> Which flow has no named owner today? Assign one this week.</div>
+  <footer class="brand-footer">
+    <span class="brand-footer-left">CEO AI Strategy Playbook</span>
+    <span class="brand-footer-right">www.promptanatomy.ceo · Page 5/43</span>
+  </footer>
 </section>
 
 <section class="page">
-<div class="page-eyebrow"><span>Manifesto</span><span class="page-eyebrow-tag">Foundation</span></div>
-  <h2>Run AI like operations—not like search</h2>
-  <p class="lead">Winning CEOs treat AI as decision infrastructure: role, context, depth, output format—every time.</p>
-  <ul>
-    <li><strong>Type 1 decisions</strong> (one-way doors): financial authority, legal commitments, compliance—human signs; AI assists.</li>
-    <li><strong>Type 2 decisions</strong> (reversible): prompts, formats, weekly priorities—iterate weekly.</li>
-  </ul>
-  <div class="callout"><strong>AI Operations Center</strong> at promptanatomy.ceo is your free prompt generator; this playbook is your offline strategic reference.</div>
-  <footer class="brand-footer"><span class="brand-footer-left">CEO AI Strategy Playbook</span><span class="brand-footer-right">www.promptanatomy.ceo · Page 5/28</span></footer>
+  <div class="page-eyebrow"><span>Architecture</span><span class="page-eyebrow-tag">Decisions</span></div>
+  <h2>Decision architecture for CEOs</h2>
+  <p class="lead">Match AI depth to decision reversibility. Type 1 always has a human sign-off.</p>
+  <h3>Type 1 vs Type 2</h3>
+  <table>
+    <tr><th>Type</th><th>Definition</th><th>Examples</th><th>AI role</th></tr>
+    <tr><td>Type 1</td><td>One-way door; hard to reverse</td><td>Fundraise terms, layoffs, major contracts, pricing model change</td><td>Assist only — CEO + CFO sign</td></tr>
+    <tr><td>Type 2</td><td>Reversible; iterate fast</td><td>Weekly priorities, internal summaries, draft agendas</td><td>Automate or Assist with weekly review</td></tr>
+  </table>
+  <h3 class="gap-top">Automate · Assist · Avoid</h3>
+  <table>
+    <tr><th>Mode</th><th>Use when</th><th>Review gate</th><th>Example</th></tr>
+    <tr><td>Automate</td><td>High volume, low stakes, reversible errors OK</td><td>Spot-check weekly</td><td>Internal KPI summary draft for COO</td></tr>
+    <tr><td>Assist</td><td>External or leadership-facing; errors costly</td><td>Named reviewer before send</td><td>Board memo draft → CFO number check → CEO sign</td></tr>
+    <tr><td>Avoid</td><td>Regulated, legal, or irreversible without counsel</td><td>Human + professional only</td><td>Securities filings, employment terminations, wire transfers</td></tr>
+  </table>
+  <div class="callout-warn gap-top"><strong>Rule:</strong> If you cannot name the reviewer, the output stays internal.</div>
+  <footer class="brand-footer">
+    <span class="brand-footer-left">CEO AI Strategy Playbook</span>
+    <span class="brand-footer-right">www.promptanatomy.ceo · Page 6/43</span>
+  </footer>
 </section>
 
 <section class="page">
   <div class="page-eyebrow"><span>Method</span><span class="page-eyebrow-tag">6-block</span></div>
   <h2>Prompt Anatomy 6-block methodology</h2>
+  <p class="lead">Every strategic prompt in this playbook maps to six blocks. Missing a block produces generic output.</p>
   <table>
-    <tr><th>Block</th><th>CEO application</th></tr>
-    <tr><td>Meta</td><td>ROLE line—who the AI acts as</td></tr>
-    <tr><td>Input</td><td>CONTEXT, FINANCE, FACTS from your form</td></tr>
-    <tr><td>Output</td><td>OUTPUT FORMAT—priorities, tables, risk matrix</td></tr>
-    <tr><td>Reasoning</td><td>DEPTH instruction—Fast, Deep, or Board</td></tr>
-    <tr><td>Quality</td><td>Facts and numbers only for board; verify AI math</td></tr>
-    <tr><td>Advanced</td><td>Library templates—unit economics, runway, risk</td></tr>
+    <tr><th>Block</th><th>Field in prompt</th><th>CEO application</th></tr>
+    <tr><td>1 Meta</td><td>ROLE</td><td>Specific executive-grade role — not “helpful assistant”</td></tr>
+    <tr><td>2 Input</td><td>CONTEXT + FACTS</td><td>Horizon, constraints, real numbers, labeled assumptions</td></tr>
+    <tr><td>3 Task</td><td>TASK</td><td>One decision or analysis — not “give advice”</td></tr>
+    <tr><td>4 Reasoning</td><td>REASONING RULES</td><td>Facts vs assumptions; do not invent data</td></tr>
+    <tr><td>5 Output</td><td>OUTPUT FORMAT</td><td>Tables, matrices, owner/deadline columns</td></tr>
+    <tr><td>6 Quality</td><td>QUALITY GATE</td><td>Clarifying questions if inputs vague; human sign-off line</td></tr>
   </table>
-  <footer class="brand-footer"><span class="brand-footer-left">CEO AI Strategy Playbook</span><span class="brand-footer-right">www.promptanatomy.ceo · Page 6/28</span></footer>
+  <div class="callout gap-top"><strong>Depth selector:</strong> Fast = 10 min priorities · Deep = major trade-offs · Board = facts-only external draft.</div>
+  <footer class="brand-footer">
+    <span class="brand-footer-left">CEO AI Strategy Playbook</span>
+    <span class="brand-footer-right">www.promptanatomy.ceo · Page 7/43</span>
+  </footer>
 </section>
 
 <section class="page">
-  <h2>Structured prompt anatomy (operations center)</h2>
-  <pre class="prompt-block">ROLE: [consultant / analyst]
-CONTEXT + FINANCE + FACTS
-QUESTION: [your ask]
-DEPTH: [Fast | Deep | Board instruction]
-OUTPUT FORMAT: [shape of answer]</pre>
-  <p class="muted">STRATEGIC mode adds horizon, monthly revenue, expenses, profit, cash, runway.</p>
-  <footer class="brand-footer"><span class="brand-footer-left">CEO AI Strategy Playbook</span><span class="brand-footer-right">www.promptanatomy.ceo · Page 7/28</span></footer>
+  <div class="page-eyebrow"><span>Method</span><span class="page-eyebrow-tag">Anatomy</span></div>
+  <h2>Structured prompt anatomy</h2>
+  <pre class="prompt-block">ROLE:
+You are a [specific executive-grade role] advising a [CEO/COO/CFO].
+
+CONTEXT:
+- Company type: [SaaS / services / hybrid]
+- Revenue model: [subscription / project / mixed]
+- Current goal: [specific strategic objective]
+- Decision horizon: [month / quarter / board date]
+- Constraints: [cash, runway, headcount, regulatory]
+
+FACTS:
+- Revenue / costs / cash / pipeline / team capacity / key events / known risks
+
+TASK:
+[Specific decision or analysis request — one sentence]
+
+REASONING RULES:
+- Separate facts, assumptions, and recommendations.
+- Do not invent missing numbers.
+- Prioritize cash, runway, customer impact, reversibility.
+
+OUTPUT FORMAT:
+[Structured tables, matrices, CEO decision required line]
+
+QUALITY GATE:
+If input is too vague, ask up to 5 clarifying questions before the final answer.</pre>
+  <p class="muted">Strategic prompts add monthly revenue, expenses, profit, cash, runway, and board-ready tone where noted.</p>
+  <footer class="brand-footer">
+    <span class="brand-footer-left">CEO AI Strategy Playbook</span>
+    <span class="brand-footer-right">www.promptanatomy.ceo · Page 8/43</span>
+  </footer>
 </section>
 
 <section class="page">
   <div class="page-eyebrow"><span>Strategic</span><span class="page-eyebrow-tag">Fields</span></div>
   <h2>Strategic mode field guide</h2>
+  <p class="lead">Required fields produce decision-ready output. Optional fields improve depth.</p>
   <table>
-    <tr><th>Field</th><th>Example (USD)</th></tr>
-    <tr><td>Strategic goal</td><td>Reach $100K MRR by Q2</td></tr>
-    <tr><td>Time horizon</td><td>This quarter / This year</td></tr>
-    <tr><td>Revenue (month)</td><td>$45,000</td></tr>
-    <tr><td>Expenses (month)</td><td>$38,000</td></tr>
-    <tr><td>Profit (month)</td><td>$7,000</td></tr>
-    <tr><td>Cash balance</td><td>$120,000</td></tr>
-    <tr><td>Runway (months)</td><td>16 months</td></tr>
-    <tr><td>Key facts</td><td>Lost 2 clients; gained 5; launch next month</td></tr>
+    <tr><th>Field</th><th>Required</th><th>Example (USD)</th></tr>
+    <tr><td>Strategic goal</td><td>Yes</td><td>Reach $100K MRR by Q3</td></tr>
+    <tr><td>Time horizon</td><td>Yes</td><td>This quarter / board date 2026-06-15</td></tr>
+    <tr><td>Revenue (month)</td><td>Yes</td><td>$52,000</td></tr>
+    <tr><td>Expenses (month)</td><td>Yes</td><td>$41,000</td></tr>
+    <tr><td>Profit (month)</td><td>Yes</td><td>$11,000</td></tr>
+    <tr><td>Cash balance</td><td>Yes</td><td>$118,000</td></tr>
+    <tr><td>Runway (months)</td><td>Yes</td><td>14 months (base case)</td></tr>
+    <tr><td>Pipeline</td><td>Recommended</td><td>$180K weighted; 2 deals &gt;40% of total</td></tr>
+    <tr><td>Key facts</td><td>Recommended</td><td>Lost 1 enterprise; launched tier upgrade</td></tr>
+    <tr><td>Known risks</td><td>Recommended</td><td>Concentration: top client = 22% ARR</td></tr>
   </table>
-  <footer class="brand-footer"><span class="brand-footer-left">CEO AI Strategy Playbook</span><span class="brand-footer-right">www.promptanatomy.ceo · Page 8/28</span></footer>
+  <div class="bad-good-compare gap-top">
+    <div class="compare-col compare-bad">
+      <strong>Weak input</strong>
+      <p>Revenue growing. Costs under control. Need strategy.</p>
+    </div>
+    <div class="compare-col compare-good">
+      <strong>Strong input</strong>
+      <p>MRR $52K (+4% MoM). Burn $41K. Cash $118K (14 mo). Pipeline $180K; Acme deal $72K at 60% — closes June.</p>
+    </div>
+  </div>
+  <footer class="brand-footer">
+    <span class="brand-footer-left">CEO AI Strategy Playbook</span>
+    <span class="brand-footer-right">www.promptanatomy.ceo · Page 9/43</span>
+  </footer>
 </section>
 
 <section class="page">
-  <h2>Strategic questions that work</h2>
+  <div class="page-eyebrow"><span>Strategic</span><span class="page-eyebrow-tag">Questions</span></div>
+  <h2>Strategic questions bank</h2>
+  <p class="lead">Copy one question into the TASK line of any master prompt. Categorized by executive job.</p>
+  <h3>Strategy &amp; priorities</h3>
   <ul>
-    <li>What are the 3 most important priorities and actions this week?</li>
-    <li>Where is runway risk in the next 90 days?</li>
-    <li>What should the board hear in one page?</li>
+    <li>What are the 3 highest-leverage priorities this quarter given our cash and pipeline?</li>
+    <li>Which initiative should we stop, start, or continue — and why?</li>
+    <li>Where are we spreading too thin relative to runway?</li>
+    <li>What single metric best predicts our goal this quarter?</li>
   </ul>
-  <div class="callout-warn callout"><strong>Default question</strong> in AI Operations Center if you leave the field empty: top 3 priorities and actions this week.</div>
-  <footer class="brand-footer"><span class="brand-footer-left">CEO AI Strategy Playbook</span><span class="brand-footer-right">www.promptanatomy.ceo · Page 9/28</span></footer>
+  <h3>Finance &amp; unit economics</h3>
+  <ul>
+    <li>Is our LTV/CAC ratio healthy for our stage — what would improve it fastest?</li>
+    <li>Where is margin leaking — product, delivery, or acquisition?</li>
+    <li>What happens to runway if revenue flatlines for 90 days?</li>
+    <li>Which cost line is most defensible to cut without breaking growth?</li>
+  </ul>
+  <h3>Board &amp; investors</h3>
+  <ul>
+    <li>What should the board hear in one page — facts only?</li>
+    <li>What are the top 3 risks we are not discussing enough?</li>
+    <li>What decision needs board input vs CEO-only this cycle?</li>
+  </ul>
+  <h3>Risk &amp; governance</h3>
+  <ul>
+    <li>What early-warning indicators should trigger a Type 1 review?</li>
+    <li>Where is customer or revenue concentration unacceptable?</li>
+  </ul>
+  <h3>Growth &amp; pricing</h3>
+  <ul>
+    <li>Which growth lever has best impact × confidence × speed?</li>
+    <li>Should we test a price increase — what criteria prove success?</li>
+  </ul>
+  <footer class="brand-footer">
+    <span class="brand-footer-left">CEO AI Strategy Playbook</span>
+    <span class="brand-footer-right">www.promptanatomy.ceo · Page 10/43</span>
+  </footer>
 </section>
 
 <section class="page">
+  <div class="page-eyebrow"><span>Master</span><span class="page-eyebrow-tag">Fast</span></div>
   <h2>Master prompt — Fast</h2>
-  <pre class="prompt-block">ROLE: You are a strategic business consultant working with CEO/COO.
+  <div class="prompt-label-row"><span>STRATEGIC · Fast</span><span class="prompt-tag">10 min</span></div>
+  <pre class="prompt-block">ROLE:
+You are a strategic advisor to a US founder/CEO at a B2B SaaS or services company.
 
 CONTEXT:
-- Strategic objective: [$100K MRR by Q2]
-- Time horizon: [This quarter]
+- Company type: [SaaS / services / hybrid]
+- Revenue model: [subscription / project / mixed]
+- Strategic objective: [e.g. reach $100K MRR by Q3]
+- Decision horizon: [this month / this quarter]
+- Constraints: [cash runway months, headcount cap, key deadline]
 
-FINANCE:
-- Revenue (month): [$45,000]
-- Expenses (month): [$38,000]
-- Profit (month): [$7,000]
-- Cash balance: [$120,000]
-- Runway (months): [16]
+FACTS:
+- Revenue (month): [$amount]
+- Expenses (month): [$amount]
+- Profit (month): [$amount]
+- Cash balance: [$amount]
+- Runway (months): [number or unknown]
+- Pipeline summary: [weighted value, stage mix]
+- Key events: [wins, losses, launches, hires]
+- Known risks: [list or none stated]
 
-FACTS: [key facts]
+TASK:
+What are the 3 most important strategic priorities and actions for this horizon?
 
-QUESTION: [your question]
+REASONING RULES:
+- Separate facts, assumptions, and recommendations.
+- Do not invent missing numbers. Flag gaps before recommending action.
+- Prioritize cash, runway, customer impact, execution capacity, and reversibility.
+- Max 3 priorities. One-sentence business reason per recommendation.
 
-DEPTH: Answer briefly: max 3 points, 1-2 sentences each, no intro.
-OUTPUT FORMAT: 3 priorities + 3 actions + 1 risk</pre>
-  <footer class="brand-footer"><span class="brand-footer-left">CEO AI Strategy Playbook</span><span class="brand-footer-right">www.promptanatomy.ceo · Page 10/28</span></footer>
+OUTPUT FORMAT:
+1. Executive summary (max 5 lines)
+2. Decision table: priority | rationale | expected impact | action | owner | deadline | risk
+3. Risks and mitigations
+4. Data needed before commitment
+5. CEO decision required: [one line]
+
+QUALITY GATE:
+If revenue, expenses, or cash are missing, ask up to 5 clarifying questions before the final answer.</pre>
+  <footer class="brand-footer">
+    <span class="brand-footer-left">CEO AI Strategy Playbook</span>
+    <span class="brand-footer-right">www.promptanatomy.ceo · Page 11/43</span>
+  </footer>
 </section>
 
 <section class="page">
+  <div class="page-eyebrow"><span>Master</span><span class="page-eyebrow-tag">Deep</span></div>
   <h2>Master prompt — Deep</h2>
-  <pre class="prompt-block prompt-block-light">[Same ROLE, CONTEXT, FINANCE, FACTS, QUESTION as Fast]
+  <div class="prompt-label-row"><span>STRATEGIC · Deep</span><span class="prompt-tag">25 min</span></div>
+  <pre class="prompt-block prompt-block-light">ROLE:
+You are a strategic advisor to a US founder/CEO at a B2B SaaS or services company.
 
-DEPTH: Deep analysis with context and reasoning. Use numbers.
-OUTPUT FORMAT: 3 priorities (rationale) + 5 actions (timelines) + 2 risks (mitigation) + 1 long-term recommendation</pre>
-  <footer class="brand-footer"><span class="brand-footer-left">CEO AI Strategy Playbook</span><span class="brand-footer-right">www.promptanatomy.ceo · Page 11/28</span></footer>
+CONTEXT:
+- Company type: [SaaS / services / hybrid]
+- Revenue model: [subscription / project / mixed]
+- Strategic objective: [specific goal with date]
+- Decision horizon: [quarter + implications for 12 months]
+- Constraints: [runway, team capacity, board/investor dates, regulatory]
+
+FACTS:
+- Revenue (month): [$amount] · trend: [MoM %]
+- Expenses (month): [$amount] · trend: [MoM %]
+- Profit (month): [$amount]
+- Cash balance: [$amount]
+- Runway (months): [base case]
+- Pipeline: [deals, values, close dates, concentration]
+- Unit economics (if known): ARPU [$], CAC [$], LTV [$], gross margin [%]
+- Key events and risks: [specific list]
+
+TASK:
+Provide a deep strategic review for a major decision: [state the decision or use a question from the questions bank].
+
+REASONING RULES:
+- Separate facts, assumptions, and recommendations.
+- Do not invent runway, deal values, or unit economics.
+- Show trade-offs explicitly — what we delay if we pursue option A.
+- Each action: owner + deadline. Max 3 priorities.
+- Rate recommendation confidence: High / Medium / Low with reason.
+
+OUTPUT FORMAT:
+1. Executive summary (max 5 lines)
+2. Decision table: priority | rationale | expected impact | action | owner | deadline | risk
+3. Option comparison (if applicable): option | upside | downside | reversibility
+4. Risks and mitigations with leading indicators
+5. Data needed before commitment
+6. CEO decision required: [specific yes/no or choice]
+
+QUALITY GATE:
+If pipeline, runway, or decision scope is vague, ask up to 5 clarifying questions before the final answer.</pre>
+  <footer class="brand-footer">
+    <span class="brand-footer-left">CEO AI Strategy Playbook</span>
+    <span class="brand-footer-right">www.promptanatomy.ceo · Page 12/43</span>
+  </footer>
 </section>
 
 <section class="page">
+  <div class="page-eyebrow"><span>Master</span><span class="page-eyebrow-tag">Board</span></div>
   <h2>Master prompt — Board</h2>
-  <pre class="prompt-block">[Same structure]
+  <div class="prompt-label-row"><span>STRATEGIC · Board</span><span class="prompt-tag">30 min</span></div>
+  <pre class="prompt-block">ROLE:
+You are a board-reporting advisor preparing a factual executive summary for a US private company board or investor update.
 
-DEPTH: Board-level summary. Facts and numbers only. Formal tone.
-OUTPUT FORMAT: Summary (3 sentences) + Financial status (table) + TOP 3 priorities + 5 KPI actions + Risk matrix + Board recommendation</pre>
-  <footer class="brand-footer"><span class="brand-footer-left">CEO AI Strategy Playbook</span><span class="brand-footer-right">www.promptanatomy.ceo · Page 12/28</span></footer>
+CONTEXT:
+- Company type: [SaaS / services / hybrid]
+- Reporting period: [month / quarter ending date]
+- Board meeting date: [date]
+- Strategic objective: [company goal this period]
+- Constraints: [runway, fundraising status, material events]
+
+FACTS:
+- Revenue (period): [$amount] vs plan [$amount]
+- Expenses (period): [$amount] vs plan [$amount]
+- Profit / burn (period): [$amount]
+- Cash balance: [$amount]
+- Runway (months): [base case — label assumptions]
+- Pipeline / ARR / retention: [metrics with dates]
+- Key wins, losses, hires, product milestones: [facts only]
+- Known risks: [specific, dated where possible]
+
+TASK:
+Draft a one-page board-ready memo: financial status, top priorities, KPI actions, and risk matrix. Facts and numbers only — no unsupported opinions.
+
+REASONING RULES:
+- Separate facts, assumptions, and recommendations.
+- Do not invent metrics. Mark “data not provided” instead of guessing.
+- Formal tone suitable for external directors.
+- Every priority links to a measurable KPI or dated milestone.
+- Flag items requiring CFO verification before distribution.
+
+OUTPUT FORMAT:
+1. Executive summary (max 3 sentences, facts only)
+2. Financial status table: metric | actual | plan | variance | note
+3. TOP 3 strategic priorities with owner and target date
+4. 5 KPI actions: action | owner | deadline | success metric
+5. Risk matrix: risk | probability (L/M/H) | impact (L/M/H) | mitigation | owner
+6. Board recommendation: [one clear ask or “no board action required”]
+7. CFO review required: list every number and assumption needing finance sign-off
+8. CEO decision required: [approve for board / revise / hold]
+
+QUALITY GATE:
+If period actuals or cash balance are missing, ask up to 5 clarifying questions before producing the memo. Do not publish until CFO review gate is complete.</pre>
+  <footer class="brand-footer">
+    <span class="brand-footer-left">CEO AI Strategy Playbook</span>
+    <span class="brand-footer-right">www.promptanatomy.ceo · Page 13/43</span>
+  </footer>
 </section>
 
 <section class="page">
-  <h2>Board workflow</h2>
+  <div class="page-eyebrow"><span>Board</span><span class="page-eyebrow-tag">Workflow</span></div>
+  <h2>Board workflow + checklist</h2>
+  <p class="lead">Run 5–7 days before the meeting. CEO owns narrative; CFO owns numbers.</p>
   <ol>
-    <li>Fill STRATEGIC form with latest actuals (not forecasts without label).</li>
-    <li>Run Board depth; export to doc; you edit every number.</li>
-    <li>Map risks to owners and dates before the meeting.</li>
+    <li><strong>T-7 days:</strong> COO/CFO close books; export actuals vs plan.</li>
+    <li><strong>T-5 days:</strong> CEO runs Master Board prompt with FACTS block complete.</li>
+    <li><strong>T-4 days:</strong> CFO review gate — verify every number, variance, and runway assumption.</li>
+    <li><strong>T-3 days:</strong> CEO edits tone and priorities; map risks to owners and dates.</li>
+    <li><strong>T-2 days:</strong> Optional: send draft to lead director for factual corrections only.</li>
+    <li><strong>T-1 day:</strong> Final sign-off logged in output registry (page 25).</li>
   </ol>
-  <p class="muted">Rule: Board report—facts and numbers only (no unsupported opinions).</p>
-  <footer class="brand-footer"><span class="brand-footer-left">CEO AI Strategy Playbook</span><span class="brand-footer-right">www.promptanatomy.ceo · Page 13/28</span></footer>
+  <h3 class="gap-top">Board memo checklist</h3>
+  <ul class="check-list">
+    <li>All numbers match finance source (not AI-generated)</li>
+    <li>Variances vs plan explained in one line each</li>
+    <li>Max 3 priorities — each with owner and date</li>
+    <li>Risk matrix has probability, impact, mitigation, owner</li>
+    <li>CFO sign-off recorded with date</li>
+    <li>No customer PII, cap table detail, or unreleased material</li>
+    <li>CEO explicit decision: approve / revise / hold</li>
+  </ul>
+  <div class="callout-decision gap-top"><strong>CEO decision required:</strong> Does this memo need a board vote, inform-only, or executive session topic?</div>
+  <footer class="brand-footer">
+    <span class="brand-footer-left">CEO AI Strategy Playbook</span>
+    <span class="brand-footer-right">www.promptanatomy.ceo · Page 14/43</span>
+  </footer>
 </section>
 
 <section class="page">
-  <h2>Unit economics</h2>
-  <pre class="prompt-block">You are a finance analyst. My business metrics:
-- ARPU: [amount]
-- CAC: [amount]
-- LTV: [amount]
-- Gross margin: [%]
+  <div class="page-eyebrow"><span>Example</span><span class="page-eyebrow-tag">Board</span></div>
+  <h2>Completed board memo example</h2>
+  <p class="muted">Sample inputs: Q1 actuals, $118K cash, 14 mo runway, Acme deal at 60%.</p>
+  <div class="example-block">
+    <h4>Executive summary</h4>
+    <p>Q1 revenue $156K (+8% vs plan). Burn $11K/mo. Cash $118K (14 mo base). Enterprise pipeline strong; concentration risk in Acme ($72K, 60%). No board vote required; inform on hiring plan.</p>
+    <h4>Financial status</h4>
+    <table>
+      <tr><th>Metric</th><th>Actual</th><th>Plan</th><th>Variance</th></tr>
+      <tr><td>Q1 revenue</td><td>$156,000</td><td>$144,000</td><td>+8%</td></tr>
+      <tr><td>Q1 expenses</td><td>$123,000</td><td>$128,000</td><td>-4%</td></tr>
+      <tr><td>Cash (Mar 31)</td><td>$118,000</td><td>$110,000</td><td>+7%</td></tr>
+      <tr><td>Runway (base)</td><td>14 mo</td><td>12 mo</td><td>+2 mo</td></tr>
+    </table>
+    <h4>TOP 3 priorities</h4>
+    <table>
+      <tr><th>Priority</th><th>Owner</th><th>Target</th></tr>
+      <tr><td>Close Acme enterprise deal</td><td>CEO</td><td>2026-06-30</td></tr>
+      <tr><td>Launch self-serve tier</td><td>COO</td><td>2026-07-15</td></tr>
+      <tr><td>Reduce top-client ARR below 20%</td><td>VP Sales</td><td>2026-09-30</td></tr>
+    </table>
+    <h4>Risk matrix (excerpt)</h4>
+    <table>
+      <tr><th>Risk</th><th>P</th><th>I</th><th>Mitigation</th><th>Owner</th></tr>
+      <tr><td>Acme slips or churns</td><td>M</td><td>H</td><td>Exec sponsor call biweekly</td><td>CEO</td></tr>
+      <tr><td>Hiring plan ahead of revenue</td><td>M</td><td>M</td><td>Freeze after 2 hires until MRR $60K</td><td>CFO</td></tr>
+    </table>
+  </div>
+  <p class="muted gap-top">CFO review: verified 2026-05-18 · CEO approved for board inform-only.</p>
+  <footer class="brand-footer">
+    <span class="brand-footer-left">CEO AI Strategy Playbook</span>
+    <span class="brand-footer-right">www.promptanatomy.ceo · Page 15/43</span>
+  </footer>
+</section>
 
-Do a unit economics analysis:
-1. Evaluate LTV/CAC ratio
-2. Estimate payback period
-3. Highest-leverage drivers
-4. Suggest 3 specific actions</pre>
-  <footer class="brand-footer"><span class="brand-footer-left">CEO AI Strategy Playbook</span><span class="brand-footer-right">www.promptanatomy.ceo · Page 14/28</span></footer>
+<section class="page">
+  <div class="page-eyebrow"><span>Finance</span><span class="page-eyebrow-tag">Unit econ</span></div>
+  <h2>Unit economics</h2>
+  <pre class="prompt-block">ROLE:
+You are a finance analyst advising a CEO/CFO at a US B2B SaaS or services company.
+
+CONTEXT:
+- Company type: [SaaS / services]
+- Stage: [seed / Series A / bootstrapped]
+- Decision horizon: [pricing / growth / efficiency review]
+- Constraints: [target LTV/CAC, payback months, margin floor]
+
+FACTS:
+- ARPU or ACV: [$amount]
+- CAC: [$amount] · calculation method: [e.g. S&amp;M spend / new customers]
+- LTV: [$amount] · method: [e.g. ARPU × gross margin × avg life]
+- Gross margin: [%]
+- Churn (monthly or annual): [%]
+- Sales cycle (days): [number]
+- Key segments: [list]
+
+TASK:
+Analyze unit economics and recommend the 3 highest-leverage actions to improve LTV/CAC and payback.
+
+REASONING RULES:
+- Separate facts, assumptions, and recommendations.
+- Do not invent CAC or LTV — flag missing inputs.
+- State benchmarks as ranges for stage, not as facts about this company.
+- SaaS: note NRR and expansion if provided. Services: note utilization if provided.
+
+OUTPUT FORMAT:
+1. Executive summary (max 5 lines)
+2. Metrics table: metric | value | benchmark range | status (OK / Watch / Fix)
+3. LTV/CAC and payback interpretation
+4. Decision table: priority | action | owner | deadline | expected impact
+5. Data needed before commitment
+6. CEO decision required
+
+QUALITY GATE:
+If CAC or LTV method is undefined, ask up to 5 clarifying questions before analysis.</pre>
+  <footer class="brand-footer">
+    <span class="brand-footer-left">CEO AI Strategy Playbook</span>
+    <span class="brand-footer-right">www.promptanatomy.ceo · Page 16/43</span>
+  </footer>
 </section>
 
 <section class="page">
   <div class="page-eyebrow"><span>ROI</span><span class="page-eyebrow-tag">Scorecard</span></div>
   <h2>ROI scorecard (executive)</h2>
-  <p class="lead">Track value monthly. Do not claim precision you cannot defend—directional discipline beats vanity metrics.</p>
+  <p class="lead">Track monthly. Directional discipline beats false precision — but log the baseline.</p>
   <table class="pdf-risk-matrix">
-    <tr><th>Metric</th><th>Baseline</th><th>Target (90d)</th><th>Owner</th></tr>
-    <tr><td>CEO hours saved / week on analysis drafts</td><td></td><td></td><td>CEO</td></tr>
-    <tr><td>Decisions with named owner + date</td><td></td><td></td><td>COO</td></tr>
-    <tr><td>Board materials using facts-only AI draft</td><td></td><td></td><td>CEO</td></tr>
-    <tr><td>Runway visibility updated monthly</td><td></td><td></td><td>CFO</td></tr>
+    <tr><th>Metric</th><th>Baseline</th><th>Target (90d)</th><th>Actual</th><th>Owner</th></tr>
+    <tr><td>CEO hours saved / week on analysis drafts</td><td>0</td><td>3 hrs</td><td>2.5 hrs</td><td>CEO</td></tr>
+    <tr><td>Decisions with named owner + date</td><td>40%</td><td>90%</td><td></td><td>COO</td></tr>
+    <tr><td>Board materials using facts-only AI draft</td><td>0</td><td>100% of cycles</td><td></td><td>CEO</td></tr>
+    <tr><td>Runway visibility updated monthly</td><td>Ad hoc</td><td>Monthly CFO sign-off</td><td></td><td>CFO</td></tr>
+    <tr><td>Leadership prompts with quality gate used</td><td>0</td><td>4+ / month</td><td></td><td>COO</td></tr>
   </table>
   <div class="pdf-worksheet gap-top">
-    <strong>One-line ROI hypothesis:</strong> We invest ___ hours/month in structured prompts to reduce ___ hours of exec prep and improve decision speed on ___ decisions.
+    <strong>Completed ROI hypothesis (sample):</strong> We invest 6 hrs/month in structured strategic prompts to save ~10 hrs of exec prep and improve decision speed on 4 monthly leadership decisions. CFO validates time logs quarterly.
   </div>
-  <footer class="brand-footer"><span class="brand-footer-left">CEO AI Strategy Playbook</span><span class="brand-footer-right">www.promptanatomy.ceo · Page 15/28</span></footer>
+  <p class="muted gap-top">Interpretation: if Actual &lt; 50% of Target at day 60, revisit inputs (field guide, page 9) before adding new prompts.</p>
+  <footer class="brand-footer">
+    <span class="brand-footer-left">CEO AI Strategy Playbook</span>
+    <span class="brand-footer-right">www.promptanatomy.ceo · Page 17/43</span>
+  </footer>
 </section>
 
 <section class="page">
-  <h2>Growth levers</h2>
-  <pre class="prompt-block">You are a growth strategist. My business context:
-- Current monthly revenue: [amount]
-- Target in [period]: [amount]
-- Current channels: [channels]
-- Conversion rate: [%]
-
-Define top growth levers:
-1. Top 3 levers with highest impact
-2. What to do, expected impact, timing
-3. Quick wins (up to 2 weeks)
-4. Key risks and dependencies</pre>
-  <footer class="brand-footer"><span class="brand-footer-left">CEO AI Strategy Playbook</span><span class="brand-footer-right">www.promptanatomy.ceo · Page 16/28</span></footer>
-</section>
-
-<section class="page">
-  <h2>Cash runway</h2>
-  <pre class="prompt-block">You are a finance consultant.
-- Cash balance: [amount]
-- Monthly revenue: [amount]
-- Monthly expenses: [amount]
-- Expense trend: [up/down/stable]
-
-Run cash runway analysis:
-1. Runway in months
-2. Optimistic / base / pessimistic scenarios
-3. 30/60/90 day cash actions
-4. Red-zone indicators and triggers</pre>
-  <footer class="brand-footer"><span class="brand-footer-left">CEO AI Strategy Playbook</span><span class="brand-footer-right">www.promptanatomy.ceo · Page 17/28</span></footer>
-</section>
-
-<section class="page">
-  <h2>Cash scenarios (worksheet)</h2>
-  <table>
-    <tr><th>Scenario</th><th>Runway (mo)</th><th>Trigger action</th></tr>
-    <tr><td>Optimistic</td><td></td><td></td></tr>
-    <tr><td>Base</td><td></td><td></td></tr>
-    <tr><td>Pessimistic</td><td></td><td></td></tr>
+  <div class="page-eyebrow"><span>Growth</span><span class="page-eyebrow-tag">Levers</span></div>
+  <h2>Growth levers scoring matrix</h2>
+  <p class="lead">Score each lever 1–5, then run the growth prompt (next page) for the top two only.</p>
+  <table class="pdf-risk-matrix">
+    <tr><th>Lever</th><th>Impact</th><th>Confidence</th><th>Time-to-value</th><th>Dependency</th><th>Total</th></tr>
+    <tr><td>Enterprise outbound (ICP list)</td><td>4</td><td>3</td><td>3</td><td>2</td><td>12</td></tr>
+    <tr><td>Self-serve tier launch</td><td>5</td><td>4</td><td>2</td><td>3</td><td>14</td></tr>
+    <tr><td>Partner channel pilot</td><td>3</td><td>2</td><td>4</td><td>4</td><td>13</td></tr>
+    <tr><td>_______________</td><td>___</td><td>___</td><td>___</td><td>___</td><td>___</td></tr>
+    <tr><td>_______________</td><td>___</td><td>___</td><td>___</td><td>___</td><td>___</td></tr>
   </table>
-  <p class="tiny">Fill after AI draft; you own the numbers.</p>
-  <footer class="brand-footer"><span class="brand-footer-left">CEO AI Strategy Playbook</span><span class="brand-footer-right">www.promptanatomy.ceo · Page 18/28</span></footer>
+  <p class="muted">Total = sum of four scores. Prioritize highest total with Dependency ≤3 unless strategic bet approved.</p>
+  <div class="callout gap-top-sm"><strong>How to interpret:</strong> Highest total = lead candidate. If two scores are tied, prefer lower Dependency. Run growth prompt (p.19) only for your top 2 levers.</div>
+  <footer class="brand-footer">
+    <span class="brand-footer-left">CEO AI Strategy Playbook</span>
+    <span class="brand-footer-right">www.promptanatomy.ceo · Page 18/43</span>
+  </footer>
 </section>
 
 <section class="page">
+  <div class="page-eyebrow"><span>Growth</span><span class="page-eyebrow-tag">Prompt</span></div>
+  <h2>Growth levers execution prompt</h2>
+  <p class="lead">Run after scoring matrix. Input your top 2 levers from page 18.</p>
+  <pre class="prompt-block prompt-block-light">ROLE:
+You are a growth strategist advising a CEO at a US B2B company.
+
+CONTEXT:
+- Current monthly revenue: [$amount]
+- Target in [period]: [$amount]
+- Channels in play: [list]
+- Constraints: [CAC cap, team capacity]
+
+FACTS:
+- Conversion rates by stage: [funnel data]
+- Top 2 levers from scoring matrix: [names + scores]
+- Quick-win window: [days]
+
+TASK:
+Define execution plan for the top 2 growth levers only.
+
+REASONING RULES:
+- Do not invent conversion rates. Max 3 priorities.
+- Separate experiments (Type 2) from commitments (Type 1).
+
+OUTPUT FORMAT:
+1. Executive summary
+2. Lever plan table: lever | actions | owner | deadline | metric | risk
+3. Quick wins (&lt;2 weeks)
+4. CEO decision required
+
+QUALITY GATE:
+Ask clarifying questions if funnel data or lever scores missing.</pre>
+  <footer class="brand-footer">
+    <span class="brand-footer-left">CEO AI Strategy Playbook</span>
+    <span class="brand-footer-right">www.promptanatomy.ceo · Page 19/43</span>
+  </footer>
+</section>
+
+<section class="page">
+  <div class="page-eyebrow"><span>Finance</span><span class="page-eyebrow-tag">Runway</span></div>
+  <h2>Cash runway analysis</h2>
+  <pre class="prompt-block">ROLE:
+You are a finance advisor to a CEO/CFO at a US private company.
+
+CONTEXT:
+- Company type: [SaaS / services]
+- Decision horizon: [30 / 60 / 90 days + runway outlook]
+- Constraints: [minimum cash buffer, debt, fundraising timeline]
+
+FACTS:
+- Cash balance: [$amount]
+- Monthly revenue: [$amount] · trend: [up / flat / down]
+- Monthly expenses: [$amount] · trend: [up / flat / down]
+- One-time items this quarter: [list or none]
+- Fundraising status: [not started / in progress / closed / n/a]
+- Known risks to cash: [list]
+
+TASK:
+Run cash runway analysis with scenarios and triggered actions.
+
+REASONING RULES:
+- Separate facts, assumptions, and recommendations.
+- Do not invent revenue or expense trends — label assumptions.
+- Define optimistic / base / pessimistic with explicit drivers.
+- Red-zone: runway &lt; 6 months triggers weekly CEO cash priority.
+
+OUTPUT FORMAT:
+1. Executive summary (max 5 lines)
+2. Runway table: scenario | assumptions | runway (mo) | cash-out date
+3. 30/60/90 day action table: action | owner | deadline | cash impact
+4. Red-zone indicators and triggers
+5. Data needed before commitment
+6. CEO decision required
+
+QUALITY GATE:
+If cash balance or monthly burn missing, ask up to 5 clarifying questions first.</pre>
+  <footer class="brand-footer">
+    <span class="brand-footer-left">CEO AI Strategy Playbook</span>
+    <span class="brand-footer-right">www.promptanatomy.ceo · Page 20/43</span>
+  </footer>
+</section>
+
+<section class="page">
+  <div class="page-eyebrow"><span>Finance</span><span class="page-eyebrow-tag">Scenarios</span></div>
+  <h2>Cash scenarios worksheet</h2>
+  <p class="lead">Fill after runway prompt. CFO owns numbers; CEO owns triggered actions.</p>
+  <table class="pdf-worksheet pdf-risk-matrix">
+    <tr><th>Scenario</th><th>Key assumption</th><th>Runway (mo)</th><th>Cash-out</th><th>Trigger action</th><th>Owner</th></tr>
+    <tr><td>Optimistic</td><td>Acme closes; MRR +$6K/mo from Jul</td><td>18</td><td>2027-12</td><td>Approve 2 hires post-close</td><td>CEO</td></tr>
+    <tr><td>Base</td><td>Flat MRR; burn $41K/mo</td><td>14</td><td>2027-08</td><td>Maintain hiring freeze</td><td>CFO</td></tr>
+    <tr><td>Pessimistic</td><td>Acme slips 90d; churn 1 mid-market</td><td>9</td><td>2027-03</td><td>Cut discretionary $8K/mo by Aug 1</td><td>CEO + CFO</td></tr>
+    <tr><td>_______________</td><td></td><td></td><td></td><td></td><td></td></tr>
+  </table>
+  <div class="callout-warn gap-top">
+    <strong>Red-zone rule:</strong> If base runway &lt; 6 months, weekly leadership review must include one cash action with owner and date.
+  </div>
+  <footer class="brand-footer">
+    <span class="brand-footer-left">CEO AI Strategy Playbook</span>
+    <span class="brand-footer-right">www.promptanatomy.ceo · Page 21/43</span>
+  </footer>
+</section>
+
+<section class="page">
+  <div class="page-eyebrow"><span>Finance</span><span class="page-eyebrow-tag">Pricing</span></div>
   <h2>Pricing strategy</h2>
-  <pre class="prompt-block prompt-block-light">You are a pricing expert.
-- Current price: [price]
-- Competitor range: [from-to]
-- Gross margin: [%]
-- Customer segments: [segments]
+  <pre class="prompt-block prompt-block-light">ROLE:
+You are a pricing strategist advising a CEO/CFO at a US B2B company.
 
-Provide:
-1. Market context evaluation
-2. Value justification
-3. Multi-plan options
-4. Pricing test plan</pre>
-  <footer class="brand-footer"><span class="brand-footer-left">CEO AI Strategy Playbook</span><span class="brand-footer-right">www.promptanatomy.ceo · Page 19/28</span></footer>
+CONTEXT:
+- Company type: [SaaS / services]
+- Decision horizon: [price test window]
+- Constraints: [margin floor %, churn sensitivity, competitive pressure]
+
+FACTS:
+- Current price / plans: [list]
+- Competitor range: [$low – $high]
+- Gross margin by plan: [%]
+- Customer segments: [list with willingness signals]
+- Recent win/loss notes: [price objections if known]
+- Churn linked to price (if known): [data or unknown]
+
+TASK:
+Recommend pricing structure and a bounded price-test plan with success criteria.
+
+REASONING RULES:
+- Separate facts, assumptions, recommendations.
+- Do not invent willingness-to-pay data.
+- Type 1 flag: enterprise contract repricing requires CEO + legal review.
+- Define test success: metric, threshold, duration, rollback rule.
+
+OUTPUT FORMAT:
+1. Executive summary
+2. Market context (facts vs assumptions table)
+3. Plan options: plan | price | target segment | margin
+4. Price test plan: hypothesis | segment | duration | success metric | rollback trigger
+5. Risks and mitigations
+6. CEO decision required
+
+QUALITY GATE:
+If margin by plan or segment data missing, ask up to 5 clarifying questions.</pre>
+  <footer class="brand-footer">
+    <span class="brand-footer-left">CEO AI Strategy Playbook</span>
+    <span class="brand-footer-right">www.promptanatomy.ceo · Page 22/43</span>
+  </footer>
 </section>
 
 <section class="page">
-  <h2>Risk management</h2>
-  <pre class="prompt-block">You are a risk management specialist.
+  <div class="page-eyebrow"><span>Risk</span><span class="page-eyebrow-tag">Prompt</span></div>
+  <h2>Risk management — probability × impact</h2>
+  <p class="lead">Identify and score top 5 risks. Fill worksheet on next page after AI output.</p>
+  <pre class="prompt-block">ROLE:
+You are a risk advisor to a CEO at a US private company.
+
+CONTEXT:
 - Industry: [industry]
-- Team size: [people]
-- Key customers: [count, concentration]
-- Revenue sources: [sources]
+- Team size: [FTE]
+- Decision horizon: [quarter]
+- Constraints: [regulatory, customer concentration limits]
 
-Perform risk audit:
-1. Top 5 risks (probability x impact)
-2. Prevention and mitigation per risk
+FACTS:
+- Revenue concentration: [top clients %]
+- Revenue sources: [segments]
+- Key dependencies: [vendors, people, tech]
+- Known incidents last 90 days: [list or none]
+- Open legal/compliance items: [list or none]
+
+TASK:
+Perform a risk audit: top 5 risks with probability × impact scoring and owners.
+
+REASONING RULES:
+- Do not invent incidents or regulatory issues.
+- Probability and impact: L / M / H with one-line justification.
+- Every risk needs mitigation owner and review date.
+
+OUTPUT FORMAT:
+1. Executive summary
+2. Risk matrix: risk | P | I | score | mitigation | owner | review date
 3. Early warning indicators
-4. Action plan if risk materializes</pre>
-  <footer class="brand-footer"><span class="brand-footer-left">CEO AI Strategy Playbook</span><span class="brand-footer-right">www.promptanatomy.ceo · Page 20/28</span></footer>
+4. If risk materializes: action plan table
+5. CEO decision required
+
+QUALITY GATE:
+If concentration or dependency data missing, ask clarifying questions first.</pre>
+  <footer class="brand-footer">
+    <span class="brand-footer-left">CEO AI Strategy Playbook</span>
+    <span class="brand-footer-right">www.promptanatomy.ceo · Page 23/43</span>
+  </footer>
 </section>
 
 <section class="page">
-  <h2>Decision architecture for CEOs</h2>
-  <table>
-    <tr><th>Mode</th><th>Use when</th></tr>
-    <tr><td>Automate</td><td>High volume, reversible errors (internal summaries)</td></tr>
-    <tr><td>Assist</td><td>AI drafts; you sign (board memos, investor updates)</td></tr>
-    <tr><td>Avoid full autonomy</td><td>Regulated commitments, large payments, legal</td></tr>
+  <div class="page-eyebrow"><span>Risk</span><span class="page-eyebrow-tag">Worksheet</span></div>
+  <h2>Risk matrix worksheet</h2>
+  <p class="lead">Fill in from AI output. Every risk needs a mitigation owner and review date.</p>
+  <table class="pdf-risk-matrix">
+    <tr><th>Risk</th><th>P</th><th>I</th><th>Score</th><th>Mitigation</th><th>Owner</th><th>Review</th></tr>
+    <tr><td>Top client &gt;25% ARR churns</td><td>M</td><td>H</td><td>MH</td><td>Expand account; add second key contact</td><td>CEO</td><td>Monthly</td></tr>
+    <tr><td>Key engineer departure</td><td>M</td><td>M</td><td>MM</td><td>Succession plan; document key systems</td><td>COO</td><td>Quarterly</td></tr>
+    <tr><td>_______________</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>_______________</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>_______________</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
   </table>
-  <footer class="brand-footer"><span class="brand-footer-left">CEO AI Strategy Playbook</span><span class="brand-footer-right">www.promptanatomy.ceo · Page 21/28</span></footer>
+  <p class="muted gap-top-sm">P = Probability (L/M/H) · I = Impact (L/M/H). Score = P×I. Review red-zone (H×H) items in every board meeting.</p>
+  <div class="callout-warn gap-top"><strong>Early warning signals:</strong> Name one leading indicator per H-impact risk. Example: "Support tickets from top client spike 2× in any week."</div>
+  <footer class="brand-footer">
+    <span class="brand-footer-left">CEO AI Strategy Playbook</span>
+    <span class="brand-footer-right">www.promptanatomy.ceo · Page 24/43</span>
+  </footer>
 </section>
 
 <section class="page">
-  <h2>Data hygiene and governance-lite ownership</h2>
-  <p class="lead">Governance-lite means clear owners and review gates—not a full enterprise AI program.</p>
+  <div class="page-eyebrow"><span>Governance</span><span class="page-eyebrow-tag">Lite</span></div>
+  <h2>Governance-lite — ownership &amp; approval gates</h2>
+  <p class="lead">Clear owners and review gates — not a full enterprise AI program.</p>
   <ul class="check-list">
-    <li>AI Operations Center stores sessions in <strong>localStorage only</strong>—not on our servers.</li>
     <li>Do not paste cap tables, customer lists, or unreleased earnings into public AI.</li>
     <li>Verify every number AI cites before board or investor use.</li>
-    <li><strong>Owner matrix:</strong> CEO signs board/investor text; COO signs operating summaries; CFO signs finance tables.</li>
-    <li>Document approver + date on any external-facing AI-assisted PDF or email.</li>
+    <li>Document approver + date on any external-facing AI-assisted document.</li>
+    <li>Type 1 outputs require named human sign-off — no exceptions.</li>
   </ul>
-  <table class="gap-top">
-    <tr><th>Output type</th><th>Primary owner</th><th>Review gate</th></tr>
-    <tr><td>Board pack draft</td><td>CEO</td><td>CFO number check</td></tr>
-    <tr><td>Weekly ops summary</td><td>COO</td><td>CEO priority call</td></tr>
-    <tr><td>Pricing / runway memo</td><td>CFO</td><td>CEO Type 1 sign-off</td></tr>
+  <table class="gap-top pdf-risk-matrix">
+    <tr><th>Output type</th><th>Primary owner</th><th>Approval gate</th><th>Registry</th></tr>
+    <tr><td>Board pack draft</td><td>CEO</td><td>CFO number check + CEO sign</td><td>Date + version</td></tr>
+    <tr><td>Investor update</td><td>CEO</td><td>CFO + CEO</td><td>Date + version</td></tr>
+    <tr><td>Weekly ops summary</td><td>COO</td><td>CEO priority call</td><td>Decision log</td></tr>
+    <tr><td>Pricing / runway memo</td><td>CFO</td><td>CEO Type 1 sign-off</td><td>Date + version</td></tr>
+    <tr><td>Team-facing SOP draft</td><td>Team lead</td><td>COO review</td><td>Internal wiki</td></tr>
   </table>
-  <footer class="brand-footer"><span class="brand-footer-left">CEO AI Strategy Playbook</span><span class="brand-footer-right">www.promptanatomy.ceo · Page 22/28</span></footer>
+  <div class="callout gap-top"><strong>Output registry (minimum fields):</strong> document name · AI used (Y/N) · reviewer · approval date · distribution list.</div>
+  <footer class="brand-footer">
+    <span class="brand-footer-left">CEO AI Strategy Playbook</span>
+    <span class="brand-footer-right">www.promptanatomy.ceo · Page 25/43</span>
+  </footer>
+</section>
+
+<section class="page">
+  <div class="page-eyebrow"><span>Team</span><span class="page-eyebrow-tag">Delegation</span></div>
+  <h2>AI delegation matrix</h2>
+  <p class="lead">Who runs which prompts — reduces shadow AI use and duplicate drafts.</p>
+  <table class="pdf-risk-matrix">
+    <tr><th>Role</th><th>Use AI for</th><th>Do not use AI for</th><th>Default depth</th><th>Review gate</th></tr>
+    <tr><td>CEO</td><td>Strategic priorities, board narrative, investor framing</td><td>Unsigned external commits, legal</td><td>Fast / Board</td><td>CFO on numbers</td></tr>
+    <tr><td>COO</td><td>Weekly ops summaries, project trade-offs, meeting agendas</td><td>Customer PII in prompts</td><td>Deep (weekly)</td><td>CEO priorities</td></tr>
+    <tr><td>CFO</td><td>Runway scenarios, unit economics, variance narratives</td><td>Tax/legal filings</td><td>Deep</td><td>Self-verify source data</td></tr>
+    <tr><td>Team leads</td><td>Status rollups, draft SOPs, internal FAQs</td><td>Pricing quotes to customers</td><td>Fast</td><td>COO spot-check</td></tr>
+  </table>
+  <div class="callout-decision gap-top"><strong>CEO decision required:</strong> Assign one Automate workflow per row with weekly spot-check owner.</div>
+  <footer class="brand-footer">
+    <span class="brand-footer-left">CEO AI Strategy Playbook</span>
+    <span class="brand-footer-right">www.promptanatomy.ceo · Page 26/43</span>
+  </footer>
 </section>
 
 <section class="page">
   <div class="page-eyebrow"><span>Plan</span><span class="page-eyebrow-tag">30 days</span></div>
   <h2>30-day executive action plan</h2>
-  <table>
-    <tr><th>Week</th><th>Action</th><th>Owner</th><th>Done?</th></tr>
-    <tr><td>1</td><td>Run STRATEGIC Fast with last month actuals; pick 3 priorities</td><td>CEO</td><td>☐</td></tr>
-    <tr><td>2</td><td>COO adopts Weekly Deep from Operations Playbook</td><td>COO</td><td>☐</td></tr>
-    <tr><td>3</td><td>Complete maturity diagnosis with leadership team</td><td>CEO</td><td>☐</td></tr>
-    <tr><td>4</td><td>One Board-depth prompt before next exec meeting</td><td>CEO</td><td>☐</td></tr>
+  <table class="pdf-risk-matrix">
+    <tr><th>Week</th><th>Deliverable</th><th>Success metric</th><th>Owner</th><th>Done?</th></tr>
+    <tr><td>1</td><td>Maturity diagnosis complete; Master Fast run with real actuals</td><td>3 priorities with owners</td><td>CEO</td><td>☐</td></tr>
+    <tr><td>2</td><td>ROI scorecard baseline + one completed row</td><td>CFO signed baseline</td><td>CFO</td><td>☐</td></tr>
+    <tr><td>3</td><td>Cash scenarios worksheet filled (3 scenarios)</td><td>Trigger actions named</td><td>CFO</td><td>☐</td></tr>
+    <tr><td>4</td><td>Board or exec memo draft + checklist complete</td><td>CFO review gate passed</td><td>CEO</td><td>☐</td></tr>
   </table>
-  <div class="callout gap-top"><strong>Success signal:</strong> At least four consecutive weeks with documented owners on AI-assisted outputs.</div>
-  <footer class="brand-footer"><span class="brand-footer-left">CEO AI Strategy Playbook</span><span class="brand-footer-right">www.promptanatomy.ceo · Page 23/28</span></footer>
+  <div class="callout gap-top"><strong>Success signal:</strong> Four consecutive weeks with documented owners on AI-assisted strategic outputs.</div>
+  <footer class="brand-footer">
+    <span class="brand-footer-left">CEO AI Strategy Playbook</span>
+    <span class="brand-footer-right">www.promptanatomy.ceo · Page 27/43</span>
+  </footer>
 </section>
 
 <section class="page">
-  <h2>90-day implementation (weeks 1–4)</h2>
-  <p><strong>Personal sandbox:</strong> Daily Fast + one Weekly Deep. One library template per week. No team rollout yet.</p>
-  <footer class="brand-footer"><span class="brand-footer-left">CEO AI Strategy Playbook</span><span class="brand-footer-right">www.promptanatomy.ceo · Page 24/28</span></footer>
-</section>
-
-<section class="page">
-  <h2>90-day implementation (weeks 5–12)</h2>
-  <p><strong>Weeks 5–8:</strong> COO/finance lead uses Assist mode on runway and risk prompts.</p>
-  <p><strong>Weeks 9–12:</strong> One Automate workflow (e.g. weekly KPI summary draft)—with human review gate.</p>
-  <footer class="brand-footer"><span class="brand-footer-left">CEO AI Strategy Playbook</span><span class="brand-footer-right">www.promptanatomy.ceo · Page 25/28</span></footer>
-</section>
-
-<section class="page">
-  <h2>Three modes in AI Operations Center</h2>
+  <div class="page-eyebrow"><span>Plan</span><span class="page-eyebrow-tag">90 days · P1</span></div>
+  <h2>90-day implementation — Phase 1 (weeks 1–4)</h2>
+  <p class="lead"><strong>Theme:</strong> CEO sandbox — prove value before team rollout.</p>
   <table>
-    <tr><th>Mode</th><th>Horizon</th><th>Guide</th></tr>
-    <tr><td>DAILY</td><td>Yesterday</td><td>Operations Playbook</td></tr>
-    <tr><td>WEEKLY</td><td>This week</td><td>Operations Playbook</td></tr>
-    <tr><td>STRATEGIC</td><td>Month / quarter / year</td><td>This guide</td></tr>
+    <tr><th>Week</th><th>Activities</th><th>Output artifact</th><th>Gate</th></tr>
+    <tr><td>1</td><td>First 7 days path; Master Fast weekly</td><td>Priority tables in ops doc</td><td>CEO signs week-1 priorities</td></tr>
+    <tr><td>2</td><td>Unit economics + ROI baseline</td><td>Scorecard row 1 complete</td><td>CFO validates metrics</td></tr>
+    <tr><td>3</td><td>Cash runway + scenarios</td><td>3-scenario worksheet</td><td>Red-zone rule documented</td></tr>
+    <tr><td>4</td><td>First Master Deep on one major decision</td><td>Decision table with trade-offs</td><td>CEO Type 1/2 labeled</td></tr>
   </table>
-  <footer class="brand-footer"><span class="brand-footer-left">CEO AI Strategy Playbook</span><span class="brand-footer-right">www.promptanatomy.ceo · Page 26/28</span></footer>
+  <h3 class="gap-top">Phase 1 success metrics</h3>
+  <ul class="check-list">
+    <li>≥4 Master Fast runs with real numbers</li>
+    <li>1 Master Deep with documented CEO decision</li>
+    <li>ROI scorecard baseline approved by CFO</li>
+    <li>Maturity score improved or action plan for lowest dimension</li>
+  </ul>
+  <footer class="brand-footer">
+    <span class="brand-footer-left">CEO AI Strategy Playbook</span>
+    <span class="brand-footer-right">www.promptanatomy.ceo · Page 28/43</span>
+  </footer>
 </section>
 
 <section class="page">
+  <div class="page-eyebrow"><span>Plan</span><span class="page-eyebrow-tag">90 days · P2</span></div>
+  <h2>90-day implementation — Phase 2 (weeks 5–8)</h2>
+  <p class="lead"><strong>Theme:</strong> Finance + COO adoption — shared language for leadership.</p>
+  <table>
+    <tr><th>Week</th><th>Activities</th><th>Output artifact</th><th>Gate</th></tr>
+    <tr><td>5</td><td>COO adopts weekly ops from Operations Playbook</td><td>Weekly meeting agenda + log</td><td>CEO confirms top 3</td></tr>
+    <tr><td>6</td><td>CFO monthly runway ritual</td><td>Updated scenario worksheet</td><td>CFO sign-off</td></tr>
+    <tr><td>7</td><td>Risk matrix refresh</td><td>Top 5 risks with owners</td><td>CEO assigns review dates</td></tr>
+    <tr><td>8</td><td>First Master Board draft</td><td>Board memo + checklist</td><td>CFO review gate</td></tr>
+  </table>
+  <h3 class="gap-top">Phase 2 success metrics</h3>
+  <ul class="check-list">
+    <li>COO runs ≥3 weekly Deep prompts with owners</li>
+    <li>Board checklist used once end-to-end</li>
+    <li>Governance registry has ≥3 entries</li>
+    <li>Delegation matrix reviewed by leadership team</li>
+  </ul>
+  <footer class="brand-footer">
+    <span class="brand-footer-left">CEO AI Strategy Playbook</span>
+    <span class="brand-footer-right">www.promptanatomy.ceo · Page 29/43</span>
+  </footer>
+</section>
+
+<section class="page">
+  <div class="page-eyebrow"><span>Plan</span><span class="page-eyebrow-tag">90 days · P3</span></div>
+  <h2>90-day implementation — Phase 3 (weeks 9–12)</h2>
+  <p class="lead"><strong>Theme:</strong> Scale — team leads, Automate workflows, continuous ROI.</p>
+  <table>
+    <tr><th>Week</th><th>Activities</th><th>Output artifact</th><th>Gate</th></tr>
+    <tr><td>9</td><td>Roll team-lead prompts to 1–2 departments</td><td>Status rollup template</td><td>COO spot-check</td></tr>
+    <tr><td>10</td><td>Launch one Automate workflow (e.g. KPI summary draft)</td><td>Weekly internal draft</td><td>COO weekly spot-check</td></tr>
+    <tr><td>11</td><td>Growth levers matrix + top-2 execution plan</td><td>Lever plan table</td><td>CEO prioritization</td></tr>
+    <tr><td>12</td><td>90-day retrospective + ROI scorecard review</td><td>Updated maturity score</td><td>CEO + CFO sign-off</td></tr>
+  </table>
+  <h3 class="gap-top">Phase 3 success metrics</h3>
+  <ul class="check-list">
+    <li>≥2 team leads using function prompts monthly</li>
+    <li>1 Automate workflow running 4+ weeks with spot-checks</li>
+    <li>ROI scorecard: ≥2 metrics at 75%+ of target</li>
+    <li>Maturity total score +3 vs day 1 or documented blocker plan</li>
+  </ul>
+  <div class="callout-decision gap-top"><strong>CEO decision required:</strong> Continue rollout, pause for data quality, or expand to full leadership team?</div>
+  <footer class="brand-footer">
+    <span class="brand-footer-left">CEO AI Strategy Playbook</span>
+    <span class="brand-footer-right">www.promptanatomy.ceo · Page 30/43</span>
+  </footer>
+</section>
+
+<section class="page">
+  <div class="page-eyebrow"><span>Library</span><span class="page-eyebrow-tag">CEO</span></div>
+  <h2>Function prompt library — CEO</h2>
+  <pre class="prompt-block">ROLE:
+You are an executive strategist coaching a US founder/CEO.
+
+CONTEXT:
+- Company stage: [seed / growth / scale]
+- Decision horizon: [week / quarter]
+- Constraints: [time, political capital, runway]
+
+FACTS:
+- Strategic goal: [goal]
+- Last board/investor feedback: [summary]
+- Leadership capacity: [hiring, gaps, overload flags]
+- Open CEO decisions: [list]
+
+TASK:
+Prepare the CEO for the highest-stakes decision this horizon: [state decision].
+
+REASONING RULES:
+- Separate facts, assumptions, recommendations.
+- Do not invent stakeholder positions.
+- Frame Type 1 vs Type 2 explicitly.
+- Max 3 priorities.
+
+OUTPUT FORMAT:
+1. Executive summary
+2. Stakeholder map: party | interest | risk if ignored
+3. Decision table: option | upside | downside | reversibility | recommendation
+4. CEO talking points (max 5 bullets)
+5. CEO decision required
+
+QUALITY GATE:
+If decision scope or stakeholder facts missing, ask up to 5 clarifying questions.</pre>
+  <footer class="brand-footer">
+    <span class="brand-footer-left">CEO AI Strategy Playbook</span>
+    <span class="brand-footer-right">www.promptanatomy.ceo · Page 31/43</span>
+  </footer>
+</section>
+
+<section class="page">
+  <div class="page-eyebrow"><span>Library</span><span class="page-eyebrow-tag">COO</span></div>
+  <h2>Function prompt library — COO</h2>
+  <pre class="prompt-block">ROLE:
+You are an operations advisor to a COO at a US B2B company.
+
+CONTEXT:
+- Operating model: [SaaS / services / hybrid]
+- Decision horizon: [this week / this month]
+- Constraints: [headcount, budget, SLA commitments]
+
+FACTS:
+- Active projects: [name, % complete, blockers]
+- Weekly revenue/cost/cash: [numbers]
+- Team utilization or capacity: [data or unknown]
+- Escalations open: [list]
+- CEO priorities this week: [list]
+
+TASK:
+Produce a COO operating brief: project trade-offs, resource shifts, and 3 actions with owners.
+
+REASONING RULES:
+- Do not invent project status — flag missing data.
+- Align actions to CEO priorities when stated.
+- Max 3 priorities. Every action: owner + deadline.
+
+OUTPUT FORMAT:
+1. Executive summary
+2. Project priority ranking with one-line rationale
+3. Decision table: priority | action | owner | deadline | risk
+4. Escalations for CEO decision
+5. COO decision required
+
+QUALITY GATE:
+If project list or capacity data missing, ask up to 5 clarifying questions.</pre>
+  <footer class="brand-footer">
+    <span class="brand-footer-left">CEO AI Strategy Playbook</span>
+    <span class="brand-footer-right">www.promptanatomy.ceo · Page 32/43</span>
+  </footer>
+</section>
+
+<section class="page">
+  <div class="page-eyebrow"><span>Library</span><span class="page-eyebrow-tag">CFO</span></div>
+  <h2>Function prompt library — CFO</h2>
+  <pre class="prompt-block">ROLE:
+You are a finance advisor to a CFO at a US private company.
+
+CONTEXT:
+- Company type: [SaaS / services]
+- Decision horizon: [monthly close / quarter / fundraise prep]
+- Constraints: [audit timeline, covenant, board reporting date]
+
+FACTS:
+- P&amp;L actual vs plan: [revenue, expenses, profit]
+- Cash and runway: [balance, months]
+- AR/AP highlights: [collections, payables]
+- Variance drivers: [list]
+- Known one-time items: [list or none]
+
+TASK:
+Draft CFO commentary for leadership: variances, runway outlook, and 3 finance actions.
+
+REASONING RULES:
+- Facts and numbers only in variance section — label estimates.
+- Do not invent AR/AP figures.
+- Flag items needing CEO Type 1 approval (spend, hire, debt).
+
+OUTPUT FORMAT:
+1. Executive summary (max 5 lines)
+2. Variance table: line | actual | plan | var % | explanation
+3. Cash outlook (base case, one paragraph)
+4. Action table: action | owner | deadline | cash impact
+5. Items for CEO decision
+6. CFO certification line: numbers verified Y/N — date
+
+QUALITY GATE:
+If actual vs plan missing, ask up to 5 clarifying questions before commentary.</pre>
+  <footer class="brand-footer">
+    <span class="brand-footer-left">CEO AI Strategy Playbook</span>
+    <span class="brand-footer-right">www.promptanatomy.ceo · Page 33/43</span>
+  </footer>
+</section>
+
+<section class="page">
+  <div class="page-eyebrow"><span>Library</span><span class="page-eyebrow-tag">Team lead</span></div>
+  <h2>Function prompt library — Team lead</h2>
+  <pre class="prompt-block">ROLE:
+You are an operations analyst supporting a department lead at a US company.
+
+CONTEXT:
+- Function: [sales / product / support / marketing]
+- Decision horizon: [this week]
+- Constraints: [team size, budget, dependencies on other teams]
+
+FACTS:
+- Team goals this period: [list]
+- Status of key deliverables: [list with dates]
+- Blockers: [list]
+- Metrics: [team-specific KPIs]
+- Requests from leadership: [list]
+
+TASK:
+Produce a team status rollup for COO/CEO: progress, blockers, and 3 proposed actions.
+
+REASONING RULES:
+- Do not invent metrics — use “not reported” if missing.
+- Internal use only — no external customer data in prompt.
+- Max 3 actions with owners and dates.
+
+OUTPUT FORMAT:
+1. Status summary (max 5 lines)
+2. Deliverable table: item | status | due | blocker | owner
+3. Proposed actions: action | owner | deadline
+4. Escalations needed
+5. Team lead decision required
+
+QUALITY GATE:
+If deliverable status or metrics missing, ask up to 5 clarifying questions.</pre>
+  <footer class="brand-footer">
+    <span class="brand-footer-left">CEO AI Strategy Playbook</span>
+    <span class="brand-footer-right">www.promptanatomy.ceo · Page 34/43</span>
+  </footer>
+</section>
+
+<section class="page">
+  <div class="page-eyebrow"><span>Tools</span><span class="page-eyebrow-tag">Worksheets</span></div>
   <h2>Printable worksheets</h2>
-  <h3>Quarterly OKR (one objective)</h3>
-  <p>Objective: _______________ · KR1: _______________ · KR2: _______________ · KR3: _______________</p>
-  <h3>Finance one-pager</h3>
-  <p>Revenue / Expenses / Cash / Runway — actual vs plan — top 3 variances:</p>
-  <footer class="brand-footer"><span class="brand-footer-left">CEO AI Strategy Playbook</span><span class="brand-footer-right">www.promptanatomy.ceo · Page 27/28</span></footer>
+  <div class="pdf-worksheet">
+    <h3>Quarterly OKR (one objective)</h3>
+    <p>Objective: _______________________________________________</p>
+    <p>KR1: __________________________ Target: ________ Owner: ________</p>
+    <p>KR2: __________________________ Target: ________ Owner: ________</p>
+    <p>KR3: __________________________ Target: ________ Owner: ________</p>
+  </div>
+  <div class="pdf-worksheet gap-top">
+    <h3>Finance one-pager</h3>
+    <table>
+      <tr><th>Line</th><th>Actual</th><th>Plan</th><th>Variance</th></tr>
+      <tr><td>Revenue</td><td></td><td></td><td></td></tr>
+      <tr><td>Expenses</td><td></td><td></td><td></td></tr>
+      <tr><td>Cash</td><td></td><td></td><td></td></tr>
+      <tr><td>Runway (mo)</td><td></td><td></td><td></td></tr>
+    </table>
+    <p>Top 3 variances to explain: 1) ________ 2) ________ 3) ________</p>
+  </div>
+  <div class="pdf-worksheet gap-top">
+    <h3>Strategic decision snapshot</h3>
+    <p>Decision: _______________________________________________</p>
+    <p>Type 1 / Type 2: ________ · Reviewer: ________ · Date: ________</p>
+  </div>
+  <footer class="brand-footer">
+    <span class="brand-footer-left">CEO AI Strategy Playbook</span>
+    <span class="brand-footer-right">www.promptanatomy.ceo · Page 35/43</span>
+  </footer>
 </section>
 
 <section class="page">
+  <div class="page-eyebrow"><span>Tools</span><span class="page-eyebrow-tag">Samples</span></div>
+  <h2>Worksheet filled samples</h2>
+  <div class="example-block">
+    <h3>Quarterly OKR (sample)</h3>
+    <p><strong>Objective:</strong> Reach $60K MRR while reducing top-client concentration below 20%.</p>
+    <p><strong>KR1:</strong> MRR $60K by 2026-09-30 · Owner: CEO</p>
+    <p><strong>KR2:</strong> Close Acme + 2 mid-market · Owner: VP Sales</p>
+    <p><strong>KR3:</strong> Launch self-serve tier · Owner: COO</p>
+  </div>
+  <div class="example-block gap-top">
+    <h3>Finance one-pager (sample)</h3>
+    <table>
+      <tr><th>Line</th><th>Actual</th><th>Plan</th><th>Variance</th></tr>
+      <tr><td>Revenue (Mar)</td><td>$52,000</td><td>$50,000</td><td>+4%</td></tr>
+      <tr><td>Expenses</td><td>$41,000</td><td>$42,500</td><td>-4%</td></tr>
+      <tr><td>Cash</td><td>$118,000</td><td>$115,000</td><td>+3%</td></tr>
+      <tr><td>Runway</td><td>14 mo</td><td>13 mo</td><td>+1 mo</td></tr>
+    </table>
+    <p>Variances: (1) Enterprise upsell (2) Delayed hire (3) Lower ad spend</p>
+  </div>
+  <footer class="brand-footer">
+    <span class="brand-footer-left">CEO AI Strategy Playbook</span>
+    <span class="brand-footer-right">www.promptanatomy.ceo · Page 36/43</span>
+  </footer>
+</section>
+
+<section class="page">
+  <div class="page-eyebrow"><span>Tool</span><span class="page-eyebrow-tag">Decision</span></div>
+  <h2>Executive decision review template</h2>
+  <p class="lead">Use after any Master Deep or Board output before Type 1 commitment.</p>
+  <table class="pdf-worksheet pdf-risk-matrix">
+    <tr><th>Field</th><th>Response</th></tr>
+    <tr><td>Decision title</td><td>Approve Q3 hiring plan (2 FTE sales)</td></tr>
+    <tr><td>Type 1 / Type 2</td><td>Type 1 — hard to reverse within quarter</td></tr>
+    <tr><td>Decision horizon</td><td>2026-Q3</td></tr>
+    <tr><td>Facts relied on</td><td>MRR $52K; runway 14 mo; pipeline $180K</td></tr>
+    <tr><td>Assumptions challenged</td><td>Acme closes by Jun 30 — validated with VP Sales</td></tr>
+    <tr><td>Options considered</td><td>A) Hire 2 now B) Hire 1 now C) Freeze</td></tr>
+    <tr><td>Recommendation</td><td>B — hire 1 now, second after Acme close</td></tr>
+    <tr><td>Risks accepted</td><td>Pipeline concentration; mitigated by exec sponsor</td></tr>
+    <tr><td>Owner / deadline</td><td>CEO / COO — revisit 2026-07-15</td></tr>
+    <tr><td>Reviewers</td><td>CFO (numbers) · CEO (sign-off)</td></tr>
+    <tr><td>Outcome log date</td><td>2026-05-20</td></tr>
+  </table>
+  <div class="callout-decision gap-top"><strong>CEO decision required:</strong> Proceed / defer / reject — signature and date.</div>
+  <footer class="brand-footer">
+    <span class="brand-footer-left">CEO AI Strategy Playbook</span>
+    <span class="brand-footer-right">www.promptanatomy.ceo · Page 37/43</span>
+  </footer>
+</section>
+
+<section class="page">
+  <div class="page-eyebrow"><span>Quality</span><span class="page-eyebrow-tag">Mistakes</span></div>
+  <h2>Common mistakes (and fixes)</h2>
+  <table>
+    <tr><th>Mistake</th><th>Symptom</th><th>Fix</th></tr>
+    <tr><td>Skipping CFO gate</td><td>Board memo with wrong variance</td><td>Use checklist page 14; CFO signs before send</td></tr>
+    <tr><td>Forecast labeled as actual</td><td>AI treats pipeline as revenue</td><td>Label FACTS: actual vs forecast explicitly</td></tr>
+    <tr><td>“Same as above” prompts</td><td>Generic output, missing gates</td><td>Copy full blocks from this playbook only</td></tr>
+    <tr><td>Too many priorities</td><td>Leadership ignores table</td><td>Cap at 3 in TASK line; delete extras</td></tr>
+    <tr><td>Board tone in daily ops</td><td>Slow weekly rhythm</td><td>Ops → Operations Playbook; strategy here</td></tr>
+    <tr><td>No output registry</td><td>Duplicate drafts, no audit trail</td><td>Log reviewer + date (page 25)</td></tr>
+    <tr><td>Automate without spot-check</td><td>Drift in KPI summaries</td><td>COO weekly spot-check per delegation matrix</td></tr>
+  </table>
+  <div class="callout-warn gap-top"><strong>Refund-risk pattern:</strong> Buying the PDF but never running Day 1 of First 7 days. Block 30 minutes this week.</div>
+  <footer class="brand-footer">
+    <span class="brand-footer-left">CEO AI Strategy Playbook</span>
+    <span class="brand-footer-right">www.promptanatomy.ceo · Page 38/43</span>
+  </footer>
+</section>
+
+<section class="page">
+  <div class="page-eyebrow"><span>Fix</span><span class="page-eyebrow-tag">Troubleshooting</span></div>
+  <h2>Strategic prompt troubleshooting</h2>
+  <table>
+    <tr><th>Problem</th><th>Likely cause</th><th>Fix</th></tr>
+    <tr><td>Generic priorities</td><td>Weak FACTS block</td><td>Use field guide page 9; add $ and dates</td></tr>
+    <tr><td>Invented metrics</td><td>No quality gate in prompt</td><td>Re-run with full Master prompt</td></tr>
+    <tr><td>Board memo too long</td><td>Wrong depth</td><td>Board prompt caps summary at 3 sentences</td></tr>
+    <tr><td>CFO rejects numbers</td><td>AI mixed plan and actual</td><td>Separate columns in FACTS; CFO re-verify</td></tr>
+    <tr><td>No owners in table</td><td>Missing OUTPUT FORMAT</td><td>Require owner column in TASK/OUTPUT</td></tr>
+  </table>
+  <h3 class="gap-top">Analysis depth cheat sheet</h3>
+  <table>
+    <tr><th>Depth</th><th>Use when</th><th>Time</th><th>Output</th></tr>
+    <tr><td>Fast</td><td>Monthly check-in, time-boxed</td><td>10 min</td><td>3 priorities + actions</td></tr>
+    <tr><td>Deep</td><td>Major Type 1/2 decision</td><td>25 min</td><td>Trade-offs + confidence</td></tr>
+    <tr><td>Board</td><td>Directors / investors</td><td>30 min</td><td>Memo + CFO gate</td></tr>
+  </table>
+  <footer class="brand-footer">
+    <span class="brand-footer-left">CEO AI Strategy Playbook</span>
+    <span class="brand-footer-right">www.promptanatomy.ceo · Page 39/43</span>
+  </footer>
+</section>
+
+<section class="page">
+  <div class="page-eyebrow"><span>Activate</span><span class="page-eyebrow-tag">Checklist</span></div>
+  <h2>Activation checklist</h2>
+  <ul class="check-list">
+    <li>Complete AI maturity diagnosis with leadership team</li>
+    <li>Run Master Fast with last month actuals — 3 priorities with owners</li>
+    <li>Fill ROI scorecard baseline; CFO signs one row</li>
+    <li>Complete cash scenarios worksheet (3 scenarios)</li>
+    <li>Run Board prompt once before next exec or board meeting</li>
+    <li>Pin strategic workflow map (page 5) for your team</li>
+    <li>Pair with Operations Playbook for daily/weekly cadence</li>
+  </ul>
   <div class="callout gap-top-sm">
     <strong>Buyer check</strong>
-    Monday: STRATEGIC Fast with real numbers. Owner: CEO (board text), CFO (finance). Success: ROI scorecard row updated monthly.
+    Success = board-ready draft or major decision table with CFO-verified numbers and CEO sign-off within 30 days.
   </div>
+  <footer class="brand-footer">
+    <span class="brand-footer-left">CEO AI Strategy Playbook</span>
+    <span class="brand-footer-right">www.promptanatomy.ceo · Page 40/43</span>
+  </footer>
+</section>
+
+<section class="page">
+  <div class="page-eyebrow"><span>Close</span><span class="page-eyebrow-tag">Disclaimer</span></div>
+  <h2>Disclaimer</h2>
+  <p class="tiny">AI outputs may be inaccurate or incomplete. You are accountable for all business, board, and investor decisions. This playbook is not legal, tax, accounting, or investment advice. Verify all numbers with your finance team; consult qualified professionals for regulated commitments.</p>
+  <p class="tiny">Do not paste confidential customer data, personal identifiers, cap tables, or unreleased material into public AI tools. Use governance-lite gates (page 25) for every external-facing document.</p>
+  <div class="cards gap-top">
+    <div class="card"><span class="card-num">1</span><h4>Strategy</h4><p class="card-body">This playbook — board, ROI, runway, governance.</p></div>
+    <div class="card"><span class="card-num">2</span><h4>Operations</h4><p class="card-body">Daily/weekly cadence, meeting agenda, decision log.</p></div>
+  </div>
+  <footer class="brand-footer">
+    <span class="brand-footer-left">CEO AI Strategy Playbook</span>
+    <span class="brand-footer-right">www.promptanatomy.ceo · Page 41/43</span>
+  </footer>
+</section>
+
+<section class="page">
+  <div class="page-eyebrow"><span>Quick Reference</span><span class="page-eyebrow-tag">Strategic Shortcuts</span></div>
+  <h2>Strategic shortcuts</h2>
+  <p class="lead">Six decisions — 2 minutes each. Paste directly; pair with full prompts for deep work.</p>
+  <div class="prompt-tip-grid">
+    <div class="prompt-tip">
+      <div class="prompt-tip-header">
+        <span class="prompt-tip-icon">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </span>
+        <span class="prompt-tip-label">Runway snapshot · 2 min</span>
+      </div>
+      <p class="prompt-tip-when"><strong>When:</strong> Pre-board or monthly close. Need a fast cash read.</p>
+      <pre class="prompt-tip-paste">Cash: $[X]. Monthly burn: $[X]. Revenue trend: [up/flat/down].
+Give me runway (months), one risk flag, and one action.
+No invented numbers.</pre>
+      <p class="prompt-tip-output">&#x2192; Output: runway estimate · one risk · one action</p>
+    </div>
+    <div class="prompt-tip">
+      <div class="prompt-tip-header">
+        <span class="prompt-tip-icon">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </span>
+        <span class="prompt-tip-label">LTV/CAC check · 2 min</span>
+      </div>
+      <p class="prompt-tip-when"><strong>When:</strong> Before pricing change or fundraise deck.</p>
+      <pre class="prompt-tip-paste">LTV: $[X]. CAC: $[X]. Payback: [mo].
+Is my LTV:CAC healthy for SaaS? Name one lever to improve it.
+Flag if data is insufficient.</pre>
+      <p class="prompt-tip-output">&#x2192; Output: ratio read · one improvement lever</p>
+    </div>
+    <div class="prompt-tip">
+      <div class="prompt-tip-header">
+        <span class="prompt-tip-icon">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </span>
+        <span class="prompt-tip-label">Top 3 risks · 2 min</span>
+      </div>
+      <p class="prompt-tip-when"><strong>When:</strong> Quarterly review or before board meeting.</p>
+      <pre class="prompt-tip-paste">Company: [type]. Top client: [% ARR]. Key dependency: [name].
+List my top 3 risks with P×I (L/M/H) and one owner each.
+Do not invent incidents.</pre>
+      <p class="prompt-tip-output">&#x2192; Output: 3 risks · P×I · owners</p>
+    </div>
+    <div class="prompt-tip">
+      <div class="prompt-tip-header">
+        <span class="prompt-tip-icon">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
+        </span>
+        <span class="prompt-tip-label">Growth lever pick · 2 min</span>
+      </div>
+      <p class="prompt-tip-when"><strong>When:</strong> After scoring matrix (p.18) — quick decision.</p>
+      <pre class="prompt-tip-paste">Top 2 levers by score: [name, score] and [name, score].
+Which one should I start this month? One-paragraph reason.
+Include one quick win (&lt;2 weeks) for each.</pre>
+      <p class="prompt-tip-output">&#x2192; Output: recommendation · reason · quick win</p>
+    </div>
+    <div class="prompt-tip">
+      <div class="prompt-tip-header">
+        <span class="prompt-tip-icon">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </span>
+        <span class="prompt-tip-label">CEO reflection · 2 min</span>
+      </div>
+      <p class="prompt-tip-when"><strong>When:</strong> End of week or quarter close.</p>
+      <pre class="prompt-tip-paste">This [week/quarter]: [2-3 key facts].
+Give me 3 facts vs 1 assumption I'm making.
+One behavior change for next period. Owner: CEO.</pre>
+      <p class="prompt-tip-output">&#x2192; Output: fact/assumption split · one behavior change</p>
+    </div>
+    <div class="prompt-tip">
+      <div class="prompt-tip-header">
+        <span class="prompt-tip-icon">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </span>
+        <span class="prompt-tip-label">Price test · 2 min</span>
+      </div>
+      <p class="prompt-tip-when"><strong>When:</strong> Before changing pricing or adding a tier.</p>
+      <pre class="prompt-tip-paste">Current price: $[X]. Segment: [ICP]. CAC: $[X]. Churn: [%].
+Is my pricing aligned with value delivered? Name one test.
+Flag if LTV data is missing.</pre>
+      <p class="prompt-tip-output">&#x2192; Output: alignment read · one pricing test to run</p>
+    </div>
+  </div>
+  <p class="muted" style="font-size:7.5pt;margin-top:3mm;">Full prompts: Master Fast p.11 · Growth p.19 · Risk p.23 · Cash p.20 · Board p.14. Operations Playbook for daily/weekly cadence.</p>
+  <footer class="brand-footer">
+    <span class="brand-footer-left">CEO AI Strategy Playbook</span>
+    <span class="brand-footer-right">www.promptanatomy.ceo · Page 42/43</span>
+  </footer>
+</section>
+
+<section class="page">
+  <div class="page-eyebrow"><span>Close</span><span class="page-eyebrow-tag">Legal</span></div>
   <h2>License and contact</h2>
-  <p>Executive license terms: see <strong>terms.html#paid-pdf-license</strong> on promptanatomy.ceo. Share within your immediate leadership team at the same company. Do not redistribute the full PDF.</p>
-  <p class="tiny">Disclaimer: Not legal or investment advice. You are accountable for decisions. info@promptanatomy.app · © 2026 Prompt Anatomy.</p>
-  <footer class="brand-footer"><span class="brand-footer-left">CEO AI Strategy Playbook</span><span class="brand-footer-right">www.promptanatomy.ceo · Page 28/28</span></footer>
+  <p><strong>Executive license:</strong> Personal, non-transferable. One seat per purchase. Share within your immediate leadership team at the same company. Do not redistribute the full PDF publicly, resell, or use for AI training. Full terms at <strong>promptanatomy.ceo/terms.html#paid-pdf-license</strong>.</p>
+  <dl class="kv gap-top">
+    <dt>Version</dt><dd>2.1 · May 2026</dd>
+    <dt>Pages</dt><dd>43</dd>
+    <dt>Copyright</dt><dd>© 2026 Prompt Anatomy. All rights reserved.</dd>
+  </dl>
+  <div class="pdf-contact-block">
+    <p class="pdf-contact-name"><strong>Prompt Anatomy</strong></p>
+    <p>1311 Park St<br>Unit #654<br>Alameda, CA 94501<br>United States</p>
+    <p>info@promptanatomy.app · www.promptanatomy.ceo</p>
+  </div>
+  <footer class="brand-footer">
+    <span class="brand-footer-left">CEO AI Strategy Playbook</span>
+    <span class="brand-footer-right">www.promptanatomy.ceo · Page 43/43</span>
+  </footer>
 </section>
 
 </body>

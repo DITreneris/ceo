@@ -9,6 +9,7 @@
   },
   "productDecision": {
     "lockedAt": "2026-05-21",
+    "contentVersion": "2.0",
     "strategicPositioning": "playbook",
     "strategicTagline": "Run AI like operations — a methodology and prompt system, not installed software",
     "launchScope": "two_pdfs_only",
@@ -17,9 +18,29 @@
       "EU regulatory compliance packs",
       "Multi-module product line before core PDFs are premium-grade"
     ],
-    "pricingRationale": {
-      "operating": "12 pages: daily/weekly CEO cadence and copy-paste prompts — entry playbook at $9.99",
-      "strategic": "28 pages: strategic, board, ROI, and decision frameworks — flagship playbook at $19.99"
+      "pricingRationale": {
+      "operating": "21 pages: weekly CEO/COO operating cadence with prompts, samples, meeting agenda, decision log, and CEO quick picks — entry playbook at $9.99",
+      "strategic": "43 pages: board-ready decision system with memo examples, ROI/runway samples, governance gates, 90-day rollout, and strategic shortcuts — flagship at $19.99"
+    },
+    "promptAuditV2": {
+      "operating": {
+        "dailyFast": "improve",
+        "dailyDeep": "rewrite",
+        "weeklyFast": "improve",
+        "weeklyDeep": "rewrite",
+        "reflection": "improve"
+      },
+      "strategic": {
+        "masterFast": "improve",
+        "masterDeep": "rewrite",
+        "masterBoard": "rewrite",
+        "unitEconomics": "improve",
+        "growthLevers": "improve",
+        "cashRunway": "improve",
+        "pricing": "improve",
+        "risk": "improve",
+        "hubEcosystem": "remove"
+      }
     }
   },
   "buyerProblems": [
@@ -94,8 +115,9 @@
     "operating": {
       "label": "CEO AI Operations Playbook",
       "role": "cadence_playbook",
-      "pages": 12,
-      "buyerPromise": "Run a repeatable daily and weekly CEO AI cadence in 10–20 minutes with copy-paste Fast and Deep prompts.",
+      "pages": 21,
+      "version": "2.1",
+      "buyerPromise": "Run a practical CEO/COO AI operating cadence in one week: daily priorities, weekly decisions, owner/deadline discipline, fact-based reflection, and CEO quick picks for 2-minute decisions.",
       "solvesProblems": [
         "random_prompting",
         "no_repeatable_workflows",
@@ -106,86 +128,33 @@
         "weak_ownership"
       ],
       "chapters": [
-        {
-          "title": "How to use this playbook",
-          "painIds": ["fragmented_knowledge", "no_repeatable_workflows"],
-          "action": "keep",
-          "notes": "Onboarding; tie to Monday-morning ritual in F4 rewrite."
-        },
-        {
-          "title": "Daily CEO ritual (10 min)",
-          "painIds": ["random_prompting", "no_repeatable_workflows"],
-          "action": "keep",
-          "notes": "Core cadence block; feeds workflow map restructure in F5."
-        },
-        {
-          "title": "Daily prompts — Fast and Deep",
-          "painIds": ["low_quality_outputs", "random_prompting"],
-          "action": "keep",
-          "notes": ""
-        },
-        {
-          "title": "Weekly CEO ritual (20 min)",
-          "painIds": ["no_repeatable_workflows", "random_prompting"],
-          "action": "keep",
-          "notes": ""
-        },
-        {
-          "title": "Weekly prompts — Fast and Deep",
-          "painIds": ["low_quality_outputs", "no_repeatable_workflows"],
-          "action": "keep",
-          "notes": ""
-        },
-        {
-          "title": "CEO reflection (weekly)",
-          "painIds": ["weak_ownership", "unclear_roi"],
-          "action": "keep",
-          "notes": ""
-        },
-        {
-          "title": "Analysis depth cheat sheet",
-          "painIds": ["low_quality_outputs", "tool_overload"],
-          "action": "keep",
-          "notes": ""
-        },
-        {
-          "title": "Economic discipline (top 5 rules)",
-          "painIds": ["unclear_roi"],
-          "action": "keep",
-          "notes": "Light ROI discipline; not full scorecard (strategic PDF)."
-        },
-        {
-          "title": "Techniques that work for CEOs",
-          "painIds": ["low_quality_outputs"],
-          "action": "keep",
-          "notes": ""
-        },
-        {
-          "title": "Troubleshooting",
-          "painIds": ["tool_overload", "low_quality_outputs"],
-          "action": "keep",
-          "notes": ""
-        },
-        {
-          "title": "Next steps and disclaimer",
-          "painIds": ["fragmented_knowledge"],
-          "action": "keep",
-          "notes": ""
-        },
-        {
-          "title": "Executive workflow map (one page)",
-          "painIds": ["no_repeatable_workflows", "fragmented_knowledge"],
-          "action": "add",
-          "notes": "F5: consolidate daily/weekly rituals into one scannable map."
-        }
+        { "title": "How to use this playbook", "painIds": ["fragmented_knowledge", "no_repeatable_workflows"], "action": "upgrade", "notes": "V2: First 7 days path." },
+        { "title": "CEO AI operating loop", "painIds": ["no_repeatable_workflows"], "action": "add", "notes": "V2: inputs → prompt → review → decide → act." },
+        { "title": "Daily CEO ritual (10 min)", "painIds": ["random_prompting", "no_repeatable_workflows"], "action": "upgrade", "notes": "V2: good vs bad input." },
+        { "title": "Daily prompts — Fast and Deep", "painIds": ["low_quality_outputs", "random_prompting"], "action": "rewrite", "notes": "V2: full prompts with quality gate." },
+        { "title": "Daily sample output", "painIds": ["low_quality_outputs"], "action": "add", "notes": "V2: completed example." },
+        { "title": "Weekly CEO ritual (20 min)", "painIds": ["no_repeatable_workflows", "random_prompting"], "action": "upgrade", "notes": "V2: meeting decisions." },
+        { "title": "Weekly prompts — Fast and Deep", "painIds": ["low_quality_outputs", "no_repeatable_workflows"], "action": "rewrite", "notes": "V2: owner/deadline table." },
+        { "title": "Weekly operating meeting agenda", "painIds": ["no_repeatable_workflows", "weak_ownership"], "action": "add", "notes": "V2: 20-min flow." },
+        { "title": "Executive workflow map", "painIds": ["no_repeatable_workflows", "fragmented_knowledge"], "action": "upgrade", "notes": "V2: owner/deadline discipline." },
+        { "title": "CEO reflection (weekly)", "painIds": ["weak_ownership", "unclear_roi"], "action": "upgrade", "notes": "V2: facts vs interpretation." },
+        { "title": "Decision log template", "painIds": ["weak_ownership"], "action": "add", "notes": "V2: follow-through." },
+        { "title": "Economic discipline (top 5 rules)", "painIds": ["unclear_roi"], "action": "upgrade", "notes": "V2: runway/cost/pipeline triggers." },
+        { "title": "Troubleshooting weak AI output", "painIds": ["tool_overload", "low_quality_outputs"], "action": "upgrade", "notes": "V2: examples + depth cheat sheet." },
+        { "title": "Techniques that work for CEOs", "painIds": ["low_quality_outputs"], "action": "keep", "notes": "" },
+        { "title": "Common mistakes", "painIds": ["low_quality_outputs"], "action": "add", "notes": "V2: refund-risk reduction." },
+        { "title": "Activation checklist", "painIds": ["fragmented_knowledge"], "action": "upgrade", "notes": "V2: replaces upsell-heavy next steps." },
+        { "title": "License and contact", "painIds": ["weak_ownership"], "action": "upgrade", "notes": "V2.1: full address block." },
+        { "title": "CEO quick picks", "painIds": ["random_prompting", "no_repeatable_workflows"], "action": "add", "notes": "V2.1: 5 micro-prompts for 2-min decisions." }
       ]
     },
     "strategic": {
       "label": "CEO AI Strategy Playbook",
       "labelLegacy": "CEO Executive Strategic AI Playbook",
       "role": "flagship_playbook",
-      "pages": 28,
-      "buyerPromise": "Decision frameworks, ROI logic, and governance-ready prompts for board-level AI workflows.",
+      "pages": 43,
+      "version": "2.1",
+      "buyerPromise": "Turn AI from random prompting into a board-ready executive decision system: strategy prompts, finance checks, risk review, ownership gates, 30/90-day implementation, and strategic shortcuts for 2-minute decisions.",
       "solvesProblems": [
         "poor_decision_support",
         "unclear_roi",
@@ -196,166 +165,78 @@
         "tool_overload"
       ],
       "chapters": [
-        {
-          "title": "Manifesto: Run AI like operations",
-          "painIds": ["tool_overload", "no_repeatable_workflows"],
-          "action": "keep",
-          "notes": "Positioning; de-emphasize 'OS' as software in F4 copy."
-        },
-        {
-          "title": "6-block Prompt Anatomy methodology",
-          "painIds": ["low_quality_outputs", "fragmented_knowledge"],
-          "action": "keep",
-          "notes": ""
-        },
-        {
-          "title": "Structured prompt anatomy",
-          "painIds": ["low_quality_outputs"],
-          "action": "keep",
-          "notes": ""
-        },
-        {
-          "title": "Strategic mode field guide",
-          "painIds": ["poor_decision_support"],
-          "action": "keep",
-          "notes": ""
-        },
-        {
-          "title": "Strategic questions that work",
-          "painIds": ["poor_decision_support", "low_quality_outputs"],
-          "action": "keep",
-          "notes": ""
-        },
-        {
-          "title": "Master prompt — Fast, Deep, Board",
-          "painIds": ["poor_decision_support", "low_quality_outputs"],
-          "action": "keep",
-          "notes": ""
-        },
-        {
-          "title": "Board workflow and risk matrix",
-          "painIds": ["poor_decision_support"],
-          "action": "keep",
-          "notes": ""
-        },
-        {
-          "title": "Unit economics and growth levers",
-          "painIds": ["unclear_roi"],
-          "action": "keep",
-          "notes": "Pair with ROI scorecard add in F5."
-        },
-        {
-          "title": "Cash runway and scenarios",
-          "painIds": ["unclear_roi"],
-          "action": "keep",
-          "notes": ""
-        },
-        {
-          "title": "Pricing and risk management",
-          "painIds": ["unclear_roi", "poor_decision_support"],
-          "action": "keep",
-          "notes": ""
-        },
-        {
-          "title": "Decision architecture (Type 1 / Type 2)",
-          "painIds": ["poor_decision_support"],
-          "action": "keep",
-          "notes": "Decision model anchor."
-        },
-        {
-          "title": "Data hygiene and governance",
-          "painIds": ["weak_ownership"],
-          "action": "strengthen",
-          "notes": "F5: expand into ownership model subsection."
-        },
-        {
-          "title": "90-day CEO implementation plan",
-          "painIds": ["no_repeatable_workflows"],
-          "action": "keep",
-          "notes": "Keep; add 30-day slice as separate section."
-        },
-        {
-          "title": "AI Operations Center three modes",
-          "painIds": ["tool_overload", "fragmented_knowledge"],
-          "action": "keep",
-          "notes": "Bridge to free tool; trim promo tone in F4."
-        },
-        {
-          "title": "Prompt Anatomy Hub ecosystem",
-          "painIds": ["tool_overload"],
-          "action": "cut",
-          "notes": "Cross-promo; weak CEO pain fit. Remove in F5 or fold one line into license page."
-        },
-        {
-          "title": "Printable worksheets",
-          "painIds": ["fragmented_knowledge", "low_quality_outputs"],
-          "action": "keep",
-          "notes": ""
-        },
-        {
-          "title": "Executive license and contact",
-          "painIds": ["weak_ownership"],
-          "action": "keep",
-          "notes": ""
-        },
-        {
-          "title": "Executive summary (one page)",
-          "painIds": ["poor_decision_support", "unclear_roi"],
-          "action": "add",
-          "notes": "F5: front matter after cover."
-        },
-        {
-          "title": "AI maturity diagnosis (leadership team)",
-          "painIds": ["unclear_roi", "weak_ownership"],
-          "action": "add",
-          "notes": "F5: maturity model worksheet."
-        },
-        {
-          "title": "Strategic workflow map",
-          "painIds": ["no_repeatable_workflows", "poor_decision_support"],
-          "action": "add",
-          "notes": "F5: restructure manifesto + mode guide into one map."
-        },
-        {
-          "title": "ROI scorecard (executive)",
-          "painIds": ["unclear_roi"],
-          "action": "add",
-          "notes": "F5: complements unit economics chapter."
-        },
-        {
-          "title": "30-day executive action plan",
-          "painIds": ["no_repeatable_workflows"],
-          "action": "add",
-          "notes": "F5: complement to 90-day plan; Monday-morning focus."
-        }
+        { "title": "Executive summary", "painIds": ["poor_decision_support", "unclear_roi"], "action": "upgrade", "notes": "V2: asset-specific deliverables." },
+        { "title": "First 7 days with this PDF", "painIds": ["no_repeatable_workflows"], "action": "add", "notes": "V2: activation path." },
+        { "title": "AI maturity diagnosis", "painIds": ["unclear_roi", "weak_ownership"], "action": "upgrade", "notes": "V2: score bands." },
+        { "title": "Strategic workflow map", "painIds": ["no_repeatable_workflows", "poor_decision_support"], "action": "upgrade", "notes": "V2: board/ops/strategic flows." },
+        { "title": "Run AI like operations", "painIds": ["tool_overload"], "action": "keep", "notes": "Type 1/2 framing." },
+        { "title": "Prompt Anatomy 6-block methodology", "painIds": ["low_quality_outputs"], "action": "compress", "notes": "V2: shorter." },
+        { "title": "Structured prompt anatomy", "painIds": ["low_quality_outputs"], "action": "compress", "notes": "" },
+        { "title": "Strategic mode field guide", "painIds": ["poor_decision_support"], "action": "upgrade", "notes": "Required vs optional inputs." },
+        { "title": "Strategic questions bank", "painIds": ["poor_decision_support"], "action": "rewrite", "notes": "V2: categorized bank." },
+        { "title": "Master prompt — Fast", "painIds": ["poor_decision_support"], "action": "improve", "notes": "V2: quality gate." },
+        { "title": "Master prompt — Deep", "painIds": ["poor_decision_support"], "action": "rewrite", "notes": "V2: full prompt." },
+        { "title": "Master prompt — Board", "painIds": ["poor_decision_support"], "action": "rewrite", "notes": "V2: CFO review gate." },
+        { "title": "Board workflow and checklist", "painIds": ["poor_decision_support"], "action": "upgrade", "notes": "" },
+        { "title": "Board memo example (completed)", "painIds": ["poor_decision_support"], "action": "add", "notes": "V2: high perceived value." },
+        { "title": "Unit economics", "painIds": ["unclear_roi"], "action": "upgrade", "notes": "" },
+        { "title": "ROI scorecard (executive)", "painIds": ["unclear_roi"], "action": "upgrade", "notes": "V2: completed sample." },
+        { "title": "Growth levers matrix", "painIds": ["unclear_roi"], "action": "upgrade", "notes": "V2: impact/confidence scoring." },
+        { "title": "Cash runway", "painIds": ["unclear_roi"], "action": "upgrade", "notes": "" },
+        { "title": "Cash scenarios (completed example)", "painIds": ["unclear_roi"], "action": "upgrade", "notes": "" },
+        { "title": "Pricing strategy", "painIds": ["unclear_roi"], "action": "upgrade", "notes": "" },
+        { "title": "Risk management matrix", "painIds": ["poor_decision_support"], "action": "upgrade", "notes": "P×I + owners." },
+        { "title": "Decision architecture", "painIds": ["poor_decision_support"], "action": "upgrade", "notes": "Automate/Assist/Avoid." },
+        { "title": "Governance-lite ownership", "painIds": ["weak_ownership"], "action": "upgrade", "notes": "Approval gates." },
+        { "title": "AI delegation matrix", "painIds": ["weak_ownership"], "action": "add", "notes": "V2: CEO/COO/CFO/leads." },
+        { "title": "30-day executive action plan", "painIds": ["no_repeatable_workflows"], "action": "upgrade", "notes": "Weekly deliverables." },
+        { "title": "90-day implementation (phases 1–3)", "painIds": ["no_repeatable_workflows"], "action": "rewrite", "notes": "V2: gates + metrics." },
+        { "title": "Function prompts — CEO", "painIds": ["poor_decision_support"], "action": "add", "notes": "V2: function library." },
+        { "title": "Function prompts — COO", "painIds": ["no_repeatable_workflows"], "action": "add", "notes": "" },
+        { "title": "Function prompts — CFO", "painIds": ["unclear_roi"], "action": "add", "notes": "" },
+        { "title": "Function prompts — team leads", "painIds": ["weak_ownership"], "action": "add", "notes": "" },
+        { "title": "AI Operations Center three modes", "painIds": ["tool_overload"], "action": "keep", "notes": "Bridge to Operations Playbook." },
+        { "title": "Printable worksheets", "painIds": ["fragmented_knowledge"], "action": "upgrade", "notes": "Filled samples." },
+        { "title": "Executive decision review template", "painIds": ["poor_decision_support"], "action": "add", "notes": "V2." },
+        { "title": "Common mistakes", "painIds": ["low_quality_outputs"], "action": "add", "notes": "V2." },
+        { "title": "Activation checklist", "painIds": ["fragmented_knowledge"], "action": "add", "notes": "" },
+        { "title": "License and contact", "painIds": ["weak_ownership"], "action": "upgrade", "notes": "V2.1: full address block." },
+        { "title": "Strategic shortcuts", "painIds": ["random_prompting", "poor_decision_support"], "action": "add", "notes": "V2.1: 6 micro-prompts for 2-min strategic decisions." }
       ]
     }
   },
   "productBlueprint": {
     "flagship": {
       "productId": "strategic",
-      "intent": "Paid executive strategic playbook—not a prompt export or software OS.",
+      "intent": "Paid executive strategic playbook—board-ready decision system, not software OS.",
       "sections": [
-        { "id": "cover_promise", "status": "keep", "phase": "F4", "notes": "Refresh promise copy; remove OS over-promise." },
-        { "id": "executive_summary", "status": "add", "phase": "F5", "notes": "One page after cover." },
-        { "id": "diagnosis_maturity", "status": "add", "phase": "F5", "notes": "Leadership-team maturity worksheet." },
-        { "id": "workflow_map", "status": "restructure", "phase": "F5", "notes": "Consolidate rituals, modes, and strategic flow." },
-        { "id": "ownership_model", "status": "strengthen", "phase": "F5", "notes": "Expand governance-lite from data hygiene chapter." },
-        { "id": "implementation_roadmap", "status": "keep", "phase": "F4", "notes": "90-day plan stays; add 30-day slice." },
-        { "id": "roi_logic", "status": "keep", "phase": "F4", "notes": "Unit economics + new ROI scorecard page." },
-        { "id": "templates_checklists", "status": "keep", "phase": "F4", "notes": "Worksheets and board matrix." },
-        { "id": "risks", "status": "keep", "phase": "F4", "notes": "Risk matrix and pricing risk." },
-        { "id": "action_plan_30d", "status": "add", "phase": "F5", "notes": "Distinct from 90-day plan." }
+        { "id": "cover_promise", "status": "keep", "phase": "v2" },
+        { "id": "executive_summary", "status": "upgrade", "phase": "v2" },
+        { "id": "first_7_days", "status": "add", "phase": "v2" },
+        { "id": "diagnosis_maturity", "status": "upgrade", "phase": "v2" },
+        { "id": "workflow_map", "status": "upgrade", "phase": "v2" },
+        { "id": "board_memo_example", "status": "add", "phase": "v2" },
+        { "id": "ownership_model", "status": "upgrade", "phase": "v2" },
+        { "id": "delegation_matrix", "status": "add", "phase": "v2" },
+        { "id": "implementation_roadmap", "status": "rewrite", "phase": "v2" },
+        { "id": "roi_logic", "status": "upgrade", "phase": "v2" },
+        { "id": "function_prompt_library", "status": "add", "phase": "v2" },
+        { "id": "templates_checklists", "status": "upgrade", "phase": "v2" },
+        { "id": "risks", "status": "upgrade", "phase": "v2" }
       ]
     },
     "operating": {
       "productId": "operating",
-      "intent": "Cadence playbook only—no flagship OS narrative.",
+      "intent": "Weekly CEO/COO operating cadence with tools—not a prompt teaser.",
       "sections": [
-        { "id": "cadence_rituals", "status": "keep", "phase": "F4" },
-        { "id": "prompts_fast_deep", "status": "keep", "phase": "F4" },
-        { "id": "workflow_map", "status": "add", "phase": "F5", "notes": "One-page daily/weekly map." },
-        { "id": "economic_discipline", "status": "keep", "phase": "F4", "notes": "Light ROI; not full scorecard." }
+        { "id": "operating_loop", "status": "add", "phase": "v2" },
+        { "id": "cadence_rituals", "status": "upgrade", "phase": "v2" },
+        { "id": "prompts_fast_deep", "status": "rewrite", "phase": "v2" },
+        { "id": "daily_sample_output", "status": "add", "phase": "v2" },
+        { "id": "meeting_agenda", "status": "add", "phase": "v2" },
+        { "id": "decision_log", "status": "add", "phase": "v2" },
+        { "id": "workflow_map", "status": "upgrade", "phase": "v2" },
+        { "id": "economic_discipline", "status": "upgrade", "phase": "v2" }
       ]
     },
     "deferredModules": [
@@ -388,8 +269,8 @@
       "strategic": "https://buy.stripe.com/YOUR_STRATEGIC_PDF_LINK"
     },
     "pricing": {
-      "operating": { "now": "$9.99", "was": "$19.99", "pages": 12 },
-      "strategic": { "now": "$19.99", "was": "$39.99", "pages": 28 }
+      "operating": { "now": "$9.99", "was": "$19.99", "pages": 21 },
+      "strategic": { "now": "$19.99", "was": "$39.99", "pages": 43 }
     },
     "compareStrip": {
       "pdLabel": "Typical executive coach session",

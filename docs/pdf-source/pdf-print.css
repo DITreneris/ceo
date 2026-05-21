@@ -27,7 +27,7 @@ body {
 .page {
   width: 215.9mm;
   height: 279.4mm;
-  padding: 14mm 16mm 18mm 16mm;
+  padding: 14mm 16mm 22mm 16mm;
   position: relative;
   break-after: page;
   page-break-after: always;
@@ -360,6 +360,148 @@ tr:nth-child(even) td { background: #F6F7FB; }
 }
 .kv dt { font-weight: 700; color: #4A148C; }
 .kv dd { margin: 0; }
+
+.example-block {
+  background: #F6F7FB;
+  border: 1px solid #E7EAF2;
+  border-left: 3px solid #FFB300;
+  padding: 3mm 4mm;
+  margin: 0 0 3mm 0;
+  break-inside: avoid;
+}
+.example-block h4 { margin-top: 0; font-size: 10pt; }
+
+.bad-good-compare {
+  display: flex;
+  gap: 3mm;
+  margin: 0 0 3mm 0;
+  break-inside: avoid;
+}
+.bad-good-compare .compare-col {
+  flex: 1;
+  padding: 2.5mm 3mm;
+  border-radius: 1.5mm;
+  font-size: 8.5pt;
+}
+.compare-bad {
+  background: #FFF1EC;
+  border: 1px solid #F5C4B8;
+}
+.compare-good {
+  background: #F0FFF4;
+  border: 1px solid #B8E6C8;
+}
+.bad-good-compare strong { display: block; margin-bottom: 1mm; color: #4A148C; }
+
+.callout-decision {
+  background: #EDE7F6;
+  border-left: 3px solid #4A148C;
+  padding: 2.5mm 4mm;
+  margin: 0 0 3mm 0;
+  font-size: 9pt;
+}
+.callout-decision strong { color: #4A148C; }
+
+.review-gate {
+  border: 1px solid #7C43BD;
+  background: #FAF8FC;
+  padding: 2.5mm 3mm;
+  margin: 0 0 2.5mm 0;
+  font-size: 8.5pt;
+}
+.review-gate strong { color: #4A148C; }
+
+.scorecard-filled td {
+  background: #FFF8E6;
+}
+
+/* --- Compact prompt block for borderline-length single-prompt pages --- */
+.prompt-block--compact {
+  font-size: 7pt;
+  line-height: 1.32;
+}
+
+/* --- CEO quick pick / Strategic shortcut tip block --- */
+.prompt-tip {
+  background: #FFF8E6;
+  border: 1px solid #FFD54F;
+  border-left: 3px solid #FFB300;
+  border-radius: 1.5mm;
+  padding: 2.5mm 3.5mm;
+  margin: 0 0 2.5mm 0;
+  break-inside: avoid;
+}
+.prompt-tip-header {
+  display: flex;
+  align-items: center;
+  gap: 2mm;
+  margin-bottom: 1.5mm;
+}
+.prompt-tip-icon {
+  flex: 0 0 auto;
+  color: #FFB300;
+  font-size: 10pt;
+  line-height: 1;
+}
+.prompt-tip-label {
+  font-size: 7.5pt;
+  font-weight: 700;
+  color: #4A148C;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+.prompt-tip-when {
+  font-size: 7.5pt;
+  color: #6B7280;
+  margin: 0 0 1.5mm 0;
+}
+.prompt-tip-when strong { color: #4A148C; }
+.prompt-tip-paste {
+  background: #FAF0C8;
+  border-radius: 1mm;
+  padding: 1.5mm 2mm;
+  font-family: 'JetBrains Mono', Consolas, 'Courier New', monospace;
+  font-size: 7pt;
+  line-height: 1.4;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  margin: 0 0 1.5mm 0;
+}
+.prompt-tip-output {
+  font-size: 7.5pt;
+  color: #4A148C;
+  font-weight: 600;
+  margin: 0;
+}
+.prompt-tip-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5mm;
+  margin: 0 0 3mm 0;
+}
+.prompt-tip-grid .prompt-tip {
+  margin: 0;
+}
+
+/* --- PDF contact block (license/legal pages) --- */
+.pdf-contact-block {
+  background: #F6F7FB;
+  border: 1px solid #E7EAF2;
+  border-left: 3px solid #7C43BD;
+  padding: 3mm 4mm;
+  margin: 3mm 0 0 0;
+  font-size: 8.5pt;
+  line-height: 1.6;
+  break-inside: avoid;
+}
+.pdf-contact-block .pdf-contact-name {
+  margin: 0 0 0.5mm 0;
+  font-size: 9pt;
+}
+.pdf-contact-block p {
+  margin: 0 0 1mm 0;
+  color: #4A148C;
+}
 
 @media screen {
   body:not(.pdf-asset-export) { background: #ECEEF2; padding: 8mm 0; }

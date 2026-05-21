@@ -10,6 +10,7 @@ Vienas įėjimo taškas į aktyvią dokumentaciją.
 - [README.md#kalbų-architektūra-techninė--phase-2](../README.md#kalbų-architektūra-techninė--phase-2) - path-based locale, build, deploy.
 - [README.md#golden-standard-ui](../README.md#golden-standard-ui) - aktyvus UI kokybės standartas.
 - [todo.md](../todo.md) - trumpas vykdomų darbų sąrašas.
+- [pdf-content-v02.md](pdf-content-v02.md) - PDF turinio V2 blueprint (Operations + Strategy).
 - [STOREFRONT_AUDIT.md](STOREFRONT_AUDIT.md) - storefront vs locked SOT (resolved).
 - [LAUNCH_CHECKLIST.md](LAUNCH_CHECKLIST.md) - Stripe/Vercel/deploy gate (Phases 15–17).
 - [CHANGELOG.md](../CHANGELOG.md) - pakeitimų istorija (SemVer).

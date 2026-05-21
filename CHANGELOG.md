@@ -2,6 +2,66 @@
 
 Formatas pagal [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), versijavimas – [Semantic Versioning](https://semver.org/).
 
+## [2.1.0] - 2026-05-21
+
+### Added
+
+- **CEO quick picks page** (Operations p.21) — 5 inline SVG micro-prompts (Monday morning, Cash red flag, Priority cap, Friday reflection, Escalate to Strategy) with `.prompt-tip` / `.prompt-tip-grid` layout. Light `#FFF8E6` background, gold border, 2-min copy-paste format.
+- **Strategic shortcuts page** (Strategy p.42) — 6 inline SVG micro-prompts derived from `LIBRARY_PROMPTS` (Runway snapshot, LTV/CAC check, Top 3 risks, Growth lever pick, CEO reflection, Price test). Same `.prompt-tip` visual system.
+- **Growth levers execution page** (Strategy p.19, split from old p.18) — prompt-only page after the scoring matrix.
+- **Risk matrix worksheet page** (Strategy p.24, split from old p.22) — filled sample table with early-warning callout.
+- **PDF contact blocks** — full `Prompt Anatomy · 1311 Park St · Unit #654 · Alameda, CA 94501` address + `info@promptanatomy.app` on license pages of both PDFs (ops p.20, strategy p.43).
+- **CSS additions** — `.prompt-tip`, `.prompt-tip-grid`, `.prompt-tip-header`, `.prompt-tip-icon`, `.prompt-tip-label`, `.prompt-tip-when`, `.prompt-tip-paste`, `.prompt-tip-output`, `.prompt-block--compact`, `.pdf-contact-block` in `pdf-print.css`.
+
+### Changed
+
+- **Layout fix — Operations** — Daily prompt page (was p.5) split into p.5 (Fast) and p.6 (Deep); Weekly prompt page (was p.8) split into p.9 (Fast) and p.10 (Deep). Eliminates footer overlap on both pages.
+- **Layout fix — Strategy** — Growth levers (was p.18) split into p.18 (matrix) + p.19 (prompt); Risk management (was p.22) split into p.23 (prompt) + p.24 (worksheet).
+- **Page counts** — Operations: 18 → **21**; Strategy: 40 → **43**.
+- **Footer safe zone** — `pdf-print.css` `.page` padding-bottom: 18mm → **22mm** (prevents content overflow above absolute footer).
+- **`config/sot.json`** — `pdfGuides.operating.pages` 18→21, `strategic.pages` 40→43, `version` 2.0→2.1, `buyerPromise` updated, new `chapters` for quick picks and strategic shortcuts; `commerce.pricing.pages` updated.
+- **`scripts/export-pdfs.js`** — `expectedPages` 18→21 and 40→43.
+- **`package.json`** — version `2.1.0`.
+- **Preview assets** — `assets/pdf-covers/*.png` regenerated via `npm run pdf:assets`.
+- **Storefront `index.html`** — lead, specs, and TOC counts updated to 21/43; quick picks and strategic shortcuts mentioned in specs.
+- **`todo.md`** — Phase 17b added: canonical contact consistency checklist.
+- **`docs/pdf-source/operating-cadence.html`** — "Length" 18→21, page h2 headings split (Daily Fast / Daily Deep / Weekly Fast / Weekly Deep), License and contact page upgraded with full postal address.
+- **`docs/pdf-source/strategic-os.html`** — "Length" 40→43, all internal page cross-references updated, License and contact page upgraded with full postal address.
+
+### Fixed
+
+- Content overflow on Operations pages 5 and 8 (two large `pre` blocks per page caused footer text overlap — resolved by page split).
+- Content overflow risk on Strategy pages 18 and 22 (matrix + prompt combined — resolved by split).
+- Missing mailing address in both PDF license pages (was email-only; now full postal block).
+
+---
+
+## [2.0.0] - 2026-05-21
+
+### Added
+
+- **PDF Content V2** — Operations playbook expanded to **18 pages** (operating loop, First 7 days, daily sample output, weekly meeting agenda, decision log, full prompts with quality gates). Strategy playbook expanded to **40 pages** (First 7 days, board memo example, ROI/cash completed samples, delegation matrix, function prompt library, 90-day phases, decision review template). Blueprint: [`docs/pdf-content-v02.md`](docs/pdf-content-v02.md).
+- **PDF print blocks** — `.example-block`, `.bad-good-compare`, `.callout-decision`, `.review-gate`, `.scorecard-filled` in [`docs/pdf-source/pdf-print.css`](docs/pdf-source/pdf-print.css).
+
+### Changed
+
+- **`config/sot.json`** — `pdfGuides` pages/promises/chapters, `commerce.pricing.pages`, `productDecision` v2 rationale and `promptAuditV2`.
+- **PDF sources** — [`docs/pdf-source/operating-cadence.html`](docs/pdf-source/operating-cadence.html), [`docs/pdf-source/strategic-os.html`](docs/pdf-source/strategic-os.html) (Version 2.0 in metadata).
+- **Storefront** — `index.html` / `en/` lead, specs, buyer promises aligned with V2 deliverables (18-page / 40-page).
+- **`scripts/export-pdfs.js`** — expected page counts 18 / 40.
+- **`package.json`** — version `2.0.0`.
+- **Docs** — [`docs/STYLEGUIDE.md`](docs/STYLEGUIDE.md), [`gold_legacy_standard.md`](gold_legacy_standard.md) page counts 18 / 40.
+
+### How to view PDFs locally
+
+| What | Path | Command |
+|------|------|---------|
+| **Exported PDFs (buyer files)** | `api/_private/pdfs/CEO_Operations_Playbook.pdf` (18p), `api/_private/pdfs/CEO_Strategic_AI_OS.pdf` (40p) | `npm run pdf:export` |
+| **HTML source (browser preview)** | `docs/pdf-source/operating-cadence.html`, `docs/pdf-source/strategic-os.html` | Open file in Chrome/Edge → Print preview, or serve repo and open URL |
+| **Storefront preview PNGs** | `assets/pdf-covers/operating.png`, `strategic.png`, `*-p2.png` … `*-p4.png` | `npm run pdf:preview-images` or full `npm run pdf:assets` |
+
+Note: `api/_private/pdfs/*.pdf` is **gitignored** — PDFs exist on disk after export but are not committed. Production buyers get files via Stripe fulfillment (`/api/download`) or Blob URLs after `npm run pdf:upload-blob`.
+
 ## [Unreleased]
 
 ### Fixed

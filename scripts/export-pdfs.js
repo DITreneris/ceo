@@ -14,13 +14,13 @@ const ROOT = path.resolve(__dirname, '..');
 const SOURCES = [
   {
     label: 'Operating',
-    expectedPages: 12,
+    expectedPages: 21,
     htmlPath: path.join(ROOT, 'docs', 'pdf-source', 'operating-cadence.html'),
     outPath: path.join(ROOT, 'api', '_private', 'pdfs', 'CEO_Operations_Playbook.pdf')
   },
   {
     label: 'Strategic',
-    expectedPages: 28,
+    expectedPages: 43,
     htmlPath: path.join(ROOT, 'docs', 'pdf-source', 'strategic-os.html'),
     outPath: path.join(ROOT, 'api', '_private', 'pdfs', 'CEO_Strategic_AI_OS.pdf')
   }

@@ -207,6 +207,15 @@
 
 **P0 dependency:** All Phase 15 items must be green first (live Stripe URLs + env + test purchase).
 
+## Phase 17b — Canonical Contact Consistency
+
+- [ ] **Canonical business contact — verify all match:**
+  - Prompt Anatomy · 1311 Park St · Unit #654 · Alameda, CA 94501 · info@promptanatomy.app
+  - Sources: `config/sot.json#legal.address` (SOT), `index.html #footerAddress`, `en/index.html #footerAddress`, `docs/pdf-source/operating-cadence.html` p.20 contact block, `docs/pdf-source/strategic-os.html` p.43 contact block.
+  - Verify all match after `npm run pdf:export`.
+- [ ] **PDF version labels:** operating-cadence.html "Length" = 21 pages · Version 2.1; strategic-os.html = 43 pages · Version 2.1.
+- [ ] **Quick picks QA:** CEO quick picks (p.21 ops) and Strategic shortcuts (p.42 strategy) render correctly in exported PDFs — no overflow, icons visible, copy-paste works.
+
 ## Phase 18 — Post-Launch Iteration
 
 - [ ] Review sales, refunds, support emails, and buyer questions.

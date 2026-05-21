@@ -88,8 +88,8 @@ Pipeline invariants:
 
 Du paid PDFs:
 
-- **CEO AI Operations Playbook** — 12 pages, $9.99 (entry).
-- **CEO AI Strategy Playbook** — 28 pages, $19.99 (flagship).
+- **CEO AI Operations Playbook** — 18 pages, $9.99 (entry).
+- **CEO AI Strategy Playbook** — 40 pages, $19.99 (flagship).
 
 Commerce invariants:
 
