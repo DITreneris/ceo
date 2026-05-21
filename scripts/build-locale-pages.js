@@ -1,7 +1,8 @@
 /**
  * Phase 2 build: generate lt/index.html and en/index.html from root index.html.
- * Outputs full app HTML (no redirect) with locale-specific lang, title, meta, canonical, hreflang.
- * Asset paths are adjusted for subfolder (../style.css, ../generator.js, etc.).
+ * SOT (2026-05): product development is EN-only (USA). Root index.html = EN template.
+ * lt/ is generated for hreflang + regression tests only — do not extend LT copy here.
+ * en/ is the canonical locale for all content changes.
  * Usage: node scripts/build-locale-pages.js
  * Optional: BASE_PATH=/repo-name node scripts/build-locale-pages.js for GitHub Pages project site.
  */
@@ -25,13 +26,15 @@ const LT_SOCIAL = {
 const LOCALE_META = {
   lt: {
     lang: 'lt',
+    path: 'lt',
     title: 'DI Operacinis Centras – TOP vadovams CEO / COO',
-    description: 'DI Operacinis Centras: LT ir EN versijos CEO/COO savaitės prioritetų analizei.'
+    description: 'DI Operacinis Centras: legacy Lithuanian regression page for CEO/COO operations prompt testing.'
   },
   en: {
-    lang: 'en',
+    lang: 'en-US',
+    path: 'en',
     title: 'Weekly Operations Priorities Generator for CEOs & COOs | AI Operations Center',
-    description: 'Turn KPIs into weekly priorities in under 5 minutes. Generate a copy-ready operations review prompt for ChatGPT or Claude.'
+    description: 'Get clear weekly priorities in 5 minutes with CEO/COO-ready AI prompts for US executive operators.'
   }
 };
 
@@ -52,7 +55,7 @@ function buildLocaleHtml(locale) {
   );
 
   // 4. canonical (ensure one; replace or add)
-  const canonical = SITE_URL + BASE_PATH + '/' + meta.lang + '/';
+  const canonical = SITE_URL + BASE_PATH + '/' + meta.path + '/';
   if (/<link\s+rel="canonical"/.test(html)) {
     html = html.replace(/<link\s+rel="canonical"\s+href="[^"]*"\s*\/?>\s*/i, '');
   }
@@ -60,17 +63,18 @@ function buildLocaleHtml(locale) {
     /(<meta\s+name="description"[^>]+>\s*)/,
     '$1\n    <link rel="canonical" href="' + canonical + '">\n    '
   );
+  if (locale === 'lt') {
+    html = html.replace(
+      /(<link\s+rel="canonical"[^>]+>\s*)/,
+      '$1\n    <meta name="robots" content="noindex,follow">\n    '
+    );
+  }
 
-  // 5. hreflang – point to absolute path (with optional base)
-  const hrefLt = SITE_URL + BASE_PATH + '/lt/';
+  // 5. hreflang – EN-US is the only public locale; /lt/ remains a noindex regression path.
   const hrefEn = SITE_URL + BASE_PATH + '/en/';
   html = html.replace(
-    /<link\s+rel="alternate"\s+hreflang="lt"\s+href="[^"]*"\s*\/?>/,
-    '<link rel="alternate" hreflang="lt" href="' + hrefLt + '">'
-  );
-  html = html.replace(
-    /<link\s+rel="alternate"\s+hreflang="en"\s+href="[^"]*"\s*\/?>/,
-    '<link rel="alternate" hreflang="en" href="' + hrefEn + '">'
+    /<link\s+rel="alternate"\s+hreflang="en(?:-US)?"\s+href="[^"]*"\s*\/?>/,
+    '<link rel="alternate" hreflang="en-US" href="' + hrefEn + '">'
   );
   html = html.replace(
     /<link\s+rel="alternate"\s+hreflang="x-default"\s+href="[^"]*"\s*\/?>/,
@@ -78,7 +82,7 @@ function buildLocaleHtml(locale) {
   );
 
   // 5b. Open Graph: locale-aware og:url + og:locale swap. Image stays EN (single universal asset).
-  var ogUrl = SITE_URL + BASE_PATH + '/' + meta.lang + '/';
+  var ogUrl = SITE_URL + BASE_PATH + '/' + meta.path + '/';
   html = html.replace(
     /<meta\s+property="og:url"\s+content="[^"]*"\s*\/?>/,
     '<meta property="og:url" content="' + ogUrl + '">'
@@ -117,7 +121,10 @@ function buildLocaleHtml(locale) {
   html = html.replace(/\bsrc="vendor\/lucide\.min\.js"/, 'src="' + base + '/vendor/lucide.min.js"');
   html = html.replace(/\bsrc="generator\.js"/, 'src="' + base + '/generator.js"');
   html = html.replace(/\bsrc="copy\.js"/, 'src="' + base + '/copy.js"');
+  html = html.replace(/\bsrc="commerce\.js"/, 'src="' + base + '/commerce.js"');
   html = html.replace(/\bhref="privatumas\.html"/g, 'href="' + base + '/privatumas.html"');
+  html = html.replace(/\bhref="terms\.html"/g, 'href="' + base + '/terms.html"');
+  html = html.replace(/\bhref="privacy\.html"/g, 'href="' + base + '/privacy.html"');
 
   // 7. For lt: translate static HTML for crawlers/first paint (source is EN-first)
   if (locale === 'lt') {

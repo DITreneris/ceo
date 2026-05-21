@@ -18,13 +18,49 @@ npx serve . -l 3000
 3. Nukopijuok sugeneruotą promptą.
 4. Įklijuok į pasirinktą DI įrankį.
 
-## Kalbų architektūra (LT/EN) — Phase 2
+## Kalbos ir lokalizacija (SOT)
 
-- **Path-based locale:** `/lt/` ir `/en/` yra tikri statiniai puslapiai (pilnas app HTML), be client-side redirect. Locale sprendžiamas pirmiausia iš `pathname`, paskui iš query, `localStorage` ir naršyklės kalbos.
-- **Vienas šaltinis, build:** root `index.html` yra šablonas (EN-default); `npm run build` generuoja `lt/index.html` ir `en/index.html` su teisingais `lang`, title, meta, canonical, hreflang ir asset keliais. Prieš deploy paleisk `npm run build` (arba CI step).
-- **Kalbos perjungiklis:** iš `/lt/` perjungus į EN atidaro `/en/` (ir atvirkščiai) su išsaugotu `mode`, `depth` ir hash.
-- **Root:** `/` ir `index.html?lang=…` lieka kaip alternatyvus įėjimas (query/localStorage/navigator).
-- Dinaminis turinys (`MODES`, `DEPTH_LEVELS`, `LIBRARY_PROMPTS`, `RULES`) valdomas viename šaltinyje `generator.js`.
+**Fokusas:** vystymas **tik EN**; rinka ir copy – **USA** (US English, USD, `en-US` datos, JAV trust/FAQ tonas).
+
+| Kelias | Paskirtis |
+|--------|-----------|
+| `/en/`, root `index.html` | **Aktyvus produktas** – čia daromi visi pakeitimai. |
+| `/lt/` | **Legacy/regression** – tiesioginis testavimo kelias, ne viešas kalbos pasirinkimas. LT tekstų nekeisti, nebent kritinis bendras bugfix. |
+
+Techninė architektūra (Phase 2) lieka:
+
+- **Path-based locale:** `/lt/` ir `/en/` – statiniai puslapiai po `npm run build`.
+- **Šablonas:** root `index.html` = EN-US; build generuoja `lt/index.html` ir `en/index.html` (meta, canonical, asset keliai).
+- **Viešas UI:** kalbos perjungiklio nėra; `/lt/` pasiekiamas tik tiesioginiu legacy/test URL.
+- Dinaminis turinys – `generator.js` (EN šakos vystomos; LT šakos – suderinamumui, ne produktui).
+
+Pilna agentų taisyklė: [AGENTS.md](AGENTS.md#kalbos-ir-lokalizacija-sot).
+
+## Kalbų architektūra (techninė) — Phase 2
+
+- Locale: `pathname` → query → `localStorage` → naršyklės kalba.
+- Prieš deploy: `npm run build`.
+
+## Product direction (locked, EN-US)
+
+Decisions live in [`config/sot.json`](config/sot.json):
+
+- **Operating PDF** — cadence playbook: repeatable daily/weekly CEO AI rituals (`pdfGuides.operating.buyerPromise`).
+- **Strategic PDF** — flagship **CEO AI Strategy Playbook** (not a software “OS”): board-ready prompts, ROI, and governance-ready ownership (`productDecision.strategicPositioning`: `playbook`).
+- **Launch scope** — two PDFs only; future modules listed in `productBlueprint.deferredModules`.
+- **Storefront alignment** — Phase 8; gap list: [docs/STOREFRONT_AUDIT.md](docs/STOREFRONT_AUDIT.md).
+
+## Paid PDF guides (EN-US)
+
+| Guide | Pages | Price |
+|-------|-------|-------|
+| CEO AI Operations Playbook | 12 | $9.99 |
+| CEO AI Strategy Playbook | 28 | $19.99 |
+
+- Storefront: `#pdf-guides` on root `index.html`; checkout via Stripe Payment Links (`config/sot.json`).
+- Regenerate all assets: `npm run pdf:assets` (PDF export → `assets/pdf-covers/` PNG → `assets/og/og-cover.png`).
+- Export only: `npm run pdf:export` → `api/_private/pdfs/`; upload: `npm run pdf:upload-blob`; env check: `npm run check:fulfillment`.
+- Fulfillment runbook: [memo_pdf.md](memo_pdf.md).
 
 ## Build ir kokybės vartai
 

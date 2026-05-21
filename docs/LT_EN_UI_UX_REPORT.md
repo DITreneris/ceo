@@ -1,5 +1,7 @@
 # LT→EN UI/UX praktikų ataskaita – duplikavimui kituose repo
 
+> **Politikos atnaujinimas (2026-05):** šis dokumentas aprašo **techninę** LT/EN architektūrą. Produktą vystome **tik EN (USA)**; `/lt/` nebe vystomas (nuoroda + testai). Aktuali SOT: [README.md#kalbos-ir-lokalizacija-sot](../README.md#kalbos-ir-lokalizacija-sot), [AGENTS.md](../AGENTS.md#kalbos-ir-lokalizacija-sot).
+
 **Tikslas:** Aprašyti šio projekto (DI Operacinis Centras) LT/EN lokalizacijos ir UI/UX modelį, kad būtų galima atkartoti panašų sprendimą kituose repozitorijuose.
 
 **Data:** 2026-03

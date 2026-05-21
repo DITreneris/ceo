@@ -1,3 +1,7 @@
+/**
+ * SOT (2026-05): develop copy and UX in EN only (USA: USD, en-US, US English).
+ * locale === 'lt' branches remain for the /lt/ legacy path + tests — do not add new LT product strings.
+ */
 (function () {
     'use strict';
 
@@ -277,7 +281,7 @@
     }
 
     function applyStaticLocaleText() {
-        document.documentElement.lang = locale;
+        document.documentElement.lang = locale === 'lt' ? 'lt' : 'en-US';
 
         var title = document.querySelector('title');
         if (title) {
@@ -527,11 +531,6 @@
         var themeBtn = document.getElementById('themeToggleBtn');
         if (themeBtn) themeBtn.setAttribute('aria-label', uiText('Perjungti tamsų režimą', 'Toggle dark mode'));
 
-        var langLtBtn = document.getElementById('langLtBtn');
-        var langEnBtn = document.getElementById('langEnBtn');
-        if (langLtBtn) langLtBtn.classList.toggle('is-active', locale === 'lt');
-        if (langEnBtn) langEnBtn.classList.toggle('is-active', locale === 'en');
-
         var communityTitle = document.getElementById('community-title');
         if (communityTitle) communityTitle.innerHTML = uiText('Promptas sukurtas.<br>Nori daugiau?', 'Prompt created.<br>Want more?');
         var communityPrimary = document.querySelector('.community-cta-primary');
@@ -566,10 +565,13 @@
         footerTags.forEach(function (tag, i) {
             if (tagTexts[i] && tag.childNodes.length > 1) tag.childNodes[1].textContent = ' ' + tagTexts[i];
         });
-        var privacyLink = document.querySelector('.copyright a[href="privatumas.html"]');
-        if (privacyLink) privacyLink.textContent = uiText('Privatumas', 'Privacy');
         var copyrightText = document.querySelector('.copyright p');
-        if (copyrightText) copyrightText.innerHTML = '&copy; 2026 Tomas Staniulis. ' + uiText('Mokymų medžiaga. Visos teisės saugomos.', 'Training material. All rights reserved.') + ' <a href="privatumas.html">' + uiText('Privatumas', 'Privacy') + '</a>';
+        if (copyrightText) {
+            copyrightText.innerHTML = '&copy; 2026 Tomas Staniulis. ' +
+                uiText('Mokymų medžiaga. Visos teisės saugomos.', 'Training material. All rights reserved.') +
+                ' <a href="privacy.html">' + uiText('Privatumas', 'Privacy') + '</a> · ' +
+                '<a href="terms.html">' + uiText('Sąlygos', 'Terms') + '</a>';
+        }
         var hiddenTextarea = document.getElementById('hiddenTextarea');
         if (hiddenTextarea) hiddenTextarea.setAttribute('aria-label', uiText('Kopijuojamo teksto laukas', 'Text to copy field'));
         var toastAria = document.getElementById('toast');
@@ -588,6 +590,11 @@
 
         var hubMap = document.querySelector('.hub-map');
         if (hubMap) hubMap.setAttribute('aria-label', uiText('Promptų anatomijos Hub moduliai', 'Prompt Anatomy Hub modules'));
+
+        var footerAddress = document.getElementById('footerAddress');
+        if (footerAddress) {
+            footerAddress.setAttribute('aria-label', uiText('Įmonės adresas', 'Business address'));
+        }
 
         var footerFaq = document.querySelector('.footer-faq');
         if (footerFaq) {
@@ -1348,31 +1355,6 @@
         if (copyCta) copyCta.addEventListener('click', doCopyOutput);
         if (stickyCopy) stickyCopy.addEventListener('click', doCopyOutput);
         setupAiToolLaunchers();
-
-        var ltBtn = document.getElementById('langLtBtn');
-        var enBtn = document.getElementById('langEnBtn');
-        function switchLanguage(nextLang) {
-            try { localStorage.setItem(LANG_KEY, nextLang); } catch (_) { /* ignore */ }
-            var params = new URLSearchParams(window.location.search);
-            params.set('lang', nextLang);
-            params.set('mode', activeMode);
-            params.set('depth', activeDepth);
-            var suffix = params.toString() ? ('?' + params.toString()) : '';
-            var hash = window.location.hash || '';
-            var pathname = (window.location.pathname || '');
-            var fromPath = getLocaleFromPathname();
-            if (fromPath) {
-                var path = pathname;
-                if (path.indexOf('/lt') !== -1) path = path.replace(/\/lt\/?/, '/' + nextLang + '/');
-                else if (path.indexOf('/en') !== -1) path = path.replace(/\/en\/?/, '/' + nextLang + '/');
-                if (path !== pathname) window.location.href = path + suffix + hash;
-                else window.location.href = '/' + nextLang + '/' + suffix + hash;
-                return;
-            }
-            window.location.href = './' + suffix + hash;
-        }
-        if (ltBtn) ltBtn.addEventListener('click', function () { switchLanguage('lt'); });
-        if (enBtn) enBtn.addEventListener('click', function () { switchLanguage('en'); });
 
         // Sessions
         var saveBtn = document.getElementById('sessionSaveBtn');

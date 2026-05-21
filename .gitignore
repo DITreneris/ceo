@@ -44,6 +44,14 @@ node_modules/
 yarn.lock
 npm-debug.log*
 
+# ─── Paid PDF binaries ───
+api/_private/pdfs/*.pdf
+
+# ─── PDF authoring debug artifacts ───
+scripts/pdf-cover-*.png
+scripts/cover-preview.png
+scripts/sample-page-*.png
+
 # ─── Env / secrets ───
 .env
 .env.local

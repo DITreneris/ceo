@@ -1,0 +1,411 @@
+/* Prompt Anatomy CEO — PDF print stylesheet (Operations + Strategic guides).
+   Pipeline: node scripts/export-pdfs.js (Playwright, Letter).
+   Brand: #4A148C primary, #FFB300 gold, #F6F7FB surface. */
+
+@page {
+  size: Letter;
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: #FFFFFF;
+  color: #1E1F25;
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  font-size: 9.5pt;
+  line-height: 1.35;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+.page {
+  width: 215.9mm;
+  height: 279.4mm;
+  padding: 14mm 16mm 18mm 16mm;
+  position: relative;
+  break-after: page;
+  page-break-after: always;
+  overflow: hidden;
+}
+
+.page:last-of-type {
+  break-after: auto;
+  page-break-after: auto;
+}
+
+.brand-footer {
+  position: absolute;
+  bottom: 6mm;
+  left: 16mm;
+  right: 16mm;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 8pt;
+  color: #6B7280;
+  border-top: 1px solid #E7EAF2;
+  padding-top: 2.5mm;
+}
+
+.brand-footer-left {
+  font-weight: 600;
+  color: #4A148C;
+  letter-spacing: 0.02em;
+}
+
+.brand-footer-right {
+  color: #6B7280;
+}
+
+.brand-footer-url {
+  color: #7C43BD;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  color: #4A148C;
+  margin: 0 0 4mm 0;
+  line-height: 1.2;
+}
+
+h1 { font-size: 24pt; font-weight: 800; }
+h2 { font-size: 15pt; font-weight: 700; margin-bottom: 3mm; }
+h3 { font-size: 11pt; font-weight: 700; margin-top: 3.5mm; margin-bottom: 1.5mm; }
+h4 { font-size: 10pt; font-weight: 700; margin-top: 3mm; margin-bottom: 1mm; }
+
+p { margin: 0 0 2.5mm 0; }
+a { color: #7C43BD; text-decoration: none; }
+strong { color: #4A148C; }
+ul, ol { margin: 0 0 2.5mm 0; padding-left: 5mm; }
+li { margin-bottom: 1mm; }
+hr { border: none; border-top: 1px solid #E7EAF2; margin: 3mm 0; }
+
+.page-eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 8pt;
+  color: #6B7280;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-bottom: 1px solid #E7EAF2;
+  padding-bottom: 1.5mm;
+  margin-bottom: 4mm;
+  font-weight: 600;
+}
+
+.page-eyebrow-tag {
+  background: #FFB300;
+  color: #4A148C;
+  padding: 0.6mm 2mm;
+  border-radius: 1.2mm;
+  font-size: 8pt;
+}
+
+.cover {
+  background-color: #4A148C;
+  background-image: linear-gradient(165deg, #5B1F9E 0%, #4A148C 50%, #2E0A52 100%);
+  color: #FFFFFF;
+  padding: 26mm 20mm 20mm 20mm;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 279.4mm;
+  -webkit-print-color-adjust: exact !important;
+  print-color-adjust: exact !important;
+}
+
+.cover h1, .cover h2 { color: #FFFFFF; }
+.cover .cover-eyebrow {
+  color: #FFB300;
+  font-weight: 700;
+  font-size: 10pt;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.cover .cover-title {
+  font-size: 30pt;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-top: 10mm;
+}
+.cover .cover-subtitle {
+  color: #FFFFFF;
+  font-size: 13pt;
+  font-weight: 500;
+  margin-top: 6mm;
+  line-height: 1.4;
+}
+.cover .cover-meta {
+  color: #FFFFFF;
+  font-size: 10.5pt;
+  line-height: 1.6;
+  margin-top: 12mm;
+}
+.cover .cover-meta strong { color: #FFB300; font-weight: 700; }
+.cover .cover-positioning {
+  background: rgba(255, 255, 255, 0.1);
+  border-left: 3px solid #FFB300;
+  padding: 5mm 6mm;
+  margin-top: 10mm;
+  font-size: 10.5pt;
+  line-height: 1.5;
+  color: #FFFFFF;
+}
+.cover .cover-positioning strong { color: #FFB300; font-weight: 700; }
+.cover .brand-footer {
+  color: #FFFFFF;
+  border-top: 1px solid rgba(255, 179, 0, 0.45);
+}
+.cover .brand-footer-left { color: #FFFFFF; }
+.cover .brand-footer-right { color: rgba(255, 255, 255, 0.85); }
+.cover .brand-footer-url { color: #FFB300; }
+
+.callout {
+  background: #F6F7FB;
+  border-left: 3px solid #7C43BD;
+  padding: 3mm 4mm;
+  border-radius: 0 1.5mm 1.5mm 0;
+  margin: 0 0 3mm 0;
+}
+.callout-warn { background: #FFF8E6; border-left-color: #FFB300; }
+.callout-danger { background: #FFF1EC; border-left-color: #D6422E; }
+.callout strong { display: block; margin-bottom: 1mm; color: #4A148C; }
+
+.prompt-block {
+  background: #2E0A52;
+  color: #F0EBF8;
+  padding: 3mm 4mm;
+  border-radius: 1.5mm;
+  margin: 0 0 3mm 0;
+  font-family: 'JetBrains Mono', Consolas, 'Courier New', monospace;
+  font-size: 7.5pt;
+  line-height: 1.4;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+.prompt-block-light {
+  background: #F6F7FB;
+  color: #1E1F25;
+  border: 1px solid #E7EAF2;
+}
+.prompt-label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 8pt;
+  color: #6B7280;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  margin-bottom: 1mm;
+}
+.prompt-tag {
+  background: #FFB300;
+  color: #4A148C;
+  padding: 0.4mm 2mm;
+  border-radius: 1mm;
+  font-size: 7.5pt;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 0 3mm 0;
+  font-size: 8.5pt;
+  break-inside: avoid;
+}
+th {
+  background: #4A148C;
+  color: #FFFFFF;
+  text-align: left;
+  padding: 2mm 2.5mm;
+  font-weight: 600;
+}
+td {
+  border: 1px solid #E7EAF2;
+  padding: 2mm 2.5mm;
+  vertical-align: top;
+}
+tr:nth-child(even) td { background: #F6F7FB; }
+
+.check-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0 0 3mm 0;
+}
+.check-list li {
+  padding-left: 6mm;
+  position: relative;
+  margin-bottom: 1mm;
+}
+.check-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.6mm;
+  width: 3.5mm;
+  height: 3.5mm;
+  border: 1.2px solid #7C43BD;
+  border-radius: 0.6mm;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3mm;
+  margin: 0 0 3mm 0;
+}
+.card {
+  flex: 1 1 calc(50% - 3mm);
+  border: 1px solid #E7EAF2;
+  border-radius: 1.5mm;
+  padding: 3mm 4mm;
+  break-inside: avoid;
+}
+.card-num {
+  display: inline-block;
+  background: #FFB300;
+  color: #4A148C;
+  font-weight: 700;
+  width: 6mm;
+  height: 6mm;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 6mm;
+  font-size: 9pt;
+  margin-right: 2mm;
+}
+
+.workflow {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5mm;
+  margin: 0 0 4mm 0;
+  align-items: stretch;
+}
+.workflow .step {
+  flex: 1;
+  background: #F6F7FB;
+  border: 1px solid #E7EAF2;
+  border-top: 3px solid #7C43BD;
+  border-radius: 1.5mm;
+  padding: 2.5mm;
+  font-size: 8pt;
+}
+.workflow .step-num {
+  font-weight: 800;
+  color: #FFB300;
+  font-size: 11pt;
+}
+.workflow .arrow {
+  flex: 0 0 3mm;
+  align-self: center;
+  color: #7C43BD;
+  font-size: 12pt;
+  font-weight: 800;
+}
+
+.section-tag {
+  display: inline-block;
+  background: #7C43BD;
+  color: #FFFFFF;
+  padding: 0.6mm 2.5mm;
+  border-radius: 1mm;
+  font-size: 8pt;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.section-tag-gold { background: #FFB300; color: #4A148C; }
+
+.muted { color: #6B7280; font-size: 9pt; }
+.tiny { font-size: 8pt; color: #6B7280; }
+.lead { font-size: 10.5pt; color: #4A148C; line-height: 1.4; margin-bottom: 3.5mm; }
+.no-break { break-inside: avoid; }
+.gap-top { margin-top: 4mm; }
+.gap-top-sm { margin-top: 2.5mm; }
+
+.pdf-exec-summary {
+  background: #F6F7FB;
+  border: 1px solid #E7EAF2;
+  border-top: 3px solid #FFB300;
+  padding: 4mm 5mm;
+  margin-bottom: 3mm;
+}
+.pdf-exec-summary h3 { margin-top: 0; }
+.pdf-worksheet {
+  border: 1px dashed #7C43BD;
+  padding: 3mm 4mm;
+  margin: 0 0 3mm 0;
+  min-height: 12mm;
+}
+.pdf-risk-matrix th { font-size: 8pt; }
+.pdf-workflow-map .workflow { margin-top: 2mm; }
+
+.kv {
+  display: grid;
+  grid-template-columns: 36mm 1fr;
+  column-gap: 4mm;
+  row-gap: 1.2mm;
+  margin-bottom: 3mm;
+  font-size: 8.5pt;
+}
+.kv dt { font-weight: 700; color: #4A148C; }
+.kv dd { margin: 0; }
+
+@media screen {
+  body:not(.pdf-asset-export) { background: #ECEEF2; padding: 8mm 0; }
+  body:not(.pdf-asset-export) .page {
+    margin: 0 auto 8mm auto;
+    box-shadow: 0 2px 12px rgba(74, 20, 140, 0.15);
+    background: #FFFFFF;
+  }
+}
+
+/* Storefront preview export: 734×950 PNG (render-pdf-preview-pages.js) */
+body.pdf-asset-export {
+  margin: 0;
+  padding: 0;
+  background: #2E0A52;
+}
+body.pdf-asset-export .page {
+  width: 734px;
+  height: 950px;
+  min-height: 950px;
+  max-height: 950px;
+  margin: 0;
+  padding: 14mm 16mm 18mm 16mm;
+  box-shadow: none;
+  overflow: hidden;
+  break-after: auto;
+  page-break-after: auto;
+  background: #FFFFFF;
+  color: #1E1F25;
+}
+body.pdf-asset-export .page.cover {
+  padding: 26mm 20mm 20mm 20mm;
+  background-color: #4A148C;
+  background-image: linear-gradient(165deg, #5B1F9E 0%, #4A148C 50%, #2E0A52 100%);
+  color: #FFFFFF;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+body.pdf-asset-export .page.cover h1,
+body.pdf-asset-export .page.cover h2 {
+  color: #FFFFFF;
+}
+body.pdf-asset-export .page.cover .cover-subtitle {
+  color: #FFFFFF;
+}
+body.pdf-asset-export .page.cover .cover-meta,
+body.pdf-asset-export .page.cover .cover-page-number {
+  display: none;
+}

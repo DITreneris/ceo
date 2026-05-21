@@ -28,6 +28,10 @@
       "files": ["scripts/**/*.js"],
       "env": { "node": true, "es2022": true },
       "rules": { "no-console": "off" }
+    },
+    {
+      "files": ["api/**/*.js"],
+      "env": { "node": true, "es2022": true }
     }
   ]
 }

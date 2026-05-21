@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>Download your PDF | AI Operations Center</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+</head>
+<body class="success-page">
+  <main class="success-main" id="main-content">
+    <h1>Thank you for your purchase</h1>
+    <div id="successState" role="status" aria-live="polite" aria-atomic="true">
+      <p>Preparing your download…</p>
+    </div>
+    <p class="success-meta">Executive license: internal use for you and your immediate leadership team. <a href="terms.html#paid-pdf-license">Full license</a>.</p>
+    <p class="success-meta">14-day no-questions refund: reply to your Stripe receipt or email info@promptanatomy.app.</p>
+    <p><a href="index.html">← Back to AI Operations Center</a></p>
+  </main>
+  <script>
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var sessionId = params.get('session_id') || '';
+      var stateEl = document.getElementById('successState');
+      var pattern = /^cs_(?:test|live)_[A-Za-z0-9]{20,}$/;
+
+      if (!sessionId || !pattern.test(sessionId)) {
+        stateEl.innerHTML = '<p class="success-error">Missing or invalid checkout session. Check your email for the download link.</p>';
+        return;
+      }
+
+      function poll() {
+        fetch('/api/download-link?session_id=' + encodeURIComponent(sessionId), { credentials: 'same-origin' })
+          .then(function (r) { return r.json().then(function (body) { return { status: r.status, body: body }; }); })
+          .then(function (res) {
+            if (res.status === 200 && res.body.downloadUrl) {
+              stateEl.innerHTML = '<p>Your download is ready.</p><p><a class="success-download-btn" href="' + res.body.downloadUrl + '">Download PDF</a></p>' +
+                (res.body.maskedEmail ? '<p class="success-email">Sent to ' + res.body.maskedEmail + '</p>' : '');
+              return;
+            }
+            if (res.status === 202) {
+              setTimeout(poll, 2000);
+              return;
+            }
+            stateEl.innerHTML = '<p class="success-error">We could not prepare your download yet. Check your email or contact info@promptanatomy.app.</p>';
+          })
+          .catch(function () {
+            stateEl.innerHTML = '<p class="success-error">Connection error. Refresh this page or use the link in your email.</p>';
+          });
+      }
+      poll();
+    })();
+  </script>
+</body>
+</html>

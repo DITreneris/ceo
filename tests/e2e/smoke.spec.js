@@ -11,7 +11,7 @@ for (const viewport of viewports) {
     test.use({ viewport: { width: viewport.width, height: viewport.height } });
 
     test('core UI renders and mode/depth switching works', async ({ page }) => {
-      await page.goto('/?lang=lt');
+      await page.goto('/');
 
       await expect(page.locator('#operationsCenter')).toBeVisible();
       await expect(page.locator('#opsOutput')).toBeVisible();
@@ -24,7 +24,7 @@ for (const viewport of viewports) {
       await page.locator('[data-depth="GREITA"]').focus();
       await page.keyboard.press('ArrowRight');
       await expect(page.locator('[data-depth="GILU"]')).toHaveClass(/is-active/);
-      await expect(page.locator('#depthBadge')).toHaveText(/Gilu/i);
+      await expect(page.locator('#depthBadge')).toHaveText(/Deep/i);
 
       const outputText = await page.locator('#opsOutput').inputValue();
       expect(outputText.length).toBeGreaterThan(40);
@@ -34,7 +34,7 @@ for (const viewport of viewports) {
     });
 
     test('no horizontal overflow on critical mobile widths', async ({ page }) => {
-      await page.goto('/?lang=lt');
+      await page.goto('/');
       const hasOverflow = await page.evaluate(() => {
         const root = document.documentElement;
         return root.scrollWidth > root.clientWidth;
@@ -42,10 +42,11 @@ for (const viewport of viewports) {
       expect(hasOverflow).toBeFalsy();
     });
 
-    test('language switch keeps app accessible in english route', async ({ page }) => {
-      await page.goto('/?lang=lt');
-      await page.locator('#langEnBtn').click({ force: true });
-      await expect(page).toHaveURL(/lang=en/);
+    test('root app is EN-US without a visible language switcher', async ({ page }) => {
+      await page.goto('/');
+      const lang = await page.evaluate(() => document.documentElement.getAttribute('lang'));
+      expect(lang).toBe('en-US');
+      await expect(page.locator('#langLtBtn')).toHaveCount(0);
       await expect(page.locator('#operationsCenter')).toBeVisible();
     });
 
@@ -62,7 +63,7 @@ for (const viewport of viewports) {
       await page.goto('/en/');
       await expect(page).toHaveURL(/\/en\/?/);
       const lang = await page.evaluate(() => document.documentElement.getAttribute('lang'));
-      expect(lang).toBe('en');
+      expect(lang).toBe('en-US');
       await expect(page.locator('#operationsCenter')).toBeVisible();
       await expect(page.locator('#opsOutput')).toBeVisible();
     });

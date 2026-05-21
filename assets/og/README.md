@@ -47,31 +47,38 @@ Jei platforma rodo seną/be paveikslėlio preview, paspausk „Scrape Again" / �
 
 | Rolė | Vertė |
 |---|---|
-| Background | `#0B0B12` |
-| Violet glow | `#4A148C` @ 30% → 0% radial |
-| Card surface | `#1A1A26` → `#15151F` (vertikalus gradientas) |
-| Card border | `#262633` (1.5 px) |
-| Highlight border (Process) | `#FFB300` (2 px) + gold dot 5 px |
-| Primary text | `#F5F5F7` |
-| Secondary / chip text | `#C8C8D2` |
-| Headline | 96 px, weight 800, tracking −0.03em, 2 lines |
-| Card label | 28 px, weight 700 |
-| Lineage chip | 14 px, weight 700, tracking 0.16em, UPPERCASE |
-| Bottom wordmark | 22 px, weight 600, tracking 0.20em, UPPERCASE |
+| Background gradient | `#5B1F9E` → `#4A148C` → `#2E0A52` (violetField, diagonal) |
+| Card gloss | `#FFFFFF` 10% → 2% (vertikalus gradientas) |
+| Operations card surface | `#3D0F77` |
+| Strategy card surface | `#5B1F9E` |
+| Highlight border (Operations) | `#FFB300` (1.6 px) |
+| Neutral border (Strategy) | `rgba(255,255,255,0.18)` (1 px) |
+| Card shadow | `dy=14`, `stdDeviation=22`, flood `#150528` @ 55% |
+| Primary text | `#FFFFFF` |
+| Secondary text | `rgba(255,255,255,0.70)` |
+| Card tail text | `rgba(255,255,255,0.78)` |
+| Headline | 64 px, weight 800, tracking −0.02em, 2 lines |
+| Card title | 52 px, weight 800, tracking −0.02em |
+| Card kicker | 12 px, weight 700, tracking 0.16em, UPPERCASE — gold on Operations, white-70% on Strategy |
+| Card tail | 16 px, weight 500 |
+| Footer rule | `rgba(255,179,0,0.45)`, 1 px |
+| Bottom wordmark | 28 px, weight 700, tracking 0.18em, UPPERCASE |
+| Footer price | 16 px, weight 500, tracking 0.04em, right-aligned |
 
 ## Hierarchija (skaitymo seka per 2 sekundes)
 
-1. Antraštė kairėje — *Run AI like ops.*
-2. 3-sluoksnių stack'as dešinėje — Strategy / **Process** (auksinis akcentas) / Execution.
-3. Lineage chip kairiame viršuje — *Prompt Anatomy · Operations module*.
-4. Domenas apačioje centre — *promptanatomy.ceo*.
+1. Antraštė kairėje — *Two CEO Playbooks. / One AI System.*
+2. Du playbook'ai dešinėje — **Operations** (gold accent) ir **Strategy** (neutral).
+3. Domenas apačioje kairėje — *PROMPTANATOMY.CEO*.
+4. Kaina apačioje dešinėje — *$9.99 + $19.99*.
 
-## Konceptas: kodėl 3-Layer Stack
+## Konceptas: kodėl thumbnail-first
 
-- **„System" framing** — vadovai supranta operacijas kaip sluoksnius (strategija → procesas → vykdymas).
-- **Save/share potential** — framework'inė kortelė yra bookmark'inama.
+- **„Stop the scroll" framing** — OG paveikslėlis darbą atlieka feed thumbnail'e (~300–550 px), ne desktop hero'e. Viskas, kas neperskaitoma below 14 px source size, pašalinta.
+- **Two products, one system** — du paraleliai cards komunikuoja produkto kategoriją net be teksto.
+- **Asimetriškas akcentas** — vienas highlighted card (Operations, gold) suteikia hierarchiją; abu equally-accented cards skaldo dėmesį.
 - **Premium SaaS look** — Apple × Linear × Stripe estetika, ne Canva template.
-- **2-sekundžių taisyklė** — viena dominuojanti idėja, viena metafora, ≤4 pagrindiniai teksto blokai.
+- **2-sekundžių taisyklė** — viena dominuojanti idėja, ≤4 pagrindiniai teksto blokai (headline + card×2 + footer).
 
 ## Kada eksportuoti PNG iš naujo
 

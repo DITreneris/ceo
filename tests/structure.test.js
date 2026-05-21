@@ -19,6 +19,27 @@ const LT_ENTRY_PATH = path.join(__dirname, '..', 'lt', 'index.html');
 const EN_ENTRY_PATH = path.join(__dirname, '..', 'en', 'index.html');
 const OG_SVG_PATH = path.join(__dirname, '..', 'assets', 'og', 'og-cover.svg');
 const OG_PNG_PATH = path.join(__dirname, '..', 'assets', 'og', 'og-cover.png');
+const SOT_PATH = path.join(__dirname, '..', 'config', 'sot.json');
+const COMMERCE_PATH = path.join(__dirname, '..', 'commerce.js');
+const SUCCESS_PATH = path.join(__dirname, '..', 'success.html');
+const TERMS_PATH = path.join(__dirname, '..', 'terms.html');
+const PRIVACY_PATH = path.join(__dirname, '..', 'privacy.html');
+const FULFILLMENT_LIB = path.join(__dirname, '..', 'api', '_lib', 'fulfillment.js');
+const OPERATING_COVER = path.join(__dirname, '..', 'assets', 'pdf-covers', 'operating.png');
+const STRATEGIC_COVER = path.join(__dirname, '..', 'assets', 'pdf-covers', 'strategic.png');
+const PDF_COVERS_DIR = path.join(__dirname, '..', 'assets', 'pdf-covers');
+const MIN_PDF_COVER_BYTES = 40000;
+const MIN_PDF_PREVIEW_PAGE_BYTES = 15000;
+const MIN_OG_PNG_BYTES = 20000;
+
+function pngFileOk(filePath, minBytes) {
+  if (!fs.existsSync(filePath)) return false;
+  try {
+    return fs.statSync(filePath).size >= minBytes;
+  } catch (e) {
+    return false;
+  }
+}
 
 function readFile(filePath) {
   try {
@@ -105,8 +126,8 @@ function run() {
   if (assert(html.includes('Kopijuoti užklaus') || html.includes('Kopijuoti prompt') || html.includes('Copy prompt'), 'Kopijavimo mygtukas egzistuoja')) passed++;
   else failed++;
 
-  // --- Kalbos jungiklis ---
-  if (assert(html.includes('id="langLtBtn"') && html.includes('id="langEnBtn"'), 'Kalbos jungiklis LT/EN egzistuoja')) passed++;
+  // --- EN-US public product policy ---
+  if (assert(!html.includes('id="langLtBtn"') && !html.includes('id="langEnBtn"'), 'Viešame UI nėra LT/EN kalbos jungiklio')) passed++;
   else failed++;
 
   // --- Prieinamumas / semantika ---
@@ -116,11 +137,15 @@ function run() {
   else failed++;
   if (assert(html.includes('id="toast"') && html.includes('role="status"'), 'Toast pranešimas')) passed++;
   else failed++;
-  if (assert(html.includes('privatumas.html'), 'Nuoroda į privatumas.html')) passed++;
+  if (assert(html.includes('privacy.html') && html.includes('terms.html') && !html.includes('Privatumas (LT)'), 'Footer rodo tik EN legal nuorodas')) passed++;
   else failed++;
   if (assert(html.includes('promptanatomy.app') || html.includes('promptanatomy.info') || html.includes('promptanatomy.space') || html.includes('promptanatomy.cloud'), 'Nuoroda į Prompt Anatomy (hub)')) passed++;
   else failed++;
-  if (assert(html.includes('lang="en"'), 'HTML lang="en"')) passed++;
+  if (assert(html.includes('lang="en-US"'), 'HTML lang="en-US"')) passed++;
+  else failed++;
+  if (assert(html.includes('<link rel="canonical" href="https://www.promptanatomy.ceo/en/">') && html.includes('hreflang="en-US"'), 'Root canonical/hreflang orientuoti į EN-US')) passed++;
+  else failed++;
+  if (assert(!html.includes('Available in LT & EN') && !html.includes('hreflang="lt"'), 'Root nebereklamuoja LT kaip aktyvios lokalizacijos')) passed++;
   else failed++;
 
   // --- ARIA ---
@@ -186,7 +211,7 @@ function run() {
   else failed++;
   if (assert(ltEntryFile && /<html\s+lang="lt"/.test(ltEntryFile), 'lt/index.html lang="lt"')) passed++;
   else failed++;
-  if (assert(enEntryFile && /<html\s+lang="en"/.test(enEntryFile), 'en/index.html lang="en"')) passed++;
+  if (assert(enEntryFile && /<html\s+lang="en-US"/.test(enEntryFile), 'en/index.html lang="en-US"')) passed++;
   else failed++;
   if (assert(ltEntryFile && !ltEntryFile.includes('window.location.replace'), 'lt/index.html be client-side redirect')) passed++;
   else failed++;
@@ -259,14 +284,141 @@ function run() {
   else failed++;
   if (assert(ltEntryFile && /<meta\s+property="og:url"\s+content="[^"]*\/lt\/"/.test(ltEntryFile) && ltEntryFile.includes('content="lt_LT"'), 'lt/index.html og:url baigiasi /lt/ ir og:locale=lt_LT')) passed++;
   else failed++;
-  if (assert(enEntryFile && /<meta\s+property="og:url"\s+content="[^"]*\/en\/"/.test(enEntryFile) && enEntryFile.includes('content="en_US"'), 'en/index.html og:url baigiasi /en/ ir og:locale=en_US')) passed++;
+  if (assert(ltEntryFile && ltEntryFile.includes('name="robots" content="noindex,follow"'), 'lt/index.html noindex legacy/regression keliui')) passed++;
+  else failed++;
+  if (assert(enEntryFile && /<meta\s+property="og:url"\s+content="[^"]*\/en\/"/.test(enEntryFile) && enEntryFile.includes('content="en_US"') && enEntryFile.includes('hreflang="en-US"'), 'en/index.html og:url baigiasi /en/, og:locale=en_US ir hreflang=en-US')) passed++;
   else failed++;
   if (assert(fs.existsSync(OG_SVG_PATH), 'assets/og/og-cover.svg šaltinis egzistuoja')) passed++;
   else failed++;
 
-  // Soft warning: PNG turi būti eksportuotas prieš deploy (žr. assets/og/README.md).
-  if (!fs.existsSync(OG_PNG_PATH)) {
-    console.warn('\u26A0\uFE0F  WARN: assets/og/og-cover.png nerastas. Eksportuok prieš deploy: npx -y svgexport assets/og/og-cover.svg assets/og/og-cover.png 1200:630');
+  if (
+    assert(
+      pngFileOk(OG_PNG_PATH, MIN_OG_PNG_BYTES),
+      'assets/og/og-cover.png egzistuoja ir >= ' + MIN_OG_PNG_BYTES + ' bytes (npm run pdf:og)'
+    )
+  ) {
+    passed++;
+  } else failed++;
+
+  // --- Paid PDF storefront + fulfillment ---
+  const sotRaw = readFile(SOT_PATH);
+  let sot = null;
+  if (sotRaw) {
+    try {
+      sot = JSON.parse(sotRaw);
+    } catch (e) {
+      sot = null;
+    }
+  }
+  if (assert(html.includes('id="pdf-guides"') && html.includes('pdf-guides-section'), 'PDF guides storefront sekcija (#pdf-guides)')) passed++;
+  else failed++;
+  if (assert(html.includes('$9.99') && html.includes('$19.99'), 'PDF kainos $9.99 ir $19.99 index.html')) passed++;
+  else failed++;
+  if (
+    assert(
+      html.includes('CEO AI Strategy Playbook') && html.includes('data-pdf-promise="strategic"'),
+      'index.html strategic playbook pavadinimas ir buyerPromise hook'
+    )
+  ) {
+    passed++;
+  } else failed++;
+  if (assert(html.includes('data-stripe-cta="operating"') && html.includes('data-stripe-cta="strategic"'), 'Stripe CTA data atributai')) passed++;
+  else failed++;
+  if (assert(html.includes('src="commerce.js"'), 'commerce.js prijungtas index.html')) passed++;
+  else failed++;
+  if (
+    assert(
+      pngFileOk(OPERATING_COVER, MIN_PDF_COVER_BYTES) && pngFileOk(STRATEGIC_COVER, MIN_PDF_COVER_BYTES),
+      'PDF viršelių PNG (operating, strategic) >= ' + MIN_PDF_COVER_BYTES + ' bytes'
+    )
+  ) {
+    passed++;
+  } else failed++;
+  ['operating', 'strategic'].forEach(function (key) {
+    [2, 3, 4].forEach(function (num) {
+      const previewPath = path.join(PDF_COVERS_DIR, key + '-p' + num + '.png');
+      if (
+        assert(
+          pngFileOk(previewPath, MIN_PDF_PREVIEW_PAGE_BYTES),
+          'PDF preview ' + key + '-p' + num + '.png >= ' + MIN_PDF_PREVIEW_PAGE_BYTES + ' bytes'
+        )
+      ) {
+        passed++;
+      } else failed++;
+    });
+  });
+  if (assert(sot && sot.pdfGuides && sot.pdfGuides.operating && sot.pdfGuides.strategic, 'config/sot.json pdfGuides')) passed++;
+  else failed++;
+  if (
+    assert(
+      sot &&
+        sot.productDecision &&
+        sot.productDecision.strategicPositioning === 'playbook' &&
+        sot.pdfGuides.operating.buyerPromise &&
+        sot.pdfGuides.strategic.buyerPromise,
+      'config/sot.json productDecision + buyerPromise (Phases 1–3)'
+    )
+  ) {
+    passed++;
+  } else failed++;
+  if (
+    assert(
+      sot &&
+        Array.isArray(sot.buyerProblems) &&
+        sot.buyerProblems.length >= 8 &&
+        sot.productBlueprint &&
+        sot.productBlueprint.flagship &&
+        Array.isArray(sot.productBlueprint.deferredModules),
+      'config/sot.json buyerProblems + productBlueprint (Phases 2–3)'
+    )
+  ) {
+    passed++;
+  } else failed++;
+  if (assert(sot && sot.brand && sot.brand.language === 'en-US' && sot.copy && sot.seo && Array.isArray(sot.rules), 'config/sot.json EN-US brand/copy/seo/rules SOT')) passed++;
+  else failed++;
+  if (assert(sot && Array.isArray(sot.buyerFaq) && sot.buyerFaq.length >= 3, 'config/sot.json buyerFaq')) passed++;
+  else failed++;
+  const commerceJs = readFile(COMMERCE_PATH);
+  if (assert(commerceJs && commerceJs.includes('initCommerce') && !commerceJs.includes('<motion>'), 'commerce.js be motion artefaktų')) passed++;
+  else failed++;
+  if (assert(commerceJs && commerceJs.includes("fetch('/config/sot.json'"), 'commerce.js krauna SOT iš root kelio locale puslapiams')) passed++;
+  else failed++;
+  const fulfillmentLib = readFile(FULFILLMENT_LIB);
+  if (assert(fulfillmentLib && fulfillmentLib.includes("id: 'operating'") && fulfillmentLib.includes('999'), 'fulfillment.js operating + 999 cent fallback')) passed++;
+  else failed++;
+  if (assert(fulfillmentLib && fulfillmentLib.includes("id: 'strategic'") && fulfillmentLib.includes('1999'), 'fulfillment.js strategic + 1999 cent fallback')) passed++;
+  else failed++;
+  if (assert(fs.existsSync(path.join(__dirname, '..', 'api', 'stripe-webhook.js')), 'api/stripe-webhook.js')) passed++;
+  else failed++;
+  if (assert(fs.existsSync(path.join(__dirname, '..', 'api', 'download.js')), 'api/download.js')) passed++;
+  else failed++;
+  if (assert(fs.existsSync(path.join(__dirname, '..', 'api', 'download-link.js')), 'api/download-link.js')) passed++;
+  else failed++;
+  if (assert(fs.existsSync(path.join(__dirname, '..', 'api', 'fulfillment-health.js')), 'api/fulfillment-health.js')) passed++;
+  else failed++;
+  const successHtml = readFile(SUCCESS_PATH);
+  if (assert(successHtml && successHtml.includes('success-page'), 'success.html egzistuoja')) passed++;
+  else failed++;
+  const termsHtml = readFile(TERMS_PATH);
+  if (assert(termsHtml && termsHtml.includes('paid-pdf-license'), 'terms.html su paid-pdf-license')) passed++;
+  else failed++;
+  const privacyHtml = readFile(PRIVACY_PATH);
+  if (assert(privacyHtml && privacyHtml.includes('legal-page'), 'privacy.html legal-page')) passed++;
+  else failed++;
+  if (assert(styleFile && styleFile.includes('.pdf-guides-section'), 'style.css PDF storefront stiliai')) passed++;
+  else failed++;
+  if (
+    sot &&
+    sot.commerce &&
+    sot.commerce.allowPlaceholderCheckout === false &&
+    assert(
+      !html.includes('YOUR_OPERATING_PDF_LINK') && !html.includes('YOUR_STRATEGIC_PDF_LINK'),
+      'Publish gate: placeholder Stripe nuorodos pašalintos kai allowPlaceholderCheckout=false'
+    )
+  ) {
+    passed++;
+  } else if (sot && sot.commerce && sot.commerce.allowPlaceholderCheckout !== false) {
+    console.log('\u2139\uFE0F  Publish gate: allowPlaceholderCheckout=true — placeholder Stripe URL leidžiamos');
   }
 
   console.log('\n---');

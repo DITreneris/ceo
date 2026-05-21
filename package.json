@@ -1,21 +1,35 @@
 {
   "name": "di-operacinis-centras",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
   "description": "DI Operacinis Centras – strateginis DI asistentas TOP vadovams (CEO/COO)",
   "scripts": {
     "build": "node scripts/build-locale-pages.js",
     "trace:og": "node scripts/trace-og.js",
+    "pdf:export": "node scripts/export-pdfs.js",
+    "pdf:upload-blob": "node scripts/upload-pdfs-to-blob.js",
+    "pdf:preview-images": "node scripts/render-pdf-preview-pages.js",
+    "pdf:og": "npx -y svgexport assets/og/og-cover.svg assets/og/og-cover.png 1200:630",
+    "pdf:assets": "npm run pdf:export && npm run pdf:preview-images && npm run pdf:og",
+    "optimize:covers": "node scripts/optimize-pdf-covers.js",
+    "check:fulfillment": "node scripts/check-fulfillment-env.js",
     "test": "node tests/structure.test.js && npm run lint:html && npm run lint:js",
     "test:structure": "node tests/structure.test.js",
     "test:smoke": "start-server-and-test \"serve . -l 3300\" http://127.0.0.1:3300/ \"playwright test tests/e2e/smoke.spec.js\"",
     "test:e2e": "start-server-and-test \"serve . -l 3300\" http://127.0.0.1:3300/ \"playwright test tests/e2e/core-flow.spec.js\"",
     "test:mixed": "npm run test && npm run test:smoke && npm run test:e2e && npm run test:a11y",
-    "test:a11y": "start-server-and-test \"serve . -l 3300\" http://127.0.0.1:3300/ \"pa11y http://127.0.0.1:3300/ --config .pa11yrc.json && pa11y http://127.0.0.1:3300/privatumas.html --config .pa11yrc.json\"",
-    "lint:html": "npx html-validator-cli --file index.html",
+    "test:a11y": "start-server-and-test \"serve . -l 3300\" http://127.0.0.1:3300/ \"pa11y http://127.0.0.1:3300/ --config .pa11yrc.json && pa11y http://127.0.0.1:3300/privatumas.html --config .pa11yrc.json && pa11y http://127.0.0.1:3300/success.html --config .pa11yrc.json && pa11y http://127.0.0.1:3300/terms.html --config .pa11yrc.json\"",
+    "lint:html": "npx html-validator-cli --file index.html && npx html-validator-cli --file success.html && npx html-validator-cli --file terms.html && npx html-validator-cli --file privacy.html",
+    "lint:html:index": "npx html-validator-cli --file index.html",
     "lint:js": "eslint . --ext .js"
   },
+  "dependencies": {
+    "@upstash/redis": "^1.38.0",
+    "resend": "^6.12.3",
+    "stripe": "^22.1.1"
+  },
   "devDependencies": {
+    "@vercel/blob": "^2.3.3",
     "@playwright/test": "^1.53.2",
     "eslint": "^8.57.0",
     "html-validator-cli": "^7.0.0",

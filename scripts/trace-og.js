@@ -9,7 +9,7 @@
 const { execSync } = require('child_process');
 
 const BASE = (process.env.SITE_URL || 'https://www.promptanatomy.ceo').replace(/\/$/, '');
-const paths = ['/', '/assets/og/og-cover.png?v=2'];
+const paths = ['/', '/assets/og/og-cover.png?v=4'];
 
 console.log('OG trace — Twitterbot User-Agent, HEAD');
 console.log('Base:', BASE);
