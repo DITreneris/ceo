@@ -28,9 +28,10 @@
 
 ## Susiję dokumentai
 
-<!-- Jei reikia atnaujinti README, INTEGRACIJA, AGENTS.md ir pan. – žr. docs/DOCUMENTATION.md -->
+<!-- Žr. docs/INDEX.md ir docs/CURRENT_TRUTH.md jei keičiami skaičiai, deploy ar commerce -->
 
-- [ ] Dokumentacija (README, INTEGRACIJA ir kt.) atnaujinta pagal pakeitimus
+- [ ] Dokumentacija (README, memo_pdf, LAUNCH_CHECKLIST, CURRENT_TRUTH ir kt.) atnaujinta pagal pakeitimus
+- [ ] Jei keisti PDF skaičiai / deploy / QA — suderinta su [docs/CURRENT_TRUTH.md](docs/CURRENT_TRUTH.md)
 - [ ] Jei release – CHANGELOG.md atnaujintas ir versija nurodyta (SemVer)
 
 ---

@@ -3,7 +3,7 @@
 **Audience:** Engineers and operators rolling out the same pattern on sister projects (static/Vercel site + serverless fulfillment).  
 **Source:** Production incident and recovery on **promptanatomy.online**, May 16, 2026; adapted for **promptanatomy.ceo** (AI Operations Center), May 2026.  
 **Language:** English (product copy and buyer-facing strings in **en-US** for US executives).  
-**Related repo docs:** [DEPLOY.md](DEPLOY.md), [.env.example](.env.example), [CHANGELOG.md](CHANGELOG.md) v1.1.0, [todo.md](todo.md) §1b.
+**Related repo docs:** [README.md](README.md#deploy-vercel--kanoninis), [docs/LAUNCH_CHECKLIST.md](docs/LAUNCH_CHECKLIST.md), [docs/CURRENT_TRUTH.md](docs/CURRENT_TRUTH.md), [.env.example](.env.example), [CHANGELOG.md](CHANGELOG.md), [todo.md](todo.md).
 
 ### CEO site product ids (this repo)
 
@@ -23,7 +23,7 @@ Env keys: `STRIPE_PRICE_OPERATING_PDF`, `STRIPE_PRICE_STRATEGIC_PDF`, `PDF_OPERA
 | **Marketing site** | Free tool + paid PDF cards; Stripe Payment Links for checkout (no custom cart). |
 | **Stripe** | Payment, receipt email, redirect to `success.html?session_id={CHECKOUT_SESSION_ID}`. |
 | **Webhook** | `POST /api/stripe-webhook` → fulfill order (idempotent). |
-| **Redis (Upstash)** | `fulfillment:cs_...` state + active download-token records. |
+| **Redis (Upstash)** | `{REDIS_KEY_PREFIX}fulfillment:cs_...` + `{prefix}download-token:...` (this repo: `REDIS_KEY_PREFIX=ceo:`). |
 | **Resend** | Transactional email with 7-day signed download link. |
 | **Private PDF storage** | Vercel Blob (recommended); served via `GET /api/download?t=...`. |
 | **Success page** | Polls `GET /api/download-link?session_id=...` for a 15-minute in-page link. |

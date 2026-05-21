@@ -2,7 +2,8 @@
 
 **Product:** AI Operations Center — CEO PDF playbooks (EN-US)  
 **Domain:** `https://www.promptanatomy.ceo`  
-**Runbook:** [memo_pdf.md](../memo_pdf.md)
+**Runbook:** [memo_pdf.md](../memo_pdf.md)  
+**Deploy:** Vercel production only ([CURRENT_TRUTH.md](CURRENT_TRUTH.md)). GitHub Pages = deprecated.
 
 ## Phase 15 — Commerce and fulfillment (manual + config)
 
@@ -35,7 +36,7 @@
 
 ## Phase 16 — Asset freeze
 
-- [ ] PDFs: `CEO_Operations_Playbook.pdf` (12 p), `CEO_Strategic_AI_OS.pdf` (28 p) — from `npm run pdf:export`
+- [ ] PDFs: `CEO_Operations_Playbook.pdf` (21 p), `CEO_Strategic_AI_OS.pdf` (43 p) — from `npm run pdf:export` (page gate in `scripts/export-pdfs.js`)
 - [ ] PNGs: `assets/pdf-covers/*` — from `npm run pdf:preview-images`
 - [ ] Storefront claims match SOT: page counts, playbook names, `buyerPromise`
 - [ ] Tag release / note versions in CHANGELOG

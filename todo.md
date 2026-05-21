@@ -36,7 +36,7 @@
 | 3 — Interior cleanup | done | Strategic eyebrow klaida `Operations Hub` → `CEO AI System`; „Hub module: Operations" callout perdarytas; 28-page footer numeracija nuosekli `Page X/28`; `pdf-exec-summary` dubliavimas pašalintas. |
 | 4 — SOT rename | done | `CEO Executive Strategic AI Playbook` → `CEO AI Strategy Playbook` per `config/sot.json`, `index.html`, `en/`, `lt/`, `commerce.js`, tests, README, audit. |
 | 5 — OG redesign | done | `assets/og/og-cover.svg` violet brand match, dual-product cards, trust chips, `?v=3` cache-bust. |
-| 6 — QA | done | `npm run pdf:assets` (12/12 + 28/28), 8 PNG + OG verify, `npm test` 103/103, `npm run build`. |
+| 6 — QA | done | `npm run pdf:assets` (21/21 + 43/43), 8 PNG + OG verify, `npm test` 103/103, `npm run build`. |
 | 7 — Gold patterns | done | `docs/STYLEGUIDE.md`, `gold_legacy_standard.md`, `scripts/optimize-pdf-covers.js`, `npm run optimize:covers` (sharp-optional). |
 | 8 — OG thumbnail refit | done | Removed eyebrow, subhead, trust pills, card kickers `PLAYBOOK 01/02`, page badges, and tagline. Single-word card titles `Operations` / `Strategy` at 52 px. Asymmetric gold accent — Operations highlighted, Strategy neutral. Footer wordmark 28 px + right-aligned price `$9.99 + $19.99`. Stale `og:image:alt` fixed across all `index.html`. Cache-bust `?v=3` → `?v=4`. `npm test` 103/103. Post-deploy validators (LinkedIn Inspector, FB Debugger, opengraph.xyz) require manual re-scrape after Vercel publish. |
 

@@ -1,25 +1,54 @@
-# Cursor rules – DI Vaizdo Generatorius
+# Cursor rules — AI Operations Center (CEO/COO)
 
-## Projektas
-- Statinė HTML aplikacija (`index.html` + `privatumas.html`).
-- Pagrindinė logika: `generator.js` (generatorius) ir `copy.js` (kopijavimas).
-- Stiliai: `style.css` (įskaitant dark mode).
+## Product context
 
-## Kalba ir tonas (vartotojui matomas tekstas)
-- Kreipinys: **Tu**.
-- Tekstas: **lakoniškai**, mažiau yra geriau.
+- **Stack:** Static HTML/CSS/JS storefront + `api/*` Vercel serverless (Stripe fulfillment). Not Next.js.
+- **Audience:** US CEOs/COOs — **EN-only** for new copy, UX, SEO. Canonical paths: root `index.html`, `/en/`.
+- **`/lt/`:** Legacy/regression test path only — do not expand LT product copy.
+- **Paid PDFs:** 21-page Operations ($9.99) + 43-page Strategy ($19.99). SOT: `config/sot.json`.
+- **Docs SOT:** [`docs/CURRENT_TRUTH.md`](docs/CURRENT_TRUTH.md) before editing README, launch, or governance files.
 
-## Saugumas
-- Nekomituoti jokių secretų / raktų / tokenų.
-- Production kode: **be `console.log`** ir be jautrių duomenų log’inimo.
+## Key files
 
-## Kokybė
-- A11y: semantika, `aria-*` tik kur reikia, aiškus `:focus-visible`.
-- Kopijavimas: turi veikti ir su `navigator.clipboard`, ir su fallback.
+| Area | Files |
+|------|--------|
+| Storefront | `index.html`, `style.css`, `commerce.js` |
+| Locale build | `scripts/build-locale-pages.js` → `lt/`, `en/` |
+| PDF source | `docs/pdf-source/*.html`, `docs/pdf-print.css` |
+| Export | `npm run pdf:export` / `pdf:assets` → `scripts/export-pdfs.js` |
+| Fulfillment | `api/stripe-webhook.js`, `api/_lib/fulfillment.js`, `memo_pdf.md` |
 
-## Prieš merge / deploy
-- `npm test` praeina
-- Po deploy: `docs/TESTAVIMAS.md`
+## Language and tone (user-facing)
 
-## Dokumentacija
-- Jei keiti UX / flow / funkcijas: atnaujink `README.md`, `todo.md`, `roadmap.md`, `CHANGELOG.md`, `DEPLOYMENT.md` pagal poreikį.
+- US English (`en-US`), executive tone — practical, no hype overclaims.
+- Do not use obsolete page counts (12/28, 18/40) in new copy.
+
+## Security
+
+- Never commit secrets, Stripe keys, or webhook secrets.
+- Production: no `console.log` with buyer PII or tokens.
+
+## Quality
+
+- A11y: semantics, `aria-*` where needed, visible `:focus-visible`.
+- Before merge: `npm test`.
+- Before release / UX flow changes: `npm run test:mixed` (smoke, e2e, a11y).
+
+## Deploy
+
+- **Production:** Vercel only (`vercel.json`, `SITE_URL`). Runbook: `memo_pdf.md`, gate: `docs/LAUNCH_CHECKLIST.md`.
+- **GitHub Pages workflow:** deprecated — do not treat as production path.
+
+## Documentation (active)
+
+Update when changing UX, commerce, or deploy flow:
+
+- `README.md`, `todo.md`, `docs/INDEX.md`, `AGENTS.md`
+- `docs/LAUNCH_CHECKLIST.md`, `docs/STYLEGUIDE.md`, `memo_pdf.md` as relevant
+
+Agent lanes and merge order: [`AGENTS.md`](AGENTS.md).
+
+## Parallel work
+
+- Do not edit `config/sot.json` `commerce` without Orchestrator sign-off.
+- One agent per PDF HTML file; storefront lane owns `index.html` / `commerce.js`.

@@ -190,6 +190,12 @@ function createDownloadToken(sessionId, productId, ttlSeconds) {
   return { token: `${encodedPayload}.${signEncodedPayload(encodedPayload)}`, payload };
 }
 
+/** Prefix Redis keys per project when sharing one Upstash DB (e.g. REDIS_KEY_PREFIX=ceo:). */
+function redisKey(suffix) {
+  const prefix = process.env.REDIS_KEY_PREFIX || '';
+  return prefix ? `${prefix}${suffix}` : suffix;
+}
+
 function maskEmail(email) {
   if (!email || typeof email !== 'string') return '';
   const atIndex = email.indexOf('@');
@@ -359,13 +365,13 @@ async function fulfillCheckoutSession(stripe, sessionId, origin) {
     return { status: 'not_paid', sessionId };
   }
 
-  const fulfillmentKey = `fulfillment:${session.id}`;
+  const fulfillmentKey = redisKey(`fulfillment:${session.id}`);
   const existing = await redisGetJson(fulfillmentKey);
   if (existing && existing.status === 'fulfilled') {
     return { status: 'already_fulfilled', sessionId };
   }
 
-  const lockKey = `fulfillment-lock:${session.id}`;
+  const lockKey = redisKey(`fulfillment-lock:${session.id}`);
   const locked = await acquireLock(lockKey, 300);
   if (!locked) {
     return { status: 'locked', sessionId };
@@ -383,7 +389,7 @@ async function fulfillCheckoutSession(stripe, sessionId, origin) {
     const token = createDownloadToken(session.id, product.id, DOWNLOAD_TOKEN_TTL_SECONDS);
     const downloadUrl = buildDownloadUrl(token.token, origin);
 
-    await redisSetJson(`download-token:${token.payload.jti}`, {
+    await redisSetJson(redisKey(`download-token:${token.payload.jti}`), {
       sessionId: session.id,
       productId: product.id,
       email,
@@ -420,12 +426,12 @@ async function resolveDownload(token) {
   const product = getProductById(payload.product);
   if (!product) throw new Error('Unknown PDF product.');
 
-  const tokenRecord = await redisGetJson(`download-token:${payload.jti}`);
+  const tokenRecord = await redisGetJson(redisKey(`download-token:${payload.jti}`));
   if (!tokenRecord || tokenRecord.sessionId !== payload.sid || tokenRecord.productId !== product.id) {
     throw new Error('Download token is not active.');
   }
 
-  const fulfillment = await redisGetJson(`fulfillment:${payload.sid}`);
+  const fulfillment = await redisGetJson(redisKey(`fulfillment:${payload.sid}`));
   if (!fulfillment || fulfillment.status !== 'fulfilled' || fulfillment.productId !== product.id) {
     throw new Error('Purchase has not been fulfilled.');
   }
@@ -438,7 +444,7 @@ async function getDownloadUrlBySessionId(sessionId, origin) {
     throw new Error('Missing session id.');
   }
 
-  const fulfillment = await redisGetJson(`fulfillment:${sessionId}`);
+  const fulfillment = await redisGetJson(redisKey(`fulfillment:${sessionId}`));
   if (!fulfillment) {
     throw new Error('Unknown checkout session.');
   }
@@ -452,7 +458,7 @@ async function getDownloadUrlBySessionId(sessionId, origin) {
   }
 
   const token = createDownloadToken(sessionId, product.id, IN_PAGE_DOWNLOAD_TOKEN_TTL_SECONDS);
-  await redisSetJson(`download-token:${token.payload.jti}`, {
+  await redisSetJson(redisKey(`download-token:${token.payload.jti}`), {
     sessionId,
     productId: product.id,
     email: fulfillment.email,

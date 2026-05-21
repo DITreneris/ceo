@@ -93,7 +93,7 @@ npm run pdf:assets        # export PDFs → preview PNGs → OG cover
 - [ ] Ar cover'is turi tik 5 elementus (eyebrow, title, subtitle, callout, footer)?
 - [ ] Ar callout `strong` yra gold (ne primary violet — kontrasto bug)?
 - [ ] Ar interior puslapis turi `.page-eyebrow` su gold tag?
-- [ ] Ar footer page count `X/12` arba `X/28` formatas konsistentinis?
+- [ ] Ar footer page count `X/21` (operating) arba `X/43` (strategy) formatas konsistentinis?
 - [ ] Ar po cover/copy keitimo paleidau `npm run pdf:assets`?
 - [ ] Ar visų `*.png` storefront preview'ų sizes `>= 40 KB` (cover) / `>= 15 KB` (interior)?
 - [ ] Ar `npm test` ir `npm run build` praėjo prieš commit?
@@ -103,8 +103,8 @@ npm run pdf:assets        # export PDFs → preview PNGs → OG cover
 Visi PDF + storefront + OG turi vieningą naming:
 
 - **Eyebrow:** `PROMPT ANATOMY · CEO AI SYSTEM`
-- **Operations product:** `CEO AI Operations Playbook` (18 pages, $9.99)
-- **Strategic product:** `CEO AI Strategy Playbook` (40 pages, $19.99)
+- **Operations product:** `CEO AI Operations Playbook` (21 pages, $9.99)
+- **Strategic product:** `CEO AI Strategy Playbook` (43 pages, $19.99)
 - **Legacy aliases** (do not use in new copy): `CEO Strategic AI Operating System`, `CEO Executive Strategic AI Playbook`, `Operations Hub`, `Hub module: Operations`, `Strategy Hub`, `OPERATIONS MODULE` — only `labelLegacy` SOT field for backward reference.
 
 ## 9. Seka su sister repo (DITreneris/teacher)

@@ -10,7 +10,7 @@ Brand alignment MUST + SHOULD planas ir galutinis pre-deploy checklist'as prieš
 
 ### Jau atlikta (nereikia perdaryti)
 
-- **Vercel deploy konfigūracija:** `vercel.json` (cleanUrls, trailingSlash, cache headers) + `.vercelignore`. Dual deploy mode su esamu GitHub Pages workflow.
+- **Vercel deploy konfigūracija:** `vercel.json` (cleanUrls, trailingSlash, cache headers) + `.vercelignore`. **Production kanoninis kelias — Vercel.** GitHub Pages workflow pažymėtas deprecated (žr. `.github/workflows/deploy.yml`, [CURRENT_TRUTH.md](CURRENT_TRUTH.md)).
 - **WhatsApp → Telegram migracija:** community CTA pakeista į `https://t.me/prompt_anatomy` visose 5 vietose (LT/EN, root + locale buildai + runtime + build replace skripte).
 - **`npm test` + `npm run build`:** žali (53/53 struct testai, ESLint, html-validator).
 
@@ -452,10 +452,9 @@ flowchart TD
 
 - [ ] Push į `main` arba PR.
 - [ ] Vercel preview deploy patikrintas (PR preview URL).
-- [ ] GitHub Pages deploy nesulūžęs (dual mode).
-- [ ] Production deploy į Vercel (po main branch merge).
+- [ ] Production deploy į Vercel (po main branch merge) — **kanoninis** kelias.
 - [ ] Smoke test live URL: `https://<vercel-domain>/`, `/lt/`, `/en/`.
-- [ ] Smoke test GitHub Pages URL (jei dual mode aktyvus).
+- [ ] (Optional) GitHub Pages workflow — tik regression; ne production gate.
 
 ---
 
@@ -480,7 +479,7 @@ flowchart TD
 | W3 Hero copy revizija (LT/EN voice) | Subjektyvu, reikia tavo input'o. |
 | W4 Brand icon revizija (favicon, top-nav) | Liečia deploy'ą ir cache. Atskiras komitas. |
 | `dist/` refactoring | Sprendimas: paliekam `outputDirectory: "."` (greičiau, mažiau pakeitimų). |
-| GitHub Pages atjungimas | Sprendimas: dual deploy (Vercel + Pages) lygiagrečiai. |
+| GitHub Pages atjungimas | **Sprendimas (2026-05):** Vercel = production; GHP workflow deprecated (žr. `CURRENT_TRUTH.md`). |
 
 ---
 

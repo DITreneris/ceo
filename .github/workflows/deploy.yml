@@ -1,6 +1,7 @@
-# GitHub Pages deploy – DI Operacinis Centras (statinė HTML)
-# Reikalavimas: Repo Settings → Pages → Build and deployment: GitHub Actions
-# Nuoroda: https://github.com/DITreneris/spinoff01 (QA standartas)
+# DEPRECATED — GitHub Pages (legacy static mirror only)
+# Production: Vercel (vercel.json, api/* fulfillment). See README.md and docs/CURRENT_TRUTH.md.
+# This workflow may still run on main for regression; do not use as buyer-facing production host.
+# Reikalavimas (jei paliekama): Repo Settings → Pages → GitHub Actions
 
 name: Deploy to GitHub Pages
 

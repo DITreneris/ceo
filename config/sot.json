@@ -265,8 +265,8 @@
   "commerce": {
     "allowPlaceholderCheckout": true,
     "stripePaymentLinks": {
-      "operating": "https://buy.stripe.com/YOUR_OPERATING_PDF_LINK",
-      "strategic": "https://buy.stripe.com/YOUR_STRATEGIC_PDF_LINK"
+      "operating": "https://buy.stripe.com/bJe28rgKE6J7eW85hKfjG09",
+      "strategic": "https://buy.stripe.com/bJe14n51W8Rf29m8tWfjG0a"
     },
     "pricing": {
       "operating": { "now": "$9.99", "was": "$19.99", "pages": 21 },

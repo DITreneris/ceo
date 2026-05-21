@@ -79,7 +79,7 @@ assets/og/og-cover.svg  →  npx svgexport (1200×630 PNG)  →  assets/og/og-co
 Pipeline invariants:
 
 - `npm run pdf:assets` regeneruoja **viską**: PDFs + 8 cover/preview PNGs + OG cover.
-- Page count assertion: operating=12, strategic=28 ([`scripts/export-pdfs.js`](scripts/export-pdfs.js) failina jei mismatch).
+- Page count assertion: operating=21, strategic=43 ([`scripts/export-pdfs.js`](scripts/export-pdfs.js) failina jei mismatch).
 - Min PNG bytes: cover ≥40 KB, preview ≥15 KB, OG ≥20 KB ([`tests/structure.test.js`](tests/structure.test.js)).
 - Cover render naudoja `body.pdf-asset-export` mode — atskirta nuo regular print mode.
 - Render script naudoja `display = ''` (CSS default), NE `display = 'flex'` non-cover sekcijoms (kitaip layout sulūžta į horizontal columns).
@@ -88,8 +88,8 @@ Pipeline invariants:
 
 Du paid PDFs:
 
-- **CEO AI Operations Playbook** — 18 pages, $9.99 (entry).
-- **CEO AI Strategy Playbook** — 40 pages, $19.99 (flagship).
+- **CEO AI Operations Playbook** — 21 pages, $9.99 (entry).
+- **CEO AI Strategy Playbook** — 43 pages, $19.99 (flagship).
 
 Commerce invariants:
 

@@ -46,9 +46,25 @@ Kad agentai dirbtų paraleliai be konfliktų:
 ## Kokybės vartai
 
 - Prieš merge: `npm test`.
-- Jei keistas UX ar flow: papildomai smoke/a11y patikra.
+- Prieš release arba UX/commerce flow keitimą: `npm run test:mixed` (smoke, e2e, a11y).
+- Paid-flow testų plėtra (planas): [`docs/PAID_FLOW_TEST_BACKLOG.md`](docs/PAID_FLOW_TEST_BACKLOG.md).
 
 ## Dokumentų taisyklė
 
-- Aktyvūs dokumentai: `README.md`, `docs/INDEX.md`, `todo.md`, `AGENTS.md`.
-- Visa kita dokumentacija laikoma archyve (`docs/archive/`), jei nėra aiškiai grąžinta į aktyvią zoną.
+**Aktyvūs (operaciniai):**
+
+| Failas | Paskirtis |
+|--------|-----------|
+| `README.md` | Paleidimas, QA/deploy santrauka |
+| `docs/INDEX.md` | Dokumentacijos žemėlapis |
+| `docs/CURRENT_TRUTH.md` | Kanoniniai faktai (21/43, EN-first, Vercel) |
+| `todo.md` | Fazės ir launch blockeriai |
+| `AGENTS.md` | Agentų lanes ir merge taisyklės |
+| `memo_pdf.md` | Stripe + fulfillment runbook |
+| `docs/LAUNCH_CHECKLIST.md` | Phases 15–17 gate |
+| `docs/STYLEGUIDE.md` | PDF/storefront dizaino SOT |
+| `gold_legacy_standard.md` | Premium UI/PDF/commerce patterns |
+| `docs/PAID_FLOW_TEST_BACKLOG.md` | Commerce/a11y testų backlog |
+
+- Visa kita dokumentacija laikoma archyve (`docs/archive/`) arba planavimo lygiu (`docs/pre_deploy_plan.md`), jei nėra aiškiai grąžinta į aktyvią zoną.
+- Prieš docs pakeitimus: [`docs/CURRENT_TRUTH.md`](docs/CURRENT_TRUTH.md).

@@ -2,6 +2,8 @@
 
 Planning source for upgrading the two paid CEO PDF products from v1.1 into a stronger v2 content system.
 
+> **Shipped state (v2.1, 2026-05):** Operations **21 pages**, Strategy **43 pages** — see [`CURRENT_TRUTH.md`](CURRENT_TRUTH.md). Sections below that reference thinner page counts describe the **pre-v2.1** gap analysis, not current storefront promises.
+
 This document is for humans and agents before editing:
 
 - `docs/pdf-source/operating-cadence.html`
@@ -24,7 +26,7 @@ The two PDFs are useful but not yet premium executive playbooks. They are struct
 
 ### Operations Playbook
 
-The Operations PDF gives a practical daily and weekly cadence. It is easy to understand and can help a CEO or COO run a Monday review. The risk is that it is only 12 pages and lacks enough examples, templates, meeting tools, and implementation support.
+The Operations PDF gives a practical daily and weekly cadence. It is easy to understand and can help a CEO or COO run a Monday review. *(Historical note: pre-v2.1 risk was thin page count; shipped v2.1 is 21 pages with samples, agenda, decision log, and quick picks.)*
 
 Keep it as the entry playbook, but make it feel like a working operating tool.
 

@@ -54,8 +54,10 @@ Decisions live in [`config/sot.json`](config/sot.json):
 
 | Guide | Pages | Price |
 |-------|-------|-------|
-| CEO AI Operations Playbook | 12 | $9.99 |
-| CEO AI Strategy Playbook | 28 | $19.99 |
+| CEO AI Operations Playbook | 21 | $9.99 |
+| CEO AI Strategy Playbook | 43 | $19.99 |
+
+Canonical facts: [docs/CURRENT_TRUTH.md](docs/CURRENT_TRUTH.md).
 
 - Storefront: `#pdf-guides` on root `index.html`; checkout via Stripe Payment Links (`config/sot.json`).
 - Regenerate all assets: `npm run pdf:assets` (PDF export → `assets/pdf-covers/` PNG → `assets/og/og-cover.png`).
@@ -65,16 +67,22 @@ Decisions live in [`config/sot.json`](config/sot.json):
 ## Build ir kokybės vartai
 
 ```bash
-npm run build   # generuoja lt/index.html, en/index.html iš root index.html
-npm test        # struktūra, lint
-npm run test:smoke
-npm run test:e2e
+npm run build          # generuoja lt/index.html, en/index.html iš root index.html
+npm test               # merge gate: struktūra, HTML lint, ESLint
+npm run test:mixed     # release gate: test + smoke + e2e + a11y
 ```
 
-## Deploy (Vercel)
+Prieš merge pakanka `npm test`. Prieš production release — `npm run test:mixed` (žr. [docs/LAUNCH_CHECKLIST.md](docs/LAUNCH_CHECKLIST.md)).
 
-- **Web Analytics**: statiniam puslapiui įdėtas Vercel Web Analytics script į `index.html` (`/_vercel/insights/script.js`). Įjungus Analytics Vercel UI ir redeploy'inus, duomenys pradės kauptis.
-- **Canonical/hreflang**: `scripts/build-locale-pages.js` generuoja absoliučius canonical ir hreflang URL pagal `SITE_URL` (default: `https://www.promptanatomy.ceo`). Jei reikia kito domeno, deploy metu nustatyk `SITE_URL` env.
+## Deploy (Vercel — kanoninis)
+
+**Production kelias:** Vercel (`vercel.json`, serverless `api/*`). Domenas: `https://www.promptanatomy.ceo`.
+
+- **Web Analytics**: `/_vercel/insights/script.js` root `index.html`.
+- **Canonical/hreflang**: `scripts/build-locale-pages.js` + `SITE_URL` env.
+- **GitHub Pages** (`.github/workflows/deploy.yml`): **deprecated** — statinis legacy mirror, be fulfillment API. Nenaudoti kaip buyer-facing production.
+
+Fulfillment: [memo_pdf.md](memo_pdf.md). Launch gate: [docs/LAUNCH_CHECKLIST.md](docs/LAUNCH_CHECKLIST.md).
 
 ## Golden Standard (UI)
 
