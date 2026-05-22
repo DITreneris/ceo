@@ -28,6 +28,17 @@ Core failai:
 - [`docs/pdf-source/operating-cadence.html`](docs/pdf-source/operating-cadence.html), [`docs/pdf-source/strategic-os.html`](docs/pdf-source/strategic-os.html), [`docs/pdf-source/pdf-print.css`](docs/pdf-source/pdf-print.css)
 - [`scripts/export-pdfs.js`](scripts/export-pdfs.js), [`scripts/render-pdf-preview-pages.js`](scripts/render-pdf-preview-pages.js)
 
+**Homepage flow (2026-05, aligned with sister `DITreneris/teacher`):**
+
+1. Hero — primary CTA free tool (`#operationsCenter`); secondary → `#pdf-guides`; tertiary link → `#library`.
+2. `#operationsCenter` — free prompt generator.
+3. `#pdf-guides` — paid PDF storefront (optional executive playbooks eyebrow, card kickers, publisher strip → `promptanatomy.app`).
+4. `#library` — template library (collapsed by default).
+5. `#rules` — economic discipline rules (collapsed).
+6. `#community` — Telegram + app.
+
+Sticky nav: **Playbooks** → `#pdf-guides` + Copy prompt. Copy hooks: `config/sot.json` → `copy.pdfStorefront`; hydrate via `commerce.js` → `initPdfStorefrontCopy`.
+
 ## 2. Source of Truth Standard
 
 [`config/sot.json`](config/sot.json) yra brand, mode labels, library prompts, theme spalvų, PDF guide metadata, commerce copy, buyer FAQ, Stripe URL, pricing, testimonialų ir legal operatorių metadata source.
@@ -47,7 +58,7 @@ SOT sekcijos:
 
 ## 3. Design System Standard
 
-Kanoninis DS gidas: [`docs/STYLEGUIDE.md`](docs/STYLEGUIDE.md).
+Kanoninis DS gidas: [`docs/STYLEGUIDE.md`](docs/STYLEGUIDE.md) (PDF/OG) · Storefront DS 1.0: [`docs/DESIGN-SYSTEM.md`](docs/DESIGN-SYSTEM.md), [`styles/tokens.css`](styles/tokens.css), [`docs/ds_improvement_plan.md`](docs/ds_improvement_plan.md).
 
 Current gold tokens:
 
@@ -62,6 +73,7 @@ Current gold tokens:
 
 Design taisyklės:
 
+- **Storefront theme:** light only (no dark-mode toggle). QA and screenshots use the light gold experience.
 - Cover'is = vienas pažadas per 2 sekundes (eyebrow + title + subtitle + 2-line callout + footer).
 - NIEKADA ant cover: Audience/Length/Version/Format/Pair-with/Page X/Y.
 - `.cover .cover-positioning strong` privalo būti gold (`#FFB300`), ne primary violet — kitaip kontrasto bug ant violetinio fono.

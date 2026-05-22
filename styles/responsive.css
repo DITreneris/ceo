@@ -1,0 +1,208 @@
+/* Breakpoints */
+@media (max-width: 768px) {
+    body { padding-top: 74px; font-size: var(--text-md); }
+    .container { padding: 24px 16px; }
+    .top-nav-inner { padding: 10px 16px; gap: 10px; }
+    .top-nav-brand { font-size: var(--text-14); min-width: 0; }
+    .top-nav-brand-text-full { display: none; }
+    .top-nav-brand-text-short { display: inline; }
+    .top-nav-playbooks-link { font-size: var(--text-nav); padding: 0 10px; }
+    .top-nav-copy-btn { font-size: var(--text-nav); padding: 0 12px; }
+    .top-nav-actions { margin-left: auto; }
+    .header { padding: 28px 24px; }
+    .header h1 { font-size: var(--text-3xl); }
+    .header p { font-size: var(--text-md); }
+    /* Horizontal progress: numbers on top, labels below, connecting line */
+    .header-steps {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 0;
+        margin-bottom: var(--space-16);
+    }
+    .header-steps li {
+        flex: 1;
+        position: relative;
+        min-width: 0;
+    }
+    .header-steps li::after {
+        content: '';
+        position: absolute;
+        left: calc(50% + 14px);
+        top: 14px;
+        width: calc(50% - 14px);
+        height: 2px;
+        background: var(--border);
+        margin-left: 0;
+    }
+    .header-steps li:last-child::after {
+        display: none;
+    }
+    .header-step {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+        padding: 0 4px;
+        min-height: 44px;
+        width: 100%;
+        font-size: var(--text-2xs);
+        line-height: 1.2;
+        text-align: center;
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        color: var(--text);
+    }
+    .header-step:hover:not(.is-active) { background: transparent; color: var(--primary); }
+    .header-step.is-active { background: transparent; border: none; box-shadow: none; color: var(--text); }
+    .header-step-num {
+        width: 28px;
+        height: 28px;
+        min-width: 28px;
+        font-size: var(--text-nav);
+        font-weight: 800;
+    }
+    .header-step.is-active .header-step-num {
+        background: var(--primary);
+        color: var(--white);
+    }
+    .header-step:not(.is-active) .header-step-num {
+        background: var(--surface-0);
+        border: 1px solid var(--border);
+        color: var(--text-light);
+    }
+    .collapsible-toggle {
+        padding: var(--space-20) var(--space-20);
+        grid-template-columns: auto 1fr auto;
+        grid-template-areas:
+            "badge title chevron"
+            "badge value value"
+            ". count count";
+        gap: 8px var(--space-12);
+    }
+    .collapsible-count { justify-self: start; }
+    .collapsible-title { font-size: var(--text-lg); }
+    .step-badge { width: 28px; height: 28px; min-width: 28px; font-size: var(--text-nav); }
+    .cta-button { min-height: 48px; padding: 14px 28px; font-size: var(--text-md); }
+    .ops-layout { grid-template-columns: 1fr; gap: var(--space-24); }
+    .ops-layout::after { display: none; }
+    .ops-sidebar { position: static; }
+    .ops-form-grid { grid-template-columns: 1fr; }
+    /* One primary CTA: secondary = ghost */
+    .header .header-cta .cta-button-outline {
+        font-size: var(--text-sm); font-weight: 600;
+        background: transparent; color: var(--text-light);
+        border: 1px solid var(--border); box-shadow: none;
+    }
+    .header .header-cta .cta-button-outline:hover {
+        background: var(--surface-0); color: var(--primary); border-color: var(--primary-200);
+    }
+    /* Primary CTA stays strong but softer shadow (no glow) */
+    .header .header-cta .cta-button {
+        box-shadow: var(--shadow-tab-focus);
+    }
+    .header .header-cta .cta-button:hover {
+        box-shadow: var(--shadow-tab-hover);
+    }
+    /* Modes: neutral, active = subtle border + tint (not full violet) */
+    .mode-tabs { flex-direction: column; align-items: center; background: var(--surface-0); }
+    .mode-tab { flex-direction: row; justify-content: center; flex: 0 1 auto; min-width: 0; width: 100%; max-width: 360px; }
+    .mode-tab.is-active {
+        background: var(--primary-50); color: var(--primary); border-color: var(--primary-200);
+        box-shadow: var(--shadow-tab-rest);
+    }
+    /* Depth: inline segmented control, no heavy card */
+    .depth-bar {
+        flex-wrap: wrap; flex-direction: column; align-items: stretch; gap: var(--space-8);
+        background: var(--surface-0); border-color: var(--border);
+        padding: var(--space-8) var(--space-12); margin-bottom: var(--space-20);
+    }
+    .depth-label { width: 100%; text-align: center; font-size: var(--text-xs); color: var(--text-light); }
+    .depth-options { flex-wrap: wrap; flex: none; width: 100%; justify-content: center; gap: var(--space-4); }
+    .depth-bar .field-help { width: 100%; text-align: center; margin-top: 0; font-size: var(--text-xs); }
+    .depth-btn.is-active {
+        background: var(--primary-50); color: var(--primary); border-color: var(--primary-200);
+        box-shadow: var(--shadow-tab-rest);
+    }
+    /* Badge: only Promptų anatomija on mobile; hide Spin-off Nr. 5 */
+    .header-badges .badge-spinoff { display: none; }
+    .header-badges .badge { font-size: var(--text-2xs); padding: 4px 10px; min-height: 28px; opacity: 0.9; }
+    .header-badges .badge { background: rgba(255, 255, 255, 0.6); border-color: var(--border); }
+    .ops-output-header { align-items: flex-start; }
+    .ops-output-copy { margin-left: auto; }
+    .ops-sessions-actions { width: 100%; justify-content: flex-start; }
+    .library-grid { grid-template-columns: 1fr; }
+    .ops-center { padding: var(--space-20); }
+    .toast { left: 16px; right: 16px; bottom: 16px; }
+    .ops-tool-launchers-list {
+        grid-template-columns: 1fr;
+    }
+    .ops-tool-btn {
+        font-size: var(--text-sm);
+        justify-self: stretch;
+    }
+}
+
+@media (max-width: 480px) {
+    .container { padding: 20px 12px; }
+    .top-nav-inner { padding: 8px 12px; }
+    .top-nav-brand { font-size: var(--text-sm); }
+    .top-nav-playbooks-link { font-size: var(--text-xs); padding: 0 8px; }
+    .top-nav-copy-btn { font-size: var(--text-xs); padding: 0 10px; }
+    .header { padding: 24px 16px; }
+    .header-cta { flex-direction: column; align-items: flex-start; }
+    .header h1 { font-size: var(--text-h1-sm); }
+    .cta-button { min-height: 44px; width: 100%; max-width: 280px; }
+    .header .header-cta .cta-button { min-height: 44px; padding: 14px 24px; }
+    .header .header-cta .cta-button-outline { width: 100%; max-width: 280px; justify-content: center; }
+    .header-cta-meta { font-size: var(--text-nav); }
+    .header-steps { margin-bottom: var(--space-12); }
+    .header-step { font-size: var(--text-micro); padding: 0 2px; }
+    .ops-center { padding: var(--space-16); }
+    .collapsible-toggle {
+        grid-template-columns: auto 1fr;
+        grid-template-areas:
+            "badge title"
+            ". value"
+            ". count"
+            ". chevron";
+        padding: var(--space-16);
+    }
+    .collapsible-chevron { justify-self: end; }
+    .ops-output-footer p { font-size: var(--text-sm); }
+    .session-btn { width: 100%; justify-content: center; }
+    .community { padding: 24px 16px; }
+    .community h2 { font-size: var(--text-xl); }
+    .toast { font-size: var(--text-14); padding: 14px 18px; left: 12px; right: 12px; bottom: 12px; }
+    .footer { padding: 24px 16px; }
+    .ops-output { padding: var(--space-20) var(--space-16); }
+    .library-card { padding: var(--space-16); }
+}
+
+@media print {
+    body { background: white; }
+    .toast, .top-nav { display: none; }
+    .ops-output { page-break-inside: avoid; border: 2px solid var(--print-ink); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+@media (max-width: 900px) {
+    .pdf-guides-grid { grid-template-columns: 1fr; }
+    .pdf-guide-card-body { padding: var(--space-16); }
+    .pdf-guide-buyer-promise { max-width: none; font-size: var(--text-14); }
+    .pdf-guide-cta { width: 100%; text-align: center; box-sizing: border-box; }
+}
+
+@media (max-width: 480px) {
+    .pdf-compare-strip-row { flex-direction: column; }
+    .pdf-guides-grid { order: 2; }
+}

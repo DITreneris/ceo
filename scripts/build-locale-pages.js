@@ -135,7 +135,6 @@ function buildLocaleHtml(locale) {
     html = html.replace('>AI OC</span>', '>DI OC</span>');
     html = html.replace('aria-label="Language selection"', 'aria-label="Kalbos pasirinkimas"');
     html = html.replace('aria-label="Switch to Lithuanian"', 'aria-label="Perjungti į lietuvių kalbą"');
-    html = html.replace('aria-label="Toggle dark mode"', 'aria-label="Perjungti tamsų režimą"');
     html = html.replace('>Copy prompt</button>', '>Kopijuoti užklausą</button>');
 
     html = html.replace('aria-label="Prompt anatomy – interactive training (opens in new tab)"', 'aria-label="Promptų anatomija – interaktyvus mokymas (atidaroma naujame lange)"');
@@ -143,10 +142,11 @@ function buildLocaleHtml(locale) {
     html = html.replace('aria-label="Prompt Anatomy Hub module: Operations (CEO/COO)"', 'aria-label="Promptų anatomija Hub modulis: Operacijos (CEO/COO)"');
     html = html.replace('>Hub module: Operations</span>', '>Hub modulis: Operacijos</span>');
 
-    html = html.replace('</div>\n            <h1>AI Operations Center</h1>', '</div>\n            <h1>DI Operacinis Centras</h1>');
+    html = html.replace('>Turn KPIs into weekly priorities</h1>', '>DI Operacinis Centras</h1>');
+    html = html.replace('>AI Operations Center · for CEOs &amp; COOs</p>', '>DI Operacinis Centras · TOP vadovams CEO / COO</p>');
     html = html.replace(
-      '<p>Get clear weekly priorities and actions in 5 minutes.<br>Enter your numbers and generate an executive-grade AI prompt.</p>',
-      '<p>Per 5 min. gauk aiškius savaitės prioritetus ir veiksmus.<br>Įvesk skaičius ir išsisaugok CEO lygio DI užklausą.</p>'
+      '>Enter revenue, runway, and context. Copy a CEO-ready prompt for ChatGPT, Claude, or Gemini—in about 5 minutes.</p>',
+      '>Įvesk pajamas, rezervą ir kontekstą. Nukopijuok paruoštą CEO promptą į ChatGPT, Claude arba Gemini—maždaug per 5 min.</p>'
     );
     html = html.replace('aria-label="Work steps"', 'aria-label="Darbo žingsniai"');
     html = html.replace('<span class="header-step-num">1</span> Mode</a>', '<span class="header-step-num">1</span> Režimas</a>');
@@ -154,7 +154,9 @@ function buildLocaleHtml(locale) {
     html = html.replace('<span class="header-step-num">3</span> Result</a>', '<span class="header-step-num">3</span> Rezultatas</a>');
     html = html.replace('<span class="header-step-num">4</span> Library</a>', '<span class="header-step-num">4</span> Biblioteka</a>');
     html = html.replace('aria-label="Get weekly priorities in operations center">Get weekly priorities</a>', 'aria-label="Gauti savaitės prioritetus operaciniame centre">Gauti savaitės prioritetus</a>');
-    html = html.replace('aria-label="Browse ready-made templates">Browse templates ↓</a>', 'aria-label="Peržiūrėti paruoštus šablonus">Rinktis šabloną ↓</a>');
+    html = html.replace('aria-label="See CEO PDF playbooks with pricing">See playbooks ($9.99 / $19.99) ↓</a>', 'aria-label="Peržiūrėti CEO PDF playbooks">Playbooks ($9.99 / $19.99) ↓</a>');
+    html = html.replace('>Free tool · Playbooks from $9.99 / $19.99 · No account · ~5 min</p>', '>Nemokamas įrankis · Playbooks nuo $9.99 / $19.99 · Be paskyros · ~5 min</p>');
+    html = html.replace('aria-label="Browse ready-made templates">Browse templates</a>', 'aria-label="Peržiūrėti paruoštus šablonus">Rinktis šabloną</a>');
     html = html.replace('>Under 5 min · Result: clear weekly priorities.</p>', '>Užtruksi iki 5 min. • Rezultatas: aiškūs savaitės prioritetai.</p>');
 
     html = html.replace('Analysis depth', 'Analizės gylis');

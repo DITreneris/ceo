@@ -21,6 +21,10 @@ Vienas įėjimo taškas į aktyvią dokumentaciją.
 - [pdf-content-v02.md](pdf-content-v02.md) - PDF turinio V2 blueprint (istorinė struktūra; dabartinė apimtis 21/43).
 - [CHANGELOG.md](../CHANGELOG.md) - pakeitimų istorija (SemVer).
 - [MOBILE_UX_IMPROVEMENT_PLAN.md](MOBILE_UX_IMPROVEMENT_PLAN.md) - mobile hierarchija (planavimas).
+- [ds_improvement_plan.md](ds_improvement_plan.md) - design system iterations (DS 0.5 → 1.1), storefront consolidation.
+- [DESIGN-SYSTEM.md](DESIGN-SYSTEM.md) - storefront tokens + components (DS 1.1); visual regression: `npm run test:visual`.
+- [DS_MOBILE_DOM_SPIKE.md](DS_MOBILE_DOM_SPIKE.md) - optional 1.4b mobile DOM reorder (gated).
+- [COMPONENT-RULES.md](COMPONENT-RULES.md) - contribution rules for new UI.
 - [USER_JOURNEY_ANALYSIS.md](USER_JOURNEY_ANALYSIS.md) - vartotojo kelionės analizė.
 - [LT_EN_UI_UX_REPORT.md](LT_EN_UI_UX_REPORT.md) - istorinė LT/EN ataskaita (iki 2026-05).
 

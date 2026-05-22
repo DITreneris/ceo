@@ -9,7 +9,7 @@
     var MAX_SESSIONS = 5;
     var TEMPLATE_CHAR_LIMIT = 1100;
     var LANG_KEY = APP_ID + '_lang';
-    var THEME_KEY = APP_ID + '_theme';
+    var LEGACY_THEME_KEY = APP_ID + '_theme';
     var DEPTH_KEY = APP_ID + '_depth';
     var SESSIONS_KEY = APP_ID + '_sessions';
     var AI_TOOL_URLS = {
@@ -307,14 +307,23 @@
         var brandTextShort = document.querySelector('.top-nav-brand-text-short');
         if (brandTextShort) brandTextShort.textContent = uiText('DI OC', 'AI OC');
 
-        var h1 = document.querySelector('.header h1');
-        if (h1) h1.textContent = uiText('DI Operacinis Centras', 'AI Operations Center');
+        var h1 = document.querySelector('[data-copy-hero-headline]');
+        if (h1) h1.textContent = uiText('DI Operacinis Centras', 'Turn KPIs into weekly priorities');
+        var hProduct = document.querySelector('[data-copy-hero-product]');
+        if (hProduct) hProduct.textContent = uiText('DI Operacinis Centras · TOP vadovams CEO / COO', 'AI Operations Center · for CEOs & COOs');
+        var hLead = document.querySelector('[data-copy-hero-lead]');
+        if (hLead) {
+            hLead.textContent = uiText(
+                'Įvesk pajamas, rezervą ir kontekstą. Nukopijuok paruoštą CEO promptą į ChatGPT, Claude arba Gemini—maždaug per 5 min.',
+                'Enter revenue, runway, and context. Copy a CEO-ready prompt for ChatGPT, Claude, or Gemini—in about 5 minutes.'
+            );
+        }
 
         var badgeAnatomy = document.querySelector('.header-badges .badge[href]');
         if (badgeAnatomy) badgeAnatomy.textContent = uiText('Promptų anatomija', 'Prompt anatomy');
-        var badgeSpinoff = document.querySelector('.header-badges .badge-spinoff');
-        if (badgeSpinoff) badgeSpinoff.textContent = uiText('Hub modulis: Operacijos', 'Hub module: Operations');
-        if (badgeSpinoff) badgeSpinoff.setAttribute('aria-label', uiText('Promptų anatomija Hub modulis: Operacijos (CEO/COO)', 'Prompt Anatomy Hub module: Operations (CEO/COO)'));
+        var badgeSpinoff = document.querySelector('[data-copy-hero-badge]');
+        if (badgeSpinoff) badgeSpinoff.textContent = uiText('Operacijų modulis · Promptų anatomija', 'Operations module · Prompt Anatomy');
+        if (badgeSpinoff) badgeSpinoff.setAttribute('aria-label', uiText('Promptų anatomija operacijų modulis CEO/COO', 'Prompt Anatomy Operations module for CEOs and COOs'));
 
         var headerSteps = document.querySelectorAll('.header-step');
         var stepLabels = [
@@ -333,18 +342,10 @@
         var stepsList = document.querySelector('.header-steps');
         if (stepsList) stepsList.setAttribute('aria-label', uiText('Darbo žingsniai', 'Work steps'));
 
-        var hLead = document.querySelector('.header p');
-        if (hLead) {
-            hLead.innerHTML = uiText(
-                'Per 5 min. gauk aiškius savaitės prioritetus ir veiksmus.<br>Įvesk skaičius ir išsisaugok CEO lygio DI užklausą.',
-                'Get clear weekly priorities and actions in 5 minutes.<br>Enter your numbers and generate an executive-grade AI prompt.'
-            );
-        }
-
-        var heroMeta = document.querySelector('.header-cta-meta');
+        var heroMeta = document.querySelector('[data-copy-hero-meta]');
         if (heroMeta) heroMeta.textContent = uiText(
-            'Užtruksi iki 5 min. • Rezultatas: aiškūs savaitės prioritetai.',
-            'Under 5 min · Result: clear weekly priorities.'
+            'Nemokamas įrankis · Playbooks nuo $9.99 / $19.99 · Be paskyros · ~5 min',
+            'Free tool · Playbooks from $9.99 / $19.99 · No account · ~5 min'
         );
 
         var ctaPrimary = document.querySelector('.header-cta .cta-button');
@@ -354,14 +355,21 @@
         }
         var ctaSecondary = document.querySelector('.header-cta .cta-button-outline');
         if (ctaSecondary) {
-            ctaSecondary.textContent = uiText('Rinktis šabloną ↓', 'Browse templates ↓');
-            ctaSecondary.setAttribute('aria-label', uiText('Peržiūrėti paruoštus šablonus', 'Browse ready-made templates'));
+            ctaSecondary.textContent = uiText('Playbooks ($9.99 / $19.99) ↓', 'See playbooks ($9.99 / $19.99) ↓');
+            ctaSecondary.setAttribute('href', '#pdf-guides');
+            ctaSecondary.setAttribute('aria-label', uiText('Peržiūrėti CEO PDF playbooks', 'View CEO PDF playbooks'));
+        }
+        var ctaTertiary = document.querySelector('.header-cta .header-cta-link');
+        if (ctaTertiary) {
+            ctaTertiary.textContent = uiText('Rinktis šabloną', 'Browse templates');
+            ctaTertiary.setAttribute('href', '#library');
+            ctaTertiary.setAttribute('aria-label', uiText('Peržiūrėti paruoštus šablonus', 'Browse ready-made templates'));
         }
 
         var opsTitle = document.querySelector('.ops-center-header .collapsible-title');
         if (opsTitle) opsTitle.textContent = uiText('Operacinis centras', 'Operations center');
         var opsValue = document.querySelector('.ops-center-header .collapsible-value');
-        if (opsValue) opsValue.textContent = uiText('Pasirink režimą, užpildyk laukus – DI užklausa sugeneruojama automatiškai', 'Choose a mode, fill in the fields — your AI prompt is generated automatically.');
+        if (opsValue) opsValue.textContent = uiText('Be paskyros. Pasirink režimą, užpildyk laukus – DI užklausa sugeneruojama automatiškai', 'No account required. Choose a mode, fill in the fields — your AI prompt is generated automatically.');
 
         var modeTablist = document.querySelector('.mode-tabs[role="tablist"]');
         if (modeTablist) modeTablist.setAttribute('aria-label', uiText('Režimo pasirinkimas', 'Mode selection'));
@@ -501,21 +509,21 @@
         var libraryValue = document.querySelector('#library .collapsible-value');
         if (libraryValue) libraryValue.textContent = uiText('Paruošti užklausų šablonai – taikyk formoje arba kopijuok', 'Ready-made prompt templates – apply in form or copy');
         var rulesTitle = document.querySelector('#rules .collapsible-title');
-        if (rulesTitle) rulesTitle.textContent = uiText('Ekonominės drausmės taisyklės', 'Economic discipline rules');
+        if (rulesTitle) rulesTitle.textContent = uiText('Ekonominės drausmės taisyklės', 'Executive decision rules');
         var rulesValue = document.querySelector('#rules .collapsible-value');
         if (rulesValue) rulesValue.textContent = uiText('Vadovo sprendimų sistema – kiekvienas promptas laikosi šių principų', 'Decision framework – every prompt follows these principles');
 
         var outBadge = document.querySelector('.ops-output-badge span:last-child');
         if (outBadge) outBadge.textContent = uiText('Sugeneruota užklausa', 'Generated prompt');
 
-        var outFooter = document.querySelector('.ops-output-footer p:last-of-type');
+        var outFooter = document.querySelector('.ops-output-footer > p:not(.ops-output-chars)');
         if (outFooter) outFooter.textContent = uiText(
-            'Galite redaguoti tekstą čia prieš kopijuojant. Nukopijuok ir įklijuok į ChatGPT arba Claude.',
-            'Edit here if needed, then copy and paste into ChatGPT or Claude.'
+            'Galite redaguoti tekstą čia prieš kopijuojant. Nukopijuok ir įklijuok į ChatGPT, Claude arba Gemini.',
+            'Edit here if needed, then copy and paste into ChatGPT, Claude, or Gemini.'
         );
 
         var outCta = document.querySelector('#outputCopyCta span');
-        if (outCta) outCta.textContent = uiText('KOPIJUOTI UŽKLAUSĄ IR ANALIZUOTI', 'Copy prompt & analyze');
+        if (outCta) outCta.textContent = uiText('Kopijuoti promptą', 'Copy prompt');
         var outputCopyCtaBtn = document.getElementById('outputCopyCta');
         if (outputCopyCtaBtn) outputCopyCtaBtn.setAttribute('aria-label', uiText('Kopijuoti užklausą', 'Copy prompt'));
 
@@ -528,11 +536,13 @@
         var clearBtn = document.getElementById('sessionClearBtn');
         if (clearBtn) clearBtn.innerHTML = '<i data-lucide="trash-2" class="icon icon--sm"></i> ' + uiText('Ištrinti sesijas', 'Clear sessions');
 
-        var themeBtn = document.getElementById('themeToggleBtn');
-        if (themeBtn) themeBtn.setAttribute('aria-label', uiText('Perjungti tamsų režimą', 'Toggle dark mode'));
-
         var communityTitle = document.getElementById('community-title');
-        if (communityTitle) communityTitle.innerHTML = uiText('Promptas sukurtas.<br>Nori daugiau?', 'Prompt created.<br>Want more?');
+        if (communityTitle) {
+            communityTitle.innerHTML = uiText(
+                'Valdai operacijas su DI?<br><span class="community-subtitle" data-copy-community-subtitle>Eik toliau su Promptų anatomija.</span>',
+                'Running AI like operations?<br><span class="community-subtitle" data-copy-community-subtitle>Go further with Prompt Anatomy.</span>'
+            );
+        }
         var communityPrimary = document.querySelector('.community-cta-primary');
         if (communityPrimary) {
             communityPrimary.textContent = uiText('Prisijungti prie Telegram bendruomenės', 'Join Telegram community');
@@ -545,12 +555,17 @@
             communitySecondary.setAttribute('aria-label', uiText('Atrask visą Promptų anatomijos AI OS – visus Hub modulius (atidaroma naujame lange)', 'Explore the full Prompt Anatomy AI OS – all Hub modules (opens in new tab)'));
             communitySecondary.setAttribute('href', ANATOMY_URL);
         }
-        var footerH3 = document.querySelector('.footer h3');
-        if (footerH3) footerH3.innerHTML = uiText('Valdyk verslą su DI ', 'Run your business with AI ') + '<span class="icon-wrap" aria-hidden="true"><i data-lucide="sparkles" class="icon icon--md"></i></span>';
-        var footerSummary = document.querySelector('.footer .footer-summary');
+        var footerH3 = document.querySelector('[data-copy-footer-heading]');
+        if (footerH3) {
+            footerH3.innerHTML = uiText(
+                'Savaitės operacinis ritmas su DI promptais ',
+                'Weekly operating cadence, powered by AI prompts '
+            ) + '<span class="icon-wrap" aria-hidden="true"><i data-lucide="sparkles" class="icon icon--md"></i></span>';
+        }
+        var footerSummary = document.querySelector('[data-copy-footer-summary]');
         if (footerSummary) footerSummary.textContent = uiText(
-            '5 min. operacinių promptų generatorius CEO ir COO.',
-            'A 5‑minute operations prompt generator for CEOs & COOs.'
+            'KPI į savaitės prioritetus—nemokamas generatorius ir optional CEO playbooks.',
+            'Turn KPIs into weekly priorities—free generator plus optional CEO playbooks.'
         );
         var footerProductLink = document.querySelector('.footer-product-link');
         if (footerProductLink) footerProductLink.textContent = uiText(
@@ -1231,33 +1246,10 @@
         });
     }
 
-    /* ===== THEME ===== */
-
-    function setTheme(theme) {
-        document.documentElement.setAttribute('data-theme', theme);
-        try { localStorage.setItem(THEME_KEY, theme); } catch (_) { /* ignore */ }
-
-        var icon = document.querySelector('#themeToggleBtn i');
-        if (icon) {
-            icon.setAttribute('data-lucide', theme === 'dark' ? 'sun' : 'moon');
-            if (window.lucide && typeof window.lucide.createIcons === 'function') {
-                window.lucide.createIcons({ root: document.getElementById('themeToggleBtn') });
-            }
-        }
-    }
-
-    function setupThemeToggle() {
-        var btn = document.getElementById('themeToggleBtn');
-        if (!btn) return;
-
-        var initial = 'light';
-        try { initial = localStorage.getItem(THEME_KEY) || initial; } catch (_) { /* ignore */ }
-        setTheme(initial);
-
-        btn.addEventListener('click', function () {
-            var current = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
-            setTheme(current === 'dark' ? 'light' : 'dark');
-        });
+    /** Light-only storefront: drop saved dark preference from older builds. */
+    function clearLegacyThemePreference() {
+        try { localStorage.removeItem(LEGACY_THEME_KEY); } catch (_) { /* ignore */ }
+        document.documentElement.removeAttribute('data-theme');
     }
 
     /* ===== EXPOSE FOR COPY.JS ===== */
@@ -1268,6 +1260,7 @@
     /* ===== INIT ===== */
 
     document.addEventListener('DOMContentLoaded', function () {
+        clearLegacyThemePreference();
         applyStaticLocaleText();
         var requestedMode = activeMode;
         var requestedDepth = activeDepth;
@@ -1367,9 +1360,6 @@
         renderLibrary();
         renderRules();
         renderSessions();
-
-        // Theme
-        setupThemeToggle();
 
         // Initial output
         switchMode(requestedMode);

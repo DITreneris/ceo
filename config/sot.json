@@ -87,23 +87,85 @@
   ],
   "copy": {
     "hero": {
-      "headline": "AI Operations Center",
-      "subheadline": "Get clear weekly priorities and actions in 5 minutes. Enter your numbers and generate an executive-grade AI prompt.",
+      "headlineBenefit": "Turn KPIs into weekly priorities",
+      "productLine": "AI Operations Center · for CEOs & COOs",
+      "lead": "Enter revenue, runway, and context. Copy a CEO-ready prompt for ChatGPT, Claude, or Gemini—in about 5 minutes.",
+      "ctaMeta": "Free tool · Playbooks from $9.99 / $19.99 · No account · ~5 min",
+      "badgeSpinoff": "Operations module · Prompt Anatomy",
       "primaryCta": "Get weekly priorities",
-      "secondaryCta": "Browse templates"
+      "secondaryCta": "See playbooks ($9.99 / $19.99)",
+      "tertiaryCta": "Browse templates",
+      "secondaryHref": "#pdf-guides",
+      "tertiaryHref": "#library"
+    },
+    "pdfStorefront": {
+      "eyebrow": "Optional executive playbooks",
+      "heading": "CEO PDF playbooks",
+      "lead": "Already using the generator? These playbooks turn the same methodology into a repeatable weekly cadence (21 pages) or a board-ready strategy system (43 pages).",
+      "whichPlaybook": "Start with Operations ($9.99) for weekly cadence. Choose Strategy ($19.99) for board memos, ROI, and 90-day rollout.",
+      "compareCaption": "Print for your leadership team. Re-use every Monday.",
+      "buyerFaqHeading": "Questions before you buy",
+      "ctaOperating": "Get Operations Playbook — $9.99",
+      "ctaStrategic": "Get Strategy Playbook — $19.99",
+      "cardBullets": {
+        "operating": [
+          "21-page operating cadence with daily and weekly prompts",
+          "Samples, decision log, and CEO quick picks",
+          "Print-ready — reuse every Monday with your team"
+        ],
+        "strategic": [
+          "43-page board-ready strategy and decision system",
+          "ROI, runway, governance gates, and 90-day rollout",
+          "Strategic shortcuts for Type 1 / Type 2 decisions"
+        ]
+      },
+      "cardKickers": {
+        "operating": "Best for weekly operating cadence",
+        "strategic": "For board and strategy leads"
+      },
+      "publisher": {
+        "title": "Published by Prompt Anatomy",
+        "body": "Built by Prompt Anatomy—the team behind this free Operations Center. Go deeper with executive training at",
+        "appLabel": "promptanatomy.app",
+        "appUrl": "https://www.promptanatomy.app/?utm_source=ceo&utm_medium=storefront&utm_campaign=pdf_section"
+      }
+    },
+    "opsCenter": {
+      "value": "No account required. Choose a mode, fill in the fields — your AI prompt is generated automatically."
+    },
+    "community": {
+      "title": "Running AI like operations?",
+      "subtitle": "Go further with Prompt Anatomy."
+    },
+    "footer": {
+      "heading": "Weekly operating cadence, powered by AI prompts",
+      "summary": "Turn KPIs into weekly priorities—free generator plus optional CEO playbooks."
     },
     "trust": {
       "privacy": "No account required. Inputs stay in your browser until you copy the prompt.",
-      "responsibleAi": "Review every AI response before using it for executive decisions."
-    }
+      "responsibleAi": "Review every AI response before using it for executive decisions.",
+      "row": [
+        { "icon": "lock", "label": "Secure Stripe checkout" },
+        { "icon": "shield-check", "label": "14-day refund" },
+        { "icon": "credit-card", "label": "Visa · Mastercard · Apple Pay" },
+        { "icon": "badge-check", "label": "256-bit SSL" }
+      ],
+      "sectionFooter": [
+        { "icon": "map-pin", "label": "Prompt Anatomy · Alameda, CA" },
+        { "icon": "mail", "label": "Support: info@promptanatomy.app" }
+      ]
+    },
+    "opsUpsell": "Want the full weekly cadence in print? See the CEO PDF playbooks.",
+    "opsUpsellCta": "See playbooks",
+    "opsUpsellHref": "#pdf-guides"
   },
   "seo": {
     "canonicalPath": "/en/",
     "defaultLocale": "en-US",
     "xDefaultPath": "/en/",
     "legacyLocales": ["lt"],
-    "title": "Weekly Operations Priorities Generator for CEOs & COOs | AI Operations Center",
-    "description": "Get clear weekly priorities in 5 minutes with CEO/COO-ready AI prompts for US executive operators."
+    "title": "Turn KPIs into Weekly Priorities for CEOs & COOs | AI Operations Center",
+    "description": "Turn KPIs into weekly priorities in ~5 minutes. Free CEO/COO prompt builder plus optional playbooks from $9.99. No account required."
   },
   "rules": [
     "Prioritize cash flow, runway, and action clarity over AI novelty.",

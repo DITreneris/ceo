@@ -1,6 +1,6 @@
 # Current truth (documentation SOT)
 
-**Locked:** 2026-05-21 · **Product version:** 2.1.0
+**Locked:** 2026-05-22 · **Product version:** 2.1.0 · **Design system:** 1.1 Hardened (storefront — [`docs/DESIGN-SYSTEM.md`](DESIGN-SYSTEM.md), visual CI: `npm run test:visual`)
 
 Use this block as the canonical reference when updating README, launch docs, Cursor rules, and agent governance. If code disagrees with this file, **code wins** — then update this file.
 
@@ -12,6 +12,9 @@ Use this block as the canonical reference when updating README, launch docs, Cur
 | **`/en/`** and root = active storefront | `npm run build` → `en/index.html` |
 | **`/lt/`** = legacy/regression only (not public locale switch) | [`AGENTS.md`](../AGENTS.md) |
 | Free tool + paid PDF storefront on same site | [`index.html`](../index.html) `#pdf-guides` |
+| **Homepage section order** | Hero → Operations center → **PDF guides** → Template library → Economic discipline rules → Community (aligned with sister [`DITreneris/teacher`](https://github.com/DITreneris/teacher)) |
+| **Storefront copy SOT** | `config/sot.json` → `copy.pdfStorefront`, `copy.hero` (secondary CTA → `#pdf-guides`) |
+| **Storefront UI theme** | **Light only** (gold experience). No dark-mode toggle; legacy `di_ops_center_theme` cleared on load. |
 
 ## Paid PDFs (v2.1)
 

@@ -175,6 +175,108 @@
     });
   }
 
+  function initHeroCopy(config) {
+    if (!config || !config.copy || !config.copy.hero) return;
+    var h = config.copy.hero;
+    if (h.headlineBenefit) setHookText('[data-copy-hero-headline]', h.headlineBenefit);
+    if (h.productLine) setHookText('[data-copy-hero-product]', h.productLine);
+    if (h.lead) setHookText('[data-copy-hero-lead]', h.lead);
+    if (h.ctaMeta) setHookText('[data-copy-hero-meta]', h.ctaMeta);
+    if (h.badgeSpinoff) setHookText('[data-copy-hero-badge]', h.badgeSpinoff);
+    if (h.secondaryCta) {
+      var secondaryLabel = h.secondaryCta.indexOf('↓') === -1 ? h.secondaryCta + ' ↓' : h.secondaryCta;
+      setHookText('[data-copy-hero-secondary-cta]', secondaryLabel);
+      document.querySelectorAll('[data-copy-hero-secondary-cta]').forEach(function (el) {
+        if (h.secondaryHref) el.setAttribute('href', h.secondaryHref);
+      });
+    }
+    if (config.copy.opsCenter && config.copy.opsCenter.value) {
+      setHookText('[data-copy-ops-value]', config.copy.opsCenter.value);
+    }
+    if (config.copy.footer && config.copy.footer.summary) {
+      setHookText('[data-copy-footer-summary]', config.copy.footer.summary);
+    }
+  }
+
+  function initTrustRow(config) {
+    if (!config || !config.copy || !config.copy.trust) return;
+    var trust = config.copy.trust;
+    document.querySelectorAll('[data-trust-row]').forEach(function (container) {
+      var key = container.getAttribute('data-trust-row') || 'row';
+      var items = trust[key];
+      if (!Array.isArray(items) || !items.length) return;
+      var html = '';
+      items.forEach(function (item) {
+        if (!item || !item.label) return;
+        var icon = item.icon ? '<i data-lucide="' + escapeHtmlText(item.icon) + '" class="icon icon--sm" aria-hidden="true"></i>' : '';
+        html += '<li>' + icon + '<span>' + escapeHtmlText(item.label) + '</span></li>';
+      });
+      container.innerHTML = html;
+    });
+    if (typeof window !== 'undefined' && window.lucide && window.lucide.createIcons) {
+      window.lucide.createIcons();
+    }
+  }
+
+  function initPdfCardBullets(config) {
+    var bullets = config && config.copy && config.copy.pdfStorefront && config.copy.pdfStorefront.cardBullets;
+    if (!bullets || typeof bullets !== 'object') return;
+    Object.keys(bullets).forEach(function (key) {
+      var list = bullets[key];
+      if (!Array.isArray(list) || !list.length) return;
+      document.querySelectorAll('[data-pdf-bullets="' + key + '"]').forEach(function (el) {
+        var html = '';
+        list.forEach(function (line) {
+          if (!line) return;
+          html += '<li>' + escapeHtmlText(line) + '</li>';
+        });
+        el.innerHTML = html;
+      });
+    });
+  }
+
+  function initOpsUpsell(config) {
+    if (!config || !config.copy) return;
+    var el = document.querySelector('[data-copy-ops-upsell]');
+    if (!el) return;
+    if (config.copy.opsUpsell) {
+      var href = config.copy.opsUpsellHref || '#pdf-guides';
+      var cta = config.copy.opsUpsellCta || 'See playbooks';
+      el.innerHTML = escapeHtmlText(config.copy.opsUpsell) + ' <a href="' + escapeHtmlText(href) + '">' + escapeHtmlText(cta) + '</a>.';
+    }
+  }
+
+  function initPdfStorefrontCopy(config) {
+    if (!config || !config.copy || !config.copy.pdfStorefront) return;
+    var ps = config.copy.pdfStorefront;
+    if (ps.eyebrow) setHookText('[data-commerce-pdf-eyebrow]', ps.eyebrow);
+    if (ps.heading) setHookText('[data-commerce-pdf-heading]', ps.heading);
+    if (ps.lead) setHookText('[data-commerce-pdf-lead]', ps.lead);
+    if (ps.whichPlaybook) setHookText('[data-commerce-pdf-which]', ps.whichPlaybook);
+    if (ps.compareCaption) setHookText('[data-commerce-compare-caption]', ps.compareCaption);
+    if (ps.buyerFaqHeading) setHookText('[data-commerce-pdf-faq-heading]', ps.buyerFaqHeading);
+    if (ps.ctaOperating) setHookText('[data-commerce-cta-operating]', ps.ctaOperating);
+    if (ps.ctaStrategic) setHookText('[data-commerce-cta-strategic]', ps.ctaStrategic);
+    var kickers = ps.cardKickers;
+    if (kickers && typeof kickers === 'object') {
+      Object.keys(kickers).forEach(function (key) {
+        if (!kickers[key]) return;
+        document.querySelectorAll('[data-pdf-kicker="' + key + '"]').forEach(function (el) {
+          el.textContent = kickers[key];
+        });
+      });
+    }
+    var pub = ps.publisher;
+    if (pub) {
+      if (pub.title) setHookText('[data-commerce-publisher-title]', pub.title);
+      if (pub.body) setHookText('[data-commerce-publisher-body]', pub.body);
+      document.querySelectorAll('[data-commerce-publisher-app]').forEach(function (el) {
+        if (pub.appUrl) el.setAttribute('href', pub.appUrl);
+        if (pub.appLabel) el.textContent = pub.appLabel;
+      });
+    }
+  }
+
   function loadSotConfig() {
     if (window.location.protocol === 'file:') {
       return fetch('config/sot.json').catch(function () { return null; }).then(function (r) {
@@ -190,6 +292,11 @@
     loadSotConfig().then(function (config) {
       if (config && config.commerce) initCommerce(config.commerce);
       if (config) {
+        initHeroCopy(config);
+        initPdfStorefrontCopy(config);
+        initTrustRow(config);
+        initPdfCardBullets(config);
+        initOpsUpsell(config);
         initPdfGuideTocs(config);
         initPdfPromises(config);
         initPdfCardLabels(config);

@@ -67,5 +67,22 @@ for (const viewport of viewports) {
       await expect(page.locator('#operationsCenter')).toBeVisible();
       await expect(page.locator('#opsOutput')).toBeVisible();
     });
+
+    test('PDF guides storefront hydrates trust row and preview opens', async ({ page }) => {
+      await page.goto('/');
+
+      const pdfSection = page.locator('#pdf-guides');
+      await pdfSection.scrollIntoViewIfNeeded();
+      await expect(pdfSection).toBeVisible();
+      await expect(page.locator('[data-stripe-cta]')).toHaveCount(2);
+      await expect(page.locator('.trust-row li').first()).toBeVisible({ timeout: 10000 });
+
+      await page.locator('[data-preview-trigger="operating"]').click();
+      const dialog = page.locator('#pdfPreviewDialog');
+      await expect(dialog).toHaveAttribute('open', '');
+      await expect(page.locator('#pdfPreviewPages img').first()).toBeVisible();
+      await page.locator('#pdfPreviewClose').click();
+      await expect(dialog).not.toHaveAttribute('open', '');
+    });
   });
 }

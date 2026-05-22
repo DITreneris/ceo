@@ -124,4 +124,13 @@ Sister repo yra Edu MVP brand (Beginners + Advanced PDF, navy + gold). Jis **ats
 
 ---
 
-*Last updated: 2026-05-21. Atitinka [`gold_legacy_standard.md`](../gold_legacy_standard.md) baseline.*
+## Storefront components (DS 0.8+)
+
+Storefront UI (hero, ops center, PDF cards) naudoja atskirą failų medį — žr. [`DESIGN-SYSTEM.md`](DESIGN-SYSTEM.md):
+
+- `.btn` / `.card` / `.chip` / `.trust-row`
+- CSS: `styles/tokens.css` (vienintelis `#hex` šaltinis naujiems tokenams)
+
+---
+
+*Last updated: 2026-05-22. Atitinka [`gold_legacy_standard.md`](../gold_legacy_standard.md) baseline.*

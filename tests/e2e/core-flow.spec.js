@@ -36,6 +36,14 @@ test.describe('core first-run flows', () => {
     await expect(page.locator('#m-goal')).toHaveValue('Test goal');
   });
 
+  test('hero secondary CTA scrolls to PDF guides section', async ({ page }) => {
+    await page.goto('/');
+
+    await page.click('.header-cta .cta-button-outline');
+    await expect(page.locator('#pdf-guides')).toBeInViewport();
+    await expect(page.locator('#pdf-guides-title')).toBeVisible();
+  });
+
   test('accordion stays single-open and hero link opens target section', async ({ page }) => {
     await page.goto('/');
 
@@ -72,7 +80,7 @@ test.describe('core first-run flows', () => {
     expect(lang).toBe('en-US');
     await expect(page.locator('#langLtBtn')).toHaveCount(0);
     await expect(page.locator('#langEnBtn')).toHaveCount(0);
-    await expect(page.locator('meta[name="description"]')).toHaveAttribute('content', /US executive operators/);
+    await expect(page.locator('meta[name="description"]')).toHaveAttribute('content', /Turn KPIs into weekly priorities/);
   });
 
   test('legacy /lt/ path still serves full app for regression coverage', async ({ page }) => {

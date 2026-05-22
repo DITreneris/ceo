@@ -12,6 +12,11 @@ const path = require('path');
 const INDEX_PATH = path.join(__dirname, '..', 'index.html');
 const PRIVATUMAS_PATH = path.join(__dirname, '..', 'privatumas.html');
 const STYLE_PATH = path.join(__dirname, '..', 'style.css');
+const TOKENS_CSS_PATH = path.join(__dirname, '..', 'styles', 'tokens.css');
+const BASE_CSS_PATH = path.join(__dirname, '..', 'styles', 'base.css');
+const SECTIONS_CSS_PATH = path.join(__dirname, '..', 'styles', 'sections.css');
+const COMPONENTS_CSS_PATH = path.join(__dirname, '..', 'styles', 'components.css');
+const RESPONSIVE_CSS_PATH = path.join(__dirname, '..', 'styles', 'responsive.css');
 const GENERATOR_PATH = path.join(__dirname, '..', 'generator.js');
 const COPY_PATH = path.join(__dirname, '..', 'copy.js');
 const LUCIDE_VENDOR_PATH = path.join(__dirname, '..', 'vendor', 'lucide.min.js');
@@ -269,10 +274,72 @@ function run() {
   if (assert(generatorFile && generatorFile.includes('LANG_KEY'), 'LANG_KEY naudojamas kalbos sticky logikai')) passed++;
   else failed++;
 
-  // --- CSS kintamieji ---
-  if (assert(styleFile && styleFile.includes('--primary: #4A148C'), 'CSS kintamasis --primary: #4A148C')) passed++;
+  // --- CSS kintamieji (DS 0.8 partitioned) ---
+  const tokensCss = readFile(TOKENS_CSS_PATH);
+  const baseCss = readFile(BASE_CSS_PATH);
+  const sectionsCss = readFile(SECTIONS_CSS_PATH);
+  const componentsCss = readFile(COMPONENTS_CSS_PATH);
+  const responsiveCss = readFile(RESPONSIVE_CSS_PATH);
+  if (assert(tokensCss && tokensCss.includes('--primary: #4A148C'), 'CSS kintamasis --primary: #4A148C')) passed++;
   else failed++;
-  if (assert(styleFile && styleFile.includes('--radius-md:'), 'CSS kintamasis --radius-md')) passed++;
+  if (assert(tokensCss && tokensCss.includes('--radius-md:'), 'CSS kintamasis --radius-md')) passed++;
+  else failed++;
+  if (assert(styleFile && styleFile.includes("@import url('styles/tokens.css')"), 'style.css imports tokens.css')) passed++;
+  else failed++;
+  if (assert(componentsCss && componentsCss.includes('.trust-row'), 'components.css trust-row')) passed++;
+  else failed++;
+  if (assert(componentsCss && componentsCss.includes('.btn--primary'), 'components.css btn system')) passed++;
+  else failed++;
+
+  function hexOutsideTokens(cssText) {
+    if (!cssText) return true;
+    const hexRe = /#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})\b/g;
+    return (cssText.match(hexRe) || []).length === 0;
+  }
+  if (assert(hexOutsideTokens(componentsCss), 'components.css be hex (naudoja tokenus)')) passed++;
+  else failed++;
+  if (assert(hexOutsideTokens(sectionsCss), 'sections.css be hex (naudoja tokenus)')) passed++;
+  else failed++;
+  if (assert(hexOutsideTokens(baseCss), 'base.css be hex (naudoja tokenus)')) passed++;
+  else failed++;
+  if (assert(hexOutsideTokens(responsiveCss), 'responsive.css be hex (naudoja tokenus)')) passed++;
+  else failed++;
+
+  const visualSpecPath = path.join(__dirname, 'e2e', 'visual-storefront.spec.js');
+  if (assert(fs.existsSync(visualSpecPath), 'visual-storefront.spec.js egzistuoja (DS 3.7)')) passed++;
+  else failed++;
+
+  function shadowsUseTokens(cssText) {
+    if (!cssText) return true;
+    return cssText.split('\n').every((line) => {
+      if (!line.includes('box-shadow:')) return true;
+      if (line.includes('shadow-allow-raw')) return true;
+      if (/box-shadow:\s*none/.test(line)) return true;
+      return line.includes('var(--shadow');
+    });
+  }
+  if (assert(shadowsUseTokens(sectionsCss), 'sections.css box-shadow naudoja tokenus')) passed++;
+  else failed++;
+  if (assert(shadowsUseTokens(componentsCss), 'components.css box-shadow naudoja tokenus')) passed++;
+  else failed++;
+  if (assert(shadowsUseTokens(responsiveCss), 'responsive.css box-shadow naudoja tokenus')) passed++;
+  else failed++;
+
+  function countFontSizePx(cssText) {
+    if (!cssText) return 0;
+    return (cssText.match(/font-size:\s*\d+px/g) || []).length;
+  }
+  const fontPxTotal =
+    countFontSizePx(baseCss) +
+    countFontSizePx(sectionsCss) +
+    countFontSizePx(componentsCss) +
+    countFontSizePx(responsiveCss);
+  if (assert(fontPxTotal === 0, `styles/ be raw font-size px (liko ${fontPxTotal})`)) passed++;
+  else failed++;
+
+  if (assert(html.includes('btn--secondary'), 'index.html turi .btn--secondary (DS 1.1 markup)')) passed++;
+  else failed++;
+  if (assert(html.includes('btn btn--primary'), 'index.html turi .btn.btn--primary')) passed++;
   else failed++;
 
   // --- Open Graph kortelė (social preview) ---
@@ -311,6 +378,28 @@ function run() {
     }
   }
   if (assert(html.includes('id="pdf-guides"') && html.includes('pdf-guides-section'), 'PDF guides storefront sekcija (#pdf-guides)')) passed++;
+  else failed++;
+  if (
+    assert(
+      html.indexOf('id="pdf-guides"') !== -1 &&
+        html.indexOf('id="library"') !== -1 &&
+        html.indexOf('id="pdf-guides"') < html.indexOf('id="library"'),
+      'PDF guides sekcija DOM eilėje prieš library (#pdf-guides < #library)'
+    )
+  ) {
+    passed++;
+  } else failed++;
+  if (
+    assert(
+      html.indexOf('id="pdf-guides"') < html.indexOf('id="rules"'),
+      'PDF guides sekcija DOM eilėje prieš rules'
+    )
+  ) {
+    passed++;
+  } else failed++;
+  if (assert(html.includes('data-commerce-pdf-eyebrow') && html.includes('pdf-publisher-strip'), 'PDF storefront copy hooks + publisher strip')) passed++;
+  else failed++;
+  if (assert(html.includes('top-nav-playbooks-link') && html.includes('header-cta-link'), 'Sticky Playbooks link + hero tertiary CTA')) passed++;
   else failed++;
   if (assert(html.includes('$9.99') && html.includes('$19.99'), 'PDF kainos $9.99 ir $19.99 index.html')) passed++;
   else failed++;
@@ -376,9 +465,27 @@ function run() {
   } else failed++;
   if (assert(sot && sot.brand && sot.brand.language === 'en-US' && sot.copy && sot.seo && Array.isArray(sot.rules), 'config/sot.json EN-US brand/copy/seo/rules SOT')) passed++;
   else failed++;
+  if (
+    assert(
+      sot && sot.copy && sot.copy.pdfStorefront && sot.copy.pdfStorefront.publisher && sot.copy.pdfStorefront.cardKickers,
+      'config/sot.json copy.pdfStorefront (journey wave2)'
+    )
+  ) {
+    passed++;
+  } else failed++;
   if (assert(sot && Array.isArray(sot.buyerFaq) && sot.buyerFaq.length >= 3, 'config/sot.json buyerFaq')) passed++;
   else failed++;
   const commerceJs = readFile(COMMERCE_PATH);
+  if (assert(commerceJs && commerceJs.includes('initPdfStorefrontCopy'), 'commerce.js initPdfStorefrontCopy')) passed++;
+  else failed++;
+  if (assert(commerceJs && commerceJs.includes('initHeroCopy'), 'commerce.js initHeroCopy')) passed++;
+  else failed++;
+  if (assert(commerceJs && commerceJs.includes('initPdfCardBullets'), 'commerce.js initPdfCardBullets')) passed++;
+  else failed++;
+  if (assert(commerceJs && commerceJs.includes('initOpsUpsell'), 'commerce.js initOpsUpsell')) passed++;
+  else failed++;
+  if (assert(html.includes('Turn KPIs into weekly priorities') && html.includes('data-copy-hero-headline'), 'Hero benefit-first headline (variant B)')) passed++;
+  else failed++;
   if (assert(commerceJs && commerceJs.includes('initCommerce') && !commerceJs.includes('<motion>'), 'commerce.js be motion artefaktų')) passed++;
   else failed++;
   if (assert(commerceJs && commerceJs.includes("fetch('/config/sot.json'"), 'commerce.js krauna SOT iš root kelio locale puslapiams')) passed++;
@@ -405,7 +512,20 @@ function run() {
   const privacyHtml = readFile(PRIVACY_PATH);
   if (assert(privacyHtml && privacyHtml.includes('legal-page'), 'privacy.html legal-page')) passed++;
   else failed++;
-  if (assert(styleFile && styleFile.includes('.pdf-guides-section'), 'style.css PDF storefront stiliai')) passed++;
+  if (
+    assert(
+      (sectionsCss && sectionsCss.includes('.pdf-guides-section')) ||
+        (styleFile && styleFile.includes('.pdf-guides-section')),
+      'sections.css PDF storefront stiliai'
+    )
+  ) {
+    passed++;
+  } else failed++;
+  if (assert(html.includes('data-trust-row') && html.includes('trust-row'), 'index.html trust-row hooks')) passed++;
+  else failed++;
+  if (assert(commerceJs && commerceJs.includes('initTrustRow'), 'commerce.js initTrustRow')) passed++;
+  else failed++;
+  if (assert(sot && sot.copy && sot.copy.trust && Array.isArray(sot.copy.trust.row), 'config/sot.json copy.trust.row')) passed++;
   else failed++;
   if (
     sot &&
