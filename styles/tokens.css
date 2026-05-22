@@ -138,6 +138,10 @@
 
     --hero-soft-start: #F5EDFF;
     --hero-soft-end: #E9DCFF;
+    --hero-card-bg: rgba(26, 10, 46, 0.94);
+    --hero-card-border: rgba(255, 179, 0, 0.38);
+    --hero-card-text: rgba(255, 255, 255, 0.92);
+    --hero-card-text-muted: rgba(255, 255, 255, 0.62);
     --gradient-cta-end: #F4EEFF;
     --gradient-cta-hover-end: #EFE6FF;
     --print-ink: #000000;

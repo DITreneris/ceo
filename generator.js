@@ -276,6 +276,24 @@
         return String(value || '').trim().length > 0;
     }
 
+    function hasAnyFormInput() {
+        return Object.keys(MODES).some(function (mode) {
+            if (!formData[mode]) return false;
+            return MODES[mode].fields.some(function (field) {
+                return isFilled(formData[mode][field]);
+            });
+        });
+    }
+
+    function updateStickyCopyVisibility() {
+        var stickyCopy = document.getElementById('stickyCopyBtn');
+        if (!stickyCopy) return;
+        var shouldShow = hasAnyFormInput();
+        stickyCopy.classList.toggle('is-hidden', !shouldShow);
+        stickyCopy.setAttribute('aria-hidden', shouldShow ? 'false' : 'true');
+        stickyCopy.disabled = !shouldShow;
+    }
+
     function uiText(lt, en) {
         return locale === 'lt' ? lt : en;
     }
@@ -359,13 +377,6 @@
             ctaSecondary.setAttribute('href', '#pdf-guides');
             ctaSecondary.setAttribute('aria-label', uiText('Peržiūrėti CEO PDF playbooks', 'View CEO PDF playbooks'));
         }
-        var ctaTertiary = document.querySelector('.header-cta .header-cta-link');
-        if (ctaTertiary) {
-            ctaTertiary.textContent = uiText('Rinktis šabloną', 'Browse templates');
-            ctaTertiary.setAttribute('href', '#library');
-            ctaTertiary.setAttribute('aria-label', uiText('Peržiūrėti paruoštus šablonus', 'Browse ready-made templates'));
-        }
-
         var opsTitle = document.querySelector('.ops-center-header .collapsible-title');
         if (opsTitle) opsTitle.textContent = uiText('Operacinis centras', 'Operations center');
         var opsValue = document.querySelector('.ops-center-header .collapsible-value');
@@ -805,6 +816,8 @@
 
         var depthBadge = document.getElementById('depthBadge');
         if (depthBadge) depthBadge.textContent = DEPTH_LEVELS[activeDepth].label;
+
+        updateStickyCopyVisibility();
     }
 
     /* ===== MODE SWITCHING ===== */
@@ -1365,5 +1378,6 @@
         switchMode(requestedMode);
         switchDepth(requestedDepth);
         updateOutput();
+        updateStickyCopyVisibility();
     });
 })();

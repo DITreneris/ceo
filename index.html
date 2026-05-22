@@ -160,7 +160,7 @@
             </a>
             <div class="top-nav-actions">
                 <a href="#pdf-guides" class="top-nav-playbooks-link">Playbooks</a>
-                <button type="button" class="top-nav-copy-btn" id="stickyCopyBtn">Copy prompt</button>
+                <button type="button" class="top-nav-copy-btn is-hidden" id="stickyCopyBtn" aria-hidden="true" disabled>Copy prompt</button>
             </div>
         </div>
     </nav>
@@ -170,29 +170,44 @@
 
         <!-- HERO -->
         <header class="header">
-            <div class="header-badges">
-                <a href="https://www.promptanatomy.app/" class="badge" target="_blank" rel="noopener noreferrer" aria-label="Prompt anatomy – interactive training (opens in new tab)">Prompt anatomy</a>
-                <span class="badge badge-spinoff" role="status" aria-label="Prompt Anatomy Operations module for CEOs and COOs" data-copy-hero-badge>Operations module · Prompt Anatomy</span>
-            </div>
-            <h1 data-copy-hero-headline>Turn KPIs into weekly priorities</h1>
-            <p class="header-product-line" data-copy-hero-product>AI Operations Center · for CEOs &amp; COOs</p>
-            <p class="header-lead" data-copy-hero-lead>Enter revenue, runway, and context. Copy a CEO-ready prompt for ChatGPT, Claude, or Gemini—in about 5 minutes.</p>
-            <div class="header-cta">
-                <a href="#operationsCenter" class="cta-button btn btn--primary" aria-label="Get weekly priorities in operations center">Get weekly priorities</a>
-                <a href="#pdf-guides" class="btn btn--secondary cta-button-outline" data-copy-hero-secondary-cta aria-label="See CEO PDF playbooks with pricing">See playbooks ($9.99 / $19.99) ↓</a>
-                <a href="#library" class="header-cta-link" aria-label="Browse ready-made templates">Browse templates</a>
-                <p class="header-cta-meta" data-copy-hero-meta>Free tool · Playbooks from $9.99 / $19.99 · No account · ~5 min</p>
+            <div class="hero-layout">
+                <div class="hero-content">
+                    <div class="header-badges">
+                        <a href="https://www.promptanatomy.app/" class="badge" target="_blank" rel="noopener noreferrer" aria-label="Prompt anatomy – interactive training (opens in new tab)">Prompt anatomy</a>
+                        <span class="badge badge-spinoff" role="status" aria-label="Prompt Anatomy Operations module for CEOs and COOs" data-copy-hero-badge>Operations module · Prompt Anatomy</span>
+                    </div>
+                    <h1 data-copy-hero-headline>Turn KPIs into weekly priorities</h1>
+                    <p class="header-product-line" data-copy-hero-product>AI Operations Center · for CEOs &amp; COOs</p>
+                    <p class="header-lead" data-copy-hero-lead>Enter revenue, runway, and context. Copy a CEO-ready prompt for ChatGPT, Claude, or Gemini—in about 5 minutes.</p>
+                    <ol class="header-steps" aria-label="Work steps">
+                        <li><a href="#operationsCenter" class="header-step is-active"><span class="header-step-num">1</span> Mode</a></li>
+                        <li><a href="#opsForm" class="header-step"><span class="header-step-num">2</span> Form</a></li>
+                        <li><a href="#opsOutputSection" class="header-step"><span class="header-step-num">3</span> Result</a></li>
+                        <li><a href="#library" class="header-step"><span class="header-step-num">4</span> Library</a></li>
+                    </ol>
+                    <div class="header-cta">
+                        <a href="#operationsCenter" class="cta-button btn btn--primary" aria-label="Get weekly priorities in operations center">Get weekly priorities</a>
+                        <a href="#pdf-guides" class="btn btn--secondary cta-button-outline" data-copy-hero-secondary-cta aria-label="See CEO PDF playbooks with pricing">See playbooks ($9.99 / $19.99) ↓</a>
+                        <p class="header-cta-meta" data-copy-hero-meta>Free tool · Playbooks from $9.99 / $19.99 · No account · ~5 min</p>
+                    </div>
+                </div>
+                <aside class="hero-prompt-card" aria-hidden="true">
+                    <p class="hero-prompt-card__label">Example</p>
+                    <p class="hero-prompt-card__title">Weekly priorities (preview)</p>
+                    <ul class="hero-prompt-card__list">
+                        <li><span class="hero-prompt-card__priority">P1</span> Cash runway review</li>
+                        <li><span class="hero-prompt-card__priority">P2</span> Pipeline follow-ups</li>
+                        <li><span class="hero-prompt-card__priority">P3</span> Hiring freeze check</li>
+                        <li><span class="hero-prompt-card__priority">P4</span> Board memo draft</li>
+                        <li><span class="hero-prompt-card__priority">P5</span> AI ops cadence</li>
+                    </ul>
+                    <p class="hero-prompt-card__footer">Ready to copy into your AI tool</p>
+                </aside>
             </div>
         </header>
 
         <!-- OPERATIONS CENTER -->
         <section class="ops-center" id="operationsCenter">
-            <ul class="header-steps ops-work-steps" aria-label="Work steps">
-                <li><a href="#operationsCenter" class="header-step is-active"><span class="header-step-num">1</span> Mode</a></li>
-                <li><a href="#operationsCenter" class="header-step"><span class="header-step-num">2</span> Form</a></li>
-                <li><a href="#operationsCenter" class="header-step"><span class="header-step-num">3</span> Result</a></li>
-                <li><a href="#library" class="header-step"><span class="header-step-num">4</span> Library</a></li>
-            </ul>
             <div class="ops-center-header">
                 <span class="step-badge" aria-hidden="true">1</span>
                 <div class="ops-center-header-text">
@@ -361,7 +376,7 @@
                 </div>
 
                 <!-- OUTPUT SIDEBAR -->
-                <div class="ops-sidebar">
+                <div class="ops-sidebar" id="opsOutputSection">
                     <div class="ops-output card card--surface-dark" role="region" aria-label="Generated AI prompt">
                         <div class="ops-output-header">
                             <div class="ops-output-badge">

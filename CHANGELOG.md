@@ -8,6 +8,7 @@ EN-US storefront journey + **Design System 1.1 Hardened** ([`docs/ds_improvement
 
 ### Added
 
+- **Hero refactor** — [`docs/hero_refactor.md`](docs/hero_refactor.md): two-column hero with dark glass weekly-priorities preview; 4-step scroll spy; ops duplicate stepper removed; sticky copy gated on form input.
 - **DS 1.1 — visual regression** — [`tests/e2e/visual-storefront.spec.js`](tests/e2e/visual-storefront.spec.js), baselines in `tests/e2e/__screenshots__/`, `npm run test:visual` / `test:visual:update`, included in `npm run test:mixed`.
 - **DS 1.1 — tokens** — extended `--shadow-*` and `--text-*` set in [`styles/tokens.css`](styles/tokens.css); CI guards for shadow/type usage (structure tests **130/130**).
 - **DS 1.1 — mobile DOM spike** — [`docs/DS_MOBILE_DOM_SPIKE.md`](docs/DS_MOBILE_DOM_SPIKE.md) (1.4b gated; no DOM reorder shipped).
@@ -21,6 +22,7 @@ EN-US storefront journey + **Design System 1.1 Hardened** ([`docs/ds_improvement
 
 ### Changed
 
+- **Hero refactor** — hero stepper moved above CTAs with scroll spy (`copy.js`); `#opsOutputSection` anchor; hero limited to 2 CTAs (playbooks secondary); visual baseline `hero-above-fold.png` updated; structure tests **131/131**.
 - **DS 1.1** — all partitioned `box-shadow` / `font-size` use CSS variables; LCP inline `:root` in `index.html` mirrors tokens; storefront CTAs use `.btn` + modifiers (legacy aliases kept).
 - **DS 0.8** — monolithic CSS split; hex → tokens on hot paths; spacing on `--space-*` grid.
 - **DS 0.6** — hero density (work steps → ops center); unified primary CTA via `--shadow-cta`.
@@ -31,6 +33,11 @@ EN-US storefront journey + **Design System 1.1 Hardened** ([`docs/ds_improvement
 - **Live Stripe links** — `commerce.stripePaymentLinks` + static CTA `href`s → `buy.stripe.com/...` (publish gate still `allowPlaceholderCheckout: true` until live test purchases).
 - **Repo governance** — [`AGENTS.md`](AGENTS.md), [`README.md`](README.md), [`docs/INDEX.md`](docs/INDEX.md), launch docs aligned to v2.1 / Vercel canonical deploy.
 - **OG / naming** — thumbnail-first `og-cover.svg` (`?v=4`); unified `PROMPT ANATOMY · CEO AI SYSTEM` eyebrow; **CEO AI Strategy Playbook** rename.
+
+### Removed
+
+- **Hero tertiary CTA** — `Browse templates` link and `copy.hero.tertiaryCta` / `tertiaryHref` (library via step 4 only).
+- **Ops duplicate stepper** — `.ops-work-steps` removed from operations center.
 
 ### Fixed
 

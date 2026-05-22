@@ -94,9 +94,7 @@
       "badgeSpinoff": "Operations module · Prompt Anatomy",
       "primaryCta": "Get weekly priorities",
       "secondaryCta": "See playbooks ($9.99 / $19.99)",
-      "tertiaryCta": "Browse templates",
-      "secondaryHref": "#pdf-guides",
-      "tertiaryHref": "#library"
+      "secondaryHref": "#pdf-guides"
     },
     "pdfStorefront": {
       "eyebrow": "Optional executive playbooks",

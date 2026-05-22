@@ -458,6 +458,7 @@ A founder or dev can open this file, execute **Iteration 1.1** in one afternoon,
 | CI: shadow / type / visual spec guards | Done |
 | Smoke: PDF guides + trust row + preview | Done |
 | 1.4b mobile DOM | Spike doc only — [`DS_MOBILE_DOM_SPIKE.md`](DS_MOBILE_DOM_SPIKE.md) |
+| Hero refactor (post–DS 1.1) | [`hero_refactor.md`](hero_refactor.md) — 2 CTA, glass card, scroll spy |
 
 ---
 

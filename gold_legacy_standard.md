@@ -30,7 +30,7 @@ Core failai:
 
 **Homepage flow (2026-05, aligned with sister `DITreneris/teacher`):**
 
-1. Hero — primary CTA free tool (`#operationsCenter`); secondary → `#pdf-guides`; tertiary link → `#library`.
+1. Hero — primary CTA free tool (`#operationsCenter`); secondary → `#pdf-guides`; 4-step stepper → library via step 4 (no hero tertiary link). Glass preview card desktop-only.
 2. `#operationsCenter` — free prompt generator.
 3. `#pdf-guides` — paid PDF storefront (optional executive playbooks eyebrow, card kickers, publisher strip → `promptanatomy.app`).
 4. `#library` — template library (collapsed by default).

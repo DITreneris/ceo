@@ -399,8 +399,19 @@ function run() {
   } else failed++;
   if (assert(html.includes('data-commerce-pdf-eyebrow') && html.includes('pdf-publisher-strip'), 'PDF storefront copy hooks + publisher strip')) passed++;
   else failed++;
-  if (assert(html.includes('top-nav-playbooks-link') && html.includes('header-cta-link'), 'Sticky Playbooks link + hero tertiary CTA')) passed++;
+  if (assert(html.includes('top-nav-playbooks-link') && !html.includes('header-cta-link'), 'Sticky Playbooks link; hero has no tertiary CTA link')) passed++;
   else failed++;
+  if (
+    assert(
+      html.includes('hero-layout') &&
+        html.includes('hero-prompt-card') &&
+        html.includes('id="opsOutputSection"') &&
+        !html.includes('ops-work-steps'),
+      'Hero refactor: layout, glass card, output anchor, no ops stepper'
+    )
+  ) {
+    passed++;
+  } else failed++;
   if (assert(html.includes('$9.99') && html.includes('$19.99'), 'PDF kainos $9.99 ir $19.99 index.html')) passed++;
   else failed++;
   if (

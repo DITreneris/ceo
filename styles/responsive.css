@@ -195,6 +195,12 @@
     }
 }
 
+@media (max-width: 1024px) {
+    .hero-prompt-card {
+        display: none;
+    }
+}
+
 @media (max-width: 900px) {
     .pdf-guides-grid { grid-template-columns: 1fr; }
     .pdf-guide-card-body { padding: var(--space-16); }

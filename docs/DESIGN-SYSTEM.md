@@ -52,6 +52,18 @@ Hydrated from `copy.trust.row` / `copy.trust.sectionFooter` via `commerce.js` �
 
 Aliases: `.badge`, `.pill`, `.tag`.
 
+### Hero (post–hero refactor)
+
+| Element | Contract |
+|---------|----------|
+| `.hero-layout` | Two-column grid ≥1025px; stacks on mobile |
+| `.hero-prompt-card` | Static dark glass preview; `aria-hidden="true"`; hidden ≤1024px |
+| `.header-steps` | 4 anchors: `#operationsCenter`, `#opsForm`, `#opsOutputSection`, `#library` |
+| `.header-cta` | **2** actions only: primary + playbooks secondary |
+| `#stickyCopyBtn` | Hidden until `hasAnyFormInput()` in `generator.js` |
+
+Spec: [`hero_refactor.md`](hero_refactor.md).
+
 ## HTML examples
 
 **Primary CTA:**
