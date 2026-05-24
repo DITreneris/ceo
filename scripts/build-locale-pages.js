@@ -257,7 +257,7 @@ function buildLocaleHtml(locale) {
   // 6. Asset paths: root-relative so they resolve from /lt/ or /en/ (and with BASE_PATH for GitHub Pages)
   var base = BASE_PATH || '';
   html = html.replace(/\bhref="favicon\.svg"/, 'href="' + base + '/favicon.svg"');
-  html = html.replace(/\bhref="style\.css(\?[^"]*)?"/g, 'href="' + base + '/style.css?v=2.1.1"');
+  html = html.replace(/\bhref="style\.css(\?[^"]*)?"/g, 'href="' + base + '/style.css?v=2.1.2"');
   html = html.replace(/\bsrc="vendor\/lucide\.min\.js"/, 'src="' + base + '/vendor/lucide.min.js"');
   html = html.replace(/\bsrc="generator\.js"/, 'src="' + base + '/generator.js"');
   html = html.replace(/\bsrc="copy\.js"/, 'src="' + base + '/copy.js"');

@@ -164,7 +164,7 @@ function run() {
   else failed++;
 
   // --- Moduliniai failai ---
-  if (assert(html.includes('href="style.css?v=2.1.1"'), 'Link į style.css (cache-busted)')) passed++;
+  if (assert(html.includes('href="style.css?v=2.1.2"'), 'Link į style.css (cache-busted)')) passed++;
   else failed++;
   if (assert(html.includes('src="generator.js"'), 'Script src generator.js')) passed++;
   else failed++;
@@ -284,8 +284,16 @@ function run() {
   else failed++;
   if (assert(tokensCss && tokensCss.includes('--radius-md:'), 'CSS kintamasis --radius-md')) passed++;
   else failed++;
-  if (assert(styleFile && styleFile.includes("@import url('styles/tokens.css')"), 'style.css imports tokens.css')) passed++;
-  else failed++;
+  if (
+    assert(
+      styleFile &&
+        styleFile.includes("@import url('styles/sections.css?v=2.1.2')") &&
+        styleFile.includes("@import url('styles/base.css?v=2.1.2')"),
+      'style.css @import cache-bust ?v=2.1.2 on partitioned CSS'
+    )
+  ) {
+    passed++;
+  } else failed++;
   if (assert(componentsCss && componentsCss.includes('.trust-row'), 'components.css trust-row')) passed++;
   else failed++;
   if (assert(componentsCss && componentsCss.includes('.btn--primary'), 'components.css btn system')) passed++;
