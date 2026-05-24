@@ -1,3 +1,10 @@
+/* ===== BOX MODEL ===== */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 /* ===== LUCIDE IKONOS ===== */
 .icon {
     display: inline-block;

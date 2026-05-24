@@ -24,6 +24,8 @@ EN-US storefront journey + **Design System 1.1 Hardened** ([`docs/ds_improvement
 
 ### Changed
 
+- **Depth tip** — moved out of `.depth-bar` to `#depthTip.field-help` (no chip frame); copy shortened to *Not sure? Start with Fast.*
+- **Ops form grid overflow** — global `box-sizing: border-box`; `min-width: 0` on `.ops-layout` columns and `.ops-form-grid` cells; `max-width: 100%` on field inputs (fixes borders clipping past section card).
 - **Nav Playbooks CTA** — sticky link upgraded to `.btn.btn--nav-secondary` (solid white on dark nav); copy *CEO playbooks* + commerce aria-label from SOT `copy.nav`; hidden `#stickyCopyBtn` uses `display: none` so Playbooks aligns flush with content right gutter.
 - **IA v3 integrate** — use cases inline in hero (`hero.useCasesLabel` + text-only `heroStrip`); removed `.use-cases-strip`; ops title *Build your weekly brief*; removed ops value/intro paragraphs; compact journey stepper; shortened hero lead; net copy reduction on first screen.
 - **Hero slim v2** — eyebrow (`copy.hero.eyebrow`) replaces promise paragraph; use-case icons in `.use-cases-strip` below hero; preview card summary list (`detail` only, no Owner/Action); shortened `ctaMeta` and lead; primary CTA `Build weekly brief`; visual baseline `hero-above-fold.png` updated.

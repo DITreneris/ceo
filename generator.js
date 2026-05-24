@@ -383,7 +383,7 @@
         var depthTipEl = document.querySelector('[data-copy-ops-depth-tip] span');
         if (depthTipEl) {
             var fastWord = uiText('Greita', 'Fast');
-            var prefix = uiText('Patarimas · Nežinai? Pradėk su ', 'Tip · Not sure? Start with ');
+            var prefix = uiText('Nežinai? Pradėk su ', 'Not sure? Start with ');
             depthTipEl.innerHTML = prefix + '<strong>' + fastWord + '</strong>.';
         }
 

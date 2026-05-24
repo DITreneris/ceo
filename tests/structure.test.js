@@ -445,6 +445,8 @@ function run() {
         !html.includes('Choose a leadership scenario') &&
         html.includes('data-copy-ops-depth-tip') &&
         html.includes('aria-describedby="depthTip"') &&
+        html.includes('field-help depth-tip') &&
+        !html.includes('chip--tip depth-tip') &&
         html.includes('field-help--row') &&
         html.includes('data-copy-ops-toast-default') &&
         html.indexOf('id="sessionsPanel"') > html.indexOf('class="ops-layout"'),

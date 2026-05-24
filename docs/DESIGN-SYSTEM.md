@@ -74,7 +74,7 @@ Spec: [`hero_refactor.md`](hero_refactor.md).
 
 | Element | Contract |
 |---------|----------|
-| `.depth-bar > .depth-tip.chip.chip--tip` | Gold-accent tip chip; `id="depthTip"` referenced by `aria-describedby` on depth `radiogroup`; SOT: `copy.opsDepth.tip`; full-width row inside `.depth-bar` |
+| `#depthTip.field-help.depth-tip` | Help line below `.depth-bar`; `aria-describedby` on depth `radiogroup`; SOT `copy.opsDepth.tip` |
 | `.ops-form-grid` | Two columns; `align-items: start`; help spans full row via `.field-help.field-help--row` |
 | `#opsOutput[placeholder]` | SOT: `copy.opsOutput.emptyPlaceholder`; min-height 140px; thin themed scrollbar |
 | `.ops-tool-btn` | Dark-surface ghost; gold accent on hover/focus; keep `data-ai-tool` |

@@ -31,7 +31,7 @@ flowchart TD
 | Stepper | `.ops-journey-steps.ops-journey-steps--compact` | 4 anchors with scroll spy ([`copy.js`](../copy.js)) |
 | Mode tabs | `.mode-tabs > .mode-tab[data-mode]` | `MASTER` / `DIENOS` / `SAVAITES` panels |
 | Depth bar | `.depth-bar` (flex-wrap) | Pills + tip chip stack |
-| Depth tip | `.depth-tip.chip.chip--tip[id="depthTip"]` | `aria-describedby` target on depth `radiogroup`; `[data-copy-ops-depth-tip]` for hydration |
+| Depth tip | `#depthTip.field-help.depth-tip` below `.depth-bar` | `aria-describedby` target on depth `radiogroup`; `[data-copy-ops-depth-tip]` for hydration |
 | Form grid | `.ops-form-grid` | `align-items: start`; full-width help via `.field-help--row` |
 | Output | `#opsOutput` (textarea) | SOT placeholder; min-height 140px; themed scrollbar |
 | Tool launchers | `.ops-tool-btn[data-ai-tool]` | Ghost on dark surface; gold accent on hover/focus |
@@ -49,7 +49,7 @@ flowchart TD
     "value": "…existing collapsible value line…"
   },
   "opsDepth": {
-    "tip": "Tip · Not sure? Start with Fast."
+    "tip": "Not sure? Start with Fast."
   },
   "opsOutput": {
     "emptyPlaceholder": "Your CEO-ready prompt appears here as you fill the form.",
