@@ -230,8 +230,18 @@
 }
 
 .trust-row--hero-inline {
-    display: inline;
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-4) var(--space-10);
+    vertical-align: baseline;
     font-weight: 500;
+}
+
+.hero-use-case-sep {
+    color: var(--text-light);
+    font-weight: 400;
+    user-select: none;
 }
 
 .price__now,

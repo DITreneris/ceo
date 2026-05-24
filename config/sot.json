@@ -87,6 +87,15 @@
   ],
   "copy": {
     "hero": {
+      "badgeParent": {
+        "label": "Prompt Anatomy",
+        "href": "https://www.promptanatomy.app/",
+        "ariaLabel": "Return to Prompt Anatomy Hub (opens in new tab)"
+      },
+      "badgeSpinoff": {
+        "label": "Hub module: Operations",
+        "ariaLabel": "Prompt Anatomy Hub module: Operations (CEO/COO)"
+      },
       "headlineBenefit": "Turn scattered KPIs into a clear weekly CEO brief",
       "lead": "Add KPIs, blockers, and context.\nGet structured priorities in 5 minutes.",
       "ctaMeta": "Free · No account · ~5 min",
@@ -167,7 +176,11 @@
     },
     "footer": {
       "heading": "Weekly operating cadence, powered by AI prompts",
-      "summary": "Weekly CEO operating brief—free builder plus optional playbooks."
+      "summary": "Weekly CEO operating brief—free builder plus optional playbooks.",
+      "productLink": "Part of <a href=\"https://www.promptanatomy.app/\" target=\"_blank\" rel=\"noopener noreferrer\">Prompt Anatomy</a> (AI Operating System) — Operations module.",
+      "hubContext": "You're in the <strong>Operations</strong> module",
+      "hubHomeLabel": "Prompt Anatomy Hub",
+      "hubHomeAriaLabel": "Return to Prompt Anatomy Hub (opens in new tab)"
     },
     "trust": {
       "privacy": "No account required. Inputs stay in your browser until you copy the brief.",
@@ -180,10 +193,6 @@
         {
           "icon": "target",
           "label": "Ops reviews"
-        },
-        {
-          "icon": "trending-up",
-          "label": "Founder updates"
         },
         {
           "icon": "briefcase",

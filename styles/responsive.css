@@ -10,6 +10,8 @@
     .top-nav-copy-btn { font-size: var(--text-nav); padding: 0 12px; }
     .top-nav-actions { margin-left: auto; }
     .header { padding: 28px 24px; }
+    .header-badges .badge-spinoff { display: none; }
+    .header-badges .badge { font-size: 10px; padding: 4px 10px; min-height: 32px; }
     .header h1 { font-size: var(--text-3xl); }
     .header p { font-size: var(--text-md); }
     /* Horizontal progress: numbers on top, labels below, connecting line */
@@ -91,8 +93,15 @@
     .collapsible-title { font-size: var(--text-lg); }
     .step-badge { width: 28px; height: 28px; min-width: 28px; font-size: var(--text-nav); }
     .cta-button { min-height: 48px; padding: 14px 28px; font-size: var(--text-md); }
-    .ops-layout { grid-template-columns: 1fr; gap: var(--space-24); }
+    .ops-layout { grid-template-columns: 1fr; gap: var(--space-24); align-items: start; }
     .ops-layout::after { display: none; }
+    .ops-layout > .ops-form,
+    .ops-layout > .ops-sidebar { min-height: 0; flex: none; }
+    .ops-form > [role="tabpanel"]:not([hidden]) { flex: none; }
+    .ops-form-section { flex: none; }
+    .ops-output { flex: none; }
+    .ops-output-text { flex: none; }
+    .ops-output-footer { margin-top: var(--space-24); }
     .ops-sidebar { position: static; }
     .ops-form-grid { grid-template-columns: 1fr; }
     /* One primary CTA: secondary = ghost */

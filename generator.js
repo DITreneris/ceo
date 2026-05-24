@@ -577,19 +577,29 @@
             'KPI į savaitės prioritetus—nemokamas generatorius ir optional CEO playbooks.',
             'Turn KPIs into weekly priorities—free generator plus optional CEO playbooks.'
         );
-        var footerProductLink = document.querySelector('.footer-product-link');
-        if (footerProductLink) footerProductLink.textContent = uiText(
-            'Promptų anatomijos (DI operacinės sistemos) dalis — Operacijų modulis.',
-            'Part of Prompt Anatomy (AI Operating System) — Operations module.'
-        );
-        var footerTags = document.querySelectorAll('.footer .tag');
-        var tagTexts = [
-            'CEO / COO',
-            uiText('3 režimai · 3 gylio lygiai', '3 modes · 3 depths')
-        ];
-        footerTags.forEach(function (tag, i) {
-            if (tagTexts[i] && tag.childNodes.length > 1) tag.childNodes[1].textContent = ' ' + tagTexts[i];
-        });
+        var footerProductLink = document.querySelector('[data-copy-footer-product-link]') || document.querySelector('.footer-product-link');
+        if (footerProductLink) {
+            footerProductLink.innerHTML = uiText(
+                'Promptų anatomijos (<a href="' + ANATOMY_URL + '" target="_blank" rel="noopener noreferrer">Promptų anatomijos</a>) (DI operacinės sistemos) dalis — Operacijų modulis.',
+                'Part of <a href="' + ANATOMY_URL + '" target="_blank" rel="noopener noreferrer">Prompt Anatomy</a> (AI Operating System) — Operations module.'
+            );
+        }
+        var hubContext = document.querySelector('[data-copy-hub-context]');
+        if (hubContext) {
+            hubContext.innerHTML = uiText(
+                'Esate <strong>Operacijų</strong> modulyje',
+                'You\'re in the <strong>Operations</strong> module'
+            );
+        }
+        var hubHomeLabel = document.querySelector('[data-copy-hub-home]');
+        if (hubHomeLabel) hubHomeLabel.textContent = 'Prompt Anatomy Hub';
+        var hubHomeLink = document.querySelector('[data-module="hub"]');
+        if (hubHomeLink) {
+            hubHomeLink.setAttribute('aria-label', uiText(
+                'Grįžti į Prompt Anatomy Hub (atidaroma naujame lange)',
+                'Return to Prompt Anatomy Hub (opens in new tab)'
+            ));
+        }
         var copyrightText = document.querySelector('.copyright p');
         if (copyrightText) {
             copyrightText.innerHTML = '&copy; 2026 Tomas Staniulis. ' +
@@ -637,6 +647,7 @@
         // Hub map URLs (keep consistent across locales and runtime switches)
         document.querySelectorAll('.hub-map-item[data-module]').forEach(function (el) {
             var mod = el.getAttribute('data-module');
+            if (mod === 'hub') el.setAttribute('href', ANATOMY_URL);
             if (mod === 'library') el.setAttribute('href', 'https://promptanatomy.info/');
             if (mod === 'content') el.setAttribute('href', 'https://www.promptanatomy.space/');
             if (mod === 'free-lesson') el.setAttribute('href', 'https://promptanatomy.cloud/');

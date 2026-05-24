@@ -359,7 +359,18 @@ function buildLocaleHtml(locale) {
     // Footer
     html = html.replace('>Run your business with AI <span', '>Valdyk verslą su DI <span');
     html = html.replace('>A 5‑minute operations prompt generator for CEOs &amp; COOs.</p>', '>5 min. operacinių promptų generatorius CEO ir COO.</p>');
-    html = html.replace('>Part of Prompt Anatomy (AI Operating System) — Operations module.</p>', '>Promptų anatomijos (DI operacinės sistemos) dalis — Operacijų modulis.</p>');
+    html = html.replace(
+      'Part of <a href="https://www.promptanatomy.app/" target="_blank" rel="noopener noreferrer">Prompt Anatomy</a> (AI Operating System) — Operations module.</p>',
+      'Promptų anatomijos (<a href="https://www.promptanatomy.app/" target="_blank" rel="noopener noreferrer">Promptų anatomijos</a>) (DI operacinės sistemos) dalis — Operacijų modulis.</p>'
+    );
+    html = html.replace(
+      'You\'re in the <strong>Operations</strong> module',
+      'Esate <strong>Operacijų</strong> modulyje'
+    );
+    html = html.replace(
+      'aria-label="Return to Prompt Anatomy Hub (opens in new tab)"',
+      'aria-label="Grįžti į Prompt Anatomy Hub (atidaroma naujame lange)"'
+    );
     html = html.replace('aria-label="FAQ"', 'aria-label="DUK"');
     html = html.replace('>What is this?</summary>', '>Kas tai?</summary>');
     html = html.replace('>Who is it for?</summary>', '>Kam skirta?</summary>');
@@ -408,7 +419,6 @@ function buildLocaleHtml(locale) {
       '"text": "Sesijos saugomos tik tavo naršyklėje (localStorage). Šis puslapis neįkelia įvesties į serverį."'
     );
 
-    html = html.replace('>3 modes · 3 depths</span>', '>3 režimai · 3 gylio lygiai</span>');
     html = html.replace('aria-label="Prompt Anatomy Hub modules"', 'aria-label="Promptų anatomijos Hub moduliai"');
     html = html.replace('>you are here</span>', '>jūs čia</span>');
 

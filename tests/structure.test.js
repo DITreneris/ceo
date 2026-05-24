@@ -434,6 +434,19 @@ function run() {
   } else failed++;
   if (
     assert(
+      html.includes('data-module="hub"') &&
+        html.includes('promptanatomy.app') &&
+        html.indexOf('class="hub-map"') < html.indexOf('class="footer-faq"') &&
+        !html.includes('<div class="tags" role="list">') &&
+        html.includes('footer-address-email') &&
+        html.includes('info@promptanatomy.app'),
+      'Footer hub-first: hub home link, order, no tags, support email'
+    )
+  ) {
+    passed++;
+  } else failed++;
+  if (
+    assert(
       html.includes('ops-control-panel') &&
         html.includes('depth-tip--bar') &&
         html.includes('mode-tab-icon'),
@@ -670,6 +683,14 @@ function run() {
   if (assert(commerceJs && commerceJs.includes('initPdfCardBullets'), 'commerce.js initPdfCardBullets')) passed++;
   else failed++;
   if (assert(commerceJs && commerceJs.includes('initOpsUpsell'), 'commerce.js initOpsUpsell')) passed++;
+  else failed++;
+  if (assert(
+    html.includes('header-badges') &&
+      html.includes('data-copy-hero-badge-parent') &&
+      html.includes('Prompt Anatomy') &&
+      html.includes('Hub module: Operations'),
+    'Hero Prompt Anatomy lineage badges'
+  )) passed++;
   else failed++;
   if (assert(html.includes('Turn scattered KPIs into a clear weekly CEO brief') && html.includes('data-copy-hero-headline'), 'Hero benefit-first headline (CEO brief)')) passed++;
   else failed++;
