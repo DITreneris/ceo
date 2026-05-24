@@ -179,10 +179,8 @@
     if (!config || !config.copy || !config.copy.hero) return;
     var h = config.copy.hero;
     if (h.headlineBenefit) setHookText('[data-copy-hero-headline]', h.headlineBenefit);
-    if (h.productLine) setHookText('[data-copy-hero-product]', h.productLine);
     if (h.lead) setHookText('[data-copy-hero-lead]', h.lead);
     if (h.ctaMeta) setHookText('[data-copy-hero-meta]', h.ctaMeta);
-    if (h.badgeSpinoff) setHookText('[data-copy-hero-badge]', h.badgeSpinoff);
     if (h.secondaryCta) {
       var secondaryLabel = h.secondaryCta.indexOf('↓') === -1 ? h.secondaryCta + ' ↓' : h.secondaryCta;
       setHookText('[data-copy-hero-secondary-cta]', secondaryLabel);
@@ -192,6 +190,35 @@
     }
     if (config.copy.opsCenter && config.copy.opsCenter.value) {
       setHookText('[data-copy-ops-value]', config.copy.opsCenter.value);
+    }
+    if (config.copy.opsCenter && config.copy.opsCenter.intro) {
+      setHookText('[data-copy-ops-intro]', config.copy.opsCenter.intro);
+    }
+    if (config.copy.opsDepth && config.copy.opsDepth.tip) {
+      var tipEl = document.querySelector('[data-copy-ops-depth-tip] span');
+      if (tipEl) {
+        var tipText = config.copy.opsDepth.tip;
+        var emphasis = tipText.match(/\b(Fast|Deep|Board)\b\.?$/);
+        if (emphasis) {
+          var lead = tipText.slice(0, emphasis.index);
+          tipEl.innerHTML = escapeHtmlText(lead) + '<strong>' + escapeHtmlText(emphasis[1]) + '</strong>' + (tipText.endsWith('.') ? '.' : '');
+        } else {
+          tipEl.textContent = tipText;
+        }
+      }
+    }
+    if (config.copy.opsOutput) {
+      var ops = config.copy.opsOutput;
+      if (ops.emptyPlaceholder) {
+        var outputEl = document.getElementById('opsOutput');
+        if (outputEl && outputEl.tagName === 'TEXTAREA') outputEl.setAttribute('placeholder', ops.emptyPlaceholder);
+      }
+      if (ops.copiedToast) {
+        var toastEl = document.getElementById('toast');
+        if (toastEl) toastEl.setAttribute('data-copy-ops-toast-default', ops.copiedToast);
+        var toastMsg = document.getElementById('toastMessage');
+        if (toastMsg && !toastMsg.dataset.userMessage) toastMsg.textContent = ops.copiedToast;
+      }
     }
     if (config.copy.footer && config.copy.footer.summary) {
       setHookText('[data-copy-footer-summary]', config.copy.footer.summary);

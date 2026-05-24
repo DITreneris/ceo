@@ -88,7 +88,7 @@
 
         function setActiveStepBySectionId(sectionId) {
             if (!sectionId) return;
-            var steps = document.querySelectorAll('.header-steps .header-step');
+            var steps = document.querySelectorAll('.ops-journey-steps .ops-journey-step');
             steps.forEach(function (link) {
                 var href = link.getAttribute('href') || '';
                 link.classList.toggle('is-active', href === '#' + sectionId);
@@ -116,7 +116,7 @@
             scrollSpySections.forEach(function (el) { observer.observe(el); });
         }
 
-        var heroLinks = document.querySelectorAll('.header-step[href]');
+        var heroLinks = document.querySelectorAll('.ops-journey-step[href]');
         heroLinks.forEach(function (link) {
             link.addEventListener('click', function (e) {
                 var hash = link.getAttribute('href');

@@ -405,9 +405,49 @@ function run() {
     assert(
       html.includes('hero-layout') &&
         html.includes('hero-prompt-card') &&
+        html.includes('hero-prompt-card__more') &&
+        html.includes('ops-journey-steps') &&
+        !html.includes('class="header-steps"') &&
         html.includes('id="opsOutputSection"') &&
         !html.includes('ops-work-steps'),
-      'Hero refactor: layout, glass card, output anchor, no ops stepper'
+      'Hero de-clutter: glass card, ops journey steps, no hero stepper'
+    )
+  ) {
+    passed++;
+  } else failed++;
+  if (
+    assert(
+      !html.includes('See playbooks ($9.99') &&
+        html.includes('See CEO playbooks') &&
+        html.includes('For CEOs &amp; COOs · Free'),
+      'Hero commerce: soft secondary CTA, trust meta without playbook prices'
+    )
+  ) {
+    passed++;
+  } else failed++;
+  if (
+    assert(
+      html.includes('data-copy-ops-intro') &&
+        html.includes('data-copy-ops-depth-tip') &&
+        html.includes('aria-describedby="depthTip"') &&
+        html.includes('field-help--row') &&
+        html.includes('data-copy-ops-toast-default') &&
+        html.indexOf('id="sessionsPanel"') > html.indexOf('class="ops-layout"'),
+      'Ops workspace clarity: intro, depth tip chip, runway row, toast default, sessions outside layout'
+    )
+  ) {
+    passed++;
+  } else failed++;
+  const sotJsonRaw = readFile(SOT_PATH);
+  const sotForOps = sotJsonRaw ? JSON.parse(sotJsonRaw) : null;
+  if (
+    assert(
+      sotForOps &&
+        sotForOps.copy &&
+        sotForOps.copy.opsCenter && sotForOps.copy.opsCenter.intro &&
+        sotForOps.copy.opsDepth && sotForOps.copy.opsDepth.tip &&
+        sotForOps.copy.opsOutput && sotForOps.copy.opsOutput.emptyPlaceholder && sotForOps.copy.opsOutput.copiedToast,
+      'config/sot.json copy.opsCenter.intro + opsDepth.tip + opsOutput.{emptyPlaceholder,copiedToast}'
     )
   ) {
     passed++;

@@ -20,6 +20,15 @@ test.describe('visual storefront regression', () => {
     });
   });
 
+  test('ops-center-desktop', async ({ page }) => {
+    const ops = page.locator('#operationsCenter');
+    await ops.scrollIntoViewIfNeeded();
+    await expect(ops).toBeInViewport();
+    await expect(ops).toHaveScreenshot('ops-center-desktop.png', {
+      maxDiffPixelRatio: 0.02
+    });
+  });
+
   test('pdf-guides-section', async ({ page }) => {
     const section = page.locator('#pdf-guides');
     await section.scrollIntoViewIfNeeded();
@@ -42,6 +51,14 @@ test.describe('visual storefront regression — mobile', () => {
     await section.scrollIntoViewIfNeeded();
     await expect(page.locator('.pdf-guide-card')).toHaveCount(2);
     await expect(section).toHaveScreenshot('pdf-guides-mobile.png', {
+      maxDiffPixelRatio: 0.02
+    });
+  });
+
+  test('ops-center-mobile', async ({ page }) => {
+    const ops = page.locator('#operationsCenter');
+    await ops.scrollIntoViewIfNeeded();
+    await expect(ops).toHaveScreenshot('ops-center-mobile.png', {
       maxDiffPixelRatio: 0.02
     });
   });

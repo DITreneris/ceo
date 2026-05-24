@@ -30,8 +30,8 @@ Core failai:
 
 **Homepage flow (2026-05, aligned with sister `DITreneris/teacher`):**
 
-1. Hero — primary CTA free tool (`#operationsCenter`); secondary → `#pdf-guides`; 4-step stepper → library via step 4 (no hero tertiary link). Glass preview card desktop-only.
-2. `#operationsCenter` — free prompt generator.
+1. Hero — primary CTA free tool (`#operationsCenter`); soft secondary → `#pdf-guides` (no playbook prices in hero). Glass preview card desktop-only (2 priorities + “+3 more”).
+2. `#operationsCenter` — free prompt generator; `.ops-journey-steps` (4-step scroll spy) at section top, followed by `.ops-center-intro` one-liner; depth tip chip (`.chip--tip`) is full-width inside `.depth-bar` and bound to the depth `radiogroup` via `aria-describedby="depthTip"`; `.ops-form-grid` aligns to the top with runway help spanning a full row; `#sessionsPanel` lives outside `.ops-layout` as a full-width sibling. Output empty state and copied-toast read SOT (`copy.opsOutput.{emptyPlaceholder,copiedToast}`) — see [`docs/ops_workspace_plan.md`](docs/ops_workspace_plan.md).
 3. `#pdf-guides` — paid PDF storefront (optional executive playbooks eyebrow, card kickers, publisher strip → `promptanatomy.app`).
 4. `#library` — template library (collapsed by default).
 5. `#rules` — economic discipline rules (collapsed).

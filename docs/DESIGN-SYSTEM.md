@@ -58,11 +58,25 @@ Aliases: `.badge`, `.pill`, `.tag`.
 |---------|----------|
 | `.hero-layout` | Two-column grid ≥1025px; stacks on mobile |
 | `.hero-prompt-card` | Static dark glass preview; `aria-hidden="true"`; hidden ≤1024px |
-| `.header-steps` | 4 anchors: `#operationsCenter`, `#opsForm`, `#opsOutputSection`, `#library` |
+| `.ops-journey-steps` | 4 anchors: `#operationsCenter`, `#opsForm`, `#opsOutputSection`, `#library` (top of ops center) |
 | `.header-cta` | **2** actions only: primary + playbooks secondary |
 | `#stickyCopyBtn` | Hidden until `hasAnyFormInput()` in `generator.js` |
 
 Spec: [`hero_refactor.md`](hero_refactor.md).
+
+### Operations workspace
+
+| Element | Contract |
+|---------|----------|
+| `.ops-center-intro` | One-line guidance under `.ops-journey-steps`; SOT: `copy.opsCenter.intro`; hook `data-copy-ops-intro` |
+| `.depth-bar > .depth-tip.chip.chip--tip` | Gold-accent tip chip; `id="depthTip"` referenced by `aria-describedby` on depth `radiogroup`; SOT: `copy.opsDepth.tip`; full-width row inside `.depth-bar` |
+| `.ops-form-grid` | Two columns; `align-items: start`; help spans full row via `.field-help.field-help--row` |
+| `#opsOutput[placeholder]` | SOT: `copy.opsOutput.emptyPlaceholder`; min-height 140px; thin themed scrollbar |
+| `.ops-tool-btn` | Dark-surface ghost; gold accent on hover/focus; keep `data-ai-tool` |
+| `#sessionsPanel` | Sibling of `.ops-layout` (full width); auto-fill grid for tile cards; empty state spans all columns |
+| Toast | `#toast[data-copy-ops-toast-default]` from `copy.opsOutput.copiedToast`; `showToastIfAvailable` reads it as default |
+
+Spec: [`ops_workspace_plan.md`](ops_workspace_plan.md).
 
 ## HTML examples
 

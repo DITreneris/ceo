@@ -175,23 +175,12 @@
         <header class="header">
             <div class="hero-layout">
                 <div class="hero-content">
-                    <div class="header-badges">
-                        <a href="https://www.promptanatomy.app/" class="badge" target="_blank" rel="noopener noreferrer" aria-label="Promptų anatomija – interaktyvus mokymas (atidaroma naujame lange)">Promptų anatomija</a>
-                        <span class="badge badge-spinoff" role="status" aria-label="Prompt Anatomy Operations module for CEOs and COOs" data-copy-hero-badge>Operations module · Prompt Anatomy</span>
-                    </div>
                     <h1 data-copy-hero-headline>DI Operacinis Centras</h1>
-                    <p class="header-product-line" data-copy-hero-product>DI Operacinis Centras · TOP vadovams CEO / COO</p>
-                    <p class="header-lead" data-copy-hero-lead>Įvesk pajamas, rezervą ir kontekstą. Nukopijuok paruoštą CEO promptą į ChatGPT, Claude arba Gemini—maždaug per 5 min.</p>
-                    <ol class="header-steps" aria-label="Darbo žingsniai">
-                        <li><a href="#operationsCenter" class="header-step is-active"><span class="header-step-num">1</span> Režimas</a></li>
-                        <li><a href="#opsForm" class="header-step"><span class="header-step-num">2</span> Forma</a></li>
-                        <li><a href="#opsOutputSection" class="header-step"><span class="header-step-num">3</span> Rezultatas</a></li>
-                        <li><a href="#library" class="header-step"><span class="header-step-num">4</span> Biblioteka</a></li>
-                    </ol>
+                    <p class="header-lead" data-copy-hero-lead>Įvesk pajamas, rezervą ir kontekstą. Gauk paruoštą CEO promptą maždaug per 5 min.</p>
                     <div class="header-cta">
                         <a href="#operationsCenter" class="cta-button btn btn--primary" aria-label="Gauti savaitės prioritetus operaciniame centre">Gauti savaitės prioritetus</a>
-                        <a href="#pdf-guides" class="btn btn--secondary cta-button-outline" data-copy-hero-secondary-cta aria-label="Peržiūrėti CEO PDF playbooks">Playbooks ($9.99 / $19.99) ↓</a>
-                        <p class="header-cta-meta" data-copy-hero-meta>Nemokamas įrankis · Playbooks nuo $9.99 / $19.99 · Be paskyros · ~5 min</p>
+                        <a href="#pdf-guides" class="btn btn--secondary cta-button-outline" data-copy-hero-secondary-cta aria-label="Peržiūrėti CEO PDF playbooks">CEO playbooks ↓</a>
+                        <p class="header-cta-meta" data-copy-hero-meta>TOP vadovams CEO / COO · Nemokama · Be paskyros · ~5 min</p>
                     </div>
                 </div>
                 <aside class="hero-prompt-card" aria-hidden="true">
@@ -200,11 +189,8 @@
                     <ul class="hero-prompt-card__list">
                         <li><span class="hero-prompt-card__priority">P1</span> Cash runway review</li>
                         <li><span class="hero-prompt-card__priority">P2</span> Pipeline follow-ups</li>
-                        <li><span class="hero-prompt-card__priority">P3</span> Hiring freeze check</li>
-                        <li><span class="hero-prompt-card__priority">P4</span> Board memo draft</li>
-                        <li><span class="hero-prompt-card__priority">P5</span> AI ops cadence</li>
+                        <li class="hero-prompt-card__more" aria-hidden="true">+3 priorities in your output</li>
                     </ul>
-                    <p class="hero-prompt-card__footer">Ready to copy into your AI tool</p>
                 </aside>
             </div>
         </header>
@@ -215,9 +201,18 @@
                 <span class="step-badge" aria-hidden="true">1</span>
                 <div class="ops-center-header-text">
                     <span class="collapsible-title">Operations center</span>
-                    <span class="collapsible-value" data-copy-ops-value>No account required. Choose a mode, fill in the fields — your AI prompt is generated automatically.</span>
+                    <span class="collapsible-value" data-copy-ops-value>Be paskyros. Pasirink režimą, užpildyk laukus — nukopijuok paruoštą CEO promptą į ChatGPT, Claude arba Gemini.</span>
                 </div>
             </div>
+            <nav class="ops-journey-steps" aria-label="Darbo žingsniai">
+                <ol>
+                    <li><a href="#operationsCenter" class="ops-journey-step is-active"><span class="ops-journey-step-num">1</span> Režimas</a></li>
+                    <li><a href="#opsForm" class="ops-journey-step"><span class="ops-journey-step-num">2</span> Forma</a></li>
+                    <li><a href="#opsOutputSection" class="ops-journey-step"><span class="ops-journey-step-num">3</span> Rezultatas</a></li>
+                    <li><a href="#library" class="ops-journey-step"><span class="ops-journey-step-num">4</span> Biblioteka</a></li>
+                </ol>
+            </nav>
+            <p class="ops-center-intro" data-copy-ops-intro>Pasirink režimą, nustatyk gylį, įrašyk skaičius — užklausa atnaujinama gyvai.</p>
 
             <!-- Mode Tabs -->
             <div class="mode-tabs" role="tablist" aria-label="Mode selection">
@@ -238,7 +233,7 @@
             <!-- Depth Selector -->
             <div class="depth-bar">
                 <span class="depth-label"><i data-lucide="sliders-horizontal" class="icon icon--sm"></i> Analizės gylis</span>
-                <div class="depth-options" role="radiogroup" aria-label="Promptų gylio lygis">
+                <div class="depth-options" role="radiogroup" aria-label="Promptų gylio lygis" aria-describedby="depthTip">
                     <button type="button" class="depth-btn is-active" role="radio" aria-checked="true" data-depth="GREITA">
                         <i data-lucide="zap" class="icon icon--sm"></i> Greita</button>
                     <button type="button" class="depth-btn" role="radio" aria-checked="false" data-depth="GILU">
@@ -246,7 +241,7 @@
                     <button type="button" class="depth-btn" role="radio" aria-checked="false" data-depth="BOARD">
                         <i data-lucide="briefcase" class="icon icon--sm"></i> Valdybai</button>
                 </div>
-                <div class="field-help">Nežinai? Rinkis Greita.</div>
+                <p id="depthTip" class="chip chip--tip depth-tip" data-copy-ops-depth-tip><i data-lucide="lightbulb" class="icon icon--sm" aria-hidden="true"></i><span>Patarimas · Nežinai? Pradėk su <strong>Greita</strong>.</span></p>
             </div>
 
             <!-- Layout: Form + Output -->
@@ -293,8 +288,8 @@
                                 <div>
                                     <label class="field-label" for="m-runway">Runway (months)</label>
                                     <input type="text" id="m-runway" name="runway" class="field-input" placeholder="E.g.: 16 months">
-                                    <div class="field-help">Months you can run with current cash.</div>
                                 </div>
+                                <div class="field-help field-help--row">Kiek mėnesių gali veikti su esamais pinigų likučiais.</div>
                                 <div class="field-full">
                                     <label class="field-label" for="m-facts">Key facts / context</label>
                                     <textarea id="m-facts" name="facts" class="field-textarea" rows="3" placeholder="E.g.: Lost 2 clients but gained 5 new. New product launch next month."></textarea>
@@ -388,7 +383,7 @@
                                 <i data-lucide="copy" class="icon icon--md"></i>
                             </button>
                         </div>
-                        <textarea class="ops-output-text" id="opsOutput" rows="10" aria-label="Generated AI prompt – you can edit" aria-live="polite"></textarea>
+                        <textarea class="ops-output-text" id="opsOutput" rows="10" placeholder="Tavo CEO užklausa atsiras čia, kai pildysi formą." aria-label="Generated AI prompt – you can edit" aria-live="polite"></textarea>
                         <div class="ops-output-footer">
                             <p class="ops-output-chars">Characters: <strong id="outputCharCount">0</strong></p>
                             <p>Edit here if needed, then copy and paste into ChatGPT, Claude, or Gemini.</p>
@@ -414,29 +409,30 @@
                         </div>
                     </div>
 
-                    <!-- Sessions -->
-                    <div class="ops-sessions" id="sessionsPanel">
-                        <div class="ops-sessions-header">
-                            <span class="ops-sessions-title">
-                                <i data-lucide="history" class="icon icon--sm"></i> Sessions
-                            </span>
-                            <div class="ops-sessions-actions">
-                                <button type="button" class="session-btn" id="sessionSaveBtn">
-                                    <i data-lucide="save" class="icon icon--sm"></i> Save
-                                </button>
-                                <button type="button" class="session-btn session-btn--danger" id="sessionClearBtn">
-                                    <i data-lucide="trash-2" class="icon icon--sm"></i> Clear sessions
-                                </button>
-                            </div>
-                        </div>
-                        <ul class="session-list" id="sessionList" aria-label="Saved sessions">
-                            <li class="sessions-empty" id="sessionsEmpty">
-                                <span class="sessions-empty-icon" aria-hidden="true"><i data-lucide="sparkles" class="icon icon--sm"></i></span>
-                                No sessions yet. Save your first analysis.
-                            </li>
-                        </ul>
+                </div>
+            </div>
+
+            <!-- Sessions (full width under Form + Output) -->
+            <div class="ops-sessions" id="sessionsPanel">
+                <div class="ops-sessions-header">
+                    <span class="ops-sessions-title">
+                        <i data-lucide="history" class="icon icon--sm"></i> Sessions
+                    </span>
+                    <div class="ops-sessions-actions">
+                        <button type="button" class="session-btn" id="sessionSaveBtn">
+                            <i data-lucide="save" class="icon icon--sm"></i> Save
+                        </button>
+                        <button type="button" class="session-btn session-btn--danger" id="sessionClearBtn">
+                            <i data-lucide="trash-2" class="icon icon--sm"></i> Clear sessions
+                        </button>
                     </div>
                 </div>
+                <ul class="session-list" id="sessionList" aria-label="Saved sessions">
+                    <li class="sessions-empty" id="sessionsEmpty">
+                        <span class="sessions-empty-icon" aria-hidden="true"><i data-lucide="sparkles" class="icon icon--sm"></i></span>
+                        No sessions yet. Save your first analysis.
+                    </li>
+                </ul>
             </div>
         </section>
 
@@ -646,9 +642,9 @@
 
     <textarea class="hidden" id="hiddenTextarea" aria-label="Kopijuojamo teksto laukas" aria-hidden="true"></textarea>
 
-    <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true" aria-label="Pranešimas">
+    <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true" aria-label="Pranešimas" data-copy-ops-toast-default="Užklausa nukopijuota — įklijuok į ChatGPT, Claude ar Gemini.">
         <div class="toast-icon" aria-hidden="true"><i data-lucide="check" class="icon icon--lg"></i></div>
-        <span id="toastMessage">Copied.</span>
+        <span id="toastMessage">Užklausa nukopijuota — įklijuok į ChatGPT, Claude ar Gemini.</span>
         <span class="toast-progress" id="toastProgress" aria-hidden="true"></span>
     </div>
 

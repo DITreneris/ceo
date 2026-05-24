@@ -13,21 +13,25 @@
     .header h1 { font-size: var(--text-3xl); }
     .header p { font-size: var(--text-md); }
     /* Horizontal progress: numbers on top, labels below, connecting line */
-    .header-steps {
+    .ops-journey-steps ol {
         display: flex;
         flex-direction: row;
         flex-wrap: nowrap;
         justify-content: space-between;
         align-items: flex-start;
         gap: 0;
-        margin-bottom: var(--space-16);
     }
-    .header-steps li {
+    .ops-journey-steps {
+        margin-bottom: var(--space-16);
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    .ops-journey-steps li {
         flex: 1;
         position: relative;
         min-width: 0;
     }
-    .header-steps li::after {
+    .ops-journey-steps li::after {
         content: '';
         position: absolute;
         left: calc(50% + 14px);
@@ -37,10 +41,10 @@
         background: var(--border);
         margin-left: 0;
     }
-    .header-steps li:last-child::after {
+    .ops-journey-steps li:last-child::after {
         display: none;
     }
-    .header-step {
+    .ops-journey-step {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -56,20 +60,20 @@
         box-shadow: none;
         color: var(--text);
     }
-    .header-step:hover:not(.is-active) { background: transparent; color: var(--primary); }
-    .header-step.is-active { background: transparent; border: none; box-shadow: none; color: var(--text); }
-    .header-step-num {
+    .ops-journey-step:hover:not(.is-active) { background: transparent; color: var(--primary); }
+    .ops-journey-step.is-active { background: transparent; border: none; box-shadow: none; color: var(--text); }
+    .ops-journey-step-num {
         width: 28px;
         height: 28px;
         min-width: 28px;
         font-size: var(--text-nav);
         font-weight: 800;
     }
-    .header-step.is-active .header-step-num {
+    .ops-journey-step.is-active .ops-journey-step-num {
         background: var(--primary);
         color: var(--white);
     }
-    .header-step:not(.is-active) .header-step-num {
+    .ops-journey-step:not(.is-active) .ops-journey-step-num {
         background: var(--surface-0);
         border: 1px solid var(--border);
         color: var(--text-light);
@@ -122,15 +126,11 @@
     }
     .depth-label { width: 100%; text-align: center; font-size: var(--text-xs); color: var(--text-light); }
     .depth-options { flex-wrap: wrap; flex: none; width: 100%; justify-content: center; gap: var(--space-4); }
-    .depth-bar .field-help { width: 100%; text-align: center; margin-top: 0; font-size: var(--text-xs); }
+    .depth-bar .depth-tip { width: 100%; justify-content: center; text-align: center; font-size: var(--text-xs); padding: 6px var(--space-12); }
     .depth-btn.is-active {
         background: var(--primary-50); color: var(--primary); border-color: var(--primary-200);
         box-shadow: var(--shadow-tab-rest);
     }
-    /* Badge: only Promptų anatomija on mobile; hide Spin-off Nr. 5 */
-    .header-badges .badge-spinoff { display: none; }
-    .header-badges .badge { font-size: var(--text-2xs); padding: 4px 10px; min-height: 28px; opacity: 0.9; }
-    .header-badges .badge { background: rgba(255, 255, 255, 0.6); border-color: var(--border); }
     .ops-output-header { align-items: flex-start; }
     .ops-output-copy { margin-left: auto; }
     .ops-sessions-actions { width: 100%; justify-content: flex-start; }
@@ -159,8 +159,8 @@
     .header .header-cta .cta-button { min-height: 44px; padding: 14px 24px; }
     .header .header-cta .cta-button-outline { width: 100%; max-width: 280px; justify-content: center; }
     .header-cta-meta { font-size: var(--text-nav); }
-    .header-steps { margin-bottom: var(--space-12); }
-    .header-step { font-size: var(--text-micro); padding: 0 2px; }
+    .ops-journey-steps { margin-bottom: var(--space-12); }
+    .ops-journey-step { font-size: var(--text-micro); padding: 0 2px; }
     .ops-center { padding: var(--space-16); }
     .collapsible-toggle {
         grid-template-columns: auto 1fr;

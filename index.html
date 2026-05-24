@@ -172,23 +172,12 @@
         <header class="header">
             <div class="hero-layout">
                 <div class="hero-content">
-                    <div class="header-badges">
-                        <a href="https://www.promptanatomy.app/" class="badge" target="_blank" rel="noopener noreferrer" aria-label="Prompt anatomy – interactive training (opens in new tab)">Prompt anatomy</a>
-                        <span class="badge badge-spinoff" role="status" aria-label="Prompt Anatomy Operations module for CEOs and COOs" data-copy-hero-badge>Operations module · Prompt Anatomy</span>
-                    </div>
                     <h1 data-copy-hero-headline>Turn KPIs into weekly priorities</h1>
-                    <p class="header-product-line" data-copy-hero-product>AI Operations Center · for CEOs &amp; COOs</p>
-                    <p class="header-lead" data-copy-hero-lead>Enter revenue, runway, and context. Copy a CEO-ready prompt for ChatGPT, Claude, or Gemini—in about 5 minutes.</p>
-                    <ol class="header-steps" aria-label="Work steps">
-                        <li><a href="#operationsCenter" class="header-step is-active"><span class="header-step-num">1</span> Mode</a></li>
-                        <li><a href="#opsForm" class="header-step"><span class="header-step-num">2</span> Form</a></li>
-                        <li><a href="#opsOutputSection" class="header-step"><span class="header-step-num">3</span> Result</a></li>
-                        <li><a href="#library" class="header-step"><span class="header-step-num">4</span> Library</a></li>
-                    </ol>
+                    <p class="header-lead" data-copy-hero-lead>Enter revenue, runway, and context. Get a CEO-ready prompt in about 5 minutes.</p>
                     <div class="header-cta">
                         <a href="#operationsCenter" class="cta-button btn btn--primary" aria-label="Get weekly priorities in operations center">Get weekly priorities</a>
-                        <a href="#pdf-guides" class="btn btn--secondary cta-button-outline" data-copy-hero-secondary-cta aria-label="See CEO PDF playbooks with pricing">See playbooks ($9.99 / $19.99) ↓</a>
-                        <p class="header-cta-meta" data-copy-hero-meta>Free tool · Playbooks from $9.99 / $19.99 · No account · ~5 min</p>
+                        <a href="#pdf-guides" class="btn btn--secondary cta-button-outline" data-copy-hero-secondary-cta aria-label="See CEO PDF playbooks">See CEO playbooks ↓</a>
+                        <p class="header-cta-meta" data-copy-hero-meta>For CEOs &amp; COOs · Free · No account · ~5 min</p>
                     </div>
                 </div>
                 <aside class="hero-prompt-card" aria-hidden="true">
@@ -197,11 +186,8 @@
                     <ul class="hero-prompt-card__list">
                         <li><span class="hero-prompt-card__priority">P1</span> Cash runway review</li>
                         <li><span class="hero-prompt-card__priority">P2</span> Pipeline follow-ups</li>
-                        <li><span class="hero-prompt-card__priority">P3</span> Hiring freeze check</li>
-                        <li><span class="hero-prompt-card__priority">P4</span> Board memo draft</li>
-                        <li><span class="hero-prompt-card__priority">P5</span> AI ops cadence</li>
+                        <li class="hero-prompt-card__more" aria-hidden="true">+3 priorities in your output</li>
                     </ul>
-                    <p class="hero-prompt-card__footer">Ready to copy into your AI tool</p>
                 </aside>
             </div>
         </header>
@@ -212,9 +198,18 @@
                 <span class="step-badge" aria-hidden="true">1</span>
                 <div class="ops-center-header-text">
                     <span class="collapsible-title">Operations center</span>
-                    <span class="collapsible-value" data-copy-ops-value>No account required. Choose a mode, fill in the fields — your AI prompt is generated automatically.</span>
+                    <span class="collapsible-value" data-copy-ops-value>No account required. Choose a mode, fill in the fields — copy a CEO-ready prompt for ChatGPT, Claude, or Gemini.</span>
                 </div>
             </div>
+            <nav class="ops-journey-steps" aria-label="Work steps">
+                <ol>
+                    <li><a href="#operationsCenter" class="ops-journey-step is-active"><span class="ops-journey-step-num">1</span> Mode</a></li>
+                    <li><a href="#opsForm" class="ops-journey-step"><span class="ops-journey-step-num">2</span> Form</a></li>
+                    <li><a href="#opsOutputSection" class="ops-journey-step"><span class="ops-journey-step-num">3</span> Result</a></li>
+                    <li><a href="#library" class="ops-journey-step"><span class="ops-journey-step-num">4</span> Library</a></li>
+                </ol>
+            </nav>
+            <p class="ops-center-intro" data-copy-ops-intro>Pick a mode, set depth, fill your numbers — your prompt updates live.</p>
 
             <!-- Mode Tabs -->
             <div class="mode-tabs" role="tablist" aria-label="Mode selection">
@@ -235,7 +230,7 @@
             <!-- Depth Selector -->
             <div class="depth-bar">
                 <span class="depth-label"><i data-lucide="sliders-horizontal" class="icon icon--sm"></i> Analysis depth</span>
-                <div class="depth-options" role="radiogroup" aria-label="Prompt depth level">
+                <div class="depth-options" role="radiogroup" aria-label="Prompt depth level" aria-describedby="depthTip">
                     <button type="button" class="depth-btn is-active" role="radio" aria-checked="true" data-depth="GREITA">
                         <i data-lucide="zap" class="icon icon--sm"></i> Fast
                     </button>
@@ -246,7 +241,7 @@
                         <i data-lucide="briefcase" class="icon icon--sm"></i> Board
                     </button>
                 </div>
-                <div class="field-help">Not sure? Start with Fast.</div>
+                <p id="depthTip" class="chip chip--tip depth-tip" data-copy-ops-depth-tip><i data-lucide="lightbulb" class="icon icon--sm" aria-hidden="true"></i><span>Tip · Not sure? Start with <strong>Fast</strong>.</span></p>
             </div>
 
             <!-- Layout: Form + Output -->
@@ -293,8 +288,8 @@
                                 <div>
                                     <label class="field-label" for="m-runway">Runway (months)</label>
                                     <input type="text" id="m-runway" name="runway" class="field-input" placeholder="E.g.: 16 months">
-                                    <div class="field-help">Months you can run with current cash.</div>
                                 </div>
+                                <div class="field-help field-help--row">Months you can run with current cash.</div>
                                 <div class="field-full">
                                     <label class="field-label" for="m-facts">Key facts / context</label>
                                     <textarea id="m-facts" name="facts" class="field-textarea" rows="3" placeholder="E.g.: Lost 2 clients but gained 5 new. New product launch next month."></textarea>
@@ -388,7 +383,7 @@
                                 <i data-lucide="copy" class="icon icon--md"></i>
                             </button>
                         </div>
-                        <textarea class="ops-output-text" id="opsOutput" rows="10" aria-label="Generated AI prompt – you can edit" aria-live="polite"></textarea>
+                        <textarea class="ops-output-text" id="opsOutput" rows="10" placeholder="Your CEO-ready prompt appears here as you fill the form." aria-label="Generated AI prompt – you can edit" aria-live="polite"></textarea>
                         <div class="ops-output-footer">
                             <p class="ops-output-chars">Characters: <strong id="outputCharCount">0</strong></p>
                             <p>Edit here if needed, then copy and paste into ChatGPT, Claude, or Gemini.</p>
@@ -414,29 +409,30 @@
                         </div>
                     </div>
 
-                    <!-- Sessions -->
-                    <div class="ops-sessions" id="sessionsPanel">
-                        <div class="ops-sessions-header">
-                            <span class="ops-sessions-title">
-                                <i data-lucide="history" class="icon icon--sm"></i> Sessions
-                            </span>
-                            <div class="ops-sessions-actions">
-                                <button type="button" class="session-btn" id="sessionSaveBtn">
-                                    <i data-lucide="save" class="icon icon--sm"></i> Save
-                                </button>
-                                <button type="button" class="session-btn session-btn--danger" id="sessionClearBtn">
-                                    <i data-lucide="trash-2" class="icon icon--sm"></i> Clear sessions
-                                </button>
-                            </div>
-                        </div>
-                        <ul class="session-list" id="sessionList" aria-label="Saved sessions">
-                            <li class="sessions-empty" id="sessionsEmpty">
-                                <span class="sessions-empty-icon" aria-hidden="true"><i data-lucide="sparkles" class="icon icon--sm"></i></span>
-                                No sessions yet. Save your first analysis.
-                            </li>
-                        </ul>
+                </div>
+            </div>
+
+            <!-- Sessions (full width under Form + Output) -->
+            <div class="ops-sessions" id="sessionsPanel">
+                <div class="ops-sessions-header">
+                    <span class="ops-sessions-title">
+                        <i data-lucide="history" class="icon icon--sm"></i> Sessions
+                    </span>
+                    <div class="ops-sessions-actions">
+                        <button type="button" class="session-btn" id="sessionSaveBtn">
+                            <i data-lucide="save" class="icon icon--sm"></i> Save
+                        </button>
+                        <button type="button" class="session-btn session-btn--danger" id="sessionClearBtn">
+                            <i data-lucide="trash-2" class="icon icon--sm"></i> Clear sessions
+                        </button>
                     </div>
                 </div>
+                <ul class="session-list" id="sessionList" aria-label="Saved sessions">
+                    <li class="sessions-empty" id="sessionsEmpty">
+                        <span class="sessions-empty-icon" aria-hidden="true"><i data-lucide="sparkles" class="icon icon--sm"></i></span>
+                        No sessions yet. Save your first analysis.
+                    </li>
+                </ul>
             </div>
         </section>
 
@@ -646,9 +642,9 @@
 
     <textarea class="hidden" id="hiddenTextarea" aria-label="Text to copy field" aria-hidden="true"></textarea>
 
-    <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true" aria-label="Notification">
+    <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true" aria-label="Notification" data-copy-ops-toast-default="Prompt copied — paste into ChatGPT, Claude, or Gemini.">
         <div class="toast-icon" aria-hidden="true"><i data-lucide="check" class="icon icon--lg"></i></div>
-        <span id="toastMessage">Copied.</span>
+        <span id="toastMessage">Prompt copied — paste into ChatGPT, Claude, or Gemini.</span>
         <span class="toast-progress" id="toastProgress" aria-hidden="true"></span>
     </div>
 

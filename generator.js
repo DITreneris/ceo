@@ -327,43 +327,35 @@
 
         var h1 = document.querySelector('[data-copy-hero-headline]');
         if (h1) h1.textContent = uiText('DI Operacinis Centras', 'Turn KPIs into weekly priorities');
-        var hProduct = document.querySelector('[data-copy-hero-product]');
-        if (hProduct) hProduct.textContent = uiText('DI Operacinis Centras · TOP vadovams CEO / COO', 'AI Operations Center · for CEOs & COOs');
         var hLead = document.querySelector('[data-copy-hero-lead]');
         if (hLead) {
             hLead.textContent = uiText(
-                'Įvesk pajamas, rezervą ir kontekstą. Nukopijuok paruoštą CEO promptą į ChatGPT, Claude arba Gemini—maždaug per 5 min.',
-                'Enter revenue, runway, and context. Copy a CEO-ready prompt for ChatGPT, Claude, or Gemini—in about 5 minutes.'
+                'Įvesk pajamas, rezervą ir kontekstą. Gauk paruoštą CEO promptą maždaug per 5 min.',
+                'Enter revenue, runway, and context. Get a CEO-ready prompt in about 5 minutes.'
             );
         }
 
-        var badgeAnatomy = document.querySelector('.header-badges .badge[href]');
-        if (badgeAnatomy) badgeAnatomy.textContent = uiText('Promptų anatomija', 'Prompt anatomy');
-        var badgeSpinoff = document.querySelector('[data-copy-hero-badge]');
-        if (badgeSpinoff) badgeSpinoff.textContent = uiText('Operacijų modulis · Promptų anatomija', 'Operations module · Prompt Anatomy');
-        if (badgeSpinoff) badgeSpinoff.setAttribute('aria-label', uiText('Promptų anatomija operacijų modulis CEO/COO', 'Prompt Anatomy Operations module for CEOs and COOs'));
-
-        var headerSteps = document.querySelectorAll('.header-step');
+        var journeySteps = document.querySelectorAll('.ops-journey-step');
         var stepLabels = [
             uiText('Režimas', 'Mode'),
             uiText('Forma', 'Form'),
             uiText('Rezultatas', 'Result'),
             uiText('Biblioteka', 'Library')
         ];
-        headerSteps.forEach(function (el, i) {
+        journeySteps.forEach(function (el, i) {
             if (stepLabels[i]) {
-                var num = el.querySelector('.header-step-num');
-                el.innerHTML = num ? ('<span class="header-step-num">' + num.textContent + '</span> ' + stepLabels[i]) : stepLabels[i];
+                var num = el.querySelector('.ops-journey-step-num');
+                el.innerHTML = num ? ('<span class="ops-journey-step-num">' + num.textContent + '</span> ' + stepLabels[i]) : stepLabels[i];
             }
         });
 
-        var stepsList = document.querySelector('.header-steps');
-        if (stepsList) stepsList.setAttribute('aria-label', uiText('Darbo žingsniai', 'Work steps'));
+        var stepsNav = document.querySelector('.ops-journey-steps');
+        if (stepsNav) stepsNav.setAttribute('aria-label', uiText('Darbo žingsniai', 'Work steps'));
 
         var heroMeta = document.querySelector('[data-copy-hero-meta]');
         if (heroMeta) heroMeta.textContent = uiText(
-            'Nemokamas įrankis · Playbooks nuo $9.99 / $19.99 · Be paskyros · ~5 min',
-            'Free tool · Playbooks from $9.99 / $19.99 · No account · ~5 min'
+            'TOP vadovams CEO / COO · Nemokama · Be paskyros · ~5 min',
+            'For CEOs & COOs · Free · No account · ~5 min'
         );
 
         var ctaPrimary = document.querySelector('.header-cta .cta-button');
@@ -373,9 +365,9 @@
         }
         var ctaSecondary = document.querySelector('.header-cta .cta-button-outline');
         if (ctaSecondary) {
-            ctaSecondary.textContent = uiText('Playbooks ($9.99 / $19.99) ↓', 'See playbooks ($9.99 / $19.99) ↓');
+            ctaSecondary.textContent = uiText('CEO playbooks ↓', 'See CEO playbooks ↓');
             ctaSecondary.setAttribute('href', '#pdf-guides');
-            ctaSecondary.setAttribute('aria-label', uiText('Peržiūrėti CEO PDF playbooks', 'View CEO PDF playbooks'));
+            ctaSecondary.setAttribute('aria-label', uiText('Peržiūrėti CEO PDF playbooks', 'See CEO PDF playbooks'));
         }
         var opsTitle = document.querySelector('.ops-center-header .collapsible-title');
         if (opsTitle) opsTitle.textContent = uiText('Operacinis centras', 'Operations center');
@@ -389,8 +381,17 @@
         if (depthLabel) depthLabel.innerHTML = '<i data-lucide="sliders-horizontal" class="icon icon--sm"></i> ' + uiText('Analizės gylis', 'Analysis depth');
         var depthRadiogroup = document.querySelector('.depth-options[role="radiogroup"]');
         if (depthRadiogroup) depthRadiogroup.setAttribute('aria-label', uiText('Promptų gylio lygis', 'Prompt depth level'));
-        var depthHelp = document.querySelector('.depth-bar .field-help');
-        if (depthHelp) depthHelp.textContent = uiText('Nežinai? Rinkis Greita.', 'Not sure? Start with Fast.');
+        var depthTipEl = document.querySelector('[data-copy-ops-depth-tip] span');
+        if (depthTipEl) {
+            var fastWord = uiText('Greita', 'Fast');
+            var prefix = uiText('Patarimas · Nežinai? Pradėk su ', 'Tip · Not sure? Start with ');
+            depthTipEl.innerHTML = prefix + '<strong>' + fastWord + '</strong>.';
+        }
+        var opsIntroEl = document.querySelector('[data-copy-ops-intro]');
+        if (opsIntroEl) opsIntroEl.textContent = uiText(
+            'Pasirink režimą, nustatyk gylį, įrašyk skaičius — užklausa atnaujinama gyvai.',
+            'Pick a mode, set depth, fill your numbers — your prompt updates live.'
+        );
 
         var tabMaster = document.getElementById('tab-master');
         var tabDienos = document.getElementById('tab-dienos');
@@ -482,8 +483,8 @@
             var el = document.getElementById(id);
             if (el) el.placeholder = text;
         }
-        var runwayHelp = document.querySelector('#m-runway + .field-help');
-        if (runwayHelp) runwayHelp.textContent = uiText('Kiek mėnesių gali veikti su esamais pinigų likučiais', 'Months you can run with current cash.');
+        var runwayHelp = document.querySelector('.field-help--row');
+        if (runwayHelp) runwayHelp.textContent = uiText('Kiek mėnesių gali veikti su esamais pinigų likučiais.', 'Months you can run with current cash.');
 
         var opsOutputRegion = document.querySelector('.ops-output[role="region"]');
         if (opsOutputRegion) opsOutputRegion.setAttribute('aria-label', uiText('Sugeneruota DI užklausa', 'Generated AI prompt'));
@@ -491,11 +492,15 @@
         if (outputCopyBtn) outputCopyBtn.setAttribute('aria-label', uiText('Kopijuoti sugeneruotą promptą', 'Copy generated prompt'));
         var opsOutput = document.getElementById('opsOutput');
         if (opsOutput) {
+            var emptyText = uiText(
+                'Tavo CEO užklausa atsiras čia, kai pildysi formą.',
+                'Your CEO-ready prompt appears here as you fill the form.'
+            );
             if (opsOutput.tagName === 'TEXTAREA') {
-                opsOutput.placeholder = uiText('Pasirink režimą ir užpildyk bent pagrindinius laukus – užklausa sugeneruojama automatiškai.', 'Choose a mode and fill the main fields — the prompt is generated automatically.');
+                opsOutput.placeholder = emptyText;
                 opsOutput.setAttribute('aria-label', uiText('Sugeneruota DI užklausa – galite redaguoti', 'Generated AI prompt – you can edit'));
             } else if (opsOutput.textContent.indexOf('Pasirink režimą') !== -1 || opsOutput.textContent.indexOf('Choose mode') !== -1 || opsOutput.textContent.indexOf('Choose a mode') !== -1) {
-                opsOutput.textContent = uiText('Pasirink režimą ir užpildyk bent pagrindinius laukus – užklausa sugeneruojama automatiškai.', 'Choose a mode and fill the main fields — the prompt is generated automatically.');
+                opsOutput.textContent = emptyText;
             }
         }
         var opsOutputChars = document.querySelector('.ops-output-chars');
@@ -1206,7 +1211,14 @@
         var toast = document.getElementById('toast');
         if (!toast) return;
         var msgEl = document.getElementById('toastMessage');
-        if (msgEl) msgEl.textContent = message !== undefined ? message : uiText('Nukopijuota.', 'Copied.');
+        if (msgEl) {
+            if (message !== undefined) {
+                msgEl.textContent = message;
+            } else {
+                var fallback = toast.getAttribute('data-copy-ops-toast-default');
+                msgEl.textContent = fallback || uiText('Nukopijuota.', 'Prompt copied — paste into ChatGPT, Claude, or Gemini.');
+            }
+        }
         toast.classList.add('show');
         var progress = document.getElementById('toastProgress');
         if (progress) {
@@ -1281,8 +1293,8 @@
         var outputHelp = document.getElementById('opsOutput');
         if (outputHelp && outputHelp.tagName === 'TEXTAREA' && !outputHelp.placeholder) {
             outputHelp.placeholder = uiText(
-                'Pasirink režimą ir užpildyk bent pagrindinius laukus – užklausa sugeneruojama automatiškai.',
-                'Choose a mode and fill the main fields — the prompt is generated automatically.'
+                'Tavo CEO užklausa atsiras čia, kai pildysi formą.',
+                'Your CEO-ready prompt appears here as you fill the form.'
             );
         }
 

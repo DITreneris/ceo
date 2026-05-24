@@ -137,31 +137,52 @@ function buildLocaleHtml(locale) {
     html = html.replace('aria-label="Switch to Lithuanian"', 'aria-label="Perjungti į lietuvių kalbą"');
     html = html.replace('>Copy prompt</button>', '>Kopijuoti užklausą</button>');
 
-    html = html.replace('aria-label="Prompt anatomy – interactive training (opens in new tab)"', 'aria-label="Promptų anatomija – interaktyvus mokymas (atidaroma naujame lange)"');
-    html = html.replace('>Prompt anatomy</a>', '>Promptų anatomija</a>');
-    html = html.replace('aria-label="Prompt Anatomy Hub module: Operations (CEO/COO)"', 'aria-label="Promptų anatomija Hub modulis: Operacijos (CEO/COO)"');
-    html = html.replace('>Hub module: Operations</span>', '>Hub modulis: Operacijos</span>');
-
     html = html.replace('>Turn KPIs into weekly priorities</h1>', '>DI Operacinis Centras</h1>');
-    html = html.replace('>AI Operations Center · for CEOs &amp; COOs</p>', '>DI Operacinis Centras · TOP vadovams CEO / COO</p>');
     html = html.replace(
-      '>Enter revenue, runway, and context. Copy a CEO-ready prompt for ChatGPT, Claude, or Gemini—in about 5 minutes.</p>',
-      '>Įvesk pajamas, rezervą ir kontekstą. Nukopijuok paruoštą CEO promptą į ChatGPT, Claude arba Gemini—maždaug per 5 min.</p>'
+      '>Enter revenue, runway, and context. Get a CEO-ready prompt in about 5 minutes.</p>',
+      '>Įvesk pajamas, rezervą ir kontekstą. Gauk paruoštą CEO promptą maždaug per 5 min.</p>'
+    );
+    html = html.replace('aria-label="Get weekly priorities in operations center">Get weekly priorities</a>', 'aria-label="Gauti savaitės prioritetus operaciniame centre">Gauti savaitės prioritetus</a>');
+    html = html.replace('aria-label="See CEO PDF playbooks">See CEO playbooks ↓</a>', 'aria-label="Peržiūrėti CEO PDF playbooks">CEO playbooks ↓</a>');
+    html = html.replace('>For CEOs &amp; COOs · Free · No account · ~5 min</p>', '>TOP vadovams CEO / COO · Nemokama · Be paskyros · ~5 min</p>');
+    html = html.replace(
+      '>No account required. Choose a mode, fill in the fields — copy a CEO-ready prompt for ChatGPT, Claude, or Gemini.</span>',
+      '>Be paskyros. Pasirink režimą, užpildyk laukus — nukopijuok paruoštą CEO promptą į ChatGPT, Claude arba Gemini.</span>'
     );
     html = html.replace('aria-label="Work steps"', 'aria-label="Darbo žingsniai"');
-    html = html.replace('<span class="header-step-num">1</span> Mode</a>', '<span class="header-step-num">1</span> Režimas</a>');
-    html = html.replace('<span class="header-step-num">2</span> Form</a>', '<span class="header-step-num">2</span> Forma</a>');
-    html = html.replace('<span class="header-step-num">3</span> Result</a>', '<span class="header-step-num">3</span> Rezultatas</a>');
-    html = html.replace('<span class="header-step-num">4</span> Library</a>', '<span class="header-step-num">4</span> Biblioteka</a>');
-    html = html.replace('aria-label="Get weekly priorities in operations center">Get weekly priorities</a>', 'aria-label="Gauti savaitės prioritetus operaciniame centre">Gauti savaitės prioritetus</a>');
-    html = html.replace('aria-label="See CEO PDF playbooks with pricing">See playbooks ($9.99 / $19.99) ↓</a>', 'aria-label="Peržiūrėti CEO PDF playbooks">Playbooks ($9.99 / $19.99) ↓</a>');
-    html = html.replace('>Free tool · Playbooks from $9.99 / $19.99 · No account · ~5 min</p>', '>Nemokamas įrankis · Playbooks nuo $9.99 / $19.99 · Be paskyros · ~5 min</p>');
+    html = html.replace('<span class="ops-journey-step-num">1</span> Mode</a>', '<span class="ops-journey-step-num">1</span> Režimas</a>');
+    html = html.replace('<span class="ops-journey-step-num">2</span> Form</a>', '<span class="ops-journey-step-num">2</span> Forma</a>');
+    html = html.replace('<span class="ops-journey-step-num">3</span> Result</a>', '<span class="ops-journey-step-num">3</span> Rezultatas</a>');
+    html = html.replace('<span class="ops-journey-step-num">4</span> Library</a>', '<span class="ops-journey-step-num">4</span> Biblioteka</a>');
     html = html.replace('aria-label="Browse ready-made templates">Browse templates</a>', 'aria-label="Peržiūrėti paruoštus šablonus">Rinktis šabloną</a>');
     html = html.replace('>Under 5 min · Result: clear weekly priorities.</p>', '>Užtruksi iki 5 min. • Rezultatas: aiškūs savaitės prioritetai.</p>');
 
     html = html.replace('Analysis depth', 'Analizės gylis');
-    html = html.replace('aria-label="Prompt depth level"', 'aria-label="Promptų gylio lygis"');
-    html = html.replace('Not sure? Start with Fast.', 'Nežinai? Rinkis Greita.');
+    html = html.replace('aria-label="Prompt depth level" aria-describedby="depthTip"', 'aria-label="Promptų gylio lygis" aria-describedby="depthTip"');
+    html = html.replace(
+      '>Tip · Not sure? Start with <strong>Fast</strong>.</span>',
+      '>Patarimas · Nežinai? Pradėk su <strong>Greita</strong>.</span>'
+    );
+    html = html.replace(
+      '>Pick a mode, set depth, fill your numbers — your prompt updates live.</p>',
+      '>Pasirink režimą, nustatyk gylį, įrašyk skaičius — užklausa atnaujinama gyvai.</p>'
+    );
+    html = html.replace(
+      '>Months you can run with current cash.</div>',
+      '>Kiek mėnesių gali veikti su esamais pinigų likučiais.</div>'
+    );
+    html = html.replace(
+      'placeholder="Your CEO-ready prompt appears here as you fill the form."',
+      'placeholder="Tavo CEO užklausa atsiras čia, kai pildysi formą."'
+    );
+    html = html.replace(
+      'data-copy-ops-toast-default="Prompt copied — paste into ChatGPT, Claude, or Gemini."',
+      'data-copy-ops-toast-default="Užklausa nukopijuota — įklijuok į ChatGPT, Claude ar Gemini."'
+    );
+    html = html.replace(
+      '<span id="toastMessage">Prompt copied — paste into ChatGPT, Claude, or Gemini.</span>',
+      '<span id="toastMessage">Užklausa nukopijuota — įklijuok į ChatGPT, Claude ar Gemini.</span>'
+    );
     // Match label + closing tag (regex literal cannot use unescaped `/` before `</button>`).
     html = html.replace(
       /(<i data-lucide="zap" class="icon icon--sm"><\/i>)\s*Fast\s*<\/button>/,

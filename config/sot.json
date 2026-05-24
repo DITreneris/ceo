@@ -88,12 +88,10 @@
   "copy": {
     "hero": {
       "headlineBenefit": "Turn KPIs into weekly priorities",
-      "productLine": "AI Operations Center · for CEOs & COOs",
-      "lead": "Enter revenue, runway, and context. Copy a CEO-ready prompt for ChatGPT, Claude, or Gemini—in about 5 minutes.",
-      "ctaMeta": "Free tool · Playbooks from $9.99 / $19.99 · No account · ~5 min",
-      "badgeSpinoff": "Operations module · Prompt Anatomy",
+      "lead": "Enter revenue, runway, and context. Get a CEO-ready prompt in about 5 minutes.",
+      "ctaMeta": "For CEOs & COOs · Free · No account · ~5 min",
       "primaryCta": "Get weekly priorities",
-      "secondaryCta": "See playbooks ($9.99 / $19.99)",
+      "secondaryCta": "See CEO playbooks",
       "secondaryHref": "#pdf-guides"
     },
     "pdfStorefront": {
@@ -129,7 +127,15 @@
       }
     },
     "opsCenter": {
-      "value": "No account required. Choose a mode, fill in the fields — your AI prompt is generated automatically."
+      "value": "No account required. Choose a mode, fill in the fields — copy a CEO-ready prompt for ChatGPT, Claude, or Gemini.",
+      "intro": "Pick a mode, set depth, fill your numbers — your prompt updates live."
+    },
+    "opsDepth": {
+      "tip": "Tip · Not sure? Start with Fast."
+    },
+    "opsOutput": {
+      "emptyPlaceholder": "Your CEO-ready prompt appears here as you fill the form.",
+      "copiedToast": "Prompt copied — paste into ChatGPT, Claude, or Gemini."
     },
     "community": {
       "title": "Running AI like operations?",

@@ -58,7 +58,7 @@ test.describe('core first-run flows', () => {
     await expect(rulesToggle).toHaveAttribute('aria-expanded', 'true');
     await expect(libraryToggle).toHaveAttribute('aria-expanded', 'false');
 
-    await page.click('.header-step[href="#library"]');
+    await page.click('.ops-journey-step[href="#library"]');
     await expect(libraryToggle).toHaveAttribute('aria-expanded', 'true');
   });
 

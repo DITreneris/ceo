@@ -1,6 +1,6 @@
 # Hero refactor — operations spec
 
-**Status:** Implemented (2026-05-22)  
+**Status:** Implemented (2026-05-22) · **De-clutter** (2026-05-22): journey-aligned hero density  
 **Owner:** UI/UX (storefront) · QA (`npm test`, `npm run test:mixed`)  
 **Reference:** [DITreneris/teacher](https://github.com/DITreneris/teacher) — hero layout + scroll spy (adapted, not copied)
 
@@ -8,7 +8,7 @@
 
 - **2 hero CTAs only:** primary → `#operationsCenter`, secondary → `#pdf-guides` (playbooks).
 - **Glass preview card** on the right (desktop): static CEO weekly-priorities example (`aria-hidden="true"`).
-- **Working 4-step stepper** in hero: `#operationsCenter` → `#opsForm` → `#opsOutputSection` → `#library` with `IntersectionObserver` scroll spy.
+- **Working 4-step journey bar** at top of `#operationsCenter` (`.ops-journey-steps`): same anchors + `IntersectionObserver` scroll spy (relocated from hero 2026-05-22).
 - **Remove** duplicate stepper from ops center and tertiary `Browse templates` link in hero.
 - **Sticky “Copy prompt”** visible only after the user fills at least one form field.
 
@@ -25,7 +25,7 @@
 | Decision | Choice |
 |----------|--------|
 | Hero surface | Light lavender + **dark glass** preview card |
-| Secondary CTA | See playbooks ($9.99 / $19.99) → `#pdf-guides` |
+| Secondary CTA | See CEO playbooks (no prices in hero) → `#pdf-guides` |
 | Library entry | Step 4 + accordion only (no hero tertiary) |
 
 ## Before → After
@@ -34,7 +34,7 @@
 |--------|--------|-------|
 | Hero CTAs | 3 | 2 |
 | Hero right | Empty | `.hero-prompt-card` |
-| Stepper | Ops center, broken `#` on steps 1–3 | Hero, 4 anchors + spy |
+| Stepper | Ops center, broken `#` on steps 1–3 | `.ops-journey-steps` under ops header, 4 anchors + spy |
 | Sticky copy | Always visible | Hidden until form input |
 
 ## DOM contract
@@ -42,10 +42,15 @@
 ```html
 <header class="header">
   <div class="hero-layout">
-    <div class="hero-content">… badges, h1, lead, ol.header-steps, .header-cta …</div>
-    <aside class="hero-prompt-card" aria-hidden="true">…</aside>
+    <div class="hero-content">… h1, lead, .header-cta …</div>
+    <aside class="hero-prompt-card" aria-hidden="true">… P1–P2 + more …</aside>
   </div>
 </header>
+<section class="ops-center" id="operationsCenter">
+  … ops-center-header …
+  <nav class="ops-journey-steps"><ol>… 4 anchors …</ol></nav>
+  … mode tabs, form, output …
+</section>
 ```
 
 | ID / hook | Purpose |
@@ -64,12 +69,11 @@
 |--------|-----------------|------|
 | SOT | `copy.hero.headlineBenefit` | Turn KPIs into weekly priorities |
 | SOT | `copy.hero.primaryCta` | Get weekly priorities |
-| SOT | `copy.hero.secondaryCta` | See playbooks ($9.99 / $19.99) |
-| SOT | `copy.hero.ctaMeta` | Free tool · Playbooks from $9.99 / $19.99 · No account · ~5 min |
+| SOT | `copy.hero.secondaryCta` | See CEO playbooks |
+| SOT | `copy.hero.ctaMeta` | For CEOs & COOs · Free · No account · ~5 min |
 | Static HTML | Preview label | Example |
 | Static HTML | Preview title | Weekly priorities (preview) |
-| Static HTML | Preview rows | P1–P5 CEO priority examples |
-| Static HTML | Preview footer | Ready to copy into your AI tool |
+| Static HTML | Preview rows | P1–P2 + “+3 priorities in your output” |
 
 ## CSS
 
