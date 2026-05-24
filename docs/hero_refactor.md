@@ -18,14 +18,14 @@
 - Dark full-bleed hero (teacher style) — keep light lavender hero.
 - Live sync between hero card and `#opsOutput`.
 - Stripe / commerce logic changes.
-- Frozen H1 change: *Turn KPIs into weekly priorities* ([COMPONENT-RULES.md](COMPONENT-RULES.md)).
+- Frozen H1: *Turn scattered KPIs into a clear weekly CEO brief* ([COMPONENT-RULES.md](COMPONENT-RULES.md)).
 
 ## Product decisions (locked)
 
 | Decision | Choice |
 |----------|--------|
 | Hero surface | Light lavender + **dark glass** preview card |
-| Secondary CTA | See CEO playbooks (no prices in hero) → `#pdf-guides` |
+| Secondary CTA | View CEO playbooks (no prices in hero) → `#pdf-guides` |
 | Library entry | Step 4 + accordion only (no hero tertiary) |
 
 ## Before → After
@@ -42,13 +42,13 @@
 ```html
 <header class="header">
   <div class="hero-layout">
-    <div class="hero-content">… h1, lead, .header-cta …</div>
-    <aside class="hero-prompt-card" aria-hidden="true">… P1–P2 + more …</aside>
+    <div class="hero-content">… h1, lead, promise, .header-cta, trust-row--hero …</div>
+    <aside class="hero-prompt-card" aria-hidden="true">… SOT preview rows …</aside>
   </div>
 </header>
 <section class="ops-center" id="operationsCenter">
-  … ops-center-header …
-  <nav class="ops-journey-steps"><ol>… 4 anchors …</ol></nav>
+  <div class="ops-center-header">… data-copy-ops-title (no step-badge) …</div>
+  <nav class="ops-journey-steps"><ol>… 4 anchors data-journey-step …</ol></nav>
   … mode tabs, form, output …
 </section>
 ```
@@ -67,13 +67,13 @@
 
 | Source | Field / element | Text |
 |--------|-----------------|------|
-| SOT | `copy.hero.headlineBenefit` | Turn KPIs into weekly priorities |
-| SOT | `copy.hero.primaryCta` | Get weekly priorities |
-| SOT | `copy.hero.secondaryCta` | See CEO playbooks |
-| SOT | `copy.hero.ctaMeta` | For CEOs & COOs · Free · No account · ~5 min |
-| Static HTML | Preview label | Example |
-| Static HTML | Preview title | Weekly priorities (preview) |
-| Static HTML | Preview rows | P1–P2 + “+3 priorities in your output” |
+| SOT | `copy.hero.headlineBenefit` | Turn scattered KPIs into a clear weekly CEO brief |
+| SOT | `copy.hero.primaryCta` | Build my weekly brief |
+| SOT | `copy.hero.secondaryCta` | View CEO playbooks |
+| SOT | `copy.hero.ctaMeta` | For CEOs, COOs & founders · Free · No account · Works with ChatGPT, Claude & Gemini |
+| SOT | `copy.hero.preview` | Weekly CEO Brief rows (P1–P3 + action/owner) |
+| SOT | `copy.opsCenter.title` | CEO Weekly Operating Brief |
+| SOT | `copy.journeySteps` | Choose mode · Add context · Generate brief · Reuse playbooks |
 
 ## CSS
 

@@ -405,12 +405,13 @@ function run() {
     assert(
       html.includes('hero-layout') &&
         html.includes('hero-prompt-card') &&
-        html.includes('hero-prompt-card__more') &&
+        html.includes('data-copy-hero-preview-rows') &&
         html.includes('ops-journey-steps') &&
         !html.includes('class="header-steps"') &&
         html.includes('id="opsOutputSection"') &&
-        !html.includes('ops-work-steps'),
-      'Hero de-clutter: glass card, ops journey steps, no hero stepper'
+        !html.includes('ops-work-steps') &&
+        html.includes('data-copy-ops-title'),
+      'Hero de-clutter: glass card, ops journey steps, ops title hook, no hero stepper'
     )
   ) {
     passed++;
@@ -418,9 +419,10 @@ function run() {
   if (
     assert(
       !html.includes('See playbooks ($9.99') &&
-        html.includes('See CEO playbooks') &&
-        html.includes('For CEOs &amp; COOs · Free'),
-      'Hero commerce: soft secondary CTA, trust meta without playbook prices'
+        html.includes('View CEO playbooks') &&
+        html.includes('data-copy-hero-primary-cta') &&
+        html.includes('trust-row--hero'),
+      'Hero commerce: brief CTA, playbooks secondary, hero trust strip'
     )
   ) {
     passed++;
@@ -444,10 +446,13 @@ function run() {
     assert(
       sotForOps &&
         sotForOps.copy &&
-        sotForOps.copy.opsCenter && sotForOps.copy.opsCenter.intro &&
+        sotForOps.copy.opsCenter && sotForOps.copy.opsCenter.intro && sotForOps.copy.opsCenter.title &&
         sotForOps.copy.opsDepth && sotForOps.copy.opsDepth.tip &&
-        sotForOps.copy.opsOutput && sotForOps.copy.opsOutput.emptyPlaceholder && sotForOps.copy.opsOutput.copiedToast,
-      'config/sot.json copy.opsCenter.intro + opsDepth.tip + opsOutput.{emptyPlaceholder,copiedToast}'
+        sotForOps.copy.opsOutput && sotForOps.copy.opsOutput.emptyPlaceholder && sotForOps.copy.opsOutput.copiedToast &&
+        Array.isArray(sotForOps.copy.journeySteps) && sotForOps.copy.journeySteps.length === 4 &&
+        sotForOps.copy.hero && sotForOps.copy.hero.promise && sotForOps.copy.hero.preview &&
+        sotForOps.copy.trust && Array.isArray(sotForOps.copy.trust.heroStrip),
+      'config/sot.json CEO positioning copy keys (ops, journey, hero preview, trust strip)'
     )
   ) {
     passed++;
@@ -518,6 +523,73 @@ function run() {
   else failed++;
   if (
     assert(
+      sot &&
+        sot.geo &&
+        sot.geo.entity &&
+        sot.geo.entity.founder &&
+        sot.geo.entity.founder.name === 'Tomas Staniulis' &&
+        Array.isArray(sot.geo.entity.founder.sameAs) &&
+        sot.geo.entity.founder.sameAs.some(function (u) {
+          return u.indexOf('linkedin.com/in/staniulis') !== -1;
+        }),
+      'config/sot.json geo.entity.founder (Tomas Staniulis + LinkedIn)'
+    )
+  ) {
+    passed++;
+  } else failed++;
+  const robotsTxt = readFile(path.join(__dirname, '..', 'robots.txt'));
+  if (
+    assert(
+      robotsTxt &&
+        robotsTxt.includes('Sitemap:') &&
+        robotsTxt.includes('GPTBot') &&
+        robotsTxt.includes('Disallow: /api/'),
+      'robots.txt GEO (Sitemap, GPTBot, /api/ disallow)'
+    )
+  ) {
+    passed++;
+  } else failed++;
+  const sitemapXml = readFile(path.join(__dirname, '..', 'sitemap.xml'));
+  if (
+    assert(
+      sitemapXml && sitemapXml.includes('/en/') && sitemapXml.indexOf('/lt/') === -1,
+      'sitemap.xml lists /en/ and excludes /lt/'
+    )
+  ) {
+    passed++;
+  } else failed++;
+  const llmsTxt = readFile(path.join(__dirname, '..', 'llms.txt'));
+  if (
+    assert(
+      llmsTxt && llmsTxt.includes('AI Operations Center') && llmsTxt.includes('promptanatomy.app'),
+      'llms.txt summary and hub link'
+    )
+  ) {
+    passed++;
+  } else failed++;
+  if (
+    assert(
+      enEntryFile &&
+        enEntryFile.includes('"@id": "https://www.promptanatomy.ceo/#organization"') &&
+        enEntryFile.includes('"@type": "Person"') &&
+        enEntryFile.includes('Tomas Staniulis') &&
+        enEntryFile.includes('"@type": "Product"') &&
+        enEntryFile.includes('"@type": "WebSite"'),
+      'en/index.html GEO JSON-LD (Organization, Person, Product, WebSite)'
+    )
+  ) {
+    passed++;
+  } else failed++;
+  if (
+    assert(
+      html && html.indexOf('"@type": "Person"') === -1,
+      'root index.html template has no build-injected Person schema (en-only)'
+    )
+  ) {
+    passed++;
+  } else failed++;
+  if (
+    assert(
       sot && sot.copy && sot.copy.pdfStorefront && sot.copy.pdfStorefront.publisher && sot.copy.pdfStorefront.cardKickers,
       'config/sot.json copy.pdfStorefront (journey wave2)'
     )
@@ -535,8 +607,18 @@ function run() {
   else failed++;
   if (assert(commerceJs && commerceJs.includes('initOpsUpsell'), 'commerce.js initOpsUpsell')) passed++;
   else failed++;
-  if (assert(html.includes('Turn KPIs into weekly priorities') && html.includes('data-copy-hero-headline'), 'Hero benefit-first headline (variant B)')) passed++;
+  if (assert(html.includes('Turn scattered KPIs into a clear weekly CEO brief') && html.includes('data-copy-hero-headline'), 'Hero benefit-first headline (CEO brief)')) passed++;
   else failed++;
+  if (
+    assert(
+      componentsCss &&
+        componentsCss.includes('.btn--ghost') &&
+        !/\.btn--ghost,[\s\S]*?top-nav-playbooks-link/.test(componentsCss),
+      'Playbooks nav not in btn--ghost color:inherit group'
+    )
+  ) {
+    passed++;
+  } else failed++;
   if (assert(commerceJs && commerceJs.includes('initCommerce') && !commerceJs.includes('<motion>'), 'commerce.js be motion artefaktų')) passed++;
   else failed++;
   if (assert(commerceJs && commerceJs.includes("fetch('/config/sot.json'"), 'commerce.js krauna SOT iš root kelio locale puslapiams')) passed++;

@@ -1,0 +1,24 @@
+# AI Operations Center
+
+> Free CEO/COO weekly priorities prompt generator by Tomas Staniulis (Prompt Anatomy). Optional PDF playbooks from $9.99.
+
+## Ecosystem
+- https://www.promptanatomy.app/ — Prompt Anatomy AI Operating System (hub)
+
+## Creator
+- Tomas Staniulis — founder of Prompt Anatomy
+  - https://www.linkedin.com/in/staniulis/
+  - https://x.com/TStaniulis_NFT
+
+## Key pages
+- https://www.promptanatomy.ceo/en/ — Main tool — weekly priorities prompt generator
+- https://www.promptanatomy.ceo/en/#pdf-guides — CEO AI Operations & Strategy playbooks
+- https://www.promptanatomy.ceo/privacy.html — Privacy policy
+- https://www.promptanatomy.ceo/terms.html — Terms
+
+## Related
+- https://www.promptanatomy.app/
+
+## Do not crawl
+- https://www.promptanatomy.ceo/api/
+- https://www.promptanatomy.ceo/lt/

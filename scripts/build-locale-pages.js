@@ -13,8 +13,135 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT = path.resolve(__dirname, '..');
+const SOT_PATH = path.join(ROOT, 'config', 'sot.json');
 const BASE_PATH = (process.env.BASE_PATH || '').replace(/\/$/, '');
 const SITE_URL = (process.env.SITE_URL || 'https://www.promptanatomy.ceo').replace(/\/$/, '');
+
+function loadSot() {
+  return JSON.parse(fs.readFileSync(SOT_PATH, 'utf8'));
+}
+
+function parseUsdPrice(priceStr) {
+  var m = String(priceStr).match(/[\d.]+/);
+  return m ? parseFloat(m[0]) : 0;
+}
+
+function jsonLdScript(obj) {
+  return '<script type="application/ld+json">\n' + JSON.stringify(obj, null, 2) + '\n    </script>\n    ';
+}
+
+/** EN-only: enrich Organization + Person (founder) + WebSite + Product + HowTo from sot.geo. Root index.html unchanged. */
+function injectGeoSchema(html, sot) {
+  var geo = sot.geo;
+  if (!geo || !geo.entity) {
+    return html;
+  }
+  var siteUrl = (geo.siteUrl || SITE_URL).replace(/\/$/, '');
+  var orgId = geo.entity.organizationId;
+  var founderId = geo.entity.founderId;
+  var enUrl = siteUrl + geo.canonicalPath;
+
+  var organization = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    '@id': orgId,
+    name: 'Prompt Anatomy',
+    url: siteUrl + '/',
+    logo: geo.entity.logo,
+    founder: { '@id': founderId },
+    sameAs: geo.entity.sameAs,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: '1311 Park St, Unit #654',
+      addressLocality: 'Alameda',
+      addressRegion: 'CA',
+      postalCode: '94501',
+      addressCountry: 'US'
+    }
+  };
+
+  var person = {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    '@id': founderId,
+    name: geo.entity.founder.name,
+    jobTitle: geo.entity.founder.jobTitle,
+    worksFor: { '@id': orgId },
+    sameAs: geo.entity.founder.sameAs
+  };
+
+  var website = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': siteUrl + '/#website',
+    url: enUrl,
+    name: sot.brand && sot.brand.productName ? sot.brand.productName : 'AI Operations Center',
+    inLanguage: 'en-US',
+    publisher: { '@id': orgId }
+  };
+
+  function productForGuide(key) {
+    var guide = sot.pdfGuides[key];
+    var price = sot.commerce && sot.commerce.pricing ? sot.commerce.pricing[key] : null;
+    return {
+      '@context': 'https://schema.org',
+      '@type': 'Product',
+      name: guide.label,
+      description: guide.buyerPromise,
+      image: geo.entity.logo,
+      brand: { '@id': orgId },
+      offers: {
+        '@type': 'Offer',
+        price: parseUsdPrice(price && price.now),
+        priceCurrency: 'USD',
+        url: enUrl + '#pdf-guides',
+        availability: 'https://schema.org/InStock'
+      }
+    };
+  }
+
+  var howTo = {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: 'Turn scattered KPIs into a clear weekly CEO brief with AI Operations Center',
+    description:
+      'Use the free CEO/COO operating brief builder: pick a mode, set depth, fill KPIs, copy the structured prompt into ChatGPT, Claude, or Gemini.',
+    step: [
+      {
+        '@type': 'HowToStep',
+        position: 1,
+        name: 'Choose mode and depth',
+        text: 'Pick Strategic, Daily, or Weekly mode and Fast, Deep, or Board depth.'
+      },
+      {
+        '@type': 'HowToStep',
+        position: 2,
+        name: 'Add business context',
+        text: 'Enter revenue, expenses, cash, runway, and context. The brief updates live.'
+      },
+      {
+        '@type': 'HowToStep',
+        position: 3,
+        name: 'Copy and run in your AI tool',
+        text: 'Copy the CEO-ready operating brief and paste the structured prompt into ChatGPT, Claude, or Gemini.'
+      }
+    ]
+  };
+
+  html = html.replace(
+    /<script type="application\/ld\+json">[\s\S]*?"@type": "Organization"[\s\S]*?<\/script>\s*/,
+    jsonLdScript(organization)
+  );
+
+  var extra =
+    jsonLdScript(person) +
+    jsonLdScript(website) +
+    jsonLdScript(productForGuide('operating')) +
+    jsonLdScript(productForGuide('strategic')) +
+    jsonLdScript(howTo);
+
+  return html.replace('</head>', extra + '</head>');
+}
 
 /** LT-only strings for social previews (root index.html is EN-first). */
 const LT_SOCIAL = {
@@ -33,13 +160,26 @@ const LOCALE_META = {
   en: {
     lang: 'en-US',
     path: 'en',
-    title: 'Weekly Operations Priorities Generator for CEOs & COOs | AI Operations Center',
-    description: 'Get clear weekly priorities in 5 minutes with CEO/COO-ready AI prompts for US executive operators.'
+    title: '',
+    description: ''
   }
 };
 
+function getLocaleMeta(locale) {
+  if (locale === 'en') {
+    var sot = loadSot();
+    return {
+      lang: 'en-US',
+      path: 'en',
+      title: (sot.seo && sot.seo.title) || 'Turn Scattered KPIs into a Weekly CEO Brief | AI Operations Center',
+      description: (sot.seo && sot.seo.description) || 'Turn KPIs, runway, and pipeline into a CEO-ready weekly operating brief in ~5 minutes.'
+    };
+  }
+  return LOCALE_META.lt;
+}
+
 function buildLocaleHtml(locale) {
-  const meta = LOCALE_META[locale];
+  const meta = getLocaleMeta(locale);
   let html = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
 
   // 1. lang attribute
@@ -137,23 +277,25 @@ function buildLocaleHtml(locale) {
     html = html.replace('aria-label="Switch to Lithuanian"', 'aria-label="Perjungti į lietuvių kalbą"');
     html = html.replace('>Copy prompt</button>', '>Kopijuoti užklausą</button>');
 
-    html = html.replace('>Turn KPIs into weekly priorities</h1>', '>DI Operacinis Centras</h1>');
+    html = html.replace('>Turn scattered KPIs into a clear weekly CEO brief</h1>', '>DI Operacinis Centras</h1>');
     html = html.replace(
-      '>Enter revenue, runway, and context. Get a CEO-ready prompt in about 5 minutes.</p>',
+      '>Enter revenue, runway, pipeline, blockers, and team context. Get a structured weekly priority brief for leadership alignment in about 5 minutes.</p>',
       '>Įvesk pajamas, rezervą ir kontekstą. Gauk paruoštą CEO promptą maždaug per 5 min.</p>'
     );
-    html = html.replace('aria-label="Get weekly priorities in operations center">Get weekly priorities</a>', 'aria-label="Gauti savaitės prioritetus operaciniame centre">Gauti savaitės prioritetus</a>');
-    html = html.replace('aria-label="See CEO PDF playbooks">See CEO playbooks ↓</a>', 'aria-label="Peržiūrėti CEO PDF playbooks">CEO playbooks ↓</a>');
-    html = html.replace('>For CEOs &amp; COOs · Free · No account · ~5 min</p>', '>TOP vadovams CEO / COO · Nemokama · Be paskyros · ~5 min</p>');
+    html = html.replace('>Not another AI chat. A structured operating layer for executive decision-making.</p>', '');
+    html = html.replace('aria-label="Build my weekly brief in operations center">Build my weekly brief</a>', 'aria-label="Gauti savaitės prioritetus operaciniame centre">Gauti savaitės prioritetus</a>');
+    html = html.replace('aria-label="View CEO PDF playbooks">View CEO playbooks ↓</a>', 'aria-label="Peržiūrėti CEO PDF playbooks">CEO playbooks ↓</a>');
+    html = html.replace('>For CEOs, COOs &amp; founders · Free · No account · Works with ChatGPT, Claude &amp; Gemini</p>', '>TOP vadovams CEO / COO · Nemokama · Be paskyros · ~5 min</p>');
     html = html.replace(
-      '>No account required. Choose a mode, fill in the fields — copy a CEO-ready prompt for ChatGPT, Claude, or Gemini.</span>',
+      '>Choose a leadership scenario. Add business context. The system turns it into a structured executive brief and copy-ready prompt.</span>',
       '>Be paskyros. Pasirink režimą, užpildyk laukus — nukopijuok paruoštą CEO promptą į ChatGPT, Claude arba Gemini.</span>'
     );
+    html = html.replace('>CEO Weekly Operating Brief</span>', '>Operacinis centras</span>');
     html = html.replace('aria-label="Work steps"', 'aria-label="Darbo žingsniai"');
-    html = html.replace('<span class="ops-journey-step-num">1</span> Mode</a>', '<span class="ops-journey-step-num">1</span> Režimas</a>');
-    html = html.replace('<span class="ops-journey-step-num">2</span> Form</a>', '<span class="ops-journey-step-num">2</span> Forma</a>');
-    html = html.replace('<span class="ops-journey-step-num">3</span> Result</a>', '<span class="ops-journey-step-num">3</span> Rezultatas</a>');
-    html = html.replace('<span class="ops-journey-step-num">4</span> Library</a>', '<span class="ops-journey-step-num">4</span> Biblioteka</a>');
+    html = html.replace('<span class="ops-journey-step-num">1</span> Choose mode</a>', '<span class="ops-journey-step-num">1</span> Režimas</a>');
+    html = html.replace('<span class="ops-journey-step-num">2</span> Add context</a>', '<span class="ops-journey-step-num">2</span> Forma</a>');
+    html = html.replace('<span class="ops-journey-step-num">3</span> Generate brief</a>', '<span class="ops-journey-step-num">3</span> Rezultatas</a>');
+    html = html.replace('<span class="ops-journey-step-num">4</span> Reuse playbooks</a>', '<span class="ops-journey-step-num">4</span> Biblioteka</a>');
     html = html.replace('aria-label="Browse ready-made templates">Browse templates</a>', 'aria-label="Peržiūrėti paruoštus šablonus">Rinktis šabloną</a>');
     html = html.replace('>Under 5 min · Result: clear weekly priorities.</p>', '>Užtruksi iki 5 min. • Rezultatas: aiškūs savaitės prioritetai.</p>');
 
@@ -164,7 +306,7 @@ function buildLocaleHtml(locale) {
       '>Patarimas · Nežinai? Pradėk su <strong>Greita</strong>.</span>'
     );
     html = html.replace(
-      '>Pick a mode, set depth, fill your numbers — your prompt updates live.</p>',
+      '>Pick a mode, set depth, fill your numbers — your brief updates live.</p>',
       '>Pasirink režimą, nustatyk gylį, įrašyk skaičius — užklausa atnaujinama gyvai.</p>'
     );
     html = html.replace(
@@ -172,15 +314,15 @@ function buildLocaleHtml(locale) {
       '>Kiek mėnesių gali veikti su esamais pinigų likučiais.</div>'
     );
     html = html.replace(
-      'placeholder="Your CEO-ready prompt appears here as you fill the form."',
+      'placeholder="Your CEO-ready operating brief appears here as you fill the form."',
       'placeholder="Tavo CEO užklausa atsiras čia, kai pildysi formą."'
     );
     html = html.replace(
-      'data-copy-ops-toast-default="Prompt copied — paste into ChatGPT, Claude, or Gemini."',
+      'data-copy-ops-toast-default="Brief copied — paste the structured prompt into ChatGPT, Claude, or Gemini."',
       'data-copy-ops-toast-default="Užklausa nukopijuota — įklijuok į ChatGPT, Claude ar Gemini."'
     );
     html = html.replace(
-      '<span id="toastMessage">Prompt copied — paste into ChatGPT, Claude, or Gemini.</span>',
+      '<span id="toastMessage">Brief copied — paste the structured prompt into ChatGPT, Claude, or Gemini.</span>',
       '<span id="toastMessage">Užklausa nukopijuota — įklijuok į ChatGPT, Claude ar Gemini.</span>'
     );
     // Match label + closing tag (regex literal cannot use unescaped `/` before `</button>`).
@@ -267,6 +409,10 @@ function buildLocaleHtml(locale) {
     // 6-block hint
     html = html.replace('These rules follow <a', 'Šios taisyklės grindžiamos <a');
     html = html.replace('>Prompt Anatomy</a>\'s 6-block methodology:', '>Promptų anatomijos</a> 6-block metodologija:');
+  }
+
+  if (locale === 'en') {
+    html = injectGeoSchema(html, loadSot());
   }
 
   return html;

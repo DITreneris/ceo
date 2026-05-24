@@ -9,8 +9,10 @@ Use this block as the canonical reference when updating README, launch docs, Cur
 | Fact | Source |
 |------|--------|
 | **EN-first** development; USA audience (US English, USD, `en-US`) | [`AGENTS.md`](../AGENTS.md), root [`index.html`](../index.html) |
-| **`/en/`** and root = active storefront | `npm run build` → `en/index.html` |
-| **`/lt/`** = legacy/regression only (not public locale switch) | [`AGENTS.md`](../AGENTS.md) |
+| **`/en/`** = canonical public storefront; **`/`** 308 → `/en/` on Vercel | `vercel.json` redirects; `npm run build` → `en/index.html` |
+| **`/lt/`** = legacy/regression only (`noindex`) | [`AGENTS.md`](../AGENTS.md) |
+| **GEO assets** | `robots.txt`, `sitemap.xml`, `llms.txt` from `npm run build` → [`scripts/build-geo-assets.js`](../scripts/build-geo-assets.js); SOT: `config/sot.json` → `geo` |
+| **Entity** | Prompt Anatomy; founder **Tomas Staniulis** — hub [`promptanatomy.app`](https://www.promptanatomy.app/); JSON-LD on built `/en/` only (root `index.html` template unchanged) |
 | Free tool + paid PDF storefront on same site | [`index.html`](../index.html) `#pdf-guides` |
 | **Homepage section order** | Hero → Operations center → **PDF guides** → Template library → Economic discipline rules → Community (aligned with sister [`DITreneris/teacher`](https://github.com/DITreneris/teacher)) |
 | **Storefront copy SOT** | `config/sot.json` → `copy.pdfStorefront`, `copy.hero` (secondary CTA → `#pdf-guides`) |

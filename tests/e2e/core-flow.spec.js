@@ -80,7 +80,7 @@ test.describe('core first-run flows', () => {
     expect(lang).toBe('en-US');
     await expect(page.locator('#langLtBtn')).toHaveCount(0);
     await expect(page.locator('#langEnBtn')).toHaveCount(0);
-    await expect(page.locator('meta[name="description"]')).toHaveAttribute('content', /Turn KPIs into weekly priorities/);
+    await expect(page.locator('meta[name="description"]')).toHaveAttribute('content', /CEO-ready weekly operating brief/);
   });
 
   test('legacy /lt/ path still serves full app for regression coverage', async ({ page }) => {

@@ -87,12 +87,38 @@
   ],
   "copy": {
     "hero": {
-      "headlineBenefit": "Turn KPIs into weekly priorities",
-      "lead": "Enter revenue, runway, and context. Get a CEO-ready prompt in about 5 minutes.",
-      "ctaMeta": "For CEOs & COOs · Free · No account · ~5 min",
-      "primaryCta": "Get weekly priorities",
-      "secondaryCta": "See CEO playbooks",
-      "secondaryHref": "#pdf-guides"
+      "headlineBenefit": "Turn scattered KPIs into a clear weekly CEO brief",
+      "lead": "Enter revenue, runway, pipeline, blockers, and team context. Get a structured weekly priority brief for leadership alignment in about 5 minutes.",
+      "promise": "Not another AI chat. A structured operating layer for executive decision-making.",
+      "ctaMeta": "For CEOs, COOs & founders · Free · No account · Works with ChatGPT, Claude & Gemini",
+      "primaryCta": "Build my weekly brief",
+      "secondaryCta": "View CEO playbooks",
+      "secondaryHref": "#pdf-guides",
+      "preview": {
+        "label": "Example",
+        "title": "Weekly CEO Brief",
+        "more": "+1 priority in your output",
+        "rows": [
+          {
+            "priority": "P1",
+            "title": "Cash runway risk",
+            "action": "Review burn and committed pipeline.",
+            "owner": "CEO / Finance"
+          },
+          {
+            "priority": "P2",
+            "title": "Pipeline follow-up",
+            "action": "Re-engage top 5 warm deals.",
+            "owner": "Sales Lead"
+          },
+          {
+            "priority": "P3",
+            "title": "Team execution focus",
+            "action": "Remove blockers from delivery queue.",
+            "owner": "COO"
+          }
+        ]
+      }
     },
     "pdfStorefront": {
       "eyebrow": "Optional executive playbooks",
@@ -127,27 +153,40 @@
       }
     },
     "opsCenter": {
-      "value": "No account required. Choose a mode, fill in the fields — copy a CEO-ready prompt for ChatGPT, Claude, or Gemini.",
-      "intro": "Pick a mode, set depth, fill your numbers — your prompt updates live."
+      "title": "CEO Weekly Operating Brief",
+      "value": "Choose a leadership scenario. Add business context. The system turns it into a structured executive brief and copy-ready prompt.",
+      "intro": "Pick a mode, set depth, fill your numbers — your brief updates live."
     },
     "opsDepth": {
       "tip": "Tip · Not sure? Start with Fast."
     },
     "opsOutput": {
-      "emptyPlaceholder": "Your CEO-ready prompt appears here as you fill the form.",
-      "copiedToast": "Prompt copied — paste into ChatGPT, Claude, or Gemini."
+      "emptyPlaceholder": "Your CEO-ready operating brief appears here as you fill the form.",
+      "copiedToast": "Brief copied — paste the structured prompt into ChatGPT, Claude, or Gemini."
     },
+    "journeySteps": [
+      "Choose mode",
+      "Add context",
+      "Generate brief",
+      "Reuse playbooks"
+    ],
     "community": {
       "title": "Running AI like operations?",
       "subtitle": "Go further with Prompt Anatomy."
     },
     "footer": {
       "heading": "Weekly operating cadence, powered by AI prompts",
-      "summary": "Turn KPIs into weekly priorities—free generator plus optional CEO playbooks."
+      "summary": "Weekly CEO operating brief—free builder plus optional playbooks."
     },
     "trust": {
-      "privacy": "No account required. Inputs stay in your browser until you copy the prompt.",
+      "privacy": "No account required. Inputs stay in your browser until you copy the brief.",
       "responsibleAi": "Review every AI response before using it for executive decisions.",
+      "heroStrip": [
+        { "icon": "calendar-check", "label": "CEO weekly planning" },
+        { "icon": "target", "label": "COO execution reviews" },
+        { "icon": "trending-up", "label": "Founder updates" },
+        { "icon": "briefcase", "label": "Board prep" }
+      ],
       "row": [
         { "icon": "lock", "label": "Secure Stripe checkout" },
         { "icon": "shield-check", "label": "14-day refund" },
@@ -168,8 +207,64 @@
     "defaultLocale": "en-US",
     "xDefaultPath": "/en/",
     "legacyLocales": ["lt"],
-    "title": "Turn KPIs into Weekly Priorities for CEOs & COOs | AI Operations Center",
-    "description": "Turn KPIs into weekly priorities in ~5 minutes. Free CEO/COO prompt builder plus optional playbooks from $9.99. No account required."
+    "title": "Turn Scattered KPIs into a Weekly CEO Brief | AI Operations Center",
+    "description": "Turn KPIs, runway, and pipeline into a CEO-ready weekly operating brief in ~5 minutes. Free tool plus optional playbooks from $9.99. No account required."
+  },
+  "geo": {
+    "siteUrl": "https://www.promptanatomy.ceo",
+    "canonicalPath": "/en/",
+    "crawlers": {
+      "default": "allow",
+      "explicitBots": [
+        "GPTBot",
+        "OAI-SearchBot",
+        "ChatGPT-User",
+        "PerplexityBot",
+        "ClaudeBot",
+        "Claude-Web",
+        "anthropic-ai",
+        "Google-Extended",
+        "Googlebot",
+        "Bingbot"
+      ],
+      "disallowPaths": ["/api/", "/lt/"]
+    },
+    "llms": {
+      "title": "AI Operations Center",
+      "summary": "Free CEO/COO weekly priorities prompt generator by Tomas Staniulis (Prompt Anatomy). Optional PDF playbooks from $9.99.",
+      "keyPages": [
+        { "url": "/en/", "label": "Main tool — weekly priorities prompt generator" },
+        { "url": "/en/#pdf-guides", "label": "CEO AI Operations & Strategy playbooks" },
+        { "url": "/privacy.html", "label": "Privacy policy" },
+        { "url": "/terms.html", "label": "Terms" }
+      ],
+      "related": [
+        "https://www.promptanatomy.app/"
+      ],
+      "doNotCrawl": ["/api/", "/lt/"]
+    },
+    "entity": {
+      "organizationId": "https://www.promptanatomy.ceo/#organization",
+      "logo": "https://www.promptanatomy.ceo/assets/og/og-cover.png",
+      "founderId": "https://www.promptanatomy.ceo/#founder",
+      "founder": {
+        "name": "Tomas Staniulis",
+        "jobTitle": "Founder",
+        "sameAs": [
+          "https://www.linkedin.com/in/staniulis/",
+          "https://x.com/TStaniulis_NFT"
+        ]
+      },
+      "sameAs": [
+        "https://www.promptanatomy.app/",
+        "https://twitter.com/promptanatomy",
+        "https://t.me/prompt_anatomy"
+      ]
+    },
+    "sitemap": {
+      "include": ["/en/", "/privacy.html", "/terms.html", "/success.html"],
+      "exclude": ["/lt/", "/api/"]
+    }
   },
   "rules": [
     "Prioritize cash flow, runway, and action clarity over AI novelty.",

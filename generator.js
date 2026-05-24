@@ -301,16 +301,17 @@
     function applyStaticLocaleText() {
         document.documentElement.lang = locale === 'lt' ? 'lt' : 'en-US';
 
+        if (locale !== 'lt') {
+            return;
+        }
+
         var title = document.querySelector('title');
         if (title) {
-            title.textContent = uiText(
-                'DI Operacinis Centras – TOP vadovams CEO / COO',
-                'AI Operations Center – for CEOs & COOs'
-            );
+            title.textContent = 'DI Operacinis Centras – TOP vadovams CEO / COO';
         }
 
         var skipLink = document.querySelector('a.skip-link');
-        if (skipLink) skipLink.textContent = uiText('Pereiti prie turinio', 'Skip to content');
+        if (skipLink) skipLink.textContent = 'Pereiti prie turinio';
 
         var topNav = document.querySelector('.top-nav[aria-label]');
         if (topNav) topNav.setAttribute('aria-label', uiText('Greita navigacija', 'Quick navigation'));
@@ -369,8 +370,8 @@
             ctaSecondary.setAttribute('href', '#pdf-guides');
             ctaSecondary.setAttribute('aria-label', uiText('Peržiūrėti CEO PDF playbooks', 'See CEO PDF playbooks'));
         }
-        var opsTitle = document.querySelector('.ops-center-header .collapsible-title');
-        if (opsTitle) opsTitle.textContent = uiText('Operacinis centras', 'Operations center');
+        var opsTitle = document.querySelector('[data-copy-ops-title]');
+        if (opsTitle) opsTitle.textContent = 'Operacinis centras';
         var opsValue = document.querySelector('.ops-center-header .collapsible-value');
         if (opsValue) opsValue.textContent = uiText('Be paskyros. Pasirink režimą, užpildyk laukus – DI užklausa sugeneruojama automatiškai', 'No account required. Choose a mode, fill in the fields — your AI prompt is generated automatically.');
 

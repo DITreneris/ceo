@@ -180,7 +180,14 @@
     var h = config.copy.hero;
     if (h.headlineBenefit) setHookText('[data-copy-hero-headline]', h.headlineBenefit);
     if (h.lead) setHookText('[data-copy-hero-lead]', h.lead);
+    if (h.promise) setHookText('[data-copy-hero-promise]', h.promise);
     if (h.ctaMeta) setHookText('[data-copy-hero-meta]', h.ctaMeta);
+    if (h.primaryCta) {
+      document.querySelectorAll('[data-copy-hero-primary-cta]').forEach(function (el) {
+        el.textContent = h.primaryCta;
+        el.setAttribute('aria-label', h.primaryCta + ' in operations center');
+      });
+    }
     if (h.secondaryCta) {
       var secondaryLabel = h.secondaryCta.indexOf('↓') === -1 ? h.secondaryCta + ' ↓' : h.secondaryCta;
       setHookText('[data-copy-hero-secondary-cta]', secondaryLabel);
@@ -188,11 +195,45 @@
         if (h.secondaryHref) el.setAttribute('href', h.secondaryHref);
       });
     }
-    if (config.copy.opsCenter && config.copy.opsCenter.value) {
-      setHookText('[data-copy-ops-value]', config.copy.opsCenter.value);
+    if (h.preview) {
+      var pv = h.preview;
+      if (pv.label) setHookText('[data-copy-hero-preview-label]', pv.label);
+      if (pv.title) setHookText('[data-copy-hero-preview-title]', pv.title);
+      var rowsEl = document.querySelector('[data-copy-hero-preview-rows]');
+      if (rowsEl && Array.isArray(pv.rows) && pv.rows.length) {
+        var rowsHtml = '';
+        pv.rows.forEach(function (row) {
+          if (!row) return;
+          rowsHtml +=
+            '<li class="hero-prompt-card__item">' +
+            '<div class="hero-prompt-card__item-head">' +
+            '<span class="hero-prompt-card__priority">' + escapeHtmlText(row.priority || '') + '</span> ' +
+            '<span class="hero-prompt-card__item-title">' + escapeHtmlText(row.title || '') + '</span>' +
+            '</div>' +
+            (row.action ? '<p class="hero-prompt-card__row-action">Action: ' + escapeHtmlText(row.action) + '</p>' : '') +
+            (row.owner ? '<p class="hero-prompt-card__row-owner">Owner: ' + escapeHtmlText(row.owner) + '</p>' : '') +
+            '</li>';
+        });
+        if (pv.more) {
+          rowsHtml += '<li class="hero-prompt-card__more" aria-hidden="true">' + escapeHtmlText(pv.more) + '</li>';
+        }
+        rowsEl.innerHTML = rowsHtml;
+      }
     }
-    if (config.copy.opsCenter && config.copy.opsCenter.intro) {
-      setHookText('[data-copy-ops-intro]', config.copy.opsCenter.intro);
+    if (config.copy.opsCenter) {
+      if (config.copy.opsCenter.title) setHookText('[data-copy-ops-title]', config.copy.opsCenter.title);
+      if (config.copy.opsCenter.value) setHookText('[data-copy-ops-value]', config.copy.opsCenter.value);
+      if (config.copy.opsCenter.intro) setHookText('[data-copy-ops-intro]', config.copy.opsCenter.intro);
+    }
+    if (Array.isArray(config.copy.journeySteps)) {
+      config.copy.journeySteps.forEach(function (label, i) {
+        if (!label) return;
+        var step = document.querySelector('.ops-journey-step[data-journey-step="' + i + '"]');
+        if (!step) return;
+        var num = step.querySelector('.ops-journey-step-num');
+        var numHtml = num ? '<span class="ops-journey-step-num">' + escapeHtmlText(num.textContent) + '</span> ' : '';
+        step.innerHTML = numHtml + escapeHtmlText(label);
+      });
     }
     if (config.copy.opsDepth && config.copy.opsDepth.tip) {
       var tipEl = document.querySelector('[data-copy-ops-depth-tip] span');

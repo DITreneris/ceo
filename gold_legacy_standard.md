@@ -139,10 +139,12 @@ Product mapping priority (defense in depth):
 ## 7. SEO / GEO Standard
 
 - Public pages naudoja `lang="en-US"`.
-- Canonical URLs use `.html` where applicable.
-- [`index.html`](index.html) turi JSON-LD: Organization, WebSite, SoftwareApplication, FAQPage, Product/Offer, HowTo.
-- OG image 1200×630, `og:image` rodo į `assets/og/og-cover.png?v=N` (cache-bust per release).
-- `lt/` kelias laikomas regression-only (nedeklaruojam aktyvios LT lokalizacijos).
+- Canonical storefront URL: **`/en/`**; production `/` redirects to `/en/` (`vercel.json`).
+- Root [`index.html`](index.html) = frozen frontpage template (WebApplication, FAQPage, base Organization).
+- Built [`en/index.html`](en/index.html) adds GEO JSON-LD: enhanced Organization, **Person** (Tomas Staniulis), WebSite, Product×2, HowTo — see [`docs/GEO_STACK.md`](docs/GEO_STACK.md).
+- Generated: `robots.txt`, `sitemap.xml`, `llms.txt` (`config/sot.json` → `geo`; `npm run build`).
+- OG image 1200×630, `og:image` → `assets/og/og-cover.png?v=N` (cache-bust per release).
+- `lt/` = regression-only (`noindex`).
 
 ## 8. Quality Gates
 

@@ -4,7 +4,7 @@
   "private": true,
   "description": "DI Operacinis Centras – strateginis DI asistentas TOP vadovams (CEO/COO)",
   "scripts": {
-    "build": "node scripts/build-locale-pages.js",
+    "build": "node scripts/build-geo-assets.js && node scripts/build-locale-pages.js",
     "trace:og": "node scripts/trace-og.js",
     "pdf:export": "node scripts/export-pdfs.js",
     "pdf:upload-blob": "node scripts/upload-pdfs-to-blob.js",

@@ -23,7 +23,7 @@
 ## Frozen (no change without product sign-off)
 
 - Brand `#4A148C` / `#FFB300`
-- Hero H1: *Turn KPIs into weekly priorities*
+- Hero H1: *Turn scattered KPIs into a clear weekly CEO brief*
 - Stripe checkout URLs when `allowPlaceholderCheckout: false`
 - JSON-LD, skip link, `:focus-visible`, `prefers-reduced-motion`
 - `/lt/` — regression build only

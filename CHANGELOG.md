@@ -8,6 +8,8 @@ EN-US storefront journey + **Design System 1.1 Hardened** ([`docs/ds_improvement
 
 ### Added
 
+- **CEO frontpage premium (Phase A+B)** — Playbooks nav contrast fix (removed from `.btn--ghost` inherit); ops `step-badge` removed; journey `::before` zero hack removed; EN `<title>` no longer overwritten by `generator.js`; SOT repositioning prompt → **operating brief**; H1 *Turn scattered KPIs into a clear weekly CEO brief*; hero promise line + `trust.heroStrip`; rich preview card (action/owner rows); `copy.journeySteps` executive labels; `CEO Weekly Operating Brief` ops title.
+- **GEO stack (no frontpage template edits)** — `config/sot.json` → `geo` (crawlers, llms, entity: Tomas Staniulis founder + [LinkedIn](https://www.linkedin.com/in/staniulis/) + [X](https://x.com/TStaniulis_NFT), hub [promptanatomy.app](https://www.promptanatomy.app/)); [`scripts/build-geo-assets.js`](scripts/build-geo-assets.js) → `robots.txt`, `sitemap.xml`, `llms.txt`; EN-only JSON-LD injection in [`scripts/build-locale-pages.js`](scripts/build-locale-pages.js) (`Person`, `WebSite`, `Product`×2, `HowTo`); `/` → `/en/` redirect in [`vercel.json`](vercel.json); [`docs/GEO_STACK.md`](docs/GEO_STACK.md).
 - **Hero refactor** — [`docs/hero_refactor.md`](docs/hero_refactor.md): two-column hero with dark glass weekly-priorities preview; 4-step scroll spy; ops duplicate stepper removed; sticky copy gated on form input.
 - **DS 1.1 — visual regression** — [`tests/e2e/visual-storefront.spec.js`](tests/e2e/visual-storefront.spec.js), baselines in `tests/e2e/__screenshots__/`, `npm run test:visual` / `test:visual:update`, included in `npm run test:mixed`.
 - **DS 1.1 — tokens** — extended `--shadow-*` and `--text-*` set in [`styles/tokens.css`](styles/tokens.css); CI guards for shadow/type usage (structure tests **130/130**).
@@ -43,6 +45,9 @@ EN-US storefront journey + **Design System 1.1 Hardened** ([`docs/ds_improvement
 
 ### Fixed
 
+- **Playbooks nav contrast** — `.top-nav-playbooks-link` no longer inherits body text color on dark sticky nav (DS 0.8 `.btn--ghost` regression).
+- **Journey stepper numbering** — removed duplicate ops `step-badge` and `.ops-journey-step-num::before` leading zero.
+- **EN document title** — `generator.js` skips title/hero copy overrides on EN; SOT `seo.title` preserved.
 - **DS 1.0.1 — contrast** — `npm run test:a11y` clean (ops upsell gold on dark panel; PDF kickers `--primary-dark` on light cards).
 - **DS 1.0.1 — hex CI** — partitioned CSS hex-free; literals only in `tokens.css`.
 - Undefined CSS variables `--primary-dark`, `--shadow-cta`, `--space-10`.

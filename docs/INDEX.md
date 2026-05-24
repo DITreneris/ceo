@@ -24,6 +24,7 @@ Vienas įėjimo taškas į aktyvią dokumentaciją.
 - [ds_improvement_plan.md](ds_improvement_plan.md) - design system iterations (DS 0.5 → 1.1), storefront consolidation.
 - [hero_refactor.md](hero_refactor.md) - hero layout, glass preview card, scroll spy stepper, 2-CTA contract.
 - [ops_workspace_plan.md](ops_workspace_plan.md) - operations workspace clarity DOM contract, SOT keys, journey.
+- [GEO_STACK.md](GEO_STACK.md) - AI crawlers, llms.txt, sitemap, schema injection (EN `/en/` only).
 - [DESIGN-SYSTEM.md](DESIGN-SYSTEM.md) - storefront tokens + components (DS 1.1); visual regression: `npm run test:visual`.
 - [DS_MOBILE_DOM_SPIKE.md](DS_MOBILE_DOM_SPIKE.md) - optional 1.4b mobile DOM reorder (gated).
 - [COMPONENT-RULES.md](COMPONENT-RULES.md) - contribution rules for new UI.

@@ -116,13 +116,14 @@ body {
     font-weight: 600;
     color: var(--white);
     text-decoration: none;
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    background: rgba(255, 255, 255, 0.08);
     border-radius: 10px;
     white-space: nowrap;
     transition: background var(--duration-normal) var(--ease-out), border-color var(--duration-normal) var(--ease-out);
 }
 .top-nav-playbooks-link:hover {
-    background: rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.16);
     color: var(--white);
 }
 .top-nav-playbooks-link:focus-visible {
