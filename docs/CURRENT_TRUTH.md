@@ -16,6 +16,8 @@ Use this block as the canonical reference when updating README, launch docs, Cur
 | Free tool + paid PDF storefront on same site | [`index.html`](../index.html) `#pdf-guides` |
 | **Homepage section order** | Hero → Operations center → **PDF guides** → Template library → Economic discipline rules → Community (aligned with sister [`DITreneris/teacher`](https://github.com/DITreneris/teacher)) |
 | **Storefront copy SOT** | `config/sot.json` → `copy.pdfStorefront`, `copy.hero` (secondary CTA → `#pdf-guides`) |
+| **PDF storefront (IA slim v4)** | Header + 2 lean cards + section trust row + **Purchase FAQ** (3 buyer items); no compare strip, testimonials, or publisher strip |
+| **FAQ split** | Footer **Product FAQ** (3 items, JSON-LD) vs `#pdf-guides-faq` **Purchase FAQ** (`buyerFaq` ×3) |
 | **Storefront UI theme** | **Light only** (gold experience). No dark-mode toggle; legacy `di_ops_center_theme` cleared on load. |
 
 ## Paid PDFs (v2.1)

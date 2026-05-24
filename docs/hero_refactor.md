@@ -102,7 +102,7 @@ Premium SaaS density: **eyebrow, H1, lead, 2 CTAs + meta + inline use cases** (I
 | SOT | `copy.hero.preview` | Weekly CEO Brief rows (P1–P3 + detail line) |
 | SOT | `copy.useCasesSection.heading` | Built for executive operating rhythm |
 | SOT | `copy.opsCenter.title` | CEO Weekly Operating Brief |
-| SOT | `copy.journeySteps` | Choose mode · Add context · Generate brief · Reuse playbooks |
+| SOT | `copy.journeySteps` | Choose mode · Add context · Generate prompt · Reuse templates |
 
 ## CSS
 

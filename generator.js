@@ -67,19 +67,19 @@
     var MODES = {
         MASTER: {
             label: locale === 'lt' ? 'STRATEGINIS' : 'STRATEGIC',
-            desc: locale === 'lt' ? 'Strateginis savaitės/mėnesio kontekstas' : 'Strategic weekly/monthly context',
+            desc: locale === 'lt' ? 'Strateginis kontekstas' : 'Strategic context',
             formId: 'form-master',
             fields: ['goal', 'horizon', 'income', 'expenses', 'profit', 'cash', 'runway', 'facts', 'question']
         },
         DIENOS: {
             label: locale === 'lt' ? 'DIENOS' : 'DAILY',
-            desc: locale === 'lt' ? 'Vakarykštės operacijos apžvalga' : 'Daily operations review',
+            desc: locale === 'lt' ? 'Vakarykštės operacijos' : "Yesterday's operations",
             formId: 'form-dienos',
             fields: ['v_pajamos', 'v_klientai', 'v_islaidos', 'v_ivykiai', 'question']
         },
         SAVAITES: {
             label: locale === 'lt' ? 'SAVAITĖS' : 'WEEKLY',
-            desc: locale === 'lt' ? 'Savaitės projektai ir veikimo rezervas' : 'Weekly projects and runway',
+            desc: locale === 'lt' ? 'Projektai ir veikimo rezervas' : 'Projects and runway',
             formId: 'form-savaites',
             fields: ['s_pajamos', 's_sanaudos', 's_likutis', 'projektai', 's_pipeline', 'question']
         }
@@ -623,20 +623,14 @@
 
         var footerFaq = document.querySelector('.footer-faq');
         if (footerFaq) {
-            footerFaq.setAttribute('aria-label', uiText('DUK', 'FAQ'));
+            footerFaq.setAttribute('aria-label', uiText('DUK', 'Product FAQ'));
             footerFaq.innerHTML = uiText(
-                '<details class="footer-faq-item"><summary class="footer-faq-q">Kas tai?</summary><div class="footer-faq-a">DI Operacinis Centras – promptų generatorius CEO ir COO. Įvesk pajamas, išlaidas, grynuosius, veikimo rezervą ir kontekstą – tuomet nukopijuok paruoštą operacinės peržiūros promptą į ChatGPT, Claude arba Gemini.</div></details>' +
-                '<details class="footer-faq-item"><summary class="footer-faq-q">Kam skirta?</summary><div class="footer-faq-a">Įkūrėjams, CEO, COO ir vadovams, kurie turi savaitinę operacinę peržiūrą.</div></details>' +
-                '<details class="footer-faq-item"><summary class="footer-faq-q">Kaip naudoti?</summary><div class="footer-faq-a">Pasirink režimą (Strateginis / Dienos / Savaitės), gylį (Greita / Gilu / Valdybai), užpildyk formą, nukopijuok promptą.</div></details>' +
-                '<details class="footer-faq-item"><summary class="footer-faq-q">Nori pilnos DI operacinės sistemos?</summary><div class="footer-faq-a">Pilną Promptų anatomijos mokymą ir visus Hub modulius rasite <a href="https://www.promptanatomy.app/" target="_blank" rel="noopener noreferrer">promptanatomy.app</a>.</div></details>' +
                 '<details class="footer-faq-item"><summary class="footer-faq-q">Ar jūs saugote mano duomenis?</summary><div class="footer-faq-a">Sesijos išsaugomos tik tavo naršyklėje (localStorage). Šis puslapis nieko neįkelia į serverį.</div></details>' +
-                '<details class="footer-faq-item"><summary class="footer-faq-q">Kuo skiriasi Greita, Gilu ir Valdybai?</summary><div class="footer-faq-a">Greita pateikia trumpą prioritetų sąrašą. Gilu prideda analizę ir pagrindimą. Valdybai suformuoja trumpą formalią santrauką su rizikomis ir veiksmais.</div></details>',
-                '<details class="footer-faq-item"><summary class="footer-faq-q">What is this?</summary><div class="footer-faq-a">AI Operations Center is a prompt generator for CEOs and COOs. Enter revenue, expenses, cash, runway, and context—then copy a ready-to-run operations review prompt into ChatGPT, Claude, or Gemini.</div></details>' +
-                '<details class="footer-faq-item"><summary class="footer-faq-q">Who is it for?</summary><div class="footer-faq-a">Founders, CEOs, COOs, and operators who run a weekly operating cadence.</div></details>' +
-                '<details class="footer-faq-item"><summary class="footer-faq-q">How do I use it?</summary><div class="footer-faq-a">Pick a mode (Strategic/Daily/Weekly), choose depth (Fast/Deep/Board), fill the form, copy the prompt.</div></details>' +
-                '<details class="footer-faq-item"><summary class="footer-faq-q">Want the full AI Operating System?</summary><div class="footer-faq-a">Explore the complete Prompt Anatomy training and all Hub modules at <a href="https://www.promptanatomy.app/" target="_blank" rel="noopener noreferrer">promptanatomy.app</a>.</div></details>' +
+                '<details class="footer-faq-item"><summary class="footer-faq-q">Kuo skiriasi Greita, Gilu ir Valdybai?</summary><div class="footer-faq-a">Greita pateikia trumpą prioritetų sąrašą. Gilu prideda analizę ir pagrindimą. Valdybai suformuoja trumpą formalią santrauką su rizikomis ir veiksmais.</div></details>' +
+                '<details class="footer-faq-item"><summary class="footer-faq-q">Nori pilnos DI operacinės sistemos?</summary><div class="footer-faq-a">Pilną Promptų anatomijos mokymą ir visus Hub modulius rasite <a href="https://www.promptanatomy.app/" target="_blank" rel="noopener noreferrer">promptanatomy.app</a>.</div></details>',
                 '<details class="footer-faq-item"><summary class="footer-faq-q">Do you store my data?</summary><div class="footer-faq-a">Saved sessions are stored locally in your browser (localStorage). This page does not upload your inputs to a server.</div></details>' +
-                '<details class="footer-faq-item"><summary class="footer-faq-q">What is the difference between Fast, Deep, and Board?</summary><div class="footer-faq-a">Fast gives a short prioritized answer, Deep adds analysis and rationale, and Board formats a concise executive summary with risks and actions.</div></details>'
+                '<details class="footer-faq-item"><summary class="footer-faq-q">What is the difference between Fast, Deep, and Board?</summary><div class="footer-faq-a">Fast gives a short prioritized answer, Deep adds analysis and rationale, and Board formats a concise executive summary with risks and actions.</div></details>' +
+                '<details class="footer-faq-item"><summary class="footer-faq-q">Want the full AI Operating System?</summary><div class="footer-faq-a">Explore the complete Prompt Anatomy training and all Hub modules at <a href="https://www.promptanatomy.app/" target="_blank" rel="noopener noreferrer">promptanatomy.app</a>.</div></details>'
             );
         }
 

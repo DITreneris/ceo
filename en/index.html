@@ -57,7 +57,7 @@
     </script>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <!-- First-paint shell: faster meaningful frame for crawlers and Vercel deployment thumbnails -->
-    <link rel="preload" href="/style.css" as="style">
+    <link rel="preload" href="/style.css?v=2.1.1" as="style">
     <style>
       /* LCP shell — must match styles/tokens.css :root (surface, nav, hero, type) */
       :root {
@@ -75,7 +75,7 @@
       .header { background: linear-gradient(165deg, var(--hero-soft-start) 0%, var(--hero-soft-end) 100%); padding: 36px 48px; border-radius: var(--r-hero); }
       .header h1 { font-size: var(--text-hero); font-weight: 800; margin: 0 0 12px; max-width: 20ch; }
     </style>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/style.css?v=2.1.1">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'; this.onload=null;">
@@ -189,7 +189,7 @@
                 <span class="top-nav-brand-text-short" aria-hidden="true">AI OC</span>
             </a>
             <div class="top-nav-actions">
-                <a href="#pdf-guides" class="top-nav-playbooks-link btn btn--nav-secondary" data-copy-nav-playbooks-cta aria-label="View CEO PDF playbooks from $9.99">CEO playbooks</a>
+                <a href="#pdf-guides" class="top-nav-playbooks-link btn btn--nav-secondary" data-copy-nav-playbooks-cta aria-label="View PDF playbooks from $9.99">Playbooks</a>
                 <button type="button" class="top-nav-copy-btn is-hidden" id="stickyCopyBtn" aria-hidden="true" disabled>Copy prompt</button>
             </div>
         </div>
@@ -202,13 +202,12 @@
         <header class="header">
             <div class="hero-layout">
                 <div class="hero-content">
-                    <p class="hero-eyebrow" data-copy-hero-eyebrow>AI operations layer for CEOs</p>
                     <h1 data-copy-hero-headline>Turn scattered KPIs into a clear weekly CEO brief</h1>
-                    <p class="header-lead" data-copy-hero-lead>Add KPIs, blockers, and context.<br>Get a weekly CEO brief in 5 minutes.</p>
+                    <p class="header-lead" data-copy-hero-lead>Add KPIs, blockers, and context.<br>Get structured priorities in 5 minutes.</p>
                     <div class="header-cta">
-                        <a href="#operationsCenter" class="cta-button btn btn--primary" data-copy-hero-primary-cta aria-label="Build weekly brief in operations center">Build weekly brief</a>
-                        <a href="#pdf-guides" class="btn btn--secondary cta-button-outline" data-copy-hero-secondary-cta aria-label="View CEO PDF playbooks">View CEO playbooks ↓</a>
-                        <p class="header-cta-meta" data-copy-hero-meta>For CEOs, COOs &amp; founders · Free · No account</p>
+                        <a href="#operationsCenter" class="cta-button btn btn--primary" data-copy-hero-primary-cta aria-label="Open generator in operations center">Open generator</a>
+                        <a href="#pdf-guides" class="btn btn--secondary cta-button-outline" data-copy-hero-secondary-cta aria-label="View PDF playbooks">View playbooks ↓</a>
+                        <p class="header-cta-meta" data-copy-hero-meta>Free · No account · ~5 min</p>
                         <p class="hero-use-cases">
                             <span class="hero-use-cases__label" data-copy-hero-use-cases-label>Use cases:</span>
                             <span class="trust-row trust-row--hero-inline" data-trust-row="heroStrip" data-trust-format="inline" aria-label="Use cases"></span>
@@ -217,7 +216,7 @@
                 </div>
                 <aside class="hero-prompt-card" aria-hidden="true">
                     <p class="hero-prompt-card__label" data-copy-hero-preview-label>Example</p>
-                    <p class="hero-prompt-card__title" data-copy-hero-preview-title>Weekly CEO Brief</p>
+                    <p class="hero-prompt-card__title" data-copy-hero-preview-title>This week's priorities</p>
                     <ul class="hero-prompt-card__list" data-copy-hero-preview-rows>
                         <li class="hero-prompt-card__item">
                             <div class="hero-prompt-card__item-head"><span class="hero-prompt-card__priority">P1</span> <span class="hero-prompt-card__item-title">Cash runway</span></div>
@@ -240,28 +239,32 @@
         <!-- OPERATIONS CENTER -->
         <section class="ops-center" id="operationsCenter">
             <div class="ops-center-header">
-                <h2 class="ops-center-title" data-copy-ops-title>Build your weekly brief</h2>
+                <h2 class="ops-center-title" data-copy-ops-title>Add your context</h2>
             </div>
             <nav class="ops-journey-steps ops-journey-steps--compact" aria-label="Work steps">
                 <ol>
                     <li><a href="#operationsCenter" class="ops-journey-step is-active" data-journey-step="0"><span class="ops-journey-step-num">1</span> Choose mode</a></li>
                     <li><a href="#opsForm" class="ops-journey-step" data-journey-step="1"><span class="ops-journey-step-num">2</span> Add context</a></li>
-                    <li><a href="#opsOutputSection" class="ops-journey-step" data-journey-step="2"><span class="ops-journey-step-num">3</span> Generate brief</a></li>
-                    <li><a href="#library" class="ops-journey-step" data-journey-step="3"><span class="ops-journey-step-num">4</span> Reuse playbooks</a></li>
+                    <li><a href="#opsOutputSection" class="ops-journey-step" data-journey-step="2"><span class="ops-journey-step-num">3</span> Generate prompt</a></li>
+                    <li><a href="#library" class="ops-journey-step" data-journey-step="3"><span class="ops-journey-step-num">4</span> Reuse templates</a></li>
                 </ol>
             </nav>
 
+            <div class="ops-control-panel">
             <!-- Mode Tabs -->
             <div class="mode-tabs" role="tablist" aria-label="Mode selection">
                 <button type="button" class="mode-tab is-active" role="tab" id="tab-master" aria-selected="true" aria-controls="form-master" data-mode="MASTER">
+                    <i data-lucide="target" class="icon icon--sm mode-tab-icon" aria-hidden="true"></i>
                     <span class="mode-tab-label">STRATEGIC</span>
                     <span class="mode-tab-desc">Strategic context</span>
                 </button>
                 <button type="button" class="mode-tab" role="tab" id="tab-dienos" aria-selected="false" aria-controls="form-dienos" data-mode="DIENOS">
+                    <i data-lucide="sun" class="icon icon--sm mode-tab-icon" aria-hidden="true"></i>
                     <span class="mode-tab-label">DAILY</span>
-                    <span class="mode-tab-desc">Yesterday’s operations</span>
+                    <span class="mode-tab-desc">Yesterday's operations</span>
                 </button>
                 <button type="button" class="mode-tab" role="tab" id="tab-savaites" aria-selected="false" aria-controls="form-savaites" data-mode="SAVAITES">
+                    <i data-lucide="calendar-days" class="icon icon--sm mode-tab-icon" aria-hidden="true"></i>
                     <span class="mode-tab-label">WEEKLY</span>
                     <span class="mode-tab-desc">Projects and runway</span>
                 </button>
@@ -281,8 +284,9 @@
                         <i data-lucide="briefcase" class="icon icon--sm"></i> Board
                     </button>
                 </div>
+                <p id="depthTip" class="field-help depth-tip depth-tip--bar" data-copy-ops-depth-tip><span>Not sure? Start with <strong>Fast</strong>.</span></p>
             </div>
-            <p id="depthTip" class="field-help depth-tip" data-copy-ops-depth-tip><span>Not sure? Start with <strong>Fast</strong>.</span></p>
+            </div>
 
             <!-- Layout: Form + Output -->
             <div class="ops-layout">
@@ -480,21 +484,7 @@
         <section class="pdf-guides-section" id="pdf-guides" aria-labelledby="pdf-guides-title">
             <p class="pdf-guides-eyebrow" data-commerce-pdf-eyebrow>Optional executive playbooks</p>
             <h2 id="pdf-guides-title" class="pdf-guides-heading" data-commerce-pdf-heading>CEO PDF playbooks</h2>
-            <p class="pdf-guides-lead" data-commerce-pdf-lead>Already using the generator? These playbooks turn the same methodology into a repeatable weekly cadence (21 pages) or a board-ready strategy system (43 pages).</p>
-            <p class="pdf-which-playbook" data-commerce-pdf-which>Start with Operations ($9.99) for weekly cadence. Choose Strategy ($19.99) for board memos, ROI, and 90-day rollout.</p>
-
-            <div class="pdf-compare-strip" data-commerce-compare-strip>
-                <div class="pdf-compare-strip-row">
-                    <span data-commerce-compare-pd-label>Typical executive coach session</span>
-                    <strong data-commerce-compare-pd-value>often $500+</strong>
-                    <span data-commerce-compare-vs>vs</span>
-                    <span data-commerce-compare-operating-label>Operations Playbook</span>
-                    <strong data-commerce-compare-operating-value>$9.99</strong>
-                    <span data-commerce-compare-strategic-label>Strategic Playbook</span>
-                    <strong data-commerce-compare-strategic-value>$19.99</strong>
-                </div>
-                <p class="pdf-compare-caption" data-commerce-compare-caption>Print for your leadership team. Re-use every Monday.</p>
-            </div>
+            <p class="pdf-guides-lead" data-commerce-pdf-lead>Turn the same methodology into a repeatable weekly cadence or a board-ready strategy system—pick Operations or Strategy below.</p>
 
             <div class="pdf-guides-grid">
                 <article class="pdf-guide-card card card--product" data-product="operating-pdf">
@@ -505,16 +495,13 @@
                         <p class="pdf-guide-kicker" data-pdf-kicker="operating">Best for weekly operating cadence</p>
                         <h3>CEO AI Operations Playbook</h3>
                         <p class="pdf-guide-specs">21 pages · Daily &amp; weekly cadence · Samples, decision log &amp; quick picks</p>
-                        <p class="pdf-guide-buyer-promise" data-pdf-promise="operating">Run a practical CEO/COO AI operating cadence in one week: daily priorities, weekly decisions, owner/deadline discipline, and fact-based reflection.</p>
                         <p class="pdf-guide-price"><span class="price__now pdf-guide-price-now">$9.99</span> <span class="price__was pdf-guide-price-was">was $19.99</span></p>
                         <ul class="pdf-guide-bullets" data-pdf-bullets="operating" aria-label="What you get"></ul>
                         <details class="pdf-guide-toc" data-toc="operating">
                             <summary>What&apos;s inside (<span data-toc-count="operating">20 sections</span>)</summary>
                             <ul data-toc-list="operating"></ul>
                         </details>
-                        <p class="pdf-guide-license">Executive license · <a href="terms.html#paid-pdf-license">terms</a></p>
-                        <p class="pdf-guide-refund">14-day no-questions refund</p>
-                        <ul class="trust-row" data-trust-row="row" aria-label="Purchase trust signals"></ul>
+                        <p class="pdf-guide-license">Executive license · 14-day refund · <a href="terms.html#paid-pdf-license">terms</a></p>
                         <div class="pdf-guide-actions">
                             <a class="pdf-guide-cta btn btn--primary" data-stripe-cta="operating" data-commerce-cta-operating href="https://buy.stripe.com/bJe28rgKE6J7eW85hKfjG09" rel="noopener">Get Operations Playbook — $9.99</a>
                             <button type="button" class="btn btn--secondary pdf-guide-preview-btn" data-preview-trigger="operating">Preview 3 pages</button>
@@ -530,16 +517,13 @@
                         <p class="pdf-guide-kicker" data-pdf-kicker="strategic">For board and strategy leads</p>
                         <h3>CEO AI Strategy Playbook</h3>
                         <p class="pdf-guide-specs">43 pages · Board memos · ROI, 90-day rollout &amp; strategic shortcuts</p>
-                        <p class="pdf-guide-buyer-promise" data-pdf-promise="strategic">Turn AI from random prompting into a board-ready executive decision system: strategy prompts, finance checks, risk review, ownership gates, and 30/90-day implementation.</p>
                         <p class="pdf-guide-price"><span class="price__now pdf-guide-price-now">$19.99</span> <span class="price__was pdf-guide-price-was">was $39.99</span></p>
                         <ul class="pdf-guide-bullets" data-pdf-bullets="strategic" aria-label="What you get"></ul>
                         <details class="pdf-guide-toc" data-toc="strategic">
                             <summary>What&apos;s inside (<span data-toc-count="strategic">38 sections</span>)</summary>
                             <ul data-toc-list="strategic"></ul>
                         </details>
-                        <p class="pdf-guide-license">Executive license · <a href="terms.html#paid-pdf-license">terms</a></p>
-                        <p class="pdf-guide-refund">14-day no-questions refund</p>
-                        <ul class="trust-row" data-trust-row="row" aria-label="Purchase trust signals"></ul>
+                        <p class="pdf-guide-license">Executive license · 14-day refund · <a href="terms.html#paid-pdf-license">terms</a></p>
                         <div class="pdf-guide-actions">
                             <a class="pdf-guide-cta btn btn--primary" data-stripe-cta="strategic" data-commerce-cta-strategic href="https://buy.stripe.com/bJe14n51W8Rf29m8tWfjG0a" rel="noopener">Get Strategy Playbook — $19.99</a>
                             <button type="button" class="btn btn--secondary pdf-guide-preview-btn" data-preview-trigger="strategic">Preview 3 pages</button>
@@ -548,22 +532,11 @@
                 </article>
             </div>
 
-            <ul class="trust-row trust-row--section" data-trust-row="sectionFooter" aria-label="Publisher trust"></ul>
+            <ul class="trust-row trust-row--section" data-trust-row="row" aria-label="Purchase trust"></ul>
 
-            <p class="pdf-guide-delivery pdf-guide-delivery--shared" data-commerce-delivery-promise>After checkout: Stripe receipt plus a separate download email. The success page also shows a one-click download when fulfillment is ready. Link valid 7 days — ask us to resend anytime.</p>
-
-            <div class="pdf-testimonials" data-commerce-testimonials></div>
-
-            <div class="pdf-publisher-strip" aria-labelledby="pdf-publisher-title">
-                <h3 id="pdf-publisher-title" data-commerce-publisher-title>Published by Prompt Anatomy</h3>
-                <p data-commerce-publisher-body>Built by Prompt Anatomy—the team behind this free Operations Center. Go deeper with executive training at</p>
-                <a data-commerce-publisher-app href="https://www.promptanatomy.app/?utm_source=ceo&amp;utm_medium=storefront&amp;utm_campaign=pdf_section" target="_blank" rel="noopener noreferrer">promptanatomy.app</a>
-            </div>
-
-            <section class="pdf-guides-faq" id="pdf-guides-faq" aria-label="Buyer FAQ">
+            <section class="pdf-guides-faq buyer-faq" id="pdf-guides-faq" aria-label="Purchase FAQ">
                 <h3 data-commerce-pdf-faq-heading>Questions before you buy</h3>
                 <div data-buyer-faq-list></div>
-                <p class="pdf-lost-link">Lost your link? <a id="lostLinkMailto" href="mailto:info@promptanatomy.app?subject=Resend%20my%20CEO%20PDF%20download">Email us to resend</a>.</p>
             </section>
         </section>
 
@@ -629,23 +602,7 @@
             <p class="footer-summary" data-copy-footer-summary>Weekly CEO operating brief—free builder plus optional playbooks.</p>
             <p class="footer-product-link">Part of Prompt Anatomy (AI Operating System) — Operations module.</p>
 
-            <div class="footer-faq" role="group" aria-label="FAQ">
-                <details class="footer-faq-item">
-                    <summary class="footer-faq-q">What is this?</summary>
-                    <div class="footer-faq-a">AI Operations Center is a prompt generator for CEOs and COOs. Enter revenue, expenses, cash, runway, and context—then copy a ready-to-run operations review prompt into ChatGPT, Claude, or Gemini.</div>
-                </details>
-                <details class="footer-faq-item">
-                    <summary class="footer-faq-q">Who is it for?</summary>
-                    <div class="footer-faq-a">Founders, CEOs, COOs, and operators who run a weekly operating cadence.</div>
-                </details>
-                <details class="footer-faq-item">
-                    <summary class="footer-faq-q">How do I use it?</summary>
-                    <div class="footer-faq-a">Pick a mode (Strategic/Daily/Weekly), choose depth (Fast/Deep/Board), fill the form, copy the prompt.</div>
-                </details>
-                <details class="footer-faq-item">
-                    <summary class="footer-faq-q">Want the full AI Operating System?</summary>
-                    <div class="footer-faq-a">Explore the complete Prompt Anatomy training and all Hub modules at <a href="https://www.promptanatomy.app/" target="_blank" rel="noopener noreferrer">promptanatomy.app</a>.</div>
-                </details>
+            <div class="footer-faq" role="group" aria-label="Product FAQ">
                 <details class="footer-faq-item">
                     <summary class="footer-faq-q">Do you store my data?</summary>
                     <div class="footer-faq-a">Saved sessions are stored locally in your browser (localStorage). This page does not upload your inputs to a server.</div>
@@ -653,6 +610,10 @@
                 <details class="footer-faq-item">
                     <summary class="footer-faq-q">What is the difference between Fast, Deep, and Board?</summary>
                     <div class="footer-faq-a">Fast gives a short prioritized answer, Deep adds analysis and rationale, and Board formats a concise executive summary with risks and actions.</div>
+                </details>
+                <details class="footer-faq-item">
+                    <summary class="footer-faq-q">Want the full AI Operating System?</summary>
+                    <div class="footer-faq-a">Explore the complete Prompt Anatomy training and all Hub modules at <a href="https://www.promptanatomy.app/" target="_blank" rel="noopener noreferrer">promptanatomy.app</a>.</div>
                 </details>
             </div>
             <div class="tags" role="list">

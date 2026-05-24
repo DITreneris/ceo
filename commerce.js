@@ -31,33 +31,6 @@
         cta.setAttribute('href', url);
       }
     });
-    if (commerce.deliveryPromise) {
-      setHookText('[data-commerce-delivery-promise]', commerce.deliveryPromise);
-    }
-    var compare = commerce.compareStrip || {};
-    if (compare.pdLabel) setHookText('[data-commerce-compare-pd-label]', compare.pdLabel);
-    if (compare.pdValue) setHookText('[data-commerce-compare-pd-value]', compare.pdValue);
-    if (compare.vsLabel) setHookText('[data-commerce-compare-vs]', compare.vsLabel);
-    if (compare.operatingLabel) setHookText('[data-commerce-compare-operating-label]', compare.operatingLabel);
-    if (compare.strategicLabel) setHookText('[data-commerce-compare-strategic-label]', compare.strategicLabel);
-    if (compare.caption) setHookText('[data-commerce-compare-caption]', compare.caption);
-    var pricing = commerce.pricing || {};
-    if (pricing.operating && pricing.operating.now) {
-      setHookText('[data-commerce-compare-operating-value]', pricing.operating.now);
-    }
-    if (pricing.strategic && pricing.strategic.now) {
-      setHookText('[data-commerce-compare-strategic-value]', pricing.strategic.now);
-    }
-    var list = document.querySelector('[data-commerce-testimonials]');
-    if (list && Array.isArray(commerce.testimonials)) {
-      var html = '';
-      commerce.testimonials.forEach(function (t) {
-        if (!t || !t.quote) return;
-        html += '<blockquote class="pdf-testimonial"><p>“' + escapeHtmlText(t.quote) + '”</p><footer>' +
-          escapeHtmlText(t.cite || '') + (t.meta ? ' · ' + escapeHtmlText(t.meta) : '') + '</footer></blockquote>';
-      });
-      list.innerHTML = html;
-    }
   }
 
   function initPdfGuideTocs(config) {
@@ -86,9 +59,9 @@
     var html = '';
     config.buyerFaq.forEach(function (item) {
       if (!item || !item.q || !item.a) return;
-      html += '<details class="footer-faq-item"' + (item.id ? ' id="' + escapeHtmlText(item.id) + '"' : '') + '>' +
-        '<summary class="footer-faq-q">' + escapeHtmlText(item.q) + '</summary>' +
-        '<div class="footer-faq-a">' + escapeHtmlText(item.a) + '</div></details>';
+      html += '<details class="buyer-faq-item"' + (item.id ? ' id="' + escapeHtmlText(item.id) + '"' : '') + '>' +
+        '<summary class="buyer-faq-q">' + escapeHtmlText(item.q) + '</summary>' +
+        '<div class="buyer-faq-a">' + escapeHtmlText(item.a) + '</div></details>';
     });
     list.innerHTML = html;
   }
@@ -338,8 +311,6 @@
     if (ps.eyebrow) setHookText('[data-commerce-pdf-eyebrow]', ps.eyebrow);
     if (ps.heading) setHookText('[data-commerce-pdf-heading]', ps.heading);
     if (ps.lead) setHookText('[data-commerce-pdf-lead]', ps.lead);
-    if (ps.whichPlaybook) setHookText('[data-commerce-pdf-which]', ps.whichPlaybook);
-    if (ps.compareCaption) setHookText('[data-commerce-compare-caption]', ps.compareCaption);
     if (ps.buyerFaqHeading) setHookText('[data-commerce-pdf-faq-heading]', ps.buyerFaqHeading);
     if (ps.ctaOperating) setHookText('[data-commerce-cta-operating]', ps.ctaOperating);
     if (ps.ctaStrategic) setHookText('[data-commerce-cta-strategic]', ps.ctaStrategic);
@@ -350,15 +321,6 @@
         document.querySelectorAll('[data-pdf-kicker="' + key + '"]').forEach(function (el) {
           el.textContent = kickers[key];
         });
-      });
-    }
-    var pub = ps.publisher;
-    if (pub) {
-      if (pub.title) setHookText('[data-commerce-publisher-title]', pub.title);
-      if (pub.body) setHookText('[data-commerce-publisher-body]', pub.body);
-      document.querySelectorAll('[data-commerce-publisher-app]').forEach(function (el) {
-        if (pub.appUrl) el.setAttribute('href', pub.appUrl);
-        if (pub.appLabel) el.textContent = pub.appLabel;
       });
     }
   }

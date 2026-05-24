@@ -164,7 +164,7 @@ function run() {
   else failed++;
 
   // --- Moduliniai failai ---
-  if (assert(html.includes('href="style.css"'), 'Link į style.css')) passed++;
+  if (assert(html.includes('href="style.css?v=2.1.1"'), 'Link į style.css (cache-busted)')) passed++;
   else failed++;
   if (assert(html.includes('src="generator.js"'), 'Script src generator.js')) passed++;
   else failed++;
@@ -401,8 +401,39 @@ function run() {
   ) {
     passed++;
   } else failed++;
-  if (assert(html.includes('data-commerce-pdf-eyebrow') && html.includes('pdf-publisher-strip'), 'PDF storefront copy hooks + publisher strip')) passed++;
-  else failed++;
+  if (
+    assert(
+      html.includes('data-commerce-pdf-eyebrow') &&
+        html.includes('buyer-faq') &&
+        html.includes('data-buyer-faq-list') &&
+        !html.includes('pdf-compare-strip') &&
+        !html.includes('pdf-publisher-strip') &&
+        !html.includes('pdf-testimonials') &&
+        !html.includes('pdf-lost-link') &&
+        !html.includes('pdf-which-playbook'),
+      'PDF storefront slim v4 hooks; bloat removed'
+    )
+  ) {
+    passed++;
+  } else failed++;
+  if (
+    assert(
+      (html.match(/<details class="footer-faq-item">/g) || []).length === 3,
+      'Footer Product FAQ: exactly 3 items'
+    )
+  ) {
+    passed++;
+  } else failed++;
+  if (
+    assert(
+      html.includes('ops-control-panel') &&
+        html.includes('depth-tip--bar') &&
+        html.includes('mode-tab-icon'),
+      'Ops control panel + depth tip in bar + mode tab icons'
+    )
+  ) {
+    passed++;
+  } else failed++;
   if (assert(html.includes('top-nav-playbooks-link') && html.includes('btn--nav-secondary') && html.includes('data-copy-nav-playbooks-cta') && !html.includes('header-cta-link'), 'Sticky Playbooks nav CTA; hero has no tertiary CTA link')) passed++;
   else failed++;
   if (
@@ -423,9 +454,11 @@ function run() {
   if (
     assert(
       !html.includes('See playbooks ($9.99') &&
-        html.includes('View CEO playbooks') &&
+        html.includes('View playbooks') &&
+        html.includes('Open generator') &&
+        !html.includes('data-copy-nav-playbooks-cta">CEO playbooks') &&
+        !html.includes('Build weekly brief') &&
         html.includes('data-copy-hero-primary-cta') &&
-        html.includes('data-copy-hero-eyebrow') &&
         html.includes('hero-use-cases') &&
         html.includes('trust-row--hero-inline') &&
         html.includes('data-trust-format="inline"') &&
@@ -434,6 +467,7 @@ function run() {
         !/\btrust-row--hero(?:["'\s]|$)/.test(html) &&
         !html.includes('hero-promise') &&
         !html.includes('Owner:') &&
+        !html.includes('hero-eyebrow') &&
         html.includes('hero-prompt-card__detail'),
       'IA v3: inline use cases in hero, no strip card, simplified preview'
     )
@@ -469,7 +503,7 @@ function run() {
         sotForOps.copy.opsDepth && sotForOps.copy.opsDepth.tip &&
         sotForOps.copy.opsOutput && sotForOps.copy.opsOutput.emptyPlaceholder && sotForOps.copy.opsOutput.copiedToast &&
         Array.isArray(sotForOps.copy.journeySteps) && sotForOps.copy.journeySteps.length === 4 &&
-        sotForOps.copy.hero && sotForOps.copy.hero.eyebrow && sotForOps.copy.hero.useCasesLabel && sotForOps.copy.hero.preview &&
+        sotForOps.copy.hero && sotForOps.copy.hero.useCasesLabel && sotForOps.copy.hero.preview &&
         !sotForOps.copy.opsCenter.value && !sotForOps.copy.opsCenter.intro && !sotForOps.copy.useCasesSection &&
         sotForOps.copy.trust && Array.isArray(sotForOps.copy.trust.heroStrip),
       'config/sot.json IA v3 copy keys (hero inline use cases, slim ops center)'
@@ -481,8 +515,8 @@ function run() {
   else failed++;
   if (
     assert(
-      html.includes('CEO AI Strategy Playbook') && html.includes('data-pdf-promise="strategic"'),
-      'index.html strategic playbook pavadinimas ir buyerPromise hook'
+      html.includes('CEO AI Strategy Playbook') && html.includes('data-pdf-bullets="strategic"'),
+      'index.html strategic playbook title + card bullets hook'
     )
   ) {
     passed++;
@@ -610,13 +644,13 @@ function run() {
   } else failed++;
   if (
     assert(
-      sot && sot.copy && sot.copy.pdfStorefront && sot.copy.pdfStorefront.publisher && sot.copy.pdfStorefront.cardKickers,
+      sot && sot.copy && sot.copy.pdfStorefront && sot.copy.pdfStorefront.cardKickers,
       'config/sot.json copy.pdfStorefront (journey wave2)'
     )
   ) {
     passed++;
   } else failed++;
-  if (assert(sot && Array.isArray(sot.buyerFaq) && sot.buyerFaq.length >= 3, 'config/sot.json buyerFaq')) passed++;
+  if (assert(sot && Array.isArray(sot.buyerFaq) && sot.buyerFaq.length === 3, 'config/sot.json buyerFaq (3 items)')) passed++;
   else failed++;
   const commerceJs = readFile(COMMERCE_PATH);
   if (assert(commerceJs && commerceJs.includes('initPdfStorefrontCopy'), 'commerce.js initPdfStorefrontCopy')) passed++;

@@ -6,6 +6,10 @@ Formatas pagal [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), versija
 
 EN-US storefront journey + **Design System 1.1 Hardened** ([`docs/ds_improvement_plan.md`](docs/ds_improvement_plan.md) §16). Does not block Phase 15–17 launch ([`docs/LAUNCH_CHECKLIST.md`](docs/LAUNCH_CHECKLIST.md)).
 
+### Changed
+
+- **IA slim v4 (PDF + FAQ + ops panel)** — PDF section deduped (removed compare strip, which-playbook line, per-card trust, delivery blurb, testimonials, publisher strip, card buyer-promise); single section trust row; `buyerFaq` 5→3; footer Product FAQ 6→3 (JSON-LD synced); `.ops-control-panel` card with mode tab icons; journey step 4 **Reuse templates**; structure tests **146/146**.
+
 ### Added
 
 - **CEO frontpage premium (Phase A+B)** — Playbooks nav contrast fix (removed from `.btn--ghost` inherit); ops `step-badge` removed; journey `::before` zero hack removed; EN `<title>` no longer overwritten by `generator.js`; SOT repositioning prompt → **operating brief**; H1 *Turn scattered KPIs into a clear weekly CEO brief*; hero promise line + `trust.heroStrip`; rich preview card (action/owner rows); `copy.journeySteps` executive labels; `CEO Weekly Operating Brief` ops title.

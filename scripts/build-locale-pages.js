@@ -257,7 +257,7 @@ function buildLocaleHtml(locale) {
   // 6. Asset paths: root-relative so they resolve from /lt/ or /en/ (and with BASE_PATH for GitHub Pages)
   var base = BASE_PATH || '';
   html = html.replace(/\bhref="favicon\.svg"/, 'href="' + base + '/favicon.svg"');
-  html = html.replace(/\bhref="style\.css"/g, 'href="' + base + '/style.css"');
+  html = html.replace(/\bhref="style\.css(\?[^"]*)?"/g, 'href="' + base + '/style.css?v=2.1.1"');
   html = html.replace(/\bsrc="vendor\/lucide\.min\.js"/, 'src="' + base + '/vendor/lucide.min.js"');
   html = html.replace(/\bsrc="generator\.js"/, 'src="' + base + '/generator.js"');
   html = html.replace(/\bsrc="copy\.js"/, 'src="' + base + '/copy.js"');
@@ -283,8 +283,19 @@ function buildLocaleHtml(locale) {
       '>Įvesk pajamas, rezervą ir kontekstą. Gauk paruoštą CEO promptą maždaug per 5 min.</p>'
     );
     html = html.replace('>Not another AI chat. A structured operating layer for executive decision-making.</p>', '');
+    html = html.replace('aria-label="Open generator in operations center">Open generator</a>', 'aria-label="Atidaryti generatorių operaciniame centre">Atidaryti generatorių</a>');
+    html = html.replace('aria-label="View PDF playbooks">View playbooks ↓</a>', 'aria-label="Peržiūrėti PDF playbooks">Playbooks ↓</a>');
+    html = html.replace('>Free · No account · ~5 min</p>', '>Nemokama · Be paskyros · ~5 min</p>');
+    html = html.replace(
+      '>Add KPIs, blockers, and context.<br>Get structured priorities in 5 minutes.</p>',
+      '>Įvesk KPI, blockerius ir kontekstą.<br>Gauk struktūruotus prioritetus per 5 min.</p>'
+    );
+    html = html.replace('>This week\'s priorities</p>', '>Šios savaitės prioritetai</p>');
+    html = html.replace('>Add your context</h2>', '>Pridėk kontekstą</h2>');
+    html = html.replace('<span class="ops-journey-step-num">3</span> Generate prompt</a>', '<span class="ops-journey-step-num">3</span> Rezultatas</a>');
+    html = html.replace('aria-label="View PDF playbooks from $9.99">Playbooks</a>', 'aria-label="Peržiūrėti PDF playbooks">Playbooks</a>');
     html = html.replace('aria-label="Build my weekly brief in operations center">Build my weekly brief</a>', 'aria-label="Gauti savaitės prioritetus operaciniame centre">Gauti savaitės prioritetus</a>');
-    html = html.replace('aria-label="View CEO PDF playbooks">View CEO playbooks ↓</a>', 'aria-label="Peržiūrėti CEO PDF playbooks">CEO playbooks ↓</a>');
+    html = html.replace('aria-label="View CEO PDF playbooks">View CEO playbooks ↓</a>', 'aria-label="Peržiūrėti PDF playbooks">Playbooks ↓</a>');
     html = html.replace('>For CEOs, COOs &amp; founders · Free · No account · Works with ChatGPT, Claude &amp; Gemini</p>', '>TOP vadovams CEO / COO · Nemokama · Be paskyros · ~5 min</p>');
     html = html.replace(
       '>Choose a leadership scenario. Add business context. The system turns it into a structured executive brief and copy-ready prompt.</span>',
@@ -295,7 +306,7 @@ function buildLocaleHtml(locale) {
     html = html.replace('<span class="ops-journey-step-num">1</span> Choose mode</a>', '<span class="ops-journey-step-num">1</span> Režimas</a>');
     html = html.replace('<span class="ops-journey-step-num">2</span> Add context</a>', '<span class="ops-journey-step-num">2</span> Forma</a>');
     html = html.replace('<span class="ops-journey-step-num">3</span> Generate brief</a>', '<span class="ops-journey-step-num">3</span> Rezultatas</a>');
-    html = html.replace('<span class="ops-journey-step-num">4</span> Reuse playbooks</a>', '<span class="ops-journey-step-num">4</span> Biblioteka</a>');
+    html = html.replace('<span class="ops-journey-step-num">4</span> Reuse templates</a>', '<span class="ops-journey-step-num">4</span> Biblioteka</a>');
     html = html.replace('aria-label="Browse ready-made templates">Browse templates</a>', 'aria-label="Peržiūrėti paruoštus šablonus">Rinktis šabloną</a>');
     html = html.replace('>Under 5 min · Result: clear weekly priorities.</p>', '>Užtruksi iki 5 min. • Rezultatas: aiškūs savaitės prioritetai.</p>');
 

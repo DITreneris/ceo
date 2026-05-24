@@ -112,6 +112,10 @@
         box-shadow: var(--shadow-tab-hover);
     }
     /* Modes: neutral, active = subtle border + tint (not full violet) */
+    .ops-control-panel {
+        padding: var(--space-12);
+    }
+    .ops-control-panel .mode-tabs { flex-direction: column; align-items: stretch; }
     .mode-tabs { flex-direction: column; align-items: center; background: var(--surface-0); }
     .mode-tab { flex-direction: row; justify-content: center; flex: 0 1 auto; min-width: 0; width: 100%; max-width: 360px; }
     .mode-tab.is-active {
@@ -120,13 +124,18 @@
     }
     /* Depth: inline segmented control, no heavy card */
     .depth-bar {
-        flex-wrap: wrap; flex-direction: column; align-items: stretch; gap: var(--space-8);
+        flex-wrap: wrap; flex-direction: row; align-items: center;
         background: var(--surface-0); border-color: var(--border);
         padding: var(--space-8) var(--space-12); margin-bottom: var(--space-20);
     }
-    .depth-label { width: 100%; text-align: center; font-size: var(--text-xs); color: var(--text-light); }
-    .depth-options { flex-wrap: wrap; flex: none; width: 100%; justify-content: center; gap: var(--space-4); }
-    .depth-tip.field-help { text-align: center; margin-bottom: var(--space-20); }
+    .depth-label { flex-shrink: 0; font-size: var(--text-xs); color: var(--text-light); }
+    .depth-options { flex-wrap: wrap; flex: 1 1 auto; min-width: 0; justify-content: flex-start; gap: var(--space-4); }
+    .depth-tip--bar {
+        margin-left: auto;
+        width: auto;
+        text-align: right;
+        white-space: normal;
+    }
     .depth-btn.is-active {
         background: var(--primary-50); color: var(--primary); border-color: var(--primary-200);
         box-shadow: var(--shadow-tab-rest);

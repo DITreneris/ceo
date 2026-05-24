@@ -1,6 +1,6 @@
 # Ops workspace clarity — DOM contract & journey
 
-**Status:** Shipped 2026-05-22 · **Scope:** `#operationsCenter` only · **Policy:** EN-first ([`AGENTS.md`](../AGENTS.md))
+**Status:** Shipped 2026-05-22 · **IA slim v4 ops panel:** 2026-05-24 · **Scope:** `#operationsCenter` only · **Policy:** EN-first ([`AGENTS.md`](../AGENTS.md))
 
 Companion to [`docs/hero_refactor.md`](hero_refactor.md). Documents the SOT keys, DOM contract, and CEO journey assumptions that the ops workspace clarity pass introduced. The implementation plan lives in `.cursor/plans/ops_workspace_premium_*.plan.md`.
 
@@ -9,13 +9,14 @@ Companion to [`docs/hero_refactor.md`](hero_refactor.md). Documents the SOT keys
 ```mermaid
 flowchart TD
   hero[Hero · Get weekly priorities]
-  steps[ops-journey-steps--compact · Mode → Form → Result → Library]
-  mode[mode-tabs · STRATEGIC / DAILY / WEEKLY]
-  depth[depth-bar · Fast/Deep/Board + field-help tip below]
+  steps[ops-journey-steps--compact · Mode → Form → Result → Templates]
+  panel[ops-control-panel · mode-tabs + depth-bar]
+  mode[mode-tabs · STRATEGIC / DAILY / WEEKLY + icons]
+  depth[depth-bar · Fast/Deep/Board + tip in-bar]
   form[ops-form-grid · 2 cols, align-items: start]
   output[ops-output · live prompt + copy + tool launchers]
   sessions[sessionsPanel · full-width tile grid]
-  hero --> steps --> mode --> depth --> form --> output --> sessions
+  hero --> steps --> panel --> mode --> depth --> form --> output --> sessions
 ```
 
 | Time | What the user understands |
@@ -28,10 +29,11 @@ flowchart TD
 | Element | Selector / id | Purpose |
 |---------|---------------|---------|
 | Section | `#operationsCenter` | Anchor target from hero + step 1 |
-| Stepper | `.ops-journey-steps.ops-journey-steps--compact` | 4 anchors with scroll spy ([`copy.js`](../copy.js)) |
-| Mode tabs | `.mode-tabs > .mode-tab[data-mode]` | `MASTER` / `DIENOS` / `SAVAITES` panels |
-| Depth bar | `.depth-bar` | Depth pills only (no nested tip chip) |
-| Depth tip | `#depthTip.field-help.depth-tip` below `.depth-bar` | `aria-describedby` target on depth `radiogroup`; `[data-copy-ops-depth-tip]` for hydration |
+| Stepper | `.ops-journey-steps.ops-journey-steps--compact` | 4 anchors with scroll spy ([`copy.js`](../copy.js)); step 4 → `#library` label **Reuse templates** |
+| Control panel | `.ops-control-panel` | Full-width card wrapping mode tabs + depth bar |
+| Mode tabs | `.mode-tabs > .mode-tab[data-mode]` | `MASTER` / `DIENOS` / `SAVAITES` panels; Lucide `mode-tab-icon` |
+| Depth bar | `.depth-bar` | Depth pills; `#depthTip.depth-tip--bar` **inside** bar (right-aligned) |
+| Depth tip | `#depthTip.field-help.depth-tip.depth-tip--bar` | `aria-describedby` on depth `radiogroup`; `[data-copy-ops-depth-tip]` for hydration |
 | Form grid | `.ops-form-grid` | `align-items: start`; full-width help via `.field-help--row` |
 | Output | `#opsOutput` (textarea) | SOT placeholder; min-height 140px; themed scrollbar |
 | Tool launchers | `.ops-tool-btn[data-ai-tool]` | Ghost on dark surface; gold accent on hover/focus |
