@@ -159,7 +159,7 @@
                 <span class="top-nav-brand-text-short" aria-hidden="true">AI OC</span>
             </a>
             <div class="top-nav-actions">
-                <a href="#pdf-guides" class="top-nav-playbooks-link">Playbooks</a>
+                <a href="#pdf-guides" class="top-nav-playbooks-link btn btn--nav-secondary" data-copy-nav-playbooks-cta aria-label="View CEO PDF playbooks from $9.99">CEO playbooks</a>
                 <button type="button" class="top-nav-copy-btn is-hidden" id="stickyCopyBtn" aria-hidden="true" disabled>Copy prompt</button>
             </div>
         </div>
@@ -174,11 +174,15 @@
                 <div class="hero-content">
                     <p class="hero-eyebrow" data-copy-hero-eyebrow>AI operations layer for CEOs</p>
                     <h1 data-copy-hero-headline>Turn scattered KPIs into a clear weekly CEO brief</h1>
-                    <p class="header-lead" data-copy-hero-lead>Enter revenue, runway, pipeline, blockers, and team context. Get a structured weekly priority brief in about 5 minutes.</p>
+                    <p class="header-lead" data-copy-hero-lead>Add KPIs, blockers, and context.<br>Get a weekly CEO brief in 5 minutes.</p>
                     <div class="header-cta">
                         <a href="#operationsCenter" class="cta-button btn btn--primary" data-copy-hero-primary-cta aria-label="Build weekly brief in operations center">Build weekly brief</a>
                         <a href="#pdf-guides" class="btn btn--secondary cta-button-outline" data-copy-hero-secondary-cta aria-label="View CEO PDF playbooks">View CEO playbooks ↓</a>
                         <p class="header-cta-meta" data-copy-hero-meta>For CEOs, COOs &amp; founders · Free · No account</p>
+                        <p class="hero-use-cases">
+                            <span class="hero-use-cases__label" data-copy-hero-use-cases-label>Use cases:</span>
+                            <span class="trust-row trust-row--hero-inline" data-trust-row="heroStrip" data-trust-format="inline" aria-label="Use cases"></span>
+                        </p>
                     </div>
                 </div>
                 <aside class="hero-prompt-card" aria-hidden="true">
@@ -203,20 +207,12 @@
             </div>
         </header>
 
-        <section class="use-cases-strip" aria-labelledby="use-cases-heading">
-            <h2 id="use-cases-heading" class="use-cases-strip__heading" data-copy-use-cases-heading>Built for executive operating rhythm</h2>
-            <ul class="trust-row trust-row--use-cases" data-trust-row="heroStrip" aria-label="Use cases"></ul>
-        </section>
-
         <!-- OPERATIONS CENTER -->
         <section class="ops-center" id="operationsCenter">
             <div class="ops-center-header">
-                <div class="ops-center-header-text">
-                    <span class="collapsible-title" data-copy-ops-title>CEO Weekly Operating Brief</span>
-                    <span class="collapsible-value" data-copy-ops-value>Choose a leadership scenario. Add business context. The system turns it into a structured executive brief and copy-ready prompt.</span>
-                </div>
+                <h2 class="ops-center-title" data-copy-ops-title>Build your weekly brief</h2>
             </div>
-            <nav class="ops-journey-steps" aria-label="Work steps">
+            <nav class="ops-journey-steps ops-journey-steps--compact" aria-label="Work steps">
                 <ol>
                     <li><a href="#operationsCenter" class="ops-journey-step is-active" data-journey-step="0"><span class="ops-journey-step-num">1</span> Choose mode</a></li>
                     <li><a href="#opsForm" class="ops-journey-step" data-journey-step="1"><span class="ops-journey-step-num">2</span> Add context</a></li>
@@ -224,7 +220,6 @@
                     <li><a href="#library" class="ops-journey-step" data-journey-step="3"><span class="ops-journey-step-num">4</span> Reuse playbooks</a></li>
                 </ol>
             </nav>
-            <p class="ops-center-intro" data-copy-ops-intro>Pick a mode, set depth, fill your numbers — your brief updates live.</p>
 
             <!-- Mode Tabs -->
             <div class="mode-tabs" role="tablist" aria-label="Mode selection">

@@ -105,6 +105,27 @@
     color: var(--primary);
     border: 1px solid var(--border);
 }
+.btn--nav-secondary {
+    background: var(--white);
+    color: var(--primary);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    min-height: 44px;
+    padding: 0 var(--space-16);
+    font-size: var(--text-sm);
+    font-weight: 700;
+    box-shadow: var(--shadow-soft);
+    white-space: nowrap;
+}
+.btn--nav-secondary:hover {
+    background: var(--primary-50);
+    color: var(--primary-dark);
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: var(--shadow-medium);
+}
+.btn--nav-secondary:focus-visible {
+    outline: 2px solid var(--accent-gold);
+    outline-offset: 2px;
+}
 .btn--ghost,
 .top-nav-copy-btn,
 .library-btn,
@@ -208,14 +229,9 @@
     color: var(--primary);
 }
 
-.trust-row--use-cases {
-    gap: var(--space-8) var(--space-16);
-    justify-content: flex-start;
-}
-
-.trust-row--use-cases .icon {
-    color: var(--primary);
-    opacity: 0.85;
+.trust-row--hero-inline {
+    display: inline;
+    font-weight: 500;
 }
 
 .price__now,

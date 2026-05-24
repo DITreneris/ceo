@@ -28,6 +28,7 @@
 |-------|------|
 | `.btn.btn--primary` | Buy / get — aliases: `.cta-button`, `.pdf-guide-cta`, `.community-cta-primary` |
 | `.btn.btn--secondary` | Outline — `.cta-button-outline`, `.pdf-guide-preview-btn` |
+| `.btn.btn--nav-secondary` | Sticky nav commerce CTA on dark bar — `.top-nav-playbooks-link` |
 | `.btn.btn--ghost` | Nav utility |
 | `.btn.btn--pill` | Mode / depth tabs |
 | `.btn.btn--icon` | Icon-only 44×44 |
@@ -59,10 +60,13 @@ Aliases: `.badge`, `.pill`, `.tag`.
 | `.hero-eyebrow` | Uppercase label above H1; SOT `copy.hero.eyebrow` |
 | `.hero-layout` | Two-column grid ≥1025px; stacks on mobile |
 | `.hero-prompt-card` | Static dark glass preview; `aria-hidden="true"`; hidden ≤1024px; summary list (no Owner) |
-| `.use-cases-strip` | Below hero; `data-copy-use-cases-heading` + `trust-row--use-cases` / `heroStrip` |
+| `.hero-use-cases` | Inline use-case row inside hero; SOT `copy.hero.useCasesLabel` + `trust.heroStrip` (text-only via `data-trust-format="inline"`) |
+| `.ops-center-title` | Product H2 under hero; SOT `copy.opsCenter.title` |
+| `.ops-journey-steps--compact` | Flattened clickable workflow; scroll spy unchanged |
 | `.ops-journey-steps` | 4 anchors: `#operationsCenter`, `#opsForm`, `#opsOutputSection`, `#library` (top of ops center) |
 | `.header-cta` | **2** actions only: primary + playbooks secondary |
 | `#stickyCopyBtn` | Hidden until `hasAnyFormInput()` in `generator.js` |
+| `[data-copy-nav-playbooks-cta]` | Sticky nav PDF shortcut; SOT `copy.nav.playbooksCta`; aligned with hero preview column ≥1025px |
 
 Spec: [`hero_refactor.md`](hero_refactor.md).
 
@@ -70,7 +74,6 @@ Spec: [`hero_refactor.md`](hero_refactor.md).
 
 | Element | Contract |
 |---------|----------|
-| `.ops-center-intro` | One-line guidance under `.ops-journey-steps`; SOT: `copy.opsCenter.intro`; hook `data-copy-ops-intro` |
 | `.depth-bar > .depth-tip.chip.chip--tip` | Gold-accent tip chip; `id="depthTip"` referenced by `aria-describedby` on depth `radiogroup`; SOT: `copy.opsDepth.tip`; full-width row inside `.depth-bar` |
 | `.ops-form-grid` | Two columns; `align-items: start`; help spans full row via `.field-help.field-help--row` |
 | `#opsOutput[placeholder]` | SOT: `copy.opsOutput.emptyPlaceholder`; min-height 140px; thin themed scrollbar |

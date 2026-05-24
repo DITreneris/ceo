@@ -37,6 +37,20 @@
 | Stepper | Ops center, broken `#` on steps 1–3 | `.ops-journey-steps` under ops header, 4 anchors + spy |
 | Sticky copy | Always visible | Hidden until form input |
 
+## IA v3 integrate (2026-05-24)
+
+**Constraint:** net copy reduction — relocate or delete, never add explanation layers.
+
+| Kill | Keep |
+|------|------|
+| `.use-cases-strip` section | Hero card |
+| `copy.opsCenter.value`, `copy.opsCenter.intro` | H1 (frozen) + `ops-center-title` |
+| Separate h2 “Built for executive operating rhythm” | Inline `hero-use-cases` in hero CTA block |
+
+Use cases: `Use cases: CEO planning · COO reviews · …` via `data-trust-format="inline"` (no icons).
+
+Ops block: `Build your weekly brief` + `.ops-journey-steps--compact` → mode tabs (no paragraph between).
+
 ## Hero slim v2 (2026-05-24)
 
 Premium SaaS density: **4 elements** above the fold on the left — eyebrow, H1, lead, CTA + one trust line. Use-case icons moved to `.use-cases-strip` below hero. Preview card is an executive summary list (P + title + one detail line; no Owner / Action labels).
@@ -57,17 +71,13 @@ Premium SaaS density: **4 elements** above the fold on the left — eyebrow, H1,
 ```html
 <header class="header">
   <div class="hero-layout">
-    <div class="hero-content">… eyebrow, h1, lead, .header-cta …</div>
+    <div class="hero-content">… eyebrow, h1, lead, .header-cta, .hero-use-cases …</div>
     <aside class="hero-prompt-card" aria-hidden="true">… SOT preview rows (detail only) …</aside>
   </div>
 </header>
-<section class="use-cases-strip" aria-labelledby="use-cases-heading">
-  <h2 id="use-cases-heading" data-copy-use-cases-heading>…</h2>
-  <ul class="trust-row trust-row--use-cases" data-trust-row="heroStrip">…</ul>
-</section>
 <section class="ops-center" id="operationsCenter">
-  <div class="ops-center-header">… data-copy-ops-title (no step-badge) …</div>
-  <nav class="ops-journey-steps"><ol>… 4 anchors data-journey-step …</ol></nav>
+  <div class="ops-center-header"><h2 class="ops-center-title" data-copy-ops-title>…</h2></div>
+  <nav class="ops-journey-steps ops-journey-steps--compact"><ol>… 4 anchors …</ol></nav>
   … mode tabs, form, output …
 </section>
 ```

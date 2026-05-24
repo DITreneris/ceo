@@ -73,10 +73,16 @@ body {
 .top-nav-inner {
     max-width: 1120px;
     margin: 0 auto;
-    padding: 12px 24px;
+    padding: 12px var(--layout-gutter);
     display: flex;
     align-items: center;
     gap: 16px;
+}
+
+@media (min-width: 1025px) {
+    .top-nav-inner {
+        padding-inline: var(--layout-gutter) calc(var(--layout-gutter) + var(--hero-inline-pad));
+    }
 }
 
 .top-nav-brand {
@@ -104,31 +110,6 @@ body {
     flex-wrap: wrap;
     justify-content: flex-end;
     gap: var(--space-10);
-}
-
-.top-nav-playbooks-link {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 44px;
-    padding: 0 14px;
-    font-size: var(--text-sm);
-    font-weight: 600;
-    color: var(--white);
-    text-decoration: none;
-    border: 1px solid rgba(255, 255, 255, 0.24);
-    background: rgba(255, 255, 255, 0.08);
-    border-radius: 10px;
-    white-space: nowrap;
-    transition: background var(--duration-normal) var(--ease-out), border-color var(--duration-normal) var(--ease-out);
-}
-.top-nav-playbooks-link:hover {
-    background: rgba(255, 255, 255, 0.16);
-    color: var(--white);
-}
-.top-nav-playbooks-link:focus-visible {
-    outline: 2px solid var(--accent-gold);
-    outline-offset: 2px;
 }
 
 .top-nav-copy-btn.is-hidden {

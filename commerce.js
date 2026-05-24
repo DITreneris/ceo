@@ -182,6 +182,7 @@
     if (h.headlineBenefit) setHookText('[data-copy-hero-headline]', h.headlineBenefit);
     if (h.lead) setHookText('[data-copy-hero-lead]', h.lead);
     if (h.ctaMeta) setHookText('[data-copy-hero-meta]', h.ctaMeta);
+    if (h.useCasesLabel) setHookText('[data-copy-hero-use-cases-label]', h.useCasesLabel);
     if (h.primaryCta) {
       document.querySelectorAll('[data-copy-hero-primary-cta]').forEach(function (el) {
         el.textContent = h.primaryCta;
@@ -220,13 +221,8 @@
         rowsEl.innerHTML = rowsHtml;
       }
     }
-    if (config.copy.useCasesSection && config.copy.useCasesSection.heading) {
-      setHookText('[data-copy-use-cases-heading]', config.copy.useCasesSection.heading);
-    }
     if (config.copy.opsCenter) {
       if (config.copy.opsCenter.title) setHookText('[data-copy-ops-title]', config.copy.opsCenter.title);
-      if (config.copy.opsCenter.value) setHookText('[data-copy-ops-value]', config.copy.opsCenter.value);
-      if (config.copy.opsCenter.intro) setHookText('[data-copy-ops-intro]', config.copy.opsCenter.intro);
     }
     if (Array.isArray(config.copy.journeySteps)) {
       config.copy.journeySteps.forEach(function (label, i) {
@@ -269,6 +265,17 @@
     }
   }
 
+  function initNavCopy(config) {
+    if (!config || !config.copy || !config.copy.nav) return;
+    var nav = config.copy.nav;
+    if (nav.playbooksCta) setHookText('[data-copy-nav-playbooks-cta]', nav.playbooksCta);
+    if (nav.playbooksAriaLabel) {
+      document.querySelectorAll('[data-copy-nav-playbooks-cta]').forEach(function (el) {
+        el.setAttribute('aria-label', nav.playbooksAriaLabel);
+      });
+    }
+  }
+
   function initTrustRow(config) {
     if (!config || !config.copy || !config.copy.trust) return;
     var trust = config.copy.trust;
@@ -276,6 +283,14 @@
       var key = container.getAttribute('data-trust-row') || 'row';
       var items = trust[key];
       if (!Array.isArray(items) || !items.length) return;
+      if (container.getAttribute('data-trust-format') === 'inline') {
+        var labels = [];
+        items.forEach(function (item) {
+          if (item && item.label) labels.push(item.label);
+        });
+        container.textContent = labels.join(' · ');
+        return;
+      }
       var html = '';
       items.forEach(function (item) {
         if (!item || !item.label) return;
@@ -364,6 +379,7 @@
       if (config && config.commerce) initCommerce(config.commerce);
       if (config) {
         initHeroCopy(config);
+        initNavCopy(config);
         initPdfStorefrontCopy(config);
         initTrustRow(config);
         initPdfCardBullets(config);

@@ -372,8 +372,6 @@
         }
         var opsTitle = document.querySelector('[data-copy-ops-title]');
         if (opsTitle) opsTitle.textContent = 'Operacinis centras';
-        var opsValue = document.querySelector('.ops-center-header .collapsible-value');
-        if (opsValue) opsValue.textContent = uiText('Be paskyros. Pasirink režimą, užpildyk laukus – DI užklausa sugeneruojama automatiškai', 'No account required. Choose a mode, fill in the fields — your AI prompt is generated automatically.');
 
         var modeTablist = document.querySelector('.mode-tabs[role="tablist"]');
         if (modeTablist) modeTablist.setAttribute('aria-label', uiText('Režimo pasirinkimas', 'Mode selection'));
@@ -388,11 +386,6 @@
             var prefix = uiText('Patarimas · Nežinai? Pradėk su ', 'Tip · Not sure? Start with ');
             depthTipEl.innerHTML = prefix + '<strong>' + fastWord + '</strong>.';
         }
-        var opsIntroEl = document.querySelector('[data-copy-ops-intro]');
-        if (opsIntroEl) opsIntroEl.textContent = uiText(
-            'Pasirink režimą, nustatyk gylį, įrašyk skaičius — užklausa atnaujinama gyvai.',
-            'Pick a mode, set depth, fill your numbers — your prompt updates live.'
-        );
 
         var tabMaster = document.getElementById('tab-master');
         var tabDienos = document.getElementById('tab-dienos');

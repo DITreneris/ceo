@@ -7,7 +7,7 @@
     color: var(--text);
     padding: 36px 48px;
     border-radius: var(--r-hero);
-    margin-bottom: var(--space-24);
+    margin-bottom: var(--space-16);
     border: 1px solid var(--border-panel);
     box-shadow: var(--shadow-medium);
     overflow: hidden;
@@ -120,6 +120,22 @@
     margin: 0 0 var(--space-16);
     max-width: 48ch;
     line-height: 1.5;
+    white-space: pre-line;
+    color: var(--text-muted);
+}
+
+.hero-use-cases {
+    flex-basis: 100%;
+    margin: var(--space-8) 0 0;
+    font-size: var(--text-sm);
+    font-weight: 500;
+    line-height: 1.45;
+    color: var(--text-muted);
+}
+
+.hero-use-cases__label {
+    font-weight: 600;
+    margin-right: var(--space-4);
 }
 
 .header p {
@@ -466,22 +482,6 @@
     }
 }
 
-.use-cases-strip {
-    margin: var(--space-24) 0 var(--space-8);
-    padding: var(--space-20) var(--space-24);
-    border-top: 1px solid var(--border);
-    border-radius: var(--r-card);
-    background: rgba(255, 255, 255, 0.55);
-}
-
-.use-cases-strip__heading {
-    margin: 0 0 var(--space-12);
-    font-size: var(--text-sm);
-    font-weight: 600;
-    color: var(--text-muted);
-    letter-spacing: 0.02em;
-}
-
 .header-cta-meta {
     flex-basis: 100%;
     margin: 2px 0 0;
@@ -516,7 +516,16 @@
     display: flex;
     align-items: flex-start;
     gap: var(--space-16);
-    margin-bottom: var(--space-24);
+    margin-bottom: var(--space-12);
+}
+
+.ops-center-title {
+    margin: 0;
+    font-size: var(--text-xl);
+    font-weight: 800;
+    line-height: var(--leading-tight);
+    letter-spacing: -0.02em;
+    color: var(--text);
 }
 
 .ops-center-header-text {
@@ -525,12 +534,35 @@
     gap: 4px;
 }
 
-.ops-center-intro {
-    margin: 0 0 var(--space-20);
-    font-size: var(--text-md);
-    line-height: 1.5;
+.ops-journey-steps--compact {
+    margin-bottom: var(--space-20);
+}
+
+.ops-journey-steps--compact .ops-journey-step {
+    padding: 4px 10px;
+    min-height: 36px;
+    font-size: var(--text-sm);
+    font-weight: 600;
+    border-color: var(--border);
+    background: transparent;
+    box-shadow: none;
+}
+
+.ops-journey-steps--compact .ops-journey-step-num {
+    width: 18px;
+    height: 18px;
+    font-size: var(--text-xs);
+}
+
+.ops-journey-steps--compact .ops-journey-step.is-active {
+    background: var(--primary-bg-soft);
+    border-color: var(--primary-border-active);
+}
+
+.ops-journey-steps--compact li::after {
+    margin: 0 var(--space-4);
+    font-size: var(--text-sm);
     color: var(--text-muted);
-    max-width: 64ch;
 }
 
 .mode-tabs {

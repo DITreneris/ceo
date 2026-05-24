@@ -6,7 +6,7 @@
     .top-nav-brand { font-size: var(--text-14); min-width: 0; }
     .top-nav-brand-text-full { display: none; }
     .top-nav-brand-text-short { display: inline; }
-    .top-nav-playbooks-link { font-size: var(--text-nav); padding: 0 10px; }
+    .top-nav-playbooks-link.btn--nav-secondary { font-size: var(--text-nav); padding: 0 12px; }
     .top-nav-copy-btn { font-size: var(--text-nav); padding: 0 12px; }
     .top-nav-actions { margin-left: auto; }
     .header { padding: 28px 24px; }
@@ -150,7 +150,7 @@
     .container { padding: 20px 12px; }
     .top-nav-inner { padding: 8px 12px; }
     .top-nav-brand { font-size: var(--text-sm); }
-    .top-nav-playbooks-link { font-size: var(--text-xs); padding: 0 8px; }
+    .top-nav-playbooks-link.btn--nav-secondary { font-size: var(--text-xs); padding: 0 10px; }
     .top-nav-copy-btn { font-size: var(--text-xs); padding: 0 10px; }
     .header { padding: 24px 16px; }
     .header-cta { flex-direction: column; align-items: flex-start; }
@@ -202,13 +202,8 @@
 }
 
 @media (max-width: 768px) {
-    .use-cases-strip {
-        padding: var(--space-16);
-        margin: var(--space-16) 0 var(--space-8);
-    }
-    .trust-row--use-cases {
-        flex-direction: column;
-        align-items: flex-start;
+    .hero-use-cases {
+        font-size: var(--text-xs);
     }
 }
 

@@ -9,19 +9,18 @@ Companion to [`docs/hero_refactor.md`](hero_refactor.md). Documents the SOT keys
 ```mermaid
 flowchart TD
   hero[Hero · Get weekly priorities]
-  steps[ops-journey-steps · Mode → Form → Result → Library]
-  intro[ops-center-intro · one-line guidance]
+  steps[ops-journey-steps--compact · Mode → Form → Result → Library]
   mode[mode-tabs · STRATEGIC / DAILY / WEEKLY]
   depth[depth-bar + chip--tip · Fast/Deep/Board]
   form[ops-form-grid · 2 cols, align-items: start]
   output[ops-output · live prompt + copy + tool launchers]
   sessions[sessionsPanel · full-width tile grid]
-  hero --> steps --> intro --> mode --> depth --> form --> output --> sessions
+  hero --> steps --> mode --> depth --> form --> output --> sessions
 ```
 
 | Time | What the user understands |
 |------|---------------------------|
-| 30s  | "Pick a mode, set depth, fill numbers — prompt updates live." |
+| 30s  | "Choose mode, fill context, copy brief." |
 | ~5min | Prompt is copied; optional save session or open ChatGPT/Claude/Gemini. |
 
 ## DOM contract
@@ -29,8 +28,7 @@ flowchart TD
 | Element | Selector / id | Purpose |
 |---------|---------------|---------|
 | Section | `#operationsCenter` | Anchor target from hero + step 1 |
-| Stepper | `.ops-journey-steps` | 4 anchors with scroll spy ([`copy.js`](../copy.js)) |
-| Intro line | `[data-copy-ops-intro]` | Hydrated from `copy.opsCenter.intro` |
+| Stepper | `.ops-journey-steps.ops-journey-steps--compact` | 4 anchors with scroll spy ([`copy.js`](../copy.js)) |
 | Mode tabs | `.mode-tabs > .mode-tab[data-mode]` | `MASTER` / `DIENOS` / `SAVAITES` panels |
 | Depth bar | `.depth-bar` (flex-wrap) | Pills + tip chip stack |
 | Depth tip | `.depth-tip.chip.chip--tip[id="depthTip"]` | `aria-describedby` target on depth `radiogroup`; `[data-copy-ops-depth-tip]` for hydration |

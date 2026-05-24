@@ -89,8 +89,9 @@
     "hero": {
       "eyebrow": "AI operations layer for CEOs",
       "headlineBenefit": "Turn scattered KPIs into a clear weekly CEO brief",
-      "lead": "Enter revenue, runway, pipeline, blockers, and team context. Get a structured weekly priority brief in about 5 minutes.",
+      "lead": "Add KPIs, blockers, and context.\nGet a weekly CEO brief in 5 minutes.",
       "ctaMeta": "For CEOs, COOs & founders · Free · No account",
+      "useCasesLabel": "Use cases:",
       "primaryCta": "Build weekly brief",
       "secondaryCta": "View CEO playbooks",
       "secondaryHref": "#pdf-guides",
@@ -116,9 +117,6 @@
           }
         ]
       }
-    },
-    "useCasesSection": {
-      "heading": "Built for executive operating rhythm"
     },
     "pdfStorefront": {
       "eyebrow": "Optional executive playbooks",
@@ -153,9 +151,11 @@
       }
     },
     "opsCenter": {
-      "title": "CEO Weekly Operating Brief",
-      "value": "Choose a leadership scenario. Add business context. The system turns it into a structured executive brief and copy-ready prompt.",
-      "intro": "Pick a mode, set depth, fill your numbers — your brief updates live."
+      "title": "Build your weekly brief"
+    },
+    "nav": {
+      "playbooksCta": "CEO playbooks",
+      "playbooksAriaLabel": "View CEO PDF playbooks from $9.99"
     },
     "opsDepth": {
       "tip": "Tip · Not sure? Start with Fast."
@@ -182,8 +182,8 @@
       "privacy": "No account required. Inputs stay in your browser until you copy the brief.",
       "responsibleAi": "Review every AI response before using it for executive decisions.",
       "heroStrip": [
-        { "icon": "calendar-check", "label": "CEO weekly planning" },
-        { "icon": "target", "label": "COO execution reviews" },
+        { "icon": "calendar-check", "label": "CEO planning" },
+        { "icon": "target", "label": "COO reviews" },
         { "icon": "trending-up", "label": "Founder updates" },
         { "icon": "briefcase", "label": "Board prep" }
       ],

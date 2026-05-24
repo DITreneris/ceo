@@ -399,7 +399,7 @@ function run() {
   } else failed++;
   if (assert(html.includes('data-commerce-pdf-eyebrow') && html.includes('pdf-publisher-strip'), 'PDF storefront copy hooks + publisher strip')) passed++;
   else failed++;
-  if (assert(html.includes('top-nav-playbooks-link') && !html.includes('header-cta-link'), 'Sticky Playbooks link; hero has no tertiary CTA link')) passed++;
+  if (assert(html.includes('top-nav-playbooks-link') && html.includes('btn--nav-secondary') && html.includes('data-copy-nav-playbooks-cta') && !html.includes('header-cta-link'), 'Sticky Playbooks nav CTA; hero has no tertiary CTA link')) passed++;
   else failed++;
   if (
     assert(
@@ -422,26 +422,33 @@ function run() {
         html.includes('View CEO playbooks') &&
         html.includes('data-copy-hero-primary-cta') &&
         html.includes('data-copy-hero-eyebrow') &&
-        html.includes('use-cases-strip') &&
-        html.includes('trust-row--use-cases') &&
-        !html.includes('trust-row--hero') &&
+        html.includes('hero-use-cases') &&
+        html.includes('trust-row--hero-inline') &&
+        html.includes('data-trust-format="inline"') &&
+        !html.includes('use-cases-strip') &&
+        !html.includes('trust-row--use-cases') &&
+        !/\btrust-row--hero(?:["'\s]|$)/.test(html) &&
         !html.includes('hero-promise') &&
         !html.includes('Owner:') &&
         html.includes('hero-prompt-card__detail'),
-      'Hero slim v2: eyebrow, use-cases strip below hero, simplified preview, no hero trust strip'
+      'IA v3: inline use cases in hero, no strip card, simplified preview'
     )
   ) {
     passed++;
   } else failed++;
   if (
     assert(
-      html.includes('data-copy-ops-intro') &&
+      html.includes('ops-center-title') &&
+        html.includes('ops-journey-steps--compact') &&
+        !html.includes('data-copy-ops-intro') &&
+        !html.includes('data-copy-ops-value') &&
+        !html.includes('Choose a leadership scenario') &&
         html.includes('data-copy-ops-depth-tip') &&
         html.includes('aria-describedby="depthTip"') &&
         html.includes('field-help--row') &&
         html.includes('data-copy-ops-toast-default') &&
         html.indexOf('id="sessionsPanel"') > html.indexOf('class="ops-layout"'),
-      'Ops workspace clarity: intro, depth tip chip, runway row, toast default, sessions outside layout'
+      'Ops IA v3: product title, compact stepper, no value/intro paragraphs'
     )
   ) {
     passed++;
@@ -452,14 +459,14 @@ function run() {
     assert(
       sotForOps &&
         sotForOps.copy &&
-        sotForOps.copy.opsCenter && sotForOps.copy.opsCenter.intro && sotForOps.copy.opsCenter.title &&
+        sotForOps.copy.opsCenter && sotForOps.copy.opsCenter.title &&
         sotForOps.copy.opsDepth && sotForOps.copy.opsDepth.tip &&
         sotForOps.copy.opsOutput && sotForOps.copy.opsOutput.emptyPlaceholder && sotForOps.copy.opsOutput.copiedToast &&
         Array.isArray(sotForOps.copy.journeySteps) && sotForOps.copy.journeySteps.length === 4 &&
-        sotForOps.copy.hero && sotForOps.copy.hero.eyebrow && sotForOps.copy.hero.preview &&
-        sotForOps.copy.useCasesSection && sotForOps.copy.useCasesSection.heading &&
+        sotForOps.copy.hero && sotForOps.copy.hero.eyebrow && sotForOps.copy.hero.useCasesLabel && sotForOps.copy.hero.preview &&
+        !sotForOps.copy.opsCenter.value && !sotForOps.copy.opsCenter.intro && !sotForOps.copy.useCasesSection &&
         sotForOps.copy.trust && Array.isArray(sotForOps.copy.trust.heroStrip),
-      'config/sot.json CEO positioning copy keys (ops, journey, hero preview, use cases, trust strip)'
+      'config/sot.json IA v3 copy keys (hero inline use cases, slim ops center)'
     )
   ) {
     passed++;
@@ -609,6 +616,8 @@ function run() {
   if (assert(commerceJs && commerceJs.includes('initPdfStorefrontCopy'), 'commerce.js initPdfStorefrontCopy')) passed++;
   else failed++;
   if (assert(commerceJs && commerceJs.includes('initHeroCopy'), 'commerce.js initHeroCopy')) passed++;
+  else failed++;
+  if (assert(commerceJs && commerceJs.includes('initNavCopy'), 'commerce.js initNavCopy')) passed++;
   else failed++;
   if (assert(commerceJs && commerceJs.includes('initPdfCardBullets'), 'commerce.js initPdfCardBullets')) passed++;
   else failed++;

@@ -24,6 +24,8 @@ EN-US storefront journey + **Design System 1.1 Hardened** ([`docs/ds_improvement
 
 ### Changed
 
+- **Nav Playbooks CTA** — sticky link upgraded to `.btn.btn--nav-secondary` (solid white on dark nav); copy *CEO playbooks* + commerce aria-label from SOT `copy.nav`; desktop right padding aligns with hero preview column (`--hero-inline-pad`).
+- **IA v3 integrate** — use cases inline in hero (`hero.useCasesLabel` + text-only `heroStrip`); removed `.use-cases-strip`; ops title *Build your weekly brief*; removed ops value/intro paragraphs; compact journey stepper; shortened hero lead; net copy reduction on first screen.
 - **Hero slim v2** — eyebrow (`copy.hero.eyebrow`) replaces promise paragraph; use-case icons in `.use-cases-strip` below hero; preview card summary list (`detail` only, no Owner/Action); shortened `ctaMeta` and lead; primary CTA `Build weekly brief`; visual baseline `hero-above-fold.png` updated.
 - **Ops workspace clarity** — [`docs/ops_workspace_plan.md`](docs/ops_workspace_plan.md): one-line intro under journey steps (`copy.opsCenter.intro`); depth tip chip with gold accent + `aria-describedby="depthTip"` (`copy.opsDepth.tip`); `.ops-form-grid` `align-items: start`; runway help spans full row (`.field-help--row`); SOT-driven output placeholder + toast (`copy.opsOutput.{emptyPlaceholder,copiedToast}`); `#sessionsPanel` moved out of the right sidebar to a sibling under `.ops-layout` (full-width tile grid); themed scrollbar + brighter ops tool ghost buttons. Structure tests **134/134**; new visual baselines `ops-center-desktop.png` / `ops-center-mobile.png`.
 - **Hero de-clutter (journey-aligned)** — removed hero badges, product line, and 4-step row; relocated `.ops-journey-steps` to `#operationsCenter`; soft secondary CTA without playbook prices; preview card trimmed to P1–P2; AI tool names in `copy.opsCenter.value`; structure tests updated.
@@ -42,7 +44,8 @@ EN-US storefront journey + **Design System 1.1 Hardened** ([`docs/ds_improvement
 ### Removed
 
 - **Hero promise line** — `copy.hero.promise` / `.hero-promise` (positioning moved to eyebrow).
-- **Hero inline use-case strip** — `.trust-row--hero` removed; icons live in `.use-cases-strip`.
+- **Hero use-cases strip card** — `.use-cases-strip` removed; use cases live inline in hero footer.
+- **Ops value/intro paragraphs** — `copy.opsCenter.value`, `copy.opsCenter.intro`, `data-copy-ops-intro` removed from storefront.
 - **Hero tertiary CTA** — `Browse templates` link and `copy.hero.tertiaryCta` / `tertiaryHref` (library via step 4 only).
 - **Ops duplicate stepper** — `.ops-work-steps` removed from operations center.
 
