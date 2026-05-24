@@ -21,8 +21,9 @@
     "test:visual:update": "start-server-and-test \"serve . -l 3300\" http://127.0.0.1:3300/ \"playwright test tests/e2e/visual-storefront.spec.js --update-snapshots\"",
     "test:mixed": "npm run test && npm run test:smoke && npm run test:e2e && npm run test:visual && npm run test:a11y",
     "test:a11y": "start-server-and-test \"serve . -l 3300\" http://127.0.0.1:3300/ \"pa11y http://127.0.0.1:3300/ --config .pa11yrc.json && pa11y http://127.0.0.1:3300/privacy.html --config .pa11yrc.json && pa11y http://127.0.0.1:3300/privatumas.html --config .pa11yrc.json && pa11y http://127.0.0.1:3300/success.html --config .pa11yrc.json && pa11y http://127.0.0.1:3300/terms.html --config .pa11yrc.json\"",
-    "lint:html": "node scripts/lint-html.js",
-    "lint:html:index": "npx html-validator-cli --file index.html",
+    "lint:html": "node tests/html-lint.test.js",
+    "lint:html:w3c": "node scripts/lint-html.js",
+    "lint:html:index": "npx html-validator-cli --file index.html --validator https://html5.validator.nu/?out=json",
     "lint:js": "eslint . --ext .js"
   },
   "dependencies": {

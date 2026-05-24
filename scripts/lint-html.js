@@ -12,8 +12,8 @@ const path = require('path');
 const FILES = ['index.html', 'success.html', 'terms.html', 'privacy.html'];
 const REPO_ROOT = path.join(__dirname, '..');
 const VALIDATORS = [
-  { label: 'validator.w3.org', uri: null },
-  { label: 'html5.validator.nu', uri: 'https://html5.validator.nu/?out=json' }
+  { label: 'html5.validator.nu', uri: 'https://html5.validator.nu/?out=json' },
+  { label: 'validator.w3.org', uri: null }
 ];
 const BLOCKED = /unexpected statuscode:\s*403/i;
 
