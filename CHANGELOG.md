@@ -24,6 +24,7 @@ EN-US storefront journey + **Design System 1.1 Hardened** ([`docs/ds_improvement
 
 ### Changed
 
+- **Hero slim v2** — eyebrow (`copy.hero.eyebrow`) replaces promise paragraph; use-case icons in `.use-cases-strip` below hero; preview card summary list (`detail` only, no Owner/Action); shortened `ctaMeta` and lead; primary CTA `Build weekly brief`; visual baseline `hero-above-fold.png` updated.
 - **Ops workspace clarity** — [`docs/ops_workspace_plan.md`](docs/ops_workspace_plan.md): one-line intro under journey steps (`copy.opsCenter.intro`); depth tip chip with gold accent + `aria-describedby="depthTip"` (`copy.opsDepth.tip`); `.ops-form-grid` `align-items: start`; runway help spans full row (`.field-help--row`); SOT-driven output placeholder + toast (`copy.opsOutput.{emptyPlaceholder,copiedToast}`); `#sessionsPanel` moved out of the right sidebar to a sibling under `.ops-layout` (full-width tile grid); themed scrollbar + brighter ops tool ghost buttons. Structure tests **134/134**; new visual baselines `ops-center-desktop.png` / `ops-center-mobile.png`.
 - **Hero de-clutter (journey-aligned)** — removed hero badges, product line, and 4-step row; relocated `.ops-journey-steps` to `#operationsCenter`; soft secondary CTA without playbook prices; preview card trimmed to P1–P2; AI tool names in `copy.opsCenter.value`; structure tests updated.
 - **Hero refactor** — hero stepper moved above CTAs with scroll spy (`copy.js`); `#opsOutputSection` anchor; hero limited to 2 CTAs (playbooks secondary); visual baseline `hero-above-fold.png` updated; structure tests **131/131**.
@@ -40,6 +41,8 @@ EN-US storefront journey + **Design System 1.1 Hardened** ([`docs/ds_improvement
 
 ### Removed
 
+- **Hero promise line** — `copy.hero.promise` / `.hero-promise` (positioning moved to eyebrow).
+- **Hero inline use-case strip** — `.trust-row--hero` removed; icons live in `.use-cases-strip`.
 - **Hero tertiary CTA** — `Browse templates` link and `copy.hero.tertiaryCta` / `tertiaryHref` (library via step 4 only).
 - **Ops duplicate stepper** — `.ops-work-steps` removed from operations center.
 

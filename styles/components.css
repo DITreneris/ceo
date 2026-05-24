@@ -208,13 +208,12 @@
     color: var(--primary);
 }
 
-.trust-row--hero {
-    flex-basis: 100%;
-    margin-top: var(--space-8);
-    gap: var(--space-8) var(--space-12);
+.trust-row--use-cases {
+    gap: var(--space-8) var(--space-16);
+    justify-content: flex-start;
 }
 
-.trust-row--hero .icon {
+.trust-row--use-cases .icon {
     color: var(--primary);
     opacity: 0.85;
 }

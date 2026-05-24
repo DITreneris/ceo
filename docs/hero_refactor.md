@@ -1,6 +1,6 @@
 # Hero refactor — operations spec
 
-**Status:** Implemented (2026-05-22) · **De-clutter** (2026-05-22): journey-aligned hero density  
+**Status:** Implemented (2026-05-22) · **De-clutter** (2026-05-22): journey-aligned hero density · **Hero slim v2** (2026-05-24): premium 4-element hero  
 **Owner:** UI/UX (storefront) · QA (`npm test`, `npm run test:mixed`)  
 **Reference:** [DITreneris/teacher](https://github.com/DITreneris/teacher) — hero layout + scroll spy (adapted, not copied)
 
@@ -37,15 +37,34 @@
 | Stepper | Ops center, broken `#` on steps 1–3 | `.ops-journey-steps` under ops header, 4 anchors + spy |
 | Sticky copy | Always visible | Hidden until form input |
 
+## Hero slim v2 (2026-05-24)
+
+Premium SaaS density: **4 elements** above the fold on the left — eyebrow, H1, lead, CTA + one trust line. Use-case icons moved to `.use-cases-strip` below hero. Preview card is an executive summary list (P + title + one detail line; no Owner / Action labels).
+
+| Left column | Right column |
+|-------------|--------------|
+| `data-copy-hero-eyebrow` | `.hero-prompt-card` (summary list) |
+| `data-copy-hero-headline` (frozen) | |
+| `data-copy-hero-lead` | |
+| 2 CTAs + `data-copy-hero-meta` | |
+
+**Removed from hero:** `.hero-promise`, `.trust-row--hero`, preview `Owner` / `Action:` rows.
+
+**Below hero:** `.use-cases-strip` with `data-copy-use-cases-heading` + `data-trust-row="heroStrip"`.
+
 ## DOM contract
 
 ```html
 <header class="header">
   <div class="hero-layout">
-    <div class="hero-content">… h1, lead, promise, .header-cta, trust-row--hero …</div>
-    <aside class="hero-prompt-card" aria-hidden="true">… SOT preview rows …</aside>
+    <div class="hero-content">… eyebrow, h1, lead, .header-cta …</div>
+    <aside class="hero-prompt-card" aria-hidden="true">… SOT preview rows (detail only) …</aside>
   </div>
 </header>
+<section class="use-cases-strip" aria-labelledby="use-cases-heading">
+  <h2 id="use-cases-heading" data-copy-use-cases-heading>…</h2>
+  <ul class="trust-row trust-row--use-cases" data-trust-row="heroStrip">…</ul>
+</section>
 <section class="ops-center" id="operationsCenter">
   <div class="ops-center-header">… data-copy-ops-title (no step-badge) …</div>
   <nav class="ops-journey-steps"><ol>… 4 anchors data-journey-step …</ol></nav>
@@ -67,11 +86,13 @@
 
 | Source | Field / element | Text |
 |--------|-----------------|------|
+| SOT | `copy.hero.eyebrow` | AI operations layer for CEOs |
 | SOT | `copy.hero.headlineBenefit` | Turn scattered KPIs into a clear weekly CEO brief |
-| SOT | `copy.hero.primaryCta` | Build my weekly brief |
+| SOT | `copy.hero.primaryCta` | Build weekly brief |
 | SOT | `copy.hero.secondaryCta` | View CEO playbooks |
-| SOT | `copy.hero.ctaMeta` | For CEOs, COOs & founders · Free · No account · Works with ChatGPT, Claude & Gemini |
-| SOT | `copy.hero.preview` | Weekly CEO Brief rows (P1–P3 + action/owner) |
+| SOT | `copy.hero.ctaMeta` | For CEOs, COOs & founders · Free · No account |
+| SOT | `copy.hero.preview` | Weekly CEO Brief rows (P1–P3 + detail line) |
+| SOT | `copy.useCasesSection.heading` | Built for executive operating rhythm |
 | SOT | `copy.opsCenter.title` | CEO Weekly Operating Brief |
 | SOT | `copy.journeySteps` | Choose mode · Add context · Generate brief · Reuse playbooks |
 

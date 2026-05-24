@@ -178,9 +178,9 @@
   function initHeroCopy(config) {
     if (!config || !config.copy || !config.copy.hero) return;
     var h = config.copy.hero;
+    if (h.eyebrow) setHookText('[data-copy-hero-eyebrow]', h.eyebrow);
     if (h.headlineBenefit) setHookText('[data-copy-hero-headline]', h.headlineBenefit);
     if (h.lead) setHookText('[data-copy-hero-lead]', h.lead);
-    if (h.promise) setHookText('[data-copy-hero-promise]', h.promise);
     if (h.ctaMeta) setHookText('[data-copy-hero-meta]', h.ctaMeta);
     if (h.primaryCta) {
       document.querySelectorAll('[data-copy-hero-primary-cta]').forEach(function (el) {
@@ -204,14 +204,14 @@
         var rowsHtml = '';
         pv.rows.forEach(function (row) {
           if (!row) return;
+          var detail = row.detail || row.action || '';
           rowsHtml +=
             '<li class="hero-prompt-card__item">' +
             '<div class="hero-prompt-card__item-head">' +
             '<span class="hero-prompt-card__priority">' + escapeHtmlText(row.priority || '') + '</span> ' +
             '<span class="hero-prompt-card__item-title">' + escapeHtmlText(row.title || '') + '</span>' +
             '</div>' +
-            (row.action ? '<p class="hero-prompt-card__row-action">Action: ' + escapeHtmlText(row.action) + '</p>' : '') +
-            (row.owner ? '<p class="hero-prompt-card__row-owner">Owner: ' + escapeHtmlText(row.owner) + '</p>' : '') +
+            (detail ? '<p class="hero-prompt-card__detail">' + escapeHtmlText(detail) + '</p>' : '') +
             '</li>';
         });
         if (pv.more) {
@@ -219,6 +219,9 @@
         }
         rowsEl.innerHTML = rowsHtml;
       }
+    }
+    if (config.copy.useCasesSection && config.copy.useCasesSection.heading) {
+      setHookText('[data-copy-use-cases-heading]', config.copy.useCasesSection.heading);
     }
     if (config.copy.opsCenter) {
       if (config.copy.opsCenter.title) setHookText('[data-copy-ops-title]', config.copy.opsCenter.title);

@@ -87,11 +87,11 @@
   ],
   "copy": {
     "hero": {
+      "eyebrow": "AI operations layer for CEOs",
       "headlineBenefit": "Turn scattered KPIs into a clear weekly CEO brief",
-      "lead": "Enter revenue, runway, pipeline, blockers, and team context. Get a structured weekly priority brief for leadership alignment in about 5 minutes.",
-      "promise": "Not another AI chat. A structured operating layer for executive decision-making.",
-      "ctaMeta": "For CEOs, COOs & founders · Free · No account · Works with ChatGPT, Claude & Gemini",
-      "primaryCta": "Build my weekly brief",
+      "lead": "Enter revenue, runway, pipeline, blockers, and team context. Get a structured weekly priority brief in about 5 minutes.",
+      "ctaMeta": "For CEOs, COOs & founders · Free · No account",
+      "primaryCta": "Build weekly brief",
       "secondaryCta": "View CEO playbooks",
       "secondaryHref": "#pdf-guides",
       "preview": {
@@ -101,24 +101,24 @@
         "rows": [
           {
             "priority": "P1",
-            "title": "Cash runway risk",
-            "action": "Review burn and committed pipeline.",
-            "owner": "CEO / Finance"
+            "title": "Cash runway",
+            "detail": "Review burn and committed pipeline."
           },
           {
             "priority": "P2",
             "title": "Pipeline follow-up",
-            "action": "Re-engage top 5 warm deals.",
-            "owner": "Sales Lead"
+            "detail": "Re-engage top 5 warm deals."
           },
           {
             "priority": "P3",
-            "title": "Team execution focus",
-            "action": "Remove blockers from delivery queue.",
-            "owner": "COO"
+            "title": "Execution focus",
+            "detail": "Remove delivery blockers."
           }
         ]
       }
+    },
+    "useCasesSection": {
+      "heading": "Built for executive operating rhythm"
     },
     "pdfStorefront": {
       "eyebrow": "Optional executive playbooks",

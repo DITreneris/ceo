@@ -56,8 +56,10 @@ Aliases: `.badge`, `.pill`, `.tag`.
 
 | Element | Contract |
 |---------|----------|
+| `.hero-eyebrow` | Uppercase label above H1; SOT `copy.hero.eyebrow` |
 | `.hero-layout` | Two-column grid ≥1025px; stacks on mobile |
-| `.hero-prompt-card` | Static dark glass preview; `aria-hidden="true"`; hidden ≤1024px |
+| `.hero-prompt-card` | Static dark glass preview; `aria-hidden="true"`; hidden ≤1024px; summary list (no Owner) |
+| `.use-cases-strip` | Below hero; `data-copy-use-cases-heading` + `trust-row--use-cases` / `heroStrip` |
 | `.ops-journey-steps` | 4 anchors: `#operationsCenter`, `#opsForm`, `#opsOutputSection`, `#library` (top of ops center) |
 | `.header-cta` | **2** actions only: primary + playbooks secondary |
 | `#stickyCopyBtn` | Hidden until `hasAnyFormInput()` in `generator.js` |

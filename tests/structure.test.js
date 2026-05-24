@@ -421,8 +421,14 @@ function run() {
       !html.includes('See playbooks ($9.99') &&
         html.includes('View CEO playbooks') &&
         html.includes('data-copy-hero-primary-cta') &&
-        html.includes('trust-row--hero'),
-      'Hero commerce: brief CTA, playbooks secondary, hero trust strip'
+        html.includes('data-copy-hero-eyebrow') &&
+        html.includes('use-cases-strip') &&
+        html.includes('trust-row--use-cases') &&
+        !html.includes('trust-row--hero') &&
+        !html.includes('hero-promise') &&
+        !html.includes('Owner:') &&
+        html.includes('hero-prompt-card__detail'),
+      'Hero slim v2: eyebrow, use-cases strip below hero, simplified preview, no hero trust strip'
     )
   ) {
     passed++;
@@ -450,9 +456,10 @@ function run() {
         sotForOps.copy.opsDepth && sotForOps.copy.opsDepth.tip &&
         sotForOps.copy.opsOutput && sotForOps.copy.opsOutput.emptyPlaceholder && sotForOps.copy.opsOutput.copiedToast &&
         Array.isArray(sotForOps.copy.journeySteps) && sotForOps.copy.journeySteps.length === 4 &&
-        sotForOps.copy.hero && sotForOps.copy.hero.promise && sotForOps.copy.hero.preview &&
+        sotForOps.copy.hero && sotForOps.copy.hero.eyebrow && sotForOps.copy.hero.preview &&
+        sotForOps.copy.useCasesSection && sotForOps.copy.useCasesSection.heading &&
         sotForOps.copy.trust && Array.isArray(sotForOps.copy.trust.heroStrip),
-      'config/sot.json CEO positioning copy keys (ops, journey, hero preview, trust strip)'
+      'config/sot.json CEO positioning copy keys (ops, journey, hero preview, use cases, trust strip)'
     )
   ) {
     passed++;
