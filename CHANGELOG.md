@@ -12,10 +12,10 @@ EN-US storefront journey + **Design System 1.1 Hardened** ([`docs/ds_improvement
 - **GEO stack (no frontpage template edits)** — `config/sot.json` → `geo` (crawlers, llms, entity: Tomas Staniulis founder + [LinkedIn](https://www.linkedin.com/in/staniulis/) + [X](https://x.com/TStaniulis_NFT), hub [promptanatomy.app](https://www.promptanatomy.app/)); [`scripts/build-geo-assets.js`](scripts/build-geo-assets.js) → `robots.txt`, `sitemap.xml`, `llms.txt`; EN-only JSON-LD injection in [`scripts/build-locale-pages.js`](scripts/build-locale-pages.js) (`Person`, `WebSite`, `Product`×2, `HowTo`); `/` → `/en/` redirect in [`vercel.json`](vercel.json); [`docs/GEO_STACK.md`](docs/GEO_STACK.md).
 - **Hero refactor** — [`docs/hero_refactor.md`](docs/hero_refactor.md): two-column hero with dark glass weekly-priorities preview; 4-step scroll spy; ops duplicate stepper removed; sticky copy gated on form input.
 - **DS 1.1 — visual regression** — [`tests/e2e/visual-storefront.spec.js`](tests/e2e/visual-storefront.spec.js), baselines in `tests/e2e/__screenshots__/`, `npm run test:visual` / `test:visual:update`, included in `npm run test:mixed`.
-- **DS 1.1 — tokens** — extended `--shadow-*` and `--text-*` set in [`styles/tokens.css`](styles/tokens.css); CI guards for shadow/type usage (structure tests **130/130**).
+- **DS 1.1 — tokens** — extended `--shadow-*` and `--text-*` set in [`styles/tokens.css`](styles/tokens.css); CI guards for shadow/type usage, border-box, and ops grid `min-width: 0` (structure tests **~144/144**).
 - **DS 1.1 — mobile DOM spike** — [`docs/DS_MOBILE_DOM_SPIKE.md`](docs/DS_MOBILE_DOM_SPIKE.md) (1.4b gated; no DOM reorder shipped).
 - **DS 1.0 — design system** — [`docs/DESIGN-SYSTEM.md`](docs/DESIGN-SYSTEM.md), [`docs/COMPONENT-RULES.md`](docs/COMPONENT-RULES.md); partitioned CSS (`styles/tokens.css`, `base.css`, `components.css`, `sections.css`, `responsive.css`); `style.css` imports only.
-- **DS 1.0 — components** — `.btn`, `.card`, `.chip`, `.trust-row`; price `.price__now` / `.price__was`; SOT hydration (`initTrustRow`, `initPdfCardBullets`, `initOpsUpsell`, `initPdfStorefrontCopy`, `initHeroCopy`).
+- **DS 1.0 — components** — `.btn`, `.card`, `.chip`, `.trust-row`; price `.price__now` / `.price__was`; SOT hydration (`initTrustRow`, `initPdfCardBullets`, `initOpsUpsell`, `initPdfStorefrontCopy`, `initHeroCopy`, `initNavCopy`).
 - **Storefront UX** — sticky Playbooks nav; hero benefit-first layout; PDF eyebrow/kickers/publisher strip; section order Ops → PDF guides → Library → Rules.
 - **Documentation SOT** — [`docs/CURRENT_TRUTH.md`](docs/CURRENT_TRUTH.md), [`docs/DOCUMENTATION_STATUS.md`](docs/DOCUMENTATION_STATUS.md), [`docs/PAID_FLOW_TEST_BACKLOG.md`](docs/PAID_FLOW_TEST_BACKLOG.md).
 - **`REDIS_KEY_PREFIX`** — optional Upstash namespace (`ceo:`) in [`api/_lib/fulfillment.js`](api/_lib/fulfillment.js); [`.env.example`](.env.example), [`memo_pdf.md`](memo_pdf.md).
@@ -24,15 +24,16 @@ EN-US storefront journey + **Design System 1.1 Hardened** ([`docs/ds_improvement
 
 ### Changed
 
-- **Gold legacy standard** — [`gold_legacy_standard.md`](gold_legacy_standard.md) v1.2.0: IA v3 homepage flow, ops DOM contracts, UI regression table (form overflow, nav alignment, depth tip).
-- **Ops form grid overflow** — global `box-sizing: border-box`; `min-width: 0` on `.ops-layout` columns and `.ops-form-grid` cells; `max-width: 100%` on field inputs (fixes borders clipping past section card).
-- **Nav Playbooks CTA** — sticky link upgraded to `.btn.btn--nav-secondary` (solid white on dark nav); copy *CEO playbooks* + commerce aria-label from SOT `copy.nav`; hidden `#stickyCopyBtn` uses `display: none` so Playbooks aligns flush with content right gutter.
-- **IA v3 integrate** — use cases inline in hero (`hero.useCasesLabel` + text-only `heroStrip`); removed `.use-cases-strip`; ops title *Build your weekly brief*; removed ops value/intro paragraphs; compact journey stepper; shortened hero lead; net copy reduction on first screen.
-- **Hero slim v2** — eyebrow (`copy.hero.eyebrow`) replaces promise paragraph; use-case icons in `.use-cases-strip` below hero; preview card summary list (`detail` only, no Owner/Action); shortened `ctaMeta` and lead; primary CTA `Build weekly brief`; visual baseline `hero-above-fold.png` updated.
-- **Ops workspace clarity** — [`docs/ops_workspace_plan.md`](docs/ops_workspace_plan.md): one-line intro under journey steps (`copy.opsCenter.intro`); depth tip chip with gold accent + `aria-describedby="depthTip"` (`copy.opsDepth.tip`); `.ops-form-grid` `align-items: start`; runway help spans full row (`.field-help--row`); SOT-driven output placeholder + toast (`copy.opsOutput.{emptyPlaceholder,copiedToast}`); `#sessionsPanel` moved out of the right sidebar to a sibling under `.ops-layout` (full-width tile grid); themed scrollbar + brighter ops tool ghost buttons. Structure tests **134/134**; new visual baselines `ops-center-desktop.png` / `ops-center-mobile.png`.
-- **Hero de-clutter (journey-aligned)** — removed hero badges, product line, and 4-step row; relocated `.ops-journey-steps` to `#operationsCenter`; soft secondary CTA without playbook prices; preview card trimmed to P1–P2; AI tool names in `copy.opsCenter.value`; structure tests updated.
-- **Hero refactor** — hero stepper moved above CTAs with scroll spy (`copy.js`); `#opsOutputSection` anchor; hero limited to 2 CTAs (playbooks secondary); visual baseline `hero-above-fold.png` updated; structure tests **131/131**.
-- **DS 1.1** — all partitioned `box-shadow` / `font-size` use CSS variables; LCP inline `:root` in `index.html` mirrors tokens; storefront CTAs use `.btn` + modifiers (legacy aliases kept).
+- **Gold legacy standard** — [`gold_legacy_standard.md`](gold_legacy_standard.md) v1.2.0: IA v3 homepage flow, ops DOM contracts, UI regression table (form overflow, nav alignment, depth tip); drift checklist updated.
+- **IA v3 integrate** — use cases inline in hero (`hero.useCasesLabel` + text-only `heroStrip`); removed `.use-cases-strip`; ops title *Build your weekly brief*; removed ops value/intro paragraphs; compact journey stepper (`.ops-journey-steps--compact`); shortened hero lead; net copy reduction on first screen.
+- **Nav Playbooks CTA** — sticky link → `.btn.btn--nav-secondary` (solid white on dark nav); copy *CEO playbooks* + commerce aria-label from SOT `copy.nav`; hydrated via `initNavCopy`.
+- **Depth tip** — moved out of `.depth-bar` to `#depthTip.field-help` below bar (no gold chip frame); copy *Not sure? Start with Fast.*; `aria-describedby="depthTip"` unchanged.
+- **Ops form layout** — global `box-sizing: border-box` in [`styles/base.css`](styles/base.css); `min-width: 0` on `.ops-layout` columns and `.ops-form-grid` cells; `max-width: 100%` on field inputs.
+- **Hero slim v2** — eyebrow (`copy.hero.eyebrow`) replaces promise paragraph; preview card summary list (`detail` only, no Owner/Action); shortened `ctaMeta` and lead; primary CTA *Build weekly brief*; visual baseline `hero-above-fold.png` updated.
+- **Ops workspace clarity** — [`docs/ops_workspace_plan.md`](docs/ops_workspace_plan.md): `.ops-form-grid` `align-items: start`; runway help spans full row (`.field-help--row`); SOT-driven output placeholder + toast (`copy.opsOutput.{emptyPlaceholder,copiedToast}`); `#sessionsPanel` moved out of the right sidebar to a sibling under `.ops-layout` (full-width tile grid); themed scrollbar + brighter ops tool ghost buttons; visual baselines `ops-center-desktop.png` / `ops-center-mobile.png`.
+- **Hero de-clutter (journey-aligned)** — removed hero badges, product line, and 4-step row; relocated `.ops-journey-steps` to `#operationsCenter`; soft secondary CTA without playbook prices; preview card trimmed to P1–P3 + “+1 priority”.
+- **Hero refactor** — hero stepper moved to ops center with scroll spy (`copy.js`); `#opsOutputSection` anchor; hero limited to 2 CTAs (playbooks secondary).
+- **DS 1.1** — all partitioned `box-shadow` / `font-size` use CSS variables; LCP inline `:root` in `index.html` mirrors tokens; storefront CTAs use `.btn` + modifiers (legacy aliases kept); structure tests **~144/144** (incl. overflow guards).
 - **DS 0.8** — monolithic CSS split; hex → tokens on hot paths; spacing on `--space-*` grid.
 - **DS 0.6** — hero density (work steps → ops center); unified primary CTA via `--shadow-cta`.
 - **Hero / SEO copy (variant B)** — H1 *Turn KPIs into weekly priorities*; playbooks pricing in meta/secondary CTA; `seo` synced in `config/sot.json`.
@@ -46,13 +47,16 @@ EN-US storefront journey + **Design System 1.1 Hardened** ([`docs/ds_improvement
 ### Removed
 
 - **Hero promise line** — `copy.hero.promise` / `.hero-promise` (positioning moved to eyebrow).
-- **Hero use-cases strip card** — `.use-cases-strip` removed; use cases live inline in hero footer.
-- **Ops value/intro paragraphs** — `copy.opsCenter.value`, `copy.opsCenter.intro`, `data-copy-ops-intro` removed from storefront.
+- **Hero use-cases strip card** — `.use-cases-strip` removed (IA v3); use cases live inline in hero via `.hero-use-cases`.
+- **Ops value/intro paragraphs** — `copy.opsCenter.value`, `copy.opsCenter.intro`, `data-copy-ops-intro` removed from storefront (IA v3).
+- **Depth tip chip inside depth bar** — `.chip.chip--tip` full-width row inside `.depth-bar` (replaced by `#depthTip.field-help` below).
 - **Hero tertiary CTA** — `Browse templates` link and `copy.hero.tertiaryCta` / `tertiaryHref` (library via step 4 only).
 - **Ops duplicate stepper** — `.ops-work-steps` removed from operations center.
 
 ### Fixed
 
+- **Ops form field overflow** — input/textarea borders no longer clip past `.ops-form-section` card edge (`width: 100%` + content-box + grid `min-width: auto` regression).
+- **Nav Playbooks alignment** — `#stickyCopyBtn.is-hidden` uses `display: none` instead of `visibility: hidden` so hidden copy button does not reserve flex space beside Playbooks CTA.
 - **Playbooks nav contrast** — `.top-nav-playbooks-link` no longer inherits body text color on dark sticky nav (DS 0.8 `.btn--ghost` regression).
 - **Journey stepper numbering** — removed duplicate ops `step-badge` and `.ops-journey-step-num::before` leading zero.
 - **EN document title** — `generator.js` skips title/hero copy overrides on EN; SOT `seo.title` preserved.
