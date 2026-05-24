@@ -66,7 +66,7 @@ Aliases: `.badge`, `.pill`, `.tag`.
 | `.ops-journey-steps` | 4 anchors: `#operationsCenter`, `#opsForm`, `#opsOutputSection`, `#library` (top of ops center) |
 | `.header-cta` | **2** actions only: primary + playbooks secondary |
 | `#stickyCopyBtn` | Hidden until `hasAnyFormInput()` in `generator.js` |
-| `[data-copy-nav-playbooks-cta]` | Sticky nav PDF shortcut; SOT `copy.nav.playbooksCta`; aligned with hero preview column ≥1025px |
+| `[data-copy-nav-playbooks-cta]` | Sticky nav PDF shortcut; SOT `copy.nav.playbooksCta`; right edge aligns with `.container` gutter (hidden copy btn must not reserve flex space) |
 
 Spec: [`hero_refactor.md`](hero_refactor.md).
 
