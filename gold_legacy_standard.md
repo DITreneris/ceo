@@ -4,7 +4,7 @@
 **Production:** https://www.promptanatomy.ceo/ (post-deploy)
 **Repository:** local repo `05_DI_operacine_sistema_TOP_vadvams_CEO_COO`
 **Sister repo:** [`DITreneris/teacher`](https://github.com/DITreneris/teacher) (Edu MVP, separate brand/theme)
-**Current gold baseline:** v1.1.0, May 2026
+**Current gold baseline:** v1.2.0, May 2026
 **Audience:** Internal agents, operators, sister repos adopting this stack.
 
 This document užfiksuoja current best version of repo'jo ir produkto kaip referencinį standartą. Jei būsimas darbas keičia šiuos principus, atnaujinkite šį failą kartu su kodu, testais ir dokumentais, į kuriuos jis nuoroda.
@@ -21,6 +21,7 @@ Free + paid invariants:
 - Saved sessions storefront'e — browser `localStorage`.
 - **Modes:** `DAILY`, `WEEKLY`, `STRATEGIC` (free generator) + `Fast` / `Deep` / `Board` depth.
 - Product promise yra **executive cadence**, ne AI hype ar guaranteed time savings.
+- **Net copy rule (IA v3):** first screen copy only shrinks — relocate, shorten, or delete; no new explanation layers without equal removal.
 
 Core failai:
 
@@ -28,16 +29,17 @@ Core failai:
 - [`docs/pdf-source/operating-cadence.html`](docs/pdf-source/operating-cadence.html), [`docs/pdf-source/strategic-os.html`](docs/pdf-source/strategic-os.html), [`docs/pdf-source/pdf-print.css`](docs/pdf-source/pdf-print.css)
 - [`scripts/export-pdfs.js`](scripts/export-pdfs.js), [`scripts/render-pdf-preview-pages.js`](scripts/render-pdf-preview-pages.js)
 
-**Homepage flow (2026-05, aligned with sister `DITreneris/teacher`):**
+**Homepage flow (2026-05, IA v3 + ops polish):**
 
-1. Hero — primary CTA free tool (`#operationsCenter`); soft secondary → `#pdf-guides` (no playbook prices in hero). Glass preview card desktop-only (2 priorities + “+3 more”).
-2. `#operationsCenter` — free prompt generator; `.ops-journey-steps` (4-step scroll spy) at section top, followed by `.ops-center-intro` one-liner; depth tip chip (`.chip--tip`) is full-width inside `.depth-bar` and bound to the depth `radiogroup` via `aria-describedby="depthTip"`; `.ops-form-grid` aligns to the top with runway help spanning a full row; `#sessionsPanel` lives outside `.ops-layout` as a full-width sibling. Output empty state and copied-toast read SOT (`copy.opsOutput.{emptyPlaceholder,copiedToast}`) — see [`docs/ops_workspace_plan.md`](docs/ops_workspace_plan.md).
-3. `#pdf-guides` — paid PDF storefront (optional executive playbooks eyebrow, card kickers, publisher strip → `promptanatomy.app`).
-4. `#library` — template library (collapsed by default).
-5. `#rules` — economic discipline rules (collapsed).
-6. `#community` — Telegram + app.
+1. **Hero** — frozen H1 *Turn scattered KPIs into a clear weekly CEO brief*; eyebrow + short two-line lead; primary CTA → `#operationsCenter`; secondary → `#pdf-guides` (no prices in hero). Inline use cases: `Use cases: CEO planning · COO reviews · …` via `.hero-use-cases` + `data-trust-format="inline"`. Glass preview card desktop-only (P1–P3 + “+1 priority in your output”). **No** `.use-cases-strip`, **no** hero tertiary CTA.
+2. **Sticky nav** — `.btn.btn--nav-secondary` *CEO playbooks* → `#pdf-guides` (SOT `copy.nav`); `#stickyCopyBtn` hidden with `display: none` until form input (must not reserve flex space when hidden).
+3. **`#operationsCenter`** — H2 *Build your weekly brief* + `.ops-journey-steps--compact` (4-step scroll spy) → mode tabs. **No** `ops-center-intro` / value paragraphs. Depth: `.depth-bar` (pills only) + `#depthTip.field-help.depth-tip` **below** bar (`aria-describedby="depthTip"`). Form: `.ops-form-grid` (2 cols, `align-items: start`, `min-width: 0` on cells); runway help via `.field-help--row`. `#sessionsPanel` sibling of `.ops-layout` (full-width tile grid). Output + toast from SOT `copy.opsOutput.*`. See [`docs/ops_workspace_plan.md`](docs/ops_workspace_plan.md), [`docs/hero_refactor.md`](docs/hero_refactor.md).
+4. **`#pdf-guides`** — paid PDF storefront (optional executive playbooks eyebrow, card kickers, publisher strip → `promptanatomy.app`).
+5. **`#library`** — template library (collapsed by default).
+6. **`#rules`** — economic discipline rules (collapsed).
+7. **`#community`** — Telegram + app.
 
-Sticky nav: **Playbooks** → `#pdf-guides` + Copy prompt. Copy hooks: `config/sot.json` → `copy.pdfStorefront`; hydrate via `commerce.js` → `initPdfStorefrontCopy`.
+Copy hooks: `config/sot.json` → `copy.*`; hydrate via `commerce.js` (`initHeroCopy`, `initNavCopy`, `initPdfStorefrontCopy`, …).
 
 ## 2. Source of Truth Standard
 
@@ -49,16 +51,20 @@ SOT sekcijos:
 
 - `brand` — produkto vardas, edition, positioning.
 - `colors` ir `theme` — brand paletė ir runtime theme tokens.
+- `copy.hero` — eyebrow, frozen headline, lead, CTAs, `useCasesLabel`, preview rows.
+- `copy.nav` — sticky Playbooks CTA + aria-label.
+- `copy.opsCenter` — title only (no `value` / `intro`).
+- `copy.opsDepth.tip` — depth help line (field-help, not chip).
 - `productDecision` — strateginis pozicionavimas (`playbook` not "OS"), launch scope, pricing rationale.
 - `buyerProblems` — 8 named CEO problems.
-- `pdfGuides` — `operating` (12p, $9.99) ir `strategic` (28p, $19.99) struktūra, chapters, buyerPromise.
+- `pdfGuides` — `operating` (21p, $9.99) ir `strategic` (43p, $19.99) struktūra, chapters, buyerPromise.
 - `productBlueprint` — overall pages, prompt counts.
 - `commerce` — Stripe URL, pricing, delivery promise, compare strip.
 - `buyerFaq` — buyer FAQ + JSON-LD mirror.
 
 ## 3. Design System Standard
 
-Kanoninis DS gidas: [`docs/STYLEGUIDE.md`](docs/STYLEGUIDE.md) (PDF/OG) · Storefront DS 1.0: [`docs/DESIGN-SYSTEM.md`](docs/DESIGN-SYSTEM.md), [`styles/tokens.css`](styles/tokens.css), [`docs/ds_improvement_plan.md`](docs/ds_improvement_plan.md).
+Kanoninis DS gidas: [`docs/STYLEGUIDE.md`](docs/STYLEGUIDE.md) (PDF/OG) · Storefront DS 1.1: [`docs/DESIGN-SYSTEM.md`](docs/DESIGN-SYSTEM.md), [`styles/tokens.css`](styles/tokens.css), [`docs/ds_improvement_plan.md`](docs/ds_improvement_plan.md).
 
 Current gold tokens:
 
@@ -74,11 +80,15 @@ Current gold tokens:
 Design taisyklės:
 
 - **Storefront theme:** light only (no dark-mode toggle). QA and screenshots use the light gold experience.
+- **Box model:** global `box-sizing: border-box` in [`styles/base.css`](styles/base.css) — required so `width: 100%` form fields do not overflow grid columns (padding/border included in width).
+- **Nested grids:** `.ops-layout > .ops-form`, `.ops-layout > .ops-sidebar`, and `.ops-form-grid > *` use `min-width: 0` so 7fr/5fr layout does not clip field borders past card edges.
+- **Depth tip:** help text only (`#depthTip.field-help`) — **never** full-width `.chip--tip` inside `.depth-bar` (double-frame UX).
+- **Nav Playbooks:** `.btn.btn--nav-secondary` on dark bar — not ghost pill, not misaligned by hidden copy button flex space.
 - Cover'is = vienas pažadas per 2 sekundes (eyebrow + title + subtitle + 2-line callout + footer).
 - NIEKADA ant cover: Audience/Length/Version/Format/Pair-with/Page X/Y.
 - `.cover .cover-positioning strong` privalo būti gold (`#FFB300`), ne primary violet — kitaip kontrasto bug ant violetinio fono.
 - Eyebrow naming visiems CEO produktams: `PROMPT ANATOMY · CEO AI SYSTEM`.
-- Footer page numbers konsistentinis `Page X/12` (operating) arba `Page X/28` (strategic).
+- Footer page numbers konsistentinis `Page X/21` (operating) arba `Page X/43` (strategic).
 
 ## 4. PDF Asset Pipeline Standard
 
@@ -151,16 +161,17 @@ Product mapping priority (defense in depth):
 CI tiesos šaltinis:
 
 ```bash
-npm run test:mixed     # test + smoke + e2e + a11y
+npm run test:mixed     # test + smoke + e2e + a11y + visual
 ```
 
 Lokali baseline:
 
 ```bash
 npm ci
-npm test               # structure (103 tests) + html-validator + eslint
+npm test               # structure (~144 tests) + html-validator + eslint
 npm run test:smoke
 npm run test:e2e
+npm run test:visual    # hero + ops-center + pdf-guides baselines
 npm run test:a11y
 ```
 
@@ -169,6 +180,7 @@ Asset / PDF copy keitimams:
 ```bash
 npm run pdf:assets     # regen all PNGs + PDFs + OG
 npm test               # verify min sizes + alt text
+npm run build          # en/ + lt/ locale pages
 ```
 
 ## 9. Drift Checklist
@@ -177,13 +189,19 @@ Prieš merge:
 
 - Ar redagavau SOT, ne hardcoded copy?
 - Ar copy išliko en-US?
+- Ar IA v3 taisyklė laikoma (net copy reduction first screen)?
+- Ar hero neturi `.use-cases-strip`, ops neturi intro/value paragraphs?
+- Ar depth tip = `#depthTip.field-help` (ne chip inside `.depth-bar`)?
+- Ar form laukai turi `box-sizing: border-box` + grid `min-width: 0` (no border bleed)?
+- Ar `#stickyCopyBtn.is-hidden` naudoja `display: none` (nav alignment)?
 - Ar cover'is liko 5 elementų (eyebrow + title + subtitle + callout + footer)?
 - Ar callout `strong` gold ant violet?
-- Ar `Page X/Y` footer numeracija konsistentinė?
+- Ar `Page X/Y` footer numeracija konsistentinė (21 / 43)?
 - Ar po cover/HTML keitimo paleidau `npm run pdf:assets`?
-- Ar `npm test` praėjo (103/103)?
+- Ar `npm test` praėjo?
 - Ar `npm run build` regeneravo en/lt locale puslapius?
 - Ar Stripe href fallback'ai vis dar veikia be JS?
+- Ar atnaujinau **šį failą** jei keitė homepage IA / ops DOM?
 
 ## 10. Sister Repo Boundary
 
@@ -202,7 +220,16 @@ Sister repo ([`DITreneris/teacher`](https://github.com/DITreneris/teacher)):
 - Tas pats commerce/fulfillment pattern (žr. abu `memo_pdf.md`)
 - **Niekada** nedėlioti CEO copy į teacher repo ir atvirkščiai.
 
-## 11. Current Known Follow-Ups
+## 11. Known UI regressions (fixed — do not reintroduce)
+
+| Symptom | Root cause | Gold fix |
+|---------|------------|----------|
+| Form field borders clip past Strategic Context card | `width: 100%` + content-box + grid `min-width: auto` | Global `border-box`; `min-width: 0` on ops grid columns/cells |
+| Nav Playbooks “floating” with gap on the right | `#stickyCopyBtn` used `visibility: hidden` (still in flex layout) | `.is-hidden { display: none }` |
+| Depth tip looks like messy double frame | Full-width `.chip--tip` inside `.depth-bar` | `#depthTip.field-help` below bar |
+| Five headline layers above tool (IA v2) | strip + ops value + intro + duplicate use-case h2 | IA v3 inline use cases; slim ops header |
+
+## 12. Current Known Follow-Ups
 
 Šie nėra blokeriai, bet neturėtų būti pamiršti:
 
@@ -215,4 +242,4 @@ Sister repo ([`DITreneris/teacher`](https://github.com/DITreneris/teacher)):
 
 ---
 
-*Last updated: 2026-05-21. Reference baseline po PDF Assets Premium Reset (Wave 1–7).*
+*Last updated: 2026-05-24. Reference baseline po IA v3, nav Playbooks CTA, depth tip field-help, ops form overflow fix.*

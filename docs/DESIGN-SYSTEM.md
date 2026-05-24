@@ -75,7 +75,8 @@ Spec: [`hero_refactor.md`](hero_refactor.md).
 | Element | Contract |
 |---------|----------|
 | `#depthTip.field-help.depth-tip` | Help line below `.depth-bar`; `aria-describedby` on depth `radiogroup`; SOT `copy.opsDepth.tip` |
-| `.ops-form-grid` | Two columns; `align-items: start`; help spans full row via `.field-help.field-help--row` |
+| `.ops-form-grid` | Two columns; `align-items: start`; cells `min-width: 0`; help spans full row via `.field-help.field-help--row` |
+| Global box model | `styles/base.css` | `box-sizing: border-box` on all elements (form field overflow guard) |
 | `#opsOutput[placeholder]` | SOT: `copy.opsOutput.emptyPlaceholder`; min-height 140px; thin themed scrollbar |
 | `.ops-tool-btn` | Dark-surface ghost; gold accent on hover/focus; keep `data-ai-tool` |
 | `#sessionsPanel` | Sibling of `.ops-layout` (full width); auto-fill grid for tile cards; empty state spans all columns |

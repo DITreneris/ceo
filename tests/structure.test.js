@@ -302,6 +302,10 @@ function run() {
   else failed++;
   if (assert(hexOutsideTokens(baseCss), 'base.css be hex (naudoja tokenus)')) passed++;
   else failed++;
+  if (assert(baseCss && /box-sizing:\s*border-box/.test(baseCss), 'base.css global border-box (ops form overflow guard)')) passed++;
+  else failed++;
+  if (assert(sectionsCss && /\.ops-form-grid\s>\s\*[\s\S]*min-width:\s*0/.test(sectionsCss), 'sections.css ops-form-grid cells min-width 0')) passed++;
+  else failed++;
   if (assert(hexOutsideTokens(responsiveCss), 'responsive.css be hex (naudoja tokenus)')) passed++;
   else failed++;
 

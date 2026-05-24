@@ -53,18 +53,16 @@ Ops block: `Build your weekly brief` + `.ops-journey-steps--compact` → mode ta
 
 ## Hero slim v2 (2026-05-24)
 
-Premium SaaS density: **4 elements** above the fold on the left — eyebrow, H1, lead, CTA + one trust line. Use-case icons moved to `.use-cases-strip` below hero. Preview card is an executive summary list (P + title + one detail line; no Owner / Action labels).
+Premium SaaS density: **eyebrow, H1, lead, 2 CTAs + meta + inline use cases** (IA v3). Preview card is an executive summary list (P + title + one detail line; no Owner / Action labels).
 
 | Left column | Right column |
 |-------------|--------------|
 | `data-copy-hero-eyebrow` | `.hero-prompt-card` (summary list) |
 | `data-copy-hero-headline` (frozen) | |
 | `data-copy-hero-lead` | |
-| 2 CTAs + `data-copy-hero-meta` | |
+| 2 CTAs + `data-copy-hero-meta` + `.hero-use-cases` | |
 
-**Removed from hero:** `.hero-promise`, `.trust-row--hero`, preview `Owner` / `Action:` rows.
-
-**Below hero:** `.use-cases-strip` with `data-copy-use-cases-heading` + `data-trust-row="heroStrip"`.
+**Removed from hero:** `.hero-promise`, `.trust-row--hero`, preview `Owner` / `Action:` rows, `.use-cases-strip` (use cases inline in hero since IA v3).
 
 ## DOM contract
 
