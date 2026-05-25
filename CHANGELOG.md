@@ -8,7 +8,7 @@ EN-US storefront journey + **Design System 1.1 Hardened** ([`docs/ds_improvement
 
 ### Changed
 
-- **IA slim v4 (PDF + FAQ + ops panel)** — PDF section deduped (removed compare strip, which-playbook line, per-card trust, delivery blurb, testimonials, publisher strip, card buyer-promise); single section trust row; `buyerFaq` 5→3; footer Product FAQ 6→3 (JSON-LD synced); `.ops-control-panel` card with mode tab icons; journey step 4 **Reuse templates**; structure tests **147/148** (1 pre-existing `font-size` px guard).
+- **IA slim v4 (PDF + FAQ + ops panel)** — PDF section deduped (removed compare strip, which-playbook line, per-card trust, delivery blurb, testimonials, publisher strip, card buyer-promise); single section trust row; `buyerFaq` 5→3; footer Product FAQ 6→3 (JSON-LD synced); `.ops-control-panel` card with mode tab icons; journey step 4 **Reuse templates**; structure tests **148/148**.
 
 ### Added
 
@@ -60,6 +60,7 @@ EN-US storefront journey + **Design System 1.1 Hardened** ([`docs/ds_improvement
 
 ### Fixed
 
+- **CI structure test** — mobile hero badge `font-size: 10px` → `var(--text-2xs)` in [`styles/responsive.css`](styles/responsive.css) (DS px guard **148/148**).
 - **Ops form field overflow** — input/textarea borders no longer clip past `.ops-form-section` card edge (`width: 100%` + content-box + grid `min-width: auto` regression).
 - **Nav Playbooks alignment** — `#stickyCopyBtn.is-hidden` uses `display: none` instead of `visibility: hidden` so hidden copy button does not reserve flex space beside Playbooks CTA.
 - **Playbooks nav contrast** — `.top-nav-playbooks-link` no longer inherits body text color on dark sticky nav (DS 0.8 `.btn--ghost` regression).

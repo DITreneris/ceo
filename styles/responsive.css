@@ -11,7 +11,7 @@
     .top-nav-actions { margin-left: auto; }
     .header { padding: 28px 24px; }
     .header-badges .badge-spinoff { display: none; }
-    .header-badges .badge { font-size: 10px; padding: 4px 10px; min-height: 32px; }
+    .header-badges .badge { font-size: var(--text-2xs); padding: 4px 10px; min-height: 32px; }
     .header h1 { font-size: var(--text-3xl); }
     .header p { font-size: var(--text-md); }
     /* Horizontal progress: numbers on top, labels below, connecting line */
