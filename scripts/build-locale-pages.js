@@ -80,6 +80,51 @@ function injectGeoSchema(html, sot) {
     publisher: { '@id': orgId }
   };
 
+  var refundDays =
+    sot.commerce && typeof sot.commerce.refundWindowDays === 'number'
+      ? sot.commerce.refundWindowDays
+      : 14;
+
+  function digitalOfferExtras() {
+    return {
+      shippingDetails: {
+        '@type': 'OfferShippingDetails',
+        shippingRate: {
+          '@type': 'MonetaryAmount',
+          value: 0,
+          currency: 'USD'
+        },
+        deliveryTime: {
+          '@type': 'ShippingDeliveryTime',
+          handlingTime: {
+            '@type': 'QuantitativeValue',
+            minValue: 0,
+            maxValue: 0,
+            unitCode: 'DAY'
+          },
+          transitTime: {
+            '@type': 'QuantitativeValue',
+            minValue: 0,
+            maxValue: 0,
+            unitCode: 'DAY'
+          }
+        },
+        shippingDestination: {
+          '@type': 'DefinedRegion',
+          addressCountry: 'US'
+        }
+      },
+      hasMerchantReturnPolicy: {
+        '@type': 'MerchantReturnPolicy',
+        applicableCountry: 'US',
+        returnPolicyCategory: 'https://schema.org/MerchantReturnFiniteReturnWindow',
+        merchantReturnDays: refundDays,
+        returnMethod: 'https://schema.org/ReturnByMail',
+        returnFees: 'https://schema.org/FreeReturn'
+      }
+    };
+  }
+
   function productForGuide(key) {
     var guide = sot.pdfGuides[key];
     var price = sot.commerce && sot.commerce.pricing ? sot.commerce.pricing[key] : null;
@@ -89,14 +134,20 @@ function injectGeoSchema(html, sot) {
       name: guide.label,
       description: guide.buyerPromise,
       image: geo.entity.logo,
-      brand: { '@id': orgId },
-      offers: {
-        '@type': 'Offer',
-        price: parseUsdPrice(price && price.now),
-        priceCurrency: 'USD',
-        url: enUrl + '#pdf-guides',
-        availability: 'https://schema.org/InStock'
-      }
+      brand: {
+        '@type': 'Brand',
+        name: 'Prompt Anatomy'
+      },
+      offers: Object.assign(
+        {
+          '@type': 'Offer',
+          price: parseUsdPrice(price && price.now),
+          priceCurrency: 'USD',
+          url: enUrl + '#pdf-guides',
+          availability: 'https://schema.org/InStock'
+        },
+        digitalOfferExtras()
+      )
     };
   }
 
