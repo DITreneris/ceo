@@ -8,6 +8,7 @@ EN-US storefront journey + **Design System 1.1 Hardened** ([`docs/ds_improvement
 
 ### Changed
 
+- **QW1b entity footer** — footer affiliation line matches hub sibling memo §3: `Part of Prompt Anatomy · Training & checkout → promptanatomy.app` with UTM `utm_source=ceo&utm_medium=entity_footer&utm_campaign=ecosystem`; LT regression string synced; hub map / hero CTAs unchanged.
 - **IA slim v4 (PDF + FAQ + ops panel)** — PDF section deduped (removed compare strip, which-playbook line, per-card trust, delivery blurb, testimonials, publisher strip, card buyer-promise); single section trust row; `buyerFaq` 5→3; footer Product FAQ 6→3 (JSON-LD synced); `.ops-control-panel` card with mode tab icons; journey step 4 **Reuse templates**; structure tests **148/148**.
 
 ### Added

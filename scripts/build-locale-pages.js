@@ -411,8 +411,8 @@ function buildLocaleHtml(locale) {
     html = html.replace('>Run your business with AI <span', '>Valdyk verslą su DI <span');
     html = html.replace('>A 5‑minute operations prompt generator for CEOs &amp; COOs.</p>', '>5 min. operacinių promptų generatorius CEO ir COO.</p>');
     html = html.replace(
-      'Part of <a href="https://www.promptanatomy.app/" target="_blank" rel="noopener noreferrer">Prompt Anatomy</a> (AI Operating System) — Operations module.</p>',
-      'Promptų anatomijos (<a href="https://www.promptanatomy.app/" target="_blank" rel="noopener noreferrer">Promptų anatomijos</a>) (DI operacinės sistemos) dalis — Operacijų modulis.</p>'
+      'Part of Prompt Anatomy · Training & checkout → <a href="https://www.promptanatomy.app/?utm_source=ceo&utm_medium=entity_footer&utm_campaign=ecosystem" target="_blank" rel="noopener noreferrer">promptanatomy.app</a></p>',
+      'Promptų Anatomijos ekosistema · Mokymai ir checkout → <a href="https://www.promptanatomy.app/?utm_source=ceo&utm_medium=entity_footer&utm_campaign=ecosystem" target="_blank" rel="noopener noreferrer">promptanatomy.app</a></p>'
     );
     html = html.replace(
       'You\'re in the <strong>Operations</strong> module',

@@ -23,6 +23,7 @@
         'gemini.google.com': true
     };
     var ANATOMY_URL = 'https://www.promptanatomy.app/';
+    var ENTITY_FOOTER_URL = 'https://www.promptanatomy.app/?utm_source=ceo&utm_medium=entity_footer&utm_campaign=ecosystem';
 
     /* ===== CONSTANTS ===== */
 
@@ -580,8 +581,8 @@
         var footerProductLink = document.querySelector('[data-copy-footer-product-link]') || document.querySelector('.footer-product-link');
         if (footerProductLink) {
             footerProductLink.innerHTML = uiText(
-                'Promptų anatomijos (<a href="' + ANATOMY_URL + '" target="_blank" rel="noopener noreferrer">Promptų anatomijos</a>) (DI operacinės sistemos) dalis — Operacijų modulis.',
-                'Part of <a href="' + ANATOMY_URL + '" target="_blank" rel="noopener noreferrer">Prompt Anatomy</a> (AI Operating System) — Operations module.'
+                'Promptų Anatomijos ekosistema · Mokymai ir checkout → <a href="' + ENTITY_FOOTER_URL + '" target="_blank" rel="noopener noreferrer">promptanatomy.app</a>',
+                'Part of Prompt Anatomy · Training & checkout → <a href="' + ENTITY_FOOTER_URL + '" target="_blank" rel="noopener noreferrer">promptanatomy.app</a>'
             );
         }
         var hubContext = document.querySelector('[data-copy-hub-context]');
