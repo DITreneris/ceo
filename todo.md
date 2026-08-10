@@ -20,6 +20,8 @@
 - Phase 17 — Production deploy after Now items pass.
 - Phase 18 — Post-launch buyer feedback loop (sales, refunds, support emails).
 - ~~Design system consolidation~~ — **Done:** DS 1.1 Hardened ([`docs/ds_improvement_plan.md`](docs/ds_improvement_plan.md) §16). Optional later: 1.4b mobile DOM per [`docs/DS_MOBILE_DOM_SPIKE.md`](docs/DS_MOBILE_DOM_SPIKE.md).
+- ~~Max ROI activation (Weekly default, sample data, empty-until-input, Copy&open AI)~~ — **Done** (storefront; does not replace Phase 15–17).
+- Remaining engagement Should: post-copy Operations-first upsell; mobile View brief chip (no DOM reorder); funnel events (copy/sample/Stripe).
 
 **Later (P2, optional follow-ups, not launch-blocking):**
 

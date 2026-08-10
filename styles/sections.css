@@ -514,8 +514,9 @@
 
 .ops-center-header {
     display: flex;
-    align-items: flex-start;
-    gap: var(--space-16);
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-12) var(--space-16);
     margin-bottom: var(--space-12);
 }
 
@@ -526,6 +527,14 @@
     line-height: var(--leading-tight);
     letter-spacing: -0.02em;
     color: var(--text);
+}
+
+.ops-sample-btn {
+    margin-left: auto;
+    min-height: 40px;
+    padding: 8px 14px;
+    font-size: var(--text-sm);
+    font-weight: 600;
 }
 
 .ops-center-header-text {
@@ -1138,6 +1147,23 @@ textarea.ops-output-text {
 .ops-output-cta:focus-visible {
     outline: 3px solid white;
     outline-offset: 2px;
+}
+.ops-output-cta:disabled,
+.ops-output-copy:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+.ops-output-cta:disabled:hover,
+.ops-output-copy:disabled:hover {
+    transform: none;
+    box-shadow: none;
+    background: white;
+}
+.ops-tool-btn:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
 }
 
 .ops-tool-launchers {

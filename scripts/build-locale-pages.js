@@ -30,6 +30,46 @@ function jsonLdScript(obj) {
   return '<script type="application/ld+json">\n' + JSON.stringify(obj, null, 2) + '\n    </script>\n    ';
 }
 
+function escapeHtmlText(text) {
+  return String(text == null ? '' : text)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+/** EN-only: SSR purchase FAQ so AI crawlers see Q&A without running commerce.js. */
+function injectBuyerFaqSsr(html, sot) {
+  var items = Array.isArray(sot.buyerFaq) ? sot.buyerFaq : [];
+  if (!items.length) {
+    return html;
+  }
+  if (!/<div\s+data-buyer-faq-list\s*>\s*<\/div>/i.test(html)) {
+    return html;
+  }
+  var inner = items
+    .map(function (item) {
+      if (!item || !item.q || !item.a) return '';
+      var idAttr = item.id ? ' id="' + escapeHtmlText(item.id) + '"' : '';
+      return (
+        '<details class="buyer-faq-item"' +
+        idAttr +
+        '>' +
+        '<summary class="buyer-faq-q">' +
+        escapeHtmlText(item.q) +
+        '</summary>' +
+        '<div class="buyer-faq-a">' +
+        escapeHtmlText(item.a) +
+        '</div></details>'
+      );
+    })
+    .join('');
+  return html.replace(
+    /<div\s+data-buyer-faq-list\s*>\s*<\/div>/i,
+    '<div data-buyer-faq-list>' + inner + '</div>'
+  );
+}
+
 /** EN-only: enrich Organization + Person (founder) + WebSite + Product + HowTo from sot.geo. Root index.html unchanged. */
 function injectGeoSchema(html, sot) {
   var geo = sot.geo;
@@ -125,6 +165,17 @@ function injectGeoSchema(html, sot) {
     };
   }
 
+  function resolveCoverImage(guide) {
+    var cover = guide && guide.coverImage;
+    if (!cover) {
+      return geo.entity.logo;
+    }
+    if (/^https?:\/\//i.test(cover)) {
+      return cover;
+    }
+    return siteUrl + (cover.startsWith('/') ? cover : '/' + cover);
+  }
+
   function productForGuide(key) {
     var guide = sot.pdfGuides[key];
     var price = sot.commerce && sot.commerce.pricing ? sot.commerce.pricing[key] : null;
@@ -133,7 +184,7 @@ function injectGeoSchema(html, sot) {
       '@type': 'Product',
       name: guide.label,
       description: guide.buyerPromise,
-      image: geo.entity.logo,
+      image: resolveCoverImage(guide),
       brand: {
         '@type': 'Brand',
         name: 'Prompt Anatomy'
@@ -151,10 +202,32 @@ function injectGeoSchema(html, sot) {
     };
   }
 
+  function buyerFaqPage() {
+    var items = Array.isArray(sot.buyerFaq) ? sot.buyerFaq : [];
+    if (!items.length) {
+      return null;
+    }
+    return {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      '@id': enUrl + '#buyer-faq',
+      mainEntity: items.map(function (item) {
+        return {
+          '@type': 'Question',
+          name: item.q,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: item.a
+          }
+        };
+      })
+    };
+  }
+
   var howTo = {
     '@context': 'https://schema.org',
     '@type': 'HowTo',
-    name: 'Turn scattered KPIs into a clear weekly CEO brief with AI Operations Center',
+    name: 'Turn scattered KPIs into a clear weekly CEO brief with the AI Operations Center',
     description:
       'Use the free CEO/COO operating brief builder: pick a mode, set depth, fill KPIs, copy the structured prompt into ChatGPT, Claude, or Gemini.',
     step: [
@@ -179,17 +252,20 @@ function injectGeoSchema(html, sot) {
     ]
   };
 
+  // Match only the Organization block (not WebApplication/FAQPage scripts that precede it).
   html = html.replace(
-    /<script type="application\/ld\+json">[\s\S]*?"@type": "Organization"[\s\S]*?<\/script>\s*/,
+    /<script type="application\/ld\+json">\s*\{\s*"@context": "https:\/\/schema\.org",\s*"@type": "Organization"[\s\S]*?<\/script>\s*/,
     jsonLdScript(organization)
   );
 
+  var buyerFaqLd = buyerFaqPage();
   var extra =
     jsonLdScript(person) +
     jsonLdScript(website) +
     jsonLdScript(productForGuide('operating')) +
     jsonLdScript(productForGuide('strategic')) +
-    jsonLdScript(howTo);
+    jsonLdScript(howTo) +
+    (buyerFaqLd ? jsonLdScript(buyerFaqLd) : '');
 
   return html.replace('</head>', extra + '</head>');
 }
@@ -335,6 +411,10 @@ function buildLocaleHtml(locale) {
     );
     html = html.replace('>Not another AI chat. A structured operating layer for executive decision-making.</p>', '');
     html = html.replace('aria-label="Open generator in operations center">Open generator</a>', 'aria-label="Atidaryti generatorių operaciniame centre">Atidaryti generatorių</a>');
+    html = html.replace(
+      'aria-label="Build weekly brief in operations center">Build weekly brief</a>',
+      'aria-label="Kurti savaitės brief operaciniame centre">Kurti savaitės brief</a>'
+    );
     html = html.replace('aria-label="View PDF playbooks">View playbooks ↓</a>', 'aria-label="Peržiūrėti PDF playbooks">Playbooks ↓</a>');
     html = html.replace('>Free · No account · ~5 min</p>', '>Nemokama · Be paskyros · ~5 min</p>');
     html = html.replace(
@@ -343,6 +423,18 @@ function buildLocaleHtml(locale) {
     );
     html = html.replace('>This week\'s priorities</p>', '>Šios savaitės prioritetai</p>');
     html = html.replace('>Add your context</h2>', '>Pridėk kontekstą</h2>');
+    html = html.replace('>Build your weekly brief</h2>', '>Kurk savaitės brief</h2>');
+    html = html.replace(
+      'aria-label="Fill the weekly form with sample CEO data">Try sample data</button>',
+      'aria-label="Užpildyti savaitės formą pavyzdiniais duomenimis">Išbandyti pavyzdį</button>'
+    );
+    html = html.replace('>Copy &amp; open ChatGPT</button>', '>Kopijuoti ir atidaryti ChatGPT</button>');
+    html = html.replace('>Copy &amp; open Claude</button>', '>Kopijuoti ir atidaryti Claude</button>');
+    html = html.replace('>Copy &amp; open Gemini</button>', '>Kopijuoti ir atidaryti Gemini</button>');
+    html = html.replace(
+      'Start typing or try sample data — your CEO brief builds here.',
+      'Pradėk rašyti arba išbandyk pavyzdį — CEO brief atsiranda čia.'
+    );
     html = html.replace('<span class="ops-journey-step-num">3</span> Generate prompt</a>', '<span class="ops-journey-step-num">3</span> Rezultatas</a>');
     html = html.replace('aria-label="View PDF playbooks from $9.99">Playbooks</a>', 'aria-label="Peržiūrėti PDF playbooks">Playbooks</a>');
     html = html.replace('aria-label="Build my weekly brief in operations center">Build my weekly brief</a>', 'aria-label="Gauti savaitės prioritetus operaciniame centre">Gauti savaitės prioritetus</a>');
@@ -426,7 +518,7 @@ function buildLocaleHtml(locale) {
     html = html.replace('>What is this?</summary>', '>Kas tai?</summary>');
     html = html.replace('>Who is it for?</summary>', '>Kam skirta?</summary>');
     html = html.replace('>How do I use it?</summary>', '>Kaip naudoti?</summary>');
-    html = html.replace('>Want the full AI Operating System?</summary>', '>Nori pilnos DI operacinės sistemos?</summary>');
+    html = html.replace('>Want the full Prompt Anatomy training?</summary>', '>Nori pilnos DI operacinės sistemos?</summary>');
     html = html.replace('>Do you store my data?</summary>', '>Ar jūs saugote mano duomenis?</summary>');
     html = html.replace(
       '>What is the difference between Fast, Deep, and Board?</summary>',
@@ -458,7 +550,7 @@ function buildLocaleHtml(locale) {
     html = html.replace('"name": "What is AI Operations Center?"', '"name": "Kas yra DI Operacinis Centras?"');
     html = html.replace('"name": "Who is it for?"', '"name": "Kam skirta?"');
     html = html.replace('"name": "How do I use it?"', '"name": "Kaip naudoti?"');
-    html = html.replace('"name": "Want the full AI Operating System?"', '"name": "Nori pilnos DI operacinės sistemos?"');
+    html = html.replace('"name": "Want the full Prompt Anatomy training?"', '"name": "Nori pilnos DI operacinės sistemos?"');
     html = html.replace('"name": "Do you store my data?"', '"name": "Ar jūs saugote mano duomenis?"');
     html = html.replace('"name": "What is the difference between Fast, Deep, and Board?"', '"name": "Kuo skiriasi Greita, Gilu ir Valdybai?"');
     html = html.replace(
@@ -484,7 +576,9 @@ function buildLocaleHtml(locale) {
   }
 
   if (locale === 'en') {
-    html = injectGeoSchema(html, loadSot());
+    var sotEn = loadSot();
+    html = injectGeoSchema(html, sotEn);
+    html = injectBuyerFaqSsr(html, sotEn);
   }
 
   return html;

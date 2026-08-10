@@ -24,7 +24,7 @@ const PRODUCTS = {
   strategic: {
     id: 'strategic',
     publicId: 'strategic-pdf',
-    name: 'CEO Strategic AI Operating System',
+    name: 'CEO AI Strategy Playbook',
     price: '$19.99',
     priceEnv: 'STRIPE_PRICE_STRATEGIC_PDF',
     sourceUrlEnv: 'PDF_STRATEGIC_SOURCE_URL',
@@ -321,7 +321,7 @@ function buildEmailText(product, downloadUrl) {
     'Executive license: internal use for you and your immediate leadership team at the same company.',
     'Do not redistribute as-is. Full license: https://www.promptanatomy.ceo/terms.html#paid-pdf-license',
     '',
-    '14-day no-questions refund: reply to this email or to your Stripe receipt.',
+    '14-day no-questions-asked refund: reply to this email or to your Stripe receipt.',
     'Questions: info@promptanatomy.app',
     '',
     'Prompt Anatomy'
@@ -335,7 +335,7 @@ function buildEmailHtml(product, downloadUrl) {
     '<p><a href="' + downloadUrl + '">Download PDF</a></p>',
     '<p>This secure link expires in ' + days + ' days. You also received a Stripe receipt.</p>',
     '<p>Executive license — internal leadership team use. <a href="https://www.promptanatomy.ceo/terms.html#paid-pdf-license">Full license</a>.</p>',
-    '<p>14-day no-questions refund: reply to this email.</p>',
+    '<p>14-day no-questions-asked refund: reply to this email.</p>',
     '<p>Prompt Anatomy</p>'
   ].join('');
 }

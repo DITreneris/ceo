@@ -7,10 +7,10 @@ test.describe('core first-run flows', () => {
     await context.grantPermissions(['clipboard-read', 'clipboard-write']);
     await page.goto('/');
 
-    await page.fill('#m-goal', 'Increase MRR');
-    await page.fill('#m-income', '45000');
-    await page.fill('#m-expenses', '32000');
-    await page.fill('#m-question', 'What are the top 3 priorities this week?');
+    await page.fill('#s-pajamos', '12500');
+    await page.fill('#s-sanaudos', '9800');
+    await page.fill('#s-likutis', '115000');
+    await page.fill('#s-question', 'What are the top 3 priorities this week?');
 
     await page.click('#outputCopyCta');
     await expect(page.locator('#toast')).toHaveClass(/show/);
@@ -19,11 +19,38 @@ test.describe('core first-run flows', () => {
     expect(text).toContain('QUESTION');
   });
 
+  test('sample data then copy and open ChatGPT', async ({ page, context }) => {
+    await context.grantPermissions(['clipboard-read', 'clipboard-write']);
+    await page.goto('/');
+
+    await page.evaluate(() => {
+      window.__openedUrls = [];
+      window.open = function (url) {
+        window.__openedUrls.push(String(url));
+        return null;
+      };
+    });
+
+    await page.click('#sampleDataBtn');
+    await expect(page.locator('#opsOutput')).not.toHaveValue('');
+    await expect(page.locator('#tab-savaites')).toHaveAttribute('aria-selected', 'true');
+
+    await page.click('[data-ai-tool="chatgpt"]');
+    await expect(page.locator('#toast')).toHaveClass(/show/);
+
+    const opened = await page.evaluate(() => window.__openedUrls);
+    expect(opened.some((url) => url.includes('chatgpt.com'))).toBeTruthy();
+
+    const clip = await page.evaluate(() => navigator.clipboard.readText());
+    expect(clip.length).toBeGreaterThan(40);
+    expect(clip).toMatch(/QUESTION|Weekly/i);
+  });
+
   test('session save and restore survives reload', async ({ page }) => {
     await page.goto('/');
 
-    await page.fill('#m-goal', 'Test goal');
-    await page.fill('#m-question', 'What should we do first?');
+    await page.fill('#s-pajamos', '12000');
+    await page.fill('#s-question', 'What should we do first?');
     await page.click('#sessionSaveBtn');
 
     await expect(page.locator('#sessionList .session-item')).toHaveCount(1);
@@ -31,9 +58,9 @@ test.describe('core first-run flows', () => {
 
     await expect(page.locator('#sessionList .session-item')).toHaveCount(1);
 
-    await page.fill('#m-goal', '');
+    await page.fill('#s-pajamos', '');
     await page.locator('#sessionList .session-item').first().click();
-    await expect(page.locator('#m-goal')).toHaveValue('Test goal');
+    await expect(page.locator('#s-pajamos')).toHaveValue('12000');
   });
 
   test('hero secondary CTA scrolls to PDF guides section', async ({ page }) => {

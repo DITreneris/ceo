@@ -1,24 +1,21 @@
 # AI Operations Center
 
-> Free CEO/COO weekly priorities prompt generator by Tomas Staniulis (Prompt Anatomy). Optional PDF playbooks from $9.99.
+> Free CEO/COO weekly operating brief builder by Tomas Staniulis (Prompt Anatomy). Optional PDF playbooks from $9.99.
 
 ## Ecosystem
-- https://www.promptanatomy.app/ — Prompt Anatomy AI Operating System (hub)
+- [Prompt Anatomy AI Operating System](https://www.promptanatomy.app/): Product hub for training and modules
 
 ## Creator
-- Tomas Staniulis — founder of Prompt Anatomy
-  - https://www.linkedin.com/in/staniulis/
-  - https://x.com/TStaniulis_NFT
+- [Tomas Staniulis](https://www.promptanatomy.ceo/en/): Founder of Prompt Anatomy
+- [LinkedIn](https://www.linkedin.com/in/staniulis/): Tomas Staniulis profile
+- [X](https://x.com/TStaniulis_NFT): Tomas Staniulis profile
 
 ## Key pages
-- https://www.promptanatomy.ceo/en/ — Main tool — weekly priorities prompt generator
-- https://www.promptanatomy.ceo/en/#pdf-guides — CEO AI Operations & Strategy playbooks
-- https://www.promptanatomy.ceo/privacy.html — Privacy policy
-- https://www.promptanatomy.ceo/terms.html — Terms
+- [Main tool](https://www.promptanatomy.ceo/en/): Weekly operating brief builder; free tool plus CEO AI Operations and Strategy playbooks
 
 ## Related
-- https://www.promptanatomy.app/
+- [Prompt Anatomy hub](https://www.promptanatomy.app/): Sister site for the full Prompt Anatomy system
 
-## Do not crawl
-- https://www.promptanatomy.ceo/api/
-- https://www.promptanatomy.ceo/lt/
+## Optional
+- [Privacy policy](https://www.promptanatomy.ceo/privacy.html): Local browser storage; inputs are not uploaded to a server
+- [Terms](https://www.promptanatomy.ceo/terms.html): License and paid PDF terms

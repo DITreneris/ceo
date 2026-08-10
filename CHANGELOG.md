@@ -6,8 +6,14 @@ Formatas pagal [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), versija
 
 EN-US storefront journey + **Design System 1.1 Hardened** ([`docs/ds_improvement_plan.md`](docs/ds_improvement_plan.md) §16). Does not block Phase 15–17 launch ([`docs/LAUNCH_CHECKLIST.md`](docs/LAUNCH_CHECKLIST.md)).
 
+### Added
+
+- **GEO visibility hardening (2026-08)** — expand AI crawler allowlist (`Claude-SearchBot`, `Claude-User`, `Perplexity-User`, `Applebot-Extended`, `CCBot`, `meta-externalagent`); drop `success.html` from sitemap; rewrite `llms.txt` (flat markdown + `## Optional`); add `llms-full.txt`; `vercel.json` `text/plain` headers for discovery files; EN Product JSON-LD cover images + buyer `FAQPage`; SSR `buyerFaq` HTML on `/en/` with idempotent `commerce.js`; docs [`GEO_STACK.md`](docs/GEO_STACK.md), [`GEO_CITATION_PROMPTS.md`](docs/GEO_CITATION_PROMPTS.md). No root frontpage template edits.
+- **Max ROI activation** — default mode **WEEKLY**; hero CTA *Build weekly brief*; ops title *Build your weekly brief*; **Try sample data** fills Weekly form; empty output until first input; Copy CTA/AI tools disabled until input; **Copy & open** ChatGPT/Claude/Gemini (copy → toast → open); SOT `opsCenter.sampleCta` + `opsOutput.emptyCopyToast`; structure tests **151/151**; visual baselines for ops center refreshed.
+
 ### Changed
 
+- **EN copy audit remediation** — US English grammar/idiom/naming pass: fulfillment strategic display name → `CEO AI Strategy Playbook` (binary filenames unchanged); Strategy First-7 page map corrected (`20–21` / `26` / `5, 27`); refund idiom → `no-questions-asked`; Product FAQ → `Want the full Prompt Anatomy training?` (LT replace keys synced; `/en/` FAQPage JSON-LD preserved by tightening Organization schema replace); community title → `Running operations with AI?`; generator live + dormant EN prompts/rules/library; PDF body polish + `npm run pdf:assets` (21/43); visual baselines refreshed for copy wrap.
 - **QW1b entity footer** — footer affiliation line matches hub sibling memo §3: `Part of Prompt Anatomy · Training & checkout → promptanatomy.app` with UTM `utm_source=ceo&utm_medium=entity_footer&utm_campaign=ecosystem`; LT regression string synced; hub map / hero CTAs unchanged.
 - **IA slim v4 (PDF + FAQ + ops panel)** — PDF section deduped (removed compare strip, which-playbook line, per-card trust, delivery blurb, testimonials, publisher strip, card buyer-promise); single section trust row; `buyerFaq` 5→3; footer Product FAQ 6→3 (JSON-LD synced); `.ops-control-panel` card with mode tab icons; journey step 4 **Reuse templates**; structure tests **148/148**.
 

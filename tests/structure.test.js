@@ -476,9 +476,9 @@ function run() {
     assert(
       !html.includes('See playbooks ($9.99') &&
         html.includes('View playbooks') &&
-        html.includes('Open generator') &&
+        html.includes('Build weekly brief') &&
+        !html.includes('Open generator') &&
         !html.includes('data-copy-nav-playbooks-cta">CEO playbooks') &&
-        !html.includes('Build weekly brief') &&
         html.includes('data-copy-hero-primary-cta') &&
         html.includes('hero-use-cases') &&
         html.includes('trust-row--hero-inline') &&
@@ -491,6 +491,18 @@ function run() {
         !html.includes('hero-eyebrow') &&
         html.includes('hero-prompt-card__detail'),
       'IA v3: inline use cases in hero, no strip card, simplified preview'
+    )
+  ) {
+    passed++;
+  } else failed++;
+  if (
+    assert(
+      html.includes('id="sampleDataBtn"') &&
+        html.includes('data-copy-ops-sample-cta') &&
+        /class="mode-tab is-active"[^>]*id="tab-savaites"/.test(html) &&
+        html.includes('id="depthBadge">Fast</span>') &&
+        html.includes('Copy &amp; open ChatGPT'),
+      'Activation: Weekly default, sample CTA, Fast badge, Copy&open AI'
     )
   ) {
     passed++;
@@ -521,8 +533,10 @@ function run() {
       sotForOps &&
         sotForOps.copy &&
         sotForOps.copy.opsCenter && sotForOps.copy.opsCenter.title &&
+        sotForOps.copy.opsCenter.sampleCta &&
         sotForOps.copy.opsDepth && sotForOps.copy.opsDepth.tip &&
         sotForOps.copy.opsOutput && sotForOps.copy.opsOutput.emptyPlaceholder && sotForOps.copy.opsOutput.copiedToast &&
+        sotForOps.copy.hero && sotForOps.copy.hero.primaryCta === 'Build weekly brief' &&
         Array.isArray(sotForOps.copy.journeySteps) && sotForOps.copy.journeySteps.length === 4 &&
         sotForOps.copy.hero && sotForOps.copy.hero.useCasesLabel && sotForOps.copy.hero.preview &&
         !sotForOps.copy.opsCenter.value && !sotForOps.copy.opsCenter.intro && !sotForOps.copy.useCasesSection &&
@@ -618,8 +632,10 @@ function run() {
       robotsTxt &&
         robotsTxt.includes('Sitemap:') &&
         robotsTxt.includes('GPTBot') &&
+        robotsTxt.includes('OAI-SearchBot') &&
+        robotsTxt.includes('Claude-SearchBot') &&
         robotsTxt.includes('Disallow: /api/'),
-      'robots.txt GEO (Sitemap, GPTBot, /api/ disallow)'
+      'robots.txt GEO (Sitemap, GPTBot, OAI-SearchBot, Claude-SearchBot, /api/ disallow)'
     )
   ) {
     passed++;
@@ -627,8 +643,11 @@ function run() {
   const sitemapXml = readFile(path.join(__dirname, '..', 'sitemap.xml'));
   if (
     assert(
-      sitemapXml && sitemapXml.includes('/en/') && sitemapXml.indexOf('/lt/') === -1,
-      'sitemap.xml lists /en/ and excludes /lt/'
+      sitemapXml &&
+        sitemapXml.includes('/en/') &&
+        sitemapXml.indexOf('/lt/') === -1 &&
+        sitemapXml.indexOf('/success') === -1,
+      'sitemap.xml lists /en/ and excludes /lt/ and /success'
     )
   ) {
     passed++;
@@ -636,8 +655,27 @@ function run() {
   const llmsTxt = readFile(path.join(__dirname, '..', 'llms.txt'));
   if (
     assert(
-      llmsTxt && llmsTxt.includes('AI Operations Center') && llmsTxt.includes('promptanatomy.app'),
-      'llms.txt summary and hub link'
+      llmsTxt &&
+        llmsTxt.includes('# AI Operations Center') &&
+        llmsTxt.includes('promptanatomy.app') &&
+        llmsTxt.includes('## Optional') &&
+        llmsTxt.indexOf('Do not crawl') === -1 &&
+        llmsTxt.includes('](https://www.promptanatomy.ceo/en/)'),
+      'llms.txt H1, blockquote map, Optional, no Do not crawl'
+    )
+  ) {
+    passed++;
+  } else failed++;
+  const llmsFullTxt = readFile(path.join(__dirname, '..', 'llms-full.txt'));
+  if (
+    assert(
+      llmsFullTxt &&
+        llmsFullTxt.includes('$9.99') &&
+        llmsFullTxt.includes('$19.99') &&
+        llmsFullTxt.includes('21') &&
+        llmsFullTxt.includes('43') &&
+        llmsFullTxt.includes('localStorage'),
+      'llms-full.txt playbook prices/pages and privacy model'
     )
   ) {
     passed++;
@@ -651,6 +689,37 @@ function run() {
         enEntryFile.includes('"@type": "Product"') &&
         enEntryFile.includes('"@type": "WebSite"'),
       'en/index.html GEO JSON-LD (Organization, Person, Product, WebSite)'
+    )
+  ) {
+    passed++;
+  } else failed++;
+  if (
+    assert(
+      enEntryFile &&
+        enEntryFile.includes('/assets/pdf-covers/operating.png') &&
+        enEntryFile.includes('/assets/pdf-covers/strategic.png') &&
+        enEntryFile.includes('License and team use') &&
+        enEntryFile.includes('#buyer-faq'),
+      'en/index.html Product cover images + buyer FAQ JSON-LD'
+    )
+  ) {
+    passed++;
+  } else failed++;
+  if (
+    assert(
+      enEntryFile &&
+        enEntryFile.includes('id="buyer-faq-license"') &&
+        enEntryFile.includes('class="buyer-faq-item"') &&
+        (enEntryFile.match(/id="buyer-faq-license"/g) || []).length === 1,
+      'en/index.html SSR buyer FAQ HTML (single license item)'
+    )
+  ) {
+    passed++;
+  } else failed++;
+  if (
+    assert(
+      html && html.includes('data-buyer-faq-list></div>') && html.indexOf('id="buyer-faq-license"') === -1,
+      'root index.html buyer FAQ left empty for client fill (no SSR)'
     )
   ) {
     passed++;
@@ -713,6 +782,26 @@ function run() {
   else failed++;
   if (assert(fulfillmentLib && fulfillmentLib.includes("id: 'strategic'") && fulfillmentLib.includes('1999'), 'fulfillment.js strategic + 1999 cent fallback')) passed++;
   else failed++;
+  if (
+    assert(
+      fulfillmentLib &&
+        fulfillmentLib.includes('CEO AI Strategy Playbook') &&
+        !fulfillmentLib.includes('CEO Strategic AI Operating System'),
+      'fulfillment.js strategic display name is CEO AI Strategy Playbook'
+    )
+  ) {
+    passed++;
+  } else failed++;
+  if (
+    assert(
+      sot &&
+        Array.isArray(sot.buyerFaq) &&
+        sot.buyerFaq.some((item) => item && typeof item.a === 'string' && item.a.includes('no-questions-asked')),
+      'buyerFaq refund answer uses no-questions-asked idiom'
+    )
+  ) {
+    passed++;
+  } else failed++;
   if (assert(fs.existsSync(path.join(__dirname, '..', 'api', 'stripe-webhook.js')), 'api/stripe-webhook.js')) passed++;
   else failed++;
   if (assert(fs.existsSync(path.join(__dirname, '..', 'api', 'download.js')), 'api/download.js')) passed++;

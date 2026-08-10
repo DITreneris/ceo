@@ -30,6 +30,54 @@
     <meta name="twitter:site" content="@promptanatomy">
 
     <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "AI Operations Center",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "description": "A 5-minute operations prompt generator for CEOs and COOs that turns KPIs and context into a copy-ready operations review prompt.",
+      "url": "https://www.promptanatomy.ceo/en/",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Do you store my data?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Saved sessions are stored locally in your browser (localStorage). This page does not upload your inputs to a server."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between Fast, Deep, and Board?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Fast gives a short prioritized answer, Deep adds analysis and rationale, and Board formats a concise executive summary with risks and actions."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Want the full Prompt Anatomy training?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Explore the complete Prompt Anatomy training and Hub modules at https://www.promptanatomy.app/"
+          }
+        }
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Organization",
@@ -117,7 +165,7 @@
   "@type": "Product",
   "name": "CEO AI Operations Playbook",
   "description": "Run a practical CEO/COO AI operating cadence in one week: daily priorities, weekly decisions, owner/deadline discipline, fact-based reflection, and CEO quick picks for 2-minute decisions.",
-  "image": "https://www.promptanatomy.ceo/assets/og/og-cover.png",
+  "image": "https://www.promptanatomy.ceo/assets/pdf-covers/operating.png",
   "brand": {
     "@type": "Brand",
     "name": "Prompt Anatomy"
@@ -172,7 +220,7 @@
   "@type": "Product",
   "name": "CEO AI Strategy Playbook",
   "description": "Turn AI from random prompting into a board-ready executive decision system: strategy prompts, finance checks, risk review, ownership gates, 30/90-day implementation, and strategic shortcuts for 2-minute decisions.",
-  "image": "https://www.promptanatomy.ceo/assets/og/og-cover.png",
+  "image": "https://www.promptanatomy.ceo/assets/pdf-covers/strategic.png",
   "brand": {
     "@type": "Brand",
     "name": "Prompt Anatomy"
@@ -225,7 +273,7 @@
 {
   "@context": "https://schema.org",
   "@type": "HowTo",
-  "name": "Turn scattered KPIs into a clear weekly CEO brief with AI Operations Center",
+  "name": "Turn scattered KPIs into a clear weekly CEO brief with the AI Operations Center",
   "description": "Use the free CEO/COO operating brief builder: pick a mode, set depth, fill KPIs, copy the structured prompt into ChatGPT, Claude, or Gemini.",
   "step": [
     {
@@ -245,6 +293,39 @@
       "position": 3,
       "name": "Copy and run in your AI tool",
       "text": "Copy the CEO-ready operating brief and paste the structured prompt into ChatGPT, Claude, or Gemini."
+    }
+  ]
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "@id": "https://www.promptanatomy.ceo/en/#buyer-faq",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "License and team use?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Executive License covers your organization for internal use by you and your leadership team (COO, CFO, department heads). Print for internal meetings; share short excerpts with board or advisors. Do not email the full PDF, post on intranet, or redistribute publicly."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What if I am not satisfied?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Reply to your Stripe receipt within 14 days for a no-questions-asked refund. We approve through Stripe and revoke the download link."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What if I lose the download email?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "After checkout you get a Stripe receipt plus a separate download email (link valid 7 days). Email info@promptanatomy.app from the address you used to buy and we resend anytime."
+      }
     }
   ]
 }
@@ -281,7 +362,7 @@
                     <h1 data-copy-hero-headline>Turn scattered KPIs into a clear weekly CEO brief</h1>
                     <p class="header-lead" data-copy-hero-lead>Add KPIs, blockers, and context.<br>Get structured priorities in 5 minutes.</p>
                     <div class="header-cta">
-                        <a href="#operationsCenter" class="cta-button btn btn--primary" data-copy-hero-primary-cta aria-label="Open generator in operations center">Open generator</a>
+                        <a href="#operationsCenter" class="cta-button btn btn--primary" data-copy-hero-primary-cta aria-label="Build weekly brief in operations center">Build weekly brief</a>
                         <a href="#pdf-guides" class="btn btn--secondary cta-button-outline" data-copy-hero-secondary-cta aria-label="View PDF playbooks">View playbooks ↓</a>
                         <p class="header-cta-meta" data-copy-hero-meta>Free · No account · ~5 min</p>
                         <p class="hero-use-cases">
@@ -315,7 +396,8 @@
         <!-- OPERATIONS CENTER -->
         <section class="ops-center" id="operationsCenter">
             <div class="ops-center-header">
-                <h2 class="ops-center-title" data-copy-ops-title>Add your context</h2>
+                <h2 class="ops-center-title" data-copy-ops-title>Build your weekly brief</h2>
+                <button type="button" class="btn btn--secondary ops-sample-btn" id="sampleDataBtn" data-copy-ops-sample-cta aria-label="Fill the weekly form with sample CEO data">Try sample data</button>
             </div>
             <nav class="ops-journey-steps ops-journey-steps--compact" aria-label="Work steps">
                 <ol>
@@ -329,7 +411,7 @@
             <div class="ops-control-panel">
             <!-- Mode Tabs -->
             <div class="mode-tabs" role="tablist" aria-label="Mode selection">
-                <button type="button" class="mode-tab is-active" role="tab" id="tab-master" aria-selected="true" aria-controls="form-master" data-mode="MASTER">
+                <button type="button" class="mode-tab" role="tab" id="tab-master" aria-selected="false" aria-controls="form-master" data-mode="MASTER">
                     <i data-lucide="target" class="icon icon--sm mode-tab-icon" aria-hidden="true"></i>
                     <span class="mode-tab-label">STRATEGIC</span>
                     <span class="mode-tab-desc">Strategic context</span>
@@ -339,7 +421,7 @@
                     <span class="mode-tab-label">DAILY</span>
                     <span class="mode-tab-desc">Yesterday's operations</span>
                 </button>
-                <button type="button" class="mode-tab" role="tab" id="tab-savaites" aria-selected="false" aria-controls="form-savaites" data-mode="SAVAITES">
+                <button type="button" class="mode-tab is-active" role="tab" id="tab-savaites" aria-selected="true" aria-controls="form-savaites" data-mode="SAVAITES">
                     <i data-lucide="calendar-days" class="icon icon--sm mode-tab-icon" aria-hidden="true"></i>
                     <span class="mode-tab-label">WEEKLY</span>
                     <span class="mode-tab-desc">Projects and runway</span>
@@ -370,7 +452,7 @@
                 <div class="ops-form" id="opsForm">
 
                     <!-- MASTER Form -->
-                    <div id="form-master" role="tabpanel" aria-labelledby="tab-master">
+                    <div id="form-master" role="tabpanel" aria-labelledby="tab-master" hidden>
                         <div class="ops-form-section">
                             <div class="ops-form-section-title">
                                 <i data-lucide="target" class="icon icon--sm"></i> Strategic context
@@ -454,7 +536,7 @@
                     </div>
 
                     <!-- SAVAITĖS Form -->
-                    <div id="form-savaites" role="tabpanel" aria-labelledby="tab-savaites" hidden>
+                    <div id="form-savaites" role="tabpanel" aria-labelledby="tab-savaites">
                         <div class="ops-form-section">
                             <div class="ops-form-section-title">
                                 <i data-lucide="bar-chart-3" class="icon icon--sm"></i> Weekly overview
@@ -498,31 +580,31 @@
                                 <span class="pulse"></span>
                                 <span>Generated prompt</span>
                             </div>
-                            <span class="ops-output-depth" id="depthBadge">Greita</span>
-                            <button class="ops-output-copy" id="outputCopyBtn" aria-label="Copy generated prompt">
+                            <span class="ops-output-depth" id="depthBadge">Fast</span>
+                            <button class="ops-output-copy" id="outputCopyBtn" aria-label="Copy generated prompt" disabled>
                                 <i data-lucide="copy" class="icon icon--md"></i>
                             </button>
                         </div>
-                        <textarea class="ops-output-text" id="opsOutput" rows="10" placeholder="Your CEO-ready operating brief appears here as you fill the form." aria-label="Generated executive brief – you can edit" aria-live="polite"></textarea>
+                        <textarea class="ops-output-text" id="opsOutput" rows="10" placeholder="Start typing or try sample data — your CEO brief builds here." aria-label="Generated executive brief – you can edit" aria-live="polite"></textarea>
                         <div class="ops-output-footer">
                             <p class="ops-output-chars">Characters: <strong id="outputCharCount">0</strong></p>
                             <p>Edit here if needed, then copy and paste into ChatGPT, Claude, or Gemini.</p>
                             <p class="ops-output-upsell" data-copy-ops-upsell>Want the full weekly cadence in print? <a href="#pdf-guides">See playbooks</a>.</p>
-                            <button class="ops-output-cta" id="outputCopyCta" aria-label="Copy prompt">
+                            <button class="ops-output-cta" id="outputCopyCta" aria-label="Copy prompt" disabled>
                                 <span>Copy prompt</span>
                                 <i data-lucide="arrow-right" class="icon icon--md"></i>
                             </button>
                             <div class="ops-tool-launchers" role="group" aria-label="AI tool selection">
                                 <p class="ops-tool-launchers-label">Continue in:</p>
                                 <div class="ops-tool-launchers-list" role="group" aria-label="Open an AI tool">
-                                    <button type="button" class="ops-tool-btn" data-ai-tool="chatgpt" aria-label="Open ChatGPT in new tab">
-                                        Open ChatGPT
+                                    <button type="button" class="ops-tool-btn" data-ai-tool="chatgpt" aria-label="Copy prompt and open ChatGPT in new tab">
+                                        Copy &amp; open ChatGPT
                                     </button>
-                                    <button type="button" class="ops-tool-btn" data-ai-tool="claude" aria-label="Open Claude in new tab">
-                                        Open Claude
+                                    <button type="button" class="ops-tool-btn" data-ai-tool="claude" aria-label="Copy prompt and open Claude in new tab">
+                                        Copy &amp; open Claude
                                     </button>
-                                    <button type="button" class="ops-tool-btn" data-ai-tool="gemini" aria-label="Open Gemini in new tab">
-                                        Open Gemini
+                                    <button type="button" class="ops-tool-btn" data-ai-tool="gemini" aria-label="Copy prompt and open Gemini in new tab">
+                                        Copy &amp; open Gemini
                                     </button>
                                 </div>
                             </div>
@@ -612,7 +694,7 @@
 
             <section class="pdf-guides-faq buyer-faq" id="pdf-guides-faq" aria-label="Purchase FAQ">
                 <h3 data-commerce-pdf-faq-heading>Questions before you buy</h3>
-                <div data-buyer-faq-list></div>
+                <div data-buyer-faq-list><details class="buyer-faq-item" id="buyer-faq-license"><summary class="buyer-faq-q">License and team use?</summary><div class="buyer-faq-a">Executive License covers your organization for internal use by you and your leadership team (COO, CFO, department heads). Print for internal meetings; share short excerpts with board or advisors. Do not email the full PDF, post on intranet, or redistribute publicly.</div></details><details class="buyer-faq-item" id="buyer-faq-refund"><summary class="buyer-faq-q">What if I am not satisfied?</summary><div class="buyer-faq-a">Reply to your Stripe receipt within 14 days for a no-questions-asked refund. We approve through Stripe and revoke the download link.</div></details><details class="buyer-faq-item" id="buyer-faq-lost-email"><summary class="buyer-faq-q">What if I lose the download email?</summary><div class="buyer-faq-a">After checkout you get a Stripe receipt plus a separate download email (link valid 7 days). Email info@promptanatomy.app from the address you used to buy and we resend anytime.</div></details></div>
             </section>
         </section>
 
@@ -667,7 +749,7 @@
 
         <!-- COMMUNITY -->
         <section class="community" id="community" aria-labelledby="community-title">
-            <h2 id="community-title" data-copy-community-title>Running AI like operations?<br><span class="community-subtitle" data-copy-community-subtitle>Go further with Prompt Anatomy.</span></h2>
+            <h2 id="community-title" data-copy-community-title>Running operations with AI?<br><span class="community-subtitle" data-copy-community-subtitle>Go further with Prompt Anatomy.</span></h2>
             <a href="https://t.me/prompt_anatomy" class="btn btn--primary community-cta-primary" target="_blank" rel="noopener noreferrer" aria-label="Open Prompt Anatomy Telegram community in new tab">Join Telegram community</a>
             <a href="https://www.promptanatomy.app/" class="btn btn--secondary community-cta-secondary" target="_blank" rel="noopener noreferrer" aria-label="Explore the full Prompt Anatomy AI OS – all Hub modules (opens in new tab)">Explore all Hub modules →</a>
         </section>
@@ -703,7 +785,7 @@
                     <div class="footer-faq-a">Fast gives a short prioritized answer, Deep adds analysis and rationale, and Board formats a concise executive summary with risks and actions.</div>
                 </details>
                 <details class="footer-faq-item">
-                    <summary class="footer-faq-q">Want the full AI Operating System?</summary>
+                    <summary class="footer-faq-q">Want the full Prompt Anatomy training?</summary>
                     <div class="footer-faq-a">Explore the complete Prompt Anatomy training and all Hub modules at <a href="https://www.promptanatomy.app/" target="_blank" rel="noopener noreferrer">promptanatomy.app</a>.</div>
                 </details>
             </div>

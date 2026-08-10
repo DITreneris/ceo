@@ -15,6 +15,8 @@ for (const viewport of viewports) {
 
       await expect(page.locator('#operationsCenter')).toBeVisible();
       await expect(page.locator('#opsOutput')).toBeVisible();
+      await expect(page.locator('#tab-savaites')).toHaveAttribute('aria-selected', 'true');
+      await expect(page.locator('#opsOutput')).toHaveValue('');
 
       await page.locator('#tab-master').focus();
       await page.keyboard.press('ArrowRight');
@@ -26,8 +28,10 @@ for (const viewport of viewports) {
       await expect(page.locator('[data-depth="GILU"]')).toHaveClass(/is-active/);
       await expect(page.locator('#depthBadge')).toHaveText(/Deep/i);
 
+      await page.click('#sampleDataBtn');
       const outputText = await page.locator('#opsOutput').inputValue();
       expect(outputText.length).toBeGreaterThan(40);
+      expect(outputText).toMatch(/QUESTION|WEEKLY|Weekly/i);
 
       const charCount = Number(await page.locator('#outputCharCount').innerText());
       expect(charCount).toBeGreaterThan(40);

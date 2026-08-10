@@ -10,6 +10,7 @@
     .top-nav-copy-btn { font-size: var(--text-nav); padding: 0 12px; }
     .top-nav-actions { margin-left: auto; }
     .header { padding: 28px 24px; }
+    .ops-sample-btn { margin-left: 0; width: 100%; }
     .header-badges .badge-spinoff { display: none; }
     .header-badges .badge { font-size: var(--text-2xs); padding: 4px 10px; min-height: 32px; }
     .header h1 { font-size: var(--text-3xl); }

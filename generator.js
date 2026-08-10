@@ -100,7 +100,7 @@
             label: locale === 'lt' ? 'Gilu' : 'Deep',
             instruction: locale === 'lt'
                 ? 'Pateik išsamią analizę su kontekstu ir pagrindimu. Kiekvienam punktui nurodyk, kodėl svarbu ir koks poveikis. Remkis skaičiais.'
-                : 'Provide deep analysis with context and reasoning. For each point explain why it matters and impact. Use numbers.',
+                : 'Provide deep analysis with context and reasoning. For each point, explain why it matters and what the impact is. Use numbers.',
             format: locale === 'lt'
                 ? '3 prioritetai (su naudos pagrindimu) + 5 veiksmai (su terminais) + 2 rizikos (su mažinimo planais) + 1 ilgalaikė rekomendacija'
                 : '3 priorities (with rationale) + 5 actions (with timelines) + 2 risks (with mitigation) + 1 long-term recommendation'
@@ -112,7 +112,7 @@
                 : 'Prepare a board-level summary. Facts and numbers only. Structure: Summary -> Finance -> Actions -> Risks. Formal tone.',
             format: locale === 'lt'
                 ? 'Santrauka (3 sakiniai) + Finansinė padėtis (lentelė) + TOP 3 prioritetai + 5 veiksmai su rodikliais + Rizikų matrica + Rekomendacija valdybai'
-                : 'Summary (3 sentences) + Financial status (table) + TOP 3 priorities + 5 KPI actions + Risk matrix + Board recommendation'
+                : 'Summary (3 sentences) + Financial status (table) + Top 3 priorities + 5 actions with KPIs + Risk matrix + Board recommendation'
         }
     };
 
@@ -165,14 +165,14 @@
             title: 'Unit economics',
             desc: 'Unit economics analysis',
             icon: 'calculator',
-            prompt: 'You are a finance analyst. My business metrics:\n- Average revenue per customer (ARPU): [amount]\n- Customer acquisition cost (CAC): [amount]\n- Lifetime value (LTV): [amount]\n- Gross margin: [%]\n\nDo a unit economics analysis:\n1. Evaluate the LTV/CAC ratio\n2. Estimate payback period\n3. Name highest-leverage drivers (ARPU up, CAC down, retention up)\n4. Suggest 3 specific actions'
+            prompt: 'You are a financial analyst. My business metrics:\n- Average revenue per customer (ARPU): [amount]\n- Customer acquisition cost (CAC): [amount]\n- Lifetime value (LTV): [amount]\n- Gross margin: [%]\n\nRun a unit economics analysis:\n1. Evaluate the LTV/CAC ratio\n2. Estimate payback period\n3. Identify the highest-leverage drivers (raise ARPU, lower CAC, improve retention)\n4. Suggest 3 specific actions'
         },
         {
             id: 'augimo_svertai',
             title: 'Growth levers',
             desc: 'Identify growth opportunities',
             icon: 'trending-up',
-            prompt: 'You are a growth strategist. My business context:\n- Current monthly revenue: [amount]\n- Target in [period]: [amount]\n- Current channels: [channels]\n- Conversion rate: [%]\n\nDefine top growth levers:\n1. Top 3 levers with highest impact potential\n2. For each: what to do, expected impact, and timing\n3. Quick wins (up to 2 weeks)\n4. Key risks and dependencies'
+            prompt: 'You are a growth strategist. My business context:\n- Current monthly revenue: [amount]\n- Target for [period]: [amount]\n- Current channels: [channels]\n- Conversion rate: [%]\n\nDefine top growth levers:\n1. Top 3 levers with highest impact potential\n2. For each: what to do, expected impact, and timing\n3. Quick wins (up to 2 weeks)\n4. Key risks and dependencies'
         },
         {
             id: 'cash_runway',
@@ -200,7 +200,7 @@
             title: 'CEO reflection',
             desc: 'Review decision quality',
             icon: 'brain',
-            prompt: 'You are my strategic coach. Help me run a fact-based weekly CEO reflection.\n\nContext:\n- Weekly goal: [goal]\n- Key decisions: [decisions]\n- What went well: [strengths]\n- Where I got stuck: [weaknesses]\n- Team signals: [facts]\n- Financial outcome: [revenue / expenses / margin]\n\nAnswer in 4 parts:\n1. 5 precise questions I avoid but must answer\n2. 3 main CEO decision risks in this situation\n3. 3 decisions for next week with clear priority (A/B/C)\n4. One personal 7-day discipline with biggest impact'
+            prompt: 'You are my strategic coach. Help me run a fact-based weekly CEO reflection.\n\nContext:\n- Weekly goal: [goal]\n- Key decisions: [decisions]\n- What went well: [strengths]\n- Where I got stuck: [weaknesses]\n- Team signals: [facts]\n- Financial outcome: [revenue / expenses / margin]\n\nAnswer in 4 parts:\n1. 5 precise questions that I avoid but must answer\n2. 3 main decision risks for a CEO in this situation\n3. 3 decisions for next week with clear priority (A/B/C)\n4. One personal 7-day discipline with the biggest impact'
         }
     ];
 
@@ -234,20 +234,29 @@
         { text: 'Kiekvienas veiksmas turi terminą ir atsakingą asmenį', icon: 'check-circle' },
         { text: 'Savaitės peržiūra: kas pavyko, kas nepavyko, ką keičiame', icon: 'check-circle' }
     ] : [
-        { text: 'Every decision must include a clear business value case', icon: 'check-circle' },
-        { text: 'Cash flow > profit > revenue: this is the decision sequence', icon: 'check-circle' },
-        { text: 'Runway < 6 months = red zone, require action plan', icon: 'alert-triangle' },
+        { text: 'Every decision must include a clear business case', icon: 'check-circle' },
+        { text: 'Cash flow > profit > revenue: use this priority order', icon: 'check-circle' },
+        { text: 'Runway < 6 months = red zone; requires an action plan', icon: 'alert-triangle' },
         { text: 'Every week must have only 3 priorities', icon: 'check-circle' },
         { text: 'Use 5 Whys to diagnose root causes', icon: 'check-circle' },
         { text: 'Board report: facts and numbers only', icon: 'check-circle' },
         { text: 'Each action needs an owner and deadline', icon: 'check-circle' },
-        { text: 'Weekly review: what worked, failed, and changes next', icon: 'check-circle' }
+        { text: 'Weekly review: what worked, what failed, and what to change next', icon: 'check-circle' }
     ];
 
     /* ===== STATE ===== */
 
-    var activeMode = 'MASTER';
+    var activeMode = 'SAVAITES';
     var activeDepth = 'GREITA';
+
+    var WEEKLY_SAMPLE = {
+        s_pajamos: '$12,500',
+        s_sanaudos: '$9,800',
+        s_likutis: '$115,000',
+        projektai: 'New product launch (70%), CRM migration (45%), SEO (20%)',
+        s_pipeline: '3 proposals pending, 2 demos scheduled',
+        question: 'Which projects should be prioritized and what are the top 3 actions this week?'
+    };
     var formData = {};
 
     function initFormData() {
@@ -295,6 +304,72 @@
         stickyCopy.disabled = !shouldShow;
     }
 
+    function syncCopyEnabled() {
+        var enabled = hasAnyFormInput();
+        var copyBtn = document.getElementById('outputCopyBtn');
+        var copyCta = document.getElementById('outputCopyCta');
+        if (copyBtn) copyBtn.disabled = !enabled;
+        if (copyCta) copyCta.disabled = !enabled;
+        document.querySelectorAll('[data-ai-tool]').forEach(function (btn) {
+            btn.disabled = !enabled;
+        });
+        updateStickyCopyVisibility();
+    }
+
+    function setFieldValue(id, value) {
+        var el = document.getElementById(id);
+        if (!el) return;
+        el.value = value;
+    }
+
+    function fillSampleData() {
+        switchMode('SAVAITES');
+        switchDepth('GREITA');
+
+        var sample = WEEKLY_SAMPLE;
+        if (locale === 'lt') {
+            sample = {
+                s_pajamos: '12 500 €',
+                s_sanaudos: '9 800 €',
+                s_likutis: '115 000 €',
+                projektai: 'Naujo produkto paleidimas (70%), CRM migracija (45%), SEO (20%)',
+                s_pipeline: '3 pasiūlymai laukia atsakymo, 2 demo suplanuoti',
+                question: 'Kuriuos projektus prioritetizuoti ir kokie 3 svarbiausi šios savaitės veiksmai?'
+            };
+        }
+
+        setFieldValue('s-pajamos', sample.s_pajamos);
+        setFieldValue('s-sanaudos', sample.s_sanaudos);
+        setFieldValue('s-likutis', sample.s_likutis);
+        setFieldValue('s-projektai', sample.projektai);
+        setFieldValue('s-pipeline', sample.s_pipeline);
+        setFieldValue('s-question', sample.question);
+
+        formData.SAVAITES = {
+            s_pajamos: sample.s_pajamos,
+            s_sanaudos: sample.s_sanaudos,
+            s_likutis: sample.s_likutis,
+            projektai: sample.projektai,
+            s_pipeline: sample.s_pipeline,
+            question: sample.question
+        };
+
+        updateOutput();
+        showToastIfAvailable(uiText('Pavyzdiniai duomenys įrašyti. Redaguokite arba kopijuokite.', 'Sample data loaded. Edit or copy your brief.'));
+        var firstField = document.getElementById('s-pajamos');
+        if (firstField) {
+            firstField.focus();
+        }
+    }
+
+    function focusWeeklyBriefEntry() {
+        var field = document.getElementById('s-pajamos');
+        if (!field) return;
+        if (activeMode !== 'SAVAITES') switchMode('SAVAITES');
+        field.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        field.focus();
+    }
+
     function uiText(lt, en) {
         return locale === 'lt' ? lt : en;
     }
@@ -328,21 +403,21 @@
         if (brandTextShort) brandTextShort.textContent = uiText('DI OC', 'AI OC');
 
         var h1 = document.querySelector('[data-copy-hero-headline]');
-        if (h1) h1.textContent = uiText('DI Operacinis Centras', 'Turn KPIs into weekly priorities');
+        if (h1) h1.textContent = uiText('DI Operacinis Centras', 'Turn scattered KPIs into a clear weekly CEO brief');
         var hLead = document.querySelector('[data-copy-hero-lead]');
         if (hLead) {
             hLead.textContent = uiText(
                 'Įvesk pajamas, rezervą ir kontekstą. Gauk paruoštą CEO promptą maždaug per 5 min.',
-                'Enter revenue, runway, and context. Get a CEO-ready prompt in about 5 minutes.'
+                'Add KPIs, blockers, and context. Get structured priorities in 5 minutes.'
             );
         }
 
         var journeySteps = document.querySelectorAll('.ops-journey-step');
         var stepLabels = [
-            uiText('Režimas', 'Mode'),
-            uiText('Forma', 'Form'),
-            uiText('Rezultatas', 'Result'),
-            uiText('Biblioteka', 'Library')
+            uiText('Režimas', 'Choose mode'),
+            uiText('Forma', 'Add context'),
+            uiText('Rezultatas', 'Generate prompt'),
+            uiText('Biblioteka', 'Reuse templates')
         ];
         journeySteps.forEach(function (el, i) {
             if (stepLabels[i]) {
@@ -363,7 +438,7 @@
         var ctaPrimary = document.querySelector('.header-cta .cta-button');
         if (ctaPrimary) {
             ctaPrimary.textContent = uiText('Gauti savaitės prioritetus', 'Get weekly priorities');
-            ctaPrimary.setAttribute('aria-label', uiText('Gauti savaitės prioritetus operaciniame centre', 'Get weekly priorities in operations center'));
+            ctaPrimary.setAttribute('aria-label', uiText('Gauti savaitės prioritetus operaciniame centre', 'Get weekly priorities in the operations center'));
         }
         var ctaSecondary = document.querySelector('.header-cta .cta-button-outline');
         if (ctaSecondary) {
@@ -488,8 +563,8 @@
         var opsOutput = document.getElementById('opsOutput');
         if (opsOutput) {
             var emptyText = uiText(
-                'Tavo CEO užklausa atsiras čia, kai pildysi formą.',
-                'Your CEO-ready prompt appears here as you fill the form.'
+                'Pradėk rašyti arba išbandyk pavyzdį — CEO brief atsiranda čia.',
+                'Start typing or try sample data — your CEO brief builds here.'
             );
             if (opsOutput.tagName === 'TEXTAREA') {
                 opsOutput.placeholder = emptyText;
@@ -503,13 +578,22 @@
         var toolLaunchersLabel = document.querySelector('.ops-tool-launchers-label');
         if (toolLaunchersLabel) toolLaunchersLabel.textContent = uiText('Nori tęsti analizę? Pasirink įrankį:', 'Continue in:');
         var toolBtns = document.querySelectorAll('.ops-tool-btn');
-        var toolNames = [uiText('Atidaryti ChatGPT', 'Open ChatGPT'), uiText('Atidaryti Claude', 'Open Claude'), uiText('Atidaryti Gemini', 'Open Gemini')];
+        var toolNames = [
+            uiText('Kopijuoti ir atidaryti ChatGPT', 'Copy & open ChatGPT'),
+            uiText('Kopijuoti ir atidaryti Claude', 'Copy & open Claude'),
+            uiText('Kopijuoti ir atidaryti Gemini', 'Copy & open Gemini')
+        ];
         toolBtns.forEach(function (btn, i) {
             if (toolNames[i]) {
                 btn.textContent = toolNames[i];
                 btn.setAttribute('aria-label', toolNames[i] + ' ' + uiText('naujame lange', 'in new tab'));
             }
         });
+        var sampleBtn = document.getElementById('sampleDataBtn');
+        if (sampleBtn) {
+            sampleBtn.textContent = uiText('Išbandyti pavyzdį', 'Try sample data');
+            sampleBtn.setAttribute('aria-label', uiText('Užpildyti savaitės formą pavyzdiniais duomenimis', 'Fill the weekly form with sample CEO data'));
+        }
         var toolLaunchersGroup = document.querySelector('.ops-tool-launchers[role="group"]');
         if (toolLaunchersGroup) toolLaunchersGroup.setAttribute('aria-label', uiText('DI įrankių pasirinkimas', 'AI tool selection'));
         var sessionList = document.getElementById('sessionList');
@@ -551,7 +635,7 @@
         if (communityTitle) {
             communityTitle.innerHTML = uiText(
                 'Valdai operacijas su DI?<br><span class="community-subtitle" data-copy-community-subtitle>Eik toliau su Promptų anatomija.</span>',
-                'Running AI like operations?<br><span class="community-subtitle" data-copy-community-subtitle>Go further with Prompt Anatomy.</span>'
+                'Running operations with AI?<br><span class="community-subtitle" data-copy-community-subtitle>Go further with Prompt Anatomy.</span>'
             );
         }
         var communityPrimary = document.querySelector('.community-cta-primary');
@@ -576,7 +660,7 @@
         var footerSummary = document.querySelector('[data-copy-footer-summary]');
         if (footerSummary) footerSummary.textContent = uiText(
             'KPI į savaitės prioritetus—nemokamas generatorius ir optional CEO playbooks.',
-            'Turn KPIs into weekly priorities—free generator plus optional CEO playbooks.'
+            'Weekly CEO operating brief—free builder plus optional playbooks.'
         );
         var footerProductLink = document.querySelector('[data-copy-footer-product-link]') || document.querySelector('.footer-product-link');
         if (footerProductLink) {
@@ -641,7 +725,7 @@
                 '<details class="footer-faq-item"><summary class="footer-faq-q">Nori pilnos DI operacinės sistemos?</summary><div class="footer-faq-a">Pilną Promptų anatomijos mokymą ir visus Hub modulius rasite <a href="https://www.promptanatomy.app/" target="_blank" rel="noopener noreferrer">promptanatomy.app</a>.</div></details>',
                 '<details class="footer-faq-item"><summary class="footer-faq-q">Do you store my data?</summary><div class="footer-faq-a">Saved sessions are stored locally in your browser (localStorage). This page does not upload your inputs to a server.</div></details>' +
                 '<details class="footer-faq-item"><summary class="footer-faq-q">What is the difference between Fast, Deep, and Board?</summary><div class="footer-faq-a">Fast gives a short prioritized answer, Deep adds analysis and rationale, and Board formats a concise executive summary with risks and actions.</div></details>' +
-                '<details class="footer-faq-item"><summary class="footer-faq-q">Want the full AI Operating System?</summary><div class="footer-faq-a">Explore the complete Prompt Anatomy training and all Hub modules at <a href="https://www.promptanatomy.app/" target="_blank" rel="noopener noreferrer">promptanatomy.app</a>.</div></details>'
+                '<details class="footer-faq-item"><summary class="footer-faq-q">Want the full Prompt Anatomy training?</summary><div class="footer-faq-a">Explore the complete Prompt Anatomy training and all Hub modules at <a href="https://www.promptanatomy.app/" target="_blank" rel="noopener noreferrer">promptanatomy.app</a>.</div></details>'
             );
         }
 
@@ -680,9 +764,9 @@
         var hasFinancials = isFilled(data.income) || isFilled(data.expenses) || isFilled(data.profit) || isFilled(data.cash) || isFilled(data.runway);
         if (hasFinancials) {
             parts.push(uiText('FINANSAI:', 'FINANCE:'));
-            if (isFilled(data.income)) parts.push(uiText('- Pajamos (mėn.): ', '- Revenue (month): ') + data.income);
-            if (isFilled(data.expenses)) parts.push(uiText('- Išlaidos (mėn.): ', '- Expenses (month): ') + data.expenses);
-            if (isFilled(data.profit)) parts.push(uiText('- Pelnas (mėn.): ', '- Profit (month): ') + data.profit);
+            if (isFilled(data.income)) parts.push(uiText('- Pajamos (mėn.): ', '- Revenue (monthly): ') + data.income);
+            if (isFilled(data.expenses)) parts.push(uiText('- Išlaidos (mėn.): ', '- Expenses (monthly): ') + data.expenses);
+            if (isFilled(data.profit)) parts.push(uiText('- Pelnas (mėn.): ', '- Profit (monthly): ') + data.profit);
             if (isFilled(data.cash)) parts.push(uiText('- Grynieji likučiai: ', '- Cash balance: ') + data.cash);
             if (isFilled(data.runway)) parts.push(uiText('- Veikimo rezervas (mėn.): ', '- Runway (months): ') + data.runway);
             parts.push('');
@@ -715,11 +799,11 @@
 
         parts.push(uiText(
             'ROLĖ: Esi operacijų analitikas, padedantis CEO/COO įvertinti vakarykštę dieną.',
-            'ROLE: You are an operations analyst helping CEO/COO evaluate yesterday.'
+            'ROLE: You are an operations analyst helping a CEO/COO evaluate yesterday\'s performance.'
         ));
         parts.push('');
 
-        parts.push(uiText('VAKARYKŠTĖS DUOMENYS:', 'YESTERDAY DATA:'));
+        parts.push(uiText('VAKARYKŠTĖS DUOMENYS:', 'YESTERDAY\'S DATA:'));
         if (isFilled(data.v_pajamos)) parts.push(uiText('- Pajamos: ', '- Revenue: ') + data.v_pajamos);
         if (isFilled(data.v_klientai)) parts.push(uiText('- Nauji klientai / užklausos: ', '- New clients / leads: ') + data.v_klientai);
         if (isFilled(data.v_islaidos)) parts.push(uiText('- Išlaidos: ', '- Expenses: ') + data.v_islaidos);
@@ -735,7 +819,7 @@
         } else {
             parts.push(uiText(
                 'KLAUSIMAS: Ką šiandien turėčiau daryti kitaip, remiantis vakarykščiais duomenimis?',
-                'QUESTION: What should I do differently today based on yesterday data?'
+                'QUESTION: What should I do differently today based on yesterday\'s data?'
             ));
         }
 
@@ -804,7 +888,10 @@
         var el = document.getElementById('opsOutput');
         if (!el) return;
 
-        var prompt = getGeneratedPrompt();
+        var prompt = '';
+        if (hasAnyFormInput()) {
+            prompt = getGeneratedPrompt();
+        }
 
         el.classList.remove('is-refreshing');
         void el.offsetWidth;
@@ -822,13 +909,13 @@
         var depthBadge = document.getElementById('depthBadge');
         if (depthBadge) depthBadge.textContent = DEPTH_LEVELS[activeDepth].label;
 
-        updateStickyCopyVisibility();
+        syncCopyEnabled();
     }
 
     /* ===== MODE SWITCHING ===== */
 
     function switchMode(newMode) {
-        if (!MODES[newMode] || newMode === activeMode) return;
+        if (!MODES[newMode]) return;
 
         activeMode = newMode;
 
@@ -1072,13 +1159,13 @@
                         '<i data-lucide="file-input" class="icon icon--sm"></i> ' + uiText('Taikyti formoje', 'Apply to form') +
                     '</button>' +
                     '<button type="button" class="library-btn" data-library-output-only="' + escapeHtml(item.id) + '">' +
-                        '<i data-lucide="file-output" class="icon icon--sm"></i> ' + uiText('Tik į išvestį', 'To output only') +
+                        '<i data-lucide="file-output" class="icon icon--sm"></i> ' + uiText('Tik į išvestį', 'Insert into output') +
                     '</button>' +
                     '<button type="button" class="library-btn" data-library-copy="' + escapeHtml(item.id) + '">' +
                         '<i data-lucide="copy" class="icon icon--sm"></i> ' + uiText('Kopijuoti', 'Copy') +
                     '</button>' +
                 '</div>' +
-                '<p class="library-card-hint">' + uiText('Įrašo į lauką „Pagrindinis klausimas DI“ – redaguokite formoje. „Tik į išvestį“ – tik šablonas į išvesties lauką.', 'Writes to the main AI question field - edit in form. "To output only" – template only into output.') + '</p>';
+                '<p class="library-card-hint">' + uiText('Įrašo į lauką „Pagrindinis klausimas DI“ – redaguokite formoje. „Tik į išvestį“ – tik šablonas į išvesties lauką.', 'Writes to the main AI question field—edit in the form. “Insert into output” inserts the template into the output field only.') + '</p>';
 
             grid.appendChild(card);
         });
@@ -1216,7 +1303,7 @@
                 msgEl.textContent = message;
             } else {
                 var fallback = toast.getAttribute('data-copy-ops-toast-default');
-                msgEl.textContent = fallback || uiText('Nukopijuota.', 'Prompt copied — paste into ChatGPT, Claude, or Gemini.');
+                msgEl.textContent = fallback || uiText('Nukopijuota.', 'Brief copied — paste the structured prompt into ChatGPT, Claude, or Gemini.');
             }
         }
         toast.classList.add('show');
@@ -1235,8 +1322,18 @@
         return el.tagName === 'TEXTAREA' ? el.value : (el.textContent || getGeneratedPrompt());
     }
 
+    function getEmptyCopyToast() {
+        var toast = document.getElementById('toast');
+        var fromAttr = toast && toast.getAttribute('data-copy-ops-empty-toast');
+        return fromAttr || uiText('Pirmiausia pridėk kontekstą arba išbandyk pavyzdį.', 'Add context or try sample data first.');
+    }
+
     function doCopyOutput() {
         var text = getCopyablePromptText();
+        if (!String(text || '').trim()) {
+            showToastIfAvailable(getEmptyCopyToast());
+            return false;
+        }
         if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
             navigator.clipboard.writeText(text).then(function () {
                 showToastIfAvailable();
@@ -1245,6 +1342,7 @@
             fallbackCopy(text);
             showToastIfAvailable();
         }
+        return true;
     }
 
     function openExternalTool(toolKey) {
@@ -1259,6 +1357,7 @@
         }
 
         if (!AI_TOOL_ALLOWED_HOSTS[parsed.hostname]) return;
+        if (!doCopyOutput()) return;
         window.open(parsed.toString(), '_blank', 'noopener,noreferrer');
     }
 
@@ -1293,8 +1392,8 @@
         var outputHelp = document.getElementById('opsOutput');
         if (outputHelp && outputHelp.tagName === 'TEXTAREA' && !outputHelp.placeholder) {
             outputHelp.placeholder = uiText(
-                'Tavo CEO užklausa atsiras čia, kai pildysi formą.',
-                'Your CEO-ready prompt appears here as you fill the form.'
+                'Pradėk rašyti arba išbandyk pavyzdį — CEO brief atsiranda čia.',
+                'Start typing or try sample data — your CEO brief builds here.'
             );
         }
 
@@ -1374,6 +1473,15 @@
         if (stickyCopy) stickyCopy.addEventListener('click', doCopyOutput);
         setupAiToolLaunchers();
 
+        var sampleBtn = document.getElementById('sampleDataBtn');
+        if (sampleBtn) sampleBtn.addEventListener('click', fillSampleData);
+
+        document.querySelectorAll('[data-copy-hero-primary-cta]').forEach(function (cta) {
+            cta.addEventListener('click', function () {
+                setTimeout(focusWeeklyBriefEntry, 0);
+            });
+        });
+
         // Sessions
         var saveBtn = document.getElementById('sessionSaveBtn');
         var clearBtn = document.getElementById('sessionClearBtn');
@@ -1390,6 +1498,6 @@
         switchMode(requestedMode);
         switchDepth(requestedDepth);
         updateOutput();
-        updateStickyCopyVisibility();
+        syncCopyEnabled();
     });
 })();

@@ -100,7 +100,7 @@
       "lead": "Add KPIs, blockers, and context.\nGet structured priorities in 5 minutes.",
       "ctaMeta": "Free · No account · ~5 min",
       "useCasesLabel": "Use cases:",
-      "primaryCta": "Open generator",
+      "primaryCta": "Build weekly brief",
       "secondaryCta": "View playbooks",
       "secondaryHref": "#pdf-guides",
       "preview": {
@@ -151,7 +151,9 @@
       }
     },
     "opsCenter": {
-      "title": "Add your context"
+      "title": "Build your weekly brief",
+      "sampleCta": "Try sample data",
+      "sampleAriaLabel": "Fill the weekly form with sample CEO data"
     },
     "nav": {
       "playbooksCta": "Playbooks",
@@ -161,8 +163,9 @@
       "tip": "Not sure? Start with Fast."
     },
     "opsOutput": {
-      "emptyPlaceholder": "Your CEO-ready operating brief appears here as you fill the form.",
-      "copiedToast": "Brief copied — paste the structured prompt into ChatGPT, Claude, or Gemini."
+      "emptyPlaceholder": "Start typing or try sample data — your CEO brief builds here.",
+      "copiedToast": "Brief copied — paste the structured prompt into ChatGPT, Claude, or Gemini.",
+      "emptyCopyToast": "Add context or try sample data first."
     },
     "journeySteps": [
       "Choose mode",
@@ -171,7 +174,7 @@
       "Reuse templates"
     ],
     "community": {
-      "title": "Running AI like operations?",
+      "title": "Running operations with AI?",
       "subtitle": "Go further with Prompt Anatomy."
     },
     "footer": {
@@ -252,12 +255,18 @@
         "OAI-SearchBot",
         "ChatGPT-User",
         "PerplexityBot",
+        "Perplexity-User",
         "ClaudeBot",
+        "Claude-SearchBot",
+        "Claude-User",
         "Claude-Web",
         "anthropic-ai",
         "Google-Extended",
         "Googlebot",
-        "Bingbot"
+        "Bingbot",
+        "Applebot-Extended",
+        "CCBot",
+        "meta-externalagent"
       ],
       "disallowPaths": [
         "/api/",
@@ -266,31 +275,39 @@
     },
     "llms": {
       "title": "AI Operations Center",
-      "summary": "Free CEO/COO weekly priorities prompt generator by Tomas Staniulis (Prompt Anatomy). Optional PDF playbooks from $9.99.",
+      "summary": "Free CEO/COO weekly operating brief builder by Tomas Staniulis (Prompt Anatomy). Optional PDF playbooks from $9.99.",
+      "ecosystem": [
+        {
+          "url": "https://www.promptanatomy.app/",
+          "label": "Prompt Anatomy AI Operating System",
+          "description": "Product hub for training and modules"
+        }
+      ],
       "keyPages": [
         {
           "url": "/en/",
-          "label": "Main tool — weekly priorities prompt generator"
-        },
-        {
-          "url": "/en/#pdf-guides",
-          "label": "CEO AI Operations & Strategy playbooks"
-        },
+          "label": "Main tool",
+          "description": "Weekly operating brief builder; free tool plus CEO AI Operations and Strategy playbooks"
+        }
+      ],
+      "optionalPages": [
         {
           "url": "/privacy.html",
-          "label": "Privacy policy"
+          "label": "Privacy policy",
+          "description": "Local browser storage; inputs are not uploaded to a server"
         },
         {
           "url": "/terms.html",
-          "label": "Terms"
+          "label": "Terms",
+          "description": "License and paid PDF terms"
         }
       ],
       "related": [
-        "https://www.promptanatomy.app/"
-      ],
-      "doNotCrawl": [
-        "/api/",
-        "/lt/"
+        {
+          "url": "https://www.promptanatomy.app/",
+          "label": "Prompt Anatomy hub",
+          "description": "Sister site for the full Prompt Anatomy system"
+        }
       ]
     },
     "entity": {
@@ -315,8 +332,7 @@
       "include": [
         "/en/",
         "/privacy.html",
-        "/terms.html",
-        "/success.html"
+        "/terms.html"
       ],
       "exclude": [
         "/lt/",
@@ -336,6 +352,7 @@
       "role": "cadence_playbook",
       "pages": 21,
       "version": "2.1",
+      "coverImage": "/assets/pdf-covers/operating.png",
       "buyerPromise": "Run a practical CEO/COO AI operating cadence in one week: daily priorities, weekly decisions, owner/deadline discipline, fact-based reflection, and CEO quick picks for 2-minute decisions.",
       "solvesProblems": [
         "random_prompting",
@@ -509,6 +526,7 @@
       "role": "flagship_playbook",
       "pages": 43,
       "version": "2.1",
+      "coverImage": "/assets/pdf-covers/strategic.png",
       "buyerPromise": "Turn AI from random prompting into a board-ready executive decision system: strategy prompts, finance checks, risk review, ownership gates, 30/90-day implementation, and strategic shortcuts for 2-minute decisions.",
       "solvesProblems": [
         "poor_decision_support",
@@ -987,7 +1005,7 @@
       "pdValue": "often $500+",
       "vsLabel": "vs",
       "operatingLabel": "Operations Playbook",
-      "strategicLabel": "Strategic Playbook",
+      "strategicLabel": "Strategy Playbook",
       "caption": "Re-readable. Yours to print. Built for weekly CEO operating cadence.",
       "sourceNote": "Estimate; replace with cited figure when available."
     },
@@ -1000,7 +1018,7 @@
         "meta": "B2B SaaS · US"
       },
       {
-        "quote": "Board depth mode gave me a one-page draft I could actually edit before the meeting.",
+        "quote": "Master Board mode gave me a one-page draft I could actually edit before the meeting.",
         "cite": "Pilot COO",
         "meta": "Services · US"
       }
@@ -1015,7 +1033,7 @@
     {
       "id": "buyer-faq-refund",
       "q": "What if I am not satisfied?",
-      "a": "Reply to your Stripe receipt within 14 days for a no-questions refund. We approve through Stripe and revoke the download link."
+      "a": "Reply to your Stripe receipt within 14 days for a no-questions-asked refund. We approve through Stripe and revoke the download link."
     },
     {
       "id": "buyer-faq-lost-email",

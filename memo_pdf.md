@@ -238,7 +238,7 @@ All buyer-facing strings should be **American English** and aligned across:
 - Avoid unprovable timing claims (“under 60 seconds”) → prefer “when fulfillment is ready” or another operationally true phrase.
 - Avoid fake precise comparisons (“~$149 PD”) → “often $100+” or similar qualified language.
 - Promise **two emails** only if Stripe receipts + Resend are both enabled.
-- Classroom license + **14-day no-questions refund** must match legal pages.
+- Classroom license + **14-day no-questions-asked refund** must match legal pages.
 
 Centralize commerce copy in `config/sot.json#commerce` where possible; hydrate UI from SOT.
 

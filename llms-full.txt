@@ -1,0 +1,38 @@
+# AI Operations Center — full brief
+
+> Free CEO/COO weekly operating brief builder by Tomas Staniulis (Prompt Anatomy). Optional PDF playbooks from $9.99.
+
+## Product
+
+AI Operations Center is a free CEO/COO weekly operating brief builder at https://www.promptanatomy.ceo/en/. Paste KPIs, runway, and context; copy a structured prompt into ChatGPT, Claude, or Gemini. No account required.
+
+## How the free tool works
+
+- Modes: Strategic, Daily, Weekly.
+- Depths: Fast (short prioritized answer), Deep (analysis and rationale), Board (executive summary with risks and actions).
+- Output is a copy-ready operating brief prompt for the executive to review before acting.
+
+## Paid PDF playbooks
+
+- CEO AI Operations Playbook: 21 pages, $9.99. Run a practical CEO/COO AI operating cadence in one week: daily priorities, weekly decisions, owner/deadline discipline, fact-based reflection, and CEO quick picks for 2-minute decisions.
+- CEO AI Strategy Playbook: 43 pages, $19.99. Turn AI from random prompting into a board-ready executive decision system: strategy prompts, finance checks, risk review, ownership gates, 30/90-day implementation, and strategic shortcuts for 2-minute decisions.
+
+## Privacy model
+
+Saved sessions are stored locally in the browser (localStorage). The page does not upload form inputs to a server for prompt generation.
+
+## Creator and ecosystem
+
+- Founder: Tomas Staniulis (Prompt Anatomy). Profiles: https://www.linkedin.com/in/staniulis/, https://x.com/TStaniulis_NFT
+- Hub: https://www.promptanatomy.app/
+- Canonical storefront: https://www.promptanatomy.ceo/en/
+
+## Responsible use
+
+This tool generates prompts and training material. Review AI outputs before using them for executive decisions.
+
+## See also
+
+- Curated map: https://www.promptanatomy.ceo/llms.txt
+- Privacy: https://www.promptanatomy.ceo/privacy.html
+- Terms: https://www.promptanatomy.ceo/terms.html

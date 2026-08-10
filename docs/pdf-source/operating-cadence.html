@@ -38,13 +38,13 @@
   <h3>First 7 days</h3>
   <table>
     <tr><th>Day</th><th>Action</th><th>Owner</th></tr>
-    <tr><td>1</td><td>Read operating loop (page 3). Run Daily Fast with real yesterday numbers.</td><td>CEO</td></tr>
+    <tr><td>1</td><td>Read operating loop (page 3). Run Daily Fast with yesterday’s real numbers.</td><td>CEO</td></tr>
     <tr><td>2</td><td>Compare your output to daily sample (page 7). Fix weak inputs.</td><td>CEO</td></tr>
     <tr><td>3</td><td>Run Daily Deep once. Log one decision in decision log (page 14).</td><td>CEO</td></tr>
     <tr><td>4</td><td>Prep weekly numbers for Monday review.</td><td>COO</td></tr>
     <tr><td>5</td><td>Weekly Deep prompt + 20-min meeting agenda (pages 10–11).</td><td>CEO + leads</td></tr>
     <tr><td>6</td><td>CEO reflection (page 13). Name one behavior change for next week.</td><td>CEO</td></tr>
-    <tr><td>7</td><td>Pin workflow map (page 12). Optional: free tool at promptanatomy.ceo for generated prompts.</td><td>COO</td></tr>
+    <tr><td>7</td><td>Pin workflow map (page 12). Optional: free tool at promptanatomy.ceo to generate prompts.</td><td>COO</td></tr>
   </table>
   <div class="callout callout-warn gap-top">
     <strong>CEO-in-the-loop rule</strong>
@@ -67,7 +67,7 @@
     <span class="arrow">→</span>
     <div class="step"><span class="step-num">3</span><h4>Review</h4><p class="step-body">Facts vs assumptions; challenge gaps</p></div>
     <span class="arrow">→</span>
-    <div class="step"><span class="step-num">4</span><h4>Decide</h4><p class="step-body">Max 3 priorities; you sign</p></div>
+    <div class="step"><span class="step-num">4</span><h4>Decide</h4><p class="step-body">Max 3 priorities; you sign off</p></div>
     <span class="arrow">→</span>
     <div class="step"><span class="step-num">5</span><h4>Act</h4><p class="step-body">Owner + deadline on every action</p></div>
   </div>
@@ -165,7 +165,7 @@ CONTEXT:
 - Company type: [SaaS / services / hybrid]
 - Revenue model: [subscription / project / mixed]
 - Current goal: [e.g. stabilize MRR, clear support backlog]
-- Decision horizon: Today + knock-on effects this week
+- Decision horizon: Today + downstream effects this week
 - Constraints: [cash, team capacity, customer commitments]
 
 FACTS:
@@ -278,7 +278,7 @@ OUTPUT FORMAT:
 5. CEO decision required
 
 QUALITY GATE:
-Ask up to 5 clarifying questions if projects or pipeline are vague.</pre>
+Ask up to 5 clarifying questions if projects or the pipeline are vague.</pre>
   <footer class="brand-footer">
     <span class="brand-footer-left">CEO AI Operations Playbook</span>
     <span class="brand-footer-right">www.promptanatomy.ceo · Page 9/21</span>
@@ -361,7 +361,7 @@ If runway or pipeline missing, ask clarifying questions before final output.</pr
     <tr><td>Daily AM</td><td>DAILY</td><td>Fast / Deep</td><td>CEO / COO</td><td>Priority table</td></tr>
     <tr><td>Weekly Mon</td><td>WEEKLY</td><td>Deep</td><td>CEO + leads</td><td>Meeting agenda + log</td></tr>
     <tr><td>Friday</td><td>Reflection</td><td>—</td><td>CEO</td><td>Behavior change</td></tr>
-    <tr><td>Board / runway</td><td>STRATEGIC</td><td>Board</td><td>CEO + CFO</td><td>Strategy Playbook</td></tr>
+    <tr><td>Board / runway</td><td>STRATEGIC</td><td>Board</td><td>CEO + CFO</td><td>Board memo / runway (Strategy Playbook)</td></tr>
   </table>
   <div class="callout gap-top"><strong>Discipline:</strong> No owner + date = not an action. Re-run prompt with better inputs.</div>
   <footer class="brand-footer">
@@ -413,7 +413,7 @@ If facts are vague, ask up to 5 clarifying questions.</pre>
 <section class="page">
   <div class="page-eyebrow"><span>Tool</span><span class="page-eyebrow-tag">Log</span></div>
   <h2>Decision log template</h2>
-  <p class="lead">Creates business memory. Copy one row per weekly meeting.</p>
+  <p class="lead">Builds institutional memory. Copy one row per weekly meeting.</p>
   <table class="pdf-risk-matrix">
     <tr><th>Date</th><th>Decision</th><th>Owner</th><th>Rationale</th><th>Follow-up date</th><th>Status</th></tr>
     <tr><td>2026-05-19</td><td>Pause outbound until incident closed</td><td>CEO</td><td>Enterprise demo Thu</td><td>2026-05-22</td><td>Open</td></tr>
@@ -432,10 +432,10 @@ If facts are vague, ask up to 5 clarifying questions.</pre>
   <h2>Economic discipline (top 5 rules)</h2>
   <ol>
     <li><strong>Cash first:</strong> Every weekly review names cash balance and runway trend.</li>
-    <li><strong>Runway trigger:</strong> If runway &lt; 6 months, weekly CEO priority must include cash action.</li>
-    <li><strong>Cost spike:</strong> Any weekly cost &gt;10% vs prior week gets CFO label: one-time vs recurring.</li>
+    <li><strong>Runway trigger:</strong> If runway &lt; 6 months, weekly CEO priority must include a cash action.</li>
+    <li><strong>Cost spike:</strong> Any weekly cost &gt;10% vs prior week gets a CFO label: one-time vs recurring.</li>
     <li><strong>Pipeline risk:</strong> If &gt;50% pipeline in one deal, name contingency owner.</li>
-    <li><strong>No vanity priorities:</strong> AI cannot prioritize “brand awareness” without metric tie to revenue or retention.</li>
+    <li><strong>No vanity priorities:</strong> AI cannot prioritize “brand awareness” without a metric tied to revenue or retention.</li>
   </ol>
   <div class="callout-warn gap-top"><strong>Pair with Strategy Playbook</strong> for full ROI scorecard and runway scenarios.</div>
   <footer class="brand-footer">
@@ -492,7 +492,7 @@ If facts are vague, ask up to 5 clarifying questions.</pre>
     <li><strong>Skipping review step:</strong> Treating AI output as final → always mark facts vs assumptions.</li>
     <li><strong>Weekly data on Daily prompt:</strong> Blurs decisions → use correct prompt page.</li>
     <li><strong>No decision log:</strong> Same debates repeat → log owner and follow-up date.</li>
-    <li><strong>Promo over practice:</strong> Spending more time on tools than 10-min ritual → run Day 1 of First 7 days first.</li>
+    <li><strong>Tools over practice:</strong> Spending more time on tools than on the 10-minute ritual → run Day 1 of First 7 days first.</li>
   </ul>
   <footer class="brand-footer">
     <span class="brand-footer-left">CEO AI Operations Playbook</span>

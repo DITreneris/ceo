@@ -63,6 +63,8 @@
     if (!config || !Array.isArray(config.buyerFaq)) return;
     var list = document.querySelector('[data-buyer-faq-list]');
     if (!list) return;
+    // Build SSR (en/) already filled the list — do not duplicate.
+    if (list.children && list.children.length > 0) return;
     var html = '';
     config.buyerFaq.forEach(function (item) {
       if (!item || !item.q || !item.a) return;
@@ -122,7 +124,8 @@
       titleEl.textContent = def.title;
       var html = '';
       def.pages.forEach(function (num) {
-        html += '<figure class="pdf-preview-page"><img src="/assets/pdf-covers/' + key + '-p' + num + '.png" width="367" height="475" alt="Preview page ' + num + ' of ' + key + ' guide"><figcaption>Page ' + num + ' (preview)</figcaption></figure>';
+        var guideName = key === 'strategic' ? 'the CEO AI Strategy Playbook' : 'the CEO AI Operations Playbook';
+        html += '<figure class="pdf-preview-page"><img src="/assets/pdf-covers/' + key + '-p' + num + '.png" width="367" height="475" alt="Preview page ' + num + ' of ' + guideName + '"><figcaption>Page ' + num + ' (preview)</figcaption></figure>';
       });
       pagesEl.innerHTML = html;
     }
@@ -181,7 +184,7 @@
     if (h.primaryCta) {
       document.querySelectorAll('[data-copy-hero-primary-cta]').forEach(function (el) {
         el.textContent = h.primaryCta;
-        el.setAttribute('aria-label', h.primaryCta + ' in operations center');
+        el.setAttribute('aria-label', h.primaryCta + ' in the operations center');
       });
     }
     if (h.secondaryCta) {
@@ -218,6 +221,14 @@
     }
     if (config.copy.opsCenter) {
       if (config.copy.opsCenter.title) setHookText('[data-copy-ops-title]', config.copy.opsCenter.title);
+      if (config.copy.opsCenter.sampleCta) {
+        setHookText('[data-copy-ops-sample-cta]', config.copy.opsCenter.sampleCta);
+        document.querySelectorAll('[data-copy-ops-sample-cta]').forEach(function (el) {
+          if (config.copy.opsCenter.sampleAriaLabel) {
+            el.setAttribute('aria-label', config.copy.opsCenter.sampleAriaLabel);
+          }
+        });
+      }
     }
     if (Array.isArray(config.copy.journeySteps)) {
       config.copy.journeySteps.forEach(function (label, i) {
@@ -253,6 +264,10 @@
         if (toastEl) toastEl.setAttribute('data-copy-ops-toast-default', ops.copiedToast);
         var toastMsg = document.getElementById('toastMessage');
         if (toastMsg && !toastMsg.dataset.userMessage) toastMsg.textContent = ops.copiedToast;
+      }
+      if (ops.emptyCopyToast) {
+        var toastEmpty = document.getElementById('toast');
+        if (toastEmpty) toastEmpty.setAttribute('data-copy-ops-empty-toast', ops.emptyCopyToast);
       }
     }
     if (config.copy.footer) {
