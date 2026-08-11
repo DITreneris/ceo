@@ -674,7 +674,9 @@ function run() {
         llmsFullTxt.includes('$19.99') &&
         llmsFullTxt.includes('21') &&
         llmsFullTxt.includes('43') &&
-        llmsFullTxt.includes('localStorage'),
+        llmsFullTxt.includes('localStorage') &&
+        llmsFullTxt.includes('## Problems we solve') &&
+        llmsFullTxt.includes('Unclear ROI from AI spend'),
       'llms-full.txt playbook prices/pages and privacy model'
     )
   ) {
@@ -698,7 +700,7 @@ function run() {
       enEntryFile &&
         enEntryFile.includes('/assets/pdf-covers/operating.png') &&
         enEntryFile.includes('/assets/pdf-covers/strategic.png') &&
-        enEntryFile.includes('License and team use') &&
+        enEntryFile.includes('Can my leadership team use the playbook') &&
         enEntryFile.includes('#buyer-faq'),
       'en/index.html Product cover images + buyer FAQ JSON-LD'
     )

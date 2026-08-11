@@ -1,6 +1,6 @@
 # AI Operations Center
 
-> Free CEO/COO weekly operating brief builder by Tomas Staniulis (Prompt Anatomy). Optional PDF playbooks from $9.99.
+> Free CEO/COO weekly operating brief builder by Tomas Staniulis (Prompt Anatomy). Optional Operations cadence and board-ready Strategy playbooks from $9.99.
 
 ## Ecosystem
 - [Prompt Anatomy AI Operating System](https://www.promptanatomy.app/): Product hub for training and modules

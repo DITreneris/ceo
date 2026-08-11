@@ -59,8 +59,9 @@ Commit generated `robots.txt`, `sitemap.xml`, `llms.txt`, `llms-full.txt`, and `
 
 ## Measurement
 
-- Citation pack: [`GEO_CITATION_PROMPTS.md`](GEO_CITATION_PROMPTS.md)
+- Citation pack: [`GEO_CITATION_PROMPTS.md`](GEO_CITATION_PROMPTS.md) (includes US outcome JTBD queries 21–28)
 - Prefer server logs for `OAI-SearchBot`, `Claude-SearchBot`, `PerplexityBot` hit rates after deploy
+- **Baseline note (2026-08-11):** `llms-full.txt` now includes SOT `buyerProblems` under “Problems we solve”. Run citation pack after next production deploy; record Pass/Soft/Gap per engine.
 
 ## Out of scope
 

@@ -17,22 +17,25 @@
 
 ### Vercel Production env
 
-- [ ] `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET`, `STRIPE_PRICE_OPERATING_PDF`, `STRIPE_PRICE_STRATEGIC_PDF`
-- [ ] `UPSTASH_REDIS_REST_URL`, `UPSTASH_REDIS_REST_TOKEN`, `DOWNLOAD_TOKEN_SECRET`
-- [ ] `RESEND_API_KEY`, `FULFILLMENT_FROM_EMAIL` (verified sender)
-- [ ] `PDF_OPERATING_SOURCE_URL`, `PDF_STRATEGIC_SOURCE_URL` (after blob upload)
-- [ ] `BLOB_READ_WRITE_TOKEN`, `SITE_URL=https://www.promptanatomy.ceo`
+- [x] `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET`, `STRIPE_PRICE_OPERATING_PDF`, `STRIPE_PRICE_STRATEGIC_PDF` (keys present in local `.env`; mirror on Vercel Production)
+- [ ] `UPSTASH_REDIS_REST_URL`, `UPSTASH_REDIS_REST_TOKEN` — **BLOCKER (2026-08-11):** hostname DNS `ENOTFOUND` locally and on production health (`redis: error`, `missing: []`). Replace Upstash DB credentials in `.env` + Vercel Production.
+- [x] `DOWNLOAD_TOKEN_SECRET` (present locally)
+- [x] `RESEND_API_KEY`, `FULFILLMENT_FROM_EMAIL` (present locally)
+- [x] `PDF_OPERATING_SOURCE_URL`, `PDF_STRATEGIC_SOURCE_URL` (present; production `blobConfigured: true`)
+- [x] `BLOB_READ_WRITE_TOKEN`, `SITE_URL=https://www.promptanatomy.ceo`
+- [x] `REDIS_KEY_PREFIX=ceo:`
 
 ### Repo config (Orchestrator)
 
-- [ ] `npm run pdf:upload-blob` from machine with env
-- [ ] Update [`config/sot.json`](../config/sot.json): real `commerce.stripePaymentLinks`, `allowPlaceholderCheckout: false`
-- [ ] `npm run check:fulfillment` — all required keys present locally
-- [ ] `GET /api/fulfillment-health` on production → `{ "ok": true }`
+- [x] PDF blob sources configured (production health reports `blobConfigured: true`)
+- [x] [`config/sot.json`](../config/sot.json) `commerce.stripePaymentLinks` use live-format `buy.stripe.com` URLs
+- [ ] `allowPlaceholderCheckout: false` — **do not flip until Redis ping ok** (avoids paid checkout with broken fulfillment)
+- [ ] `npm run check:fulfillment` — Redis `PONG` (currently `fetch failed` / `ENOTFOUND`)
+- [ ] `GET /api/fulfillment-health/` on production → `{ "ok": true }` (trailing slash required; `trailingSlash: true`)
 
 ### Test purchase
 
-- [ ] One live purchase per product: receipt + Resend email + `success.html` download link
+- [ ] One live purchase per product: receipt + Resend email + `success.html` download link (blocked on Redis restore)
 
 ## Phase 16 — Asset freeze
 

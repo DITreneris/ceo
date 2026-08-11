@@ -4,14 +4,14 @@
 
 **Product goal:** Transform this repo from a useful AI prompt/tool project into a CEO/COO-grade premium SaaS-style PDF product system: clear, practical, trustworthy, polished, repeatable, and commercially ready.
 
-**Current audit verdict (2026-05-21):** Premium PDF + OG asset reset complete. PDFs, covers, interior previews, OG card, naming, and design system docs all aligned. Remaining blockers are commerce/launch (Phase 15) and final buyer-journey QA (Phase 17). No content / asset blockers.
+**Current audit verdict (2026-08-11):** Premium PDF + storefront + GEO stack aligned. Stripe Payment Link URLs in SOT are live-format `buy.stripe.com` links; local `.env` keys present; production `blobConfigured: true`. **Hard blocker:** Upstash Redis hostname DNS `ENOTFOUND` (local + `GET /api/fulfillment-health/` → `redis: error`). Do **not** flip `allowPlaceholderCheckout: false` or promote paid traffic until Redis is restored and health returns `{ "ok": true }`.
 
 ## Now → Next → Later
 
 **Now (P0, must close before paid promotion):**
 
-1. Phase 15 — Real Stripe live URLs into `config/sot.json#commerce.stripePaymentLinks` + flip `allowPlaceholderCheckout: false`.
-2. Phase 15 — Vercel Production env complete (`STRIPE_*`, `UPSTASH_*`, `RESEND_*`, `PDF_*_SOURCE_URL`, `BLOB_READ_WRITE_TOKEN`, `SITE_URL`); `GET /api/fulfillment-health` → `ok`.
+1. Phase 15 — **Restore Upstash Redis** — create/replace DB; set `UPSTASH_REDIS_REST_URL` + `UPSTASH_REDIS_REST_TOKEN` in local `.env` and Vercel Production; confirm `npm run check:fulfillment` pings `PONG` and `GET /api/fulfillment-health/` → `{ "ok": true }`.
+2. Phase 15 — Flip `allowPlaceholderCheckout: false` in `config/sot.json#commerce` (Payment Links already live-format; flip only after Redis ok).
 3. Phase 15 — One full live test purchase flow (success page + Stripe receipt + Resend download email + `/api/download`).
 4. Phase 17 — Manual buyer-journey QA on desktop + mobile (320 / 375 / 768 px).
 

@@ -52,8 +52,8 @@ Fulfillment runbook: [`memo_pdf.md`](../memo_pdf.md). Launch gate: [`LAUNCH_CHEC
 
 ## Launch blockers (not doc drift)
 
-- Live Stripe Payment Links in `config/sot.json` + `allowPlaceholderCheckout: false`
-- Vercel Production env + `GET /api/fulfillment-health` → `ok`
+- **Upstash Redis** — restore reachable `UPSTASH_REDIS_*` (2026-08-11 audit: DNS `ENOTFOUND`; production health `redis: error` with env keys otherwise present)
+- Flip `allowPlaceholderCheckout: false` only after `GET /api/fulfillment-health/` → `{ "ok": true }` (Payment Links already live-format in SOT)
 - One live test purchase per product
 
 See [`todo.md`](../todo.md) Phases 15–17.

@@ -2,7 +2,7 @@
   "brand": {
     "productName": "AI Operations Center",
     "edition": "US Edition",
-    "positioning": "Run AI like ops. Weekly cadence for operators; strategic playbook for board-ready decisions. By Prompt Anatomy.",
+    "positioning": "From scattered AI experiments to a weekly operating cadence; board-ready strategy when you need decisions, not more tools. By Prompt Anatomy.",
     "primaryAudience": "US founders, CEOs, COOs, and executive operators",
     "market": "United States",
     "language": "en-US"
@@ -97,7 +97,7 @@
         "ariaLabel": "Prompt Anatomy Hub module: Operations (CEO/COO)"
       },
       "headlineBenefit": "Turn scattered KPIs into a clear weekly CEO brief",
-      "lead": "Add KPIs, blockers, and context.\nGet structured priorities in 5 minutes.",
+      "lead": "Turn scattered AI use into structured weekly priorities.\nAdd KPIs, blockers, and context — ready in 5 minutes.",
       "ctaMeta": "Free · No account · ~5 min",
       "useCasesLabel": "Use cases:",
       "primaryCta": "Build weekly brief",
@@ -129,7 +129,7 @@
     "pdfStorefront": {
       "eyebrow": "Optional executive playbooks",
       "heading": "CEO PDF playbooks",
-      "lead": "Turn the same methodology into a repeatable weekly cadence or a board-ready strategy system—pick Operations or Strategy below.",
+      "lead": "Fix unclear ROI, random prompting, and weak ownership—pick Operations for weekly cadence or Strategy for board-ready decisions.",
       "buyerFaqHeading": "Questions before you buy",
       "ctaOperating": "Get Operations Playbook — $9.99",
       "ctaStrategic": "Get Strategy Playbook — $19.99",
@@ -178,8 +178,8 @@
       "subtitle": "Go further with Prompt Anatomy."
     },
     "footer": {
-      "heading": "Weekly operating cadence, powered by AI prompts",
-      "summary": "Weekly CEO operating brief—free builder plus optional playbooks.",
+      "heading": "Weekly operating cadence for executive teams",
+      "summary": "Free weekly CEO brief builder plus optional playbooks for cadence and board-ready decisions.",
       "productLink": "Part of Prompt Anatomy · Training & checkout → <a href=\"https://www.promptanatomy.app/?utm_source=ceo&utm_medium=entity_footer&utm_campaign=ecosystem\" target=\"_blank\" rel=\"noopener noreferrer\">promptanatomy.app</a>",
       "hubContext": "You're in the <strong>Operations</strong> module",
       "hubHomeLabel": "Prompt Anatomy Hub",
@@ -243,7 +243,7 @@
       "lt"
     ],
     "title": "Turn Scattered KPIs into a Weekly CEO Brief | AI Operations Center",
-    "description": "Turn KPIs, runway, and pipeline into a CEO-ready weekly operating brief in ~5 minutes. Free tool plus optional playbooks from $9.99. No account required."
+    "description": "Build a CEO-ready weekly operating brief from KPIs, runway, and pipeline in ~5 minutes. Free tool for measurable priorities; optional playbooks for operating cadence and board-ready decisions from $9.99."
   },
   "geo": {
     "siteUrl": "https://www.promptanatomy.ceo",
@@ -275,7 +275,7 @@
     },
     "llms": {
       "title": "AI Operations Center",
-      "summary": "Free CEO/COO weekly operating brief builder by Tomas Staniulis (Prompt Anatomy). Optional PDF playbooks from $9.99.",
+      "summary": "Free CEO/COO weekly operating brief builder by Tomas Staniulis (Prompt Anatomy). Optional Operations cadence and board-ready Strategy playbooks from $9.99.",
       "ecosystem": [
         {
           "url": "https://www.promptanatomy.app/",
@@ -1027,7 +1027,7 @@
   "buyerFaq": [
     {
       "id": "buyer-faq-license",
-      "q": "License and team use?",
+      "q": "Can my leadership team use the playbook?",
       "a": "Executive License covers your organization for internal use by you and your leadership team (COO, CFO, department heads). Print for internal meetings; share short excerpts with board or advisors. Do not email the full PDF, post on intranet, or redistribute publicly."
     },
     {
@@ -1037,7 +1037,7 @@
     },
     {
       "id": "buyer-faq-lost-email",
-      "q": "What if I lose the download email?",
+      "q": "How do I get my download if I lose the email?",
       "a": "After checkout you get a Stripe receipt plus a separate download email (link valid 7 days). Email info@promptanatomy.app from the address you used to buy and we resend anytime."
     }
   ],

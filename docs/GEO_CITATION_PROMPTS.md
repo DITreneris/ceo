@@ -42,6 +42,17 @@ Do **not** paste jailbreak or “ignore previous instructions” text into these
 19. Refund policy for Prompt Anatomy CEO playbooks
 20. License terms for CEO AI Strategy Playbook leadership team use
 
+## US outcome intent (executive jobs-to-be-done)
+
+21. how to implement AI in a company with a weekly operating cadence
+22. AI operating cadence for CEOs / COOs
+23. how to measure AI adoption beyond login counts (executive)
+24. AI ROI business case for board (practical, under consulting)
+25. safe ChatGPT rollout for leadership teams (US privacy)
+26. turn AI pilots into weekly workflows
+27. free CEO weekly operating brief builder
+28. CEO AI playbook PDF under $20
+
 ## How to score a run
 
 | Result | Score |

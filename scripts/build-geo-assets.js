@@ -204,6 +204,22 @@ function buildLlmsFullTxt(sot) {
     );
   }
 
+  const problems = Array.isArray(sot.buyerProblems) ? sot.buyerProblems : [];
+  if (problems.length) {
+    lines.push('');
+    lines.push('## Problems we solve');
+    lines.push('');
+    lines.push(
+      'Built for US CEOs and COOs who need operating cadence and board-ready decisions—not generic prompt tips:'
+    );
+    lines.push('');
+    for (const problem of problems) {
+      if (!problem || !problem.label) continue;
+      const detail = problem.description ? ' — ' + problem.description : '';
+      lines.push('- ' + problem.label + detail);
+    }
+  }
+
   lines.push('');
   lines.push('## Privacy model');
   lines.push('');
