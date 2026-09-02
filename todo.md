@@ -4,15 +4,15 @@
 
 **Product goal:** Transform this repo from a useful AI prompt/tool project into a CEO/COO-grade premium SaaS-style PDF product system: clear, practical, trustworthy, polished, repeatable, and commercially ready.
 
-**Current audit verdict (2026-08-11):** Premium PDF + storefront + GEO stack aligned. Stripe Payment Link URLs in SOT are live-format `buy.stripe.com` links; local `.env` keys present; production `blobConfigured: true`. **Hard blocker:** Upstash Redis hostname DNS `ENOTFOUND` (local + `GET /api/fulfillment-health/` → `redis: error`). Do **not** flip `allowPlaceholderCheckout: false` or promote paid traffic until Redis is restored and health returns `{ "ok": true }`.
+**Current audit verdict (2026-09-02):** Redis + Stripe host + Operations live buy are green. Buyer confirmed success page Download PDF. Webhook must stay `https://www.promptanatomy.ceo/api/stripe-webhook/`. `allowPlaceholderCheckout: false`. Strategy ($19.99) test buy optional. Deploy local `success.html` trailing-slash fetch when convenient.
 
 ## Now → Next → Later
 
 **Now (P0, must close before paid promotion):**
 
-1. Phase 15 — **Restore Upstash Redis** — create/replace DB; set `UPSTASH_REDIS_REST_URL` + `UPSTASH_REDIS_REST_TOKEN` in local `.env` and Vercel Production; confirm `npm run check:fulfillment` pings `PONG` and `GET /api/fulfillment-health/` → `{ "ok": true }`.
-2. Phase 15 — Flip `allowPlaceholderCheckout: false` in `config/sot.json#commerce` (Payment Links already live-format; flip only after Redis ok).
-3. Phase 15 — One full live test purchase flow (success page + Stripe receipt + Resend download email + `/api/download`).
+1. ~~Phase 15 — Restore Upstash Redis~~ — **Done 2026-09-02:** local `PONG`; Production health `{ "ok": true }`.
+2. ~~Phase 15 — One live Operations test purchase~~ — **Done 2026-09-02** (webhook slash fix + fulfill). Refresh success page or email link.
+3. ~~Phase 15 — Flip `allowPlaceholderCheckout: false`~~ — **Done 2026-09-02.**
 4. Phase 17 — Manual buyer-journey QA on desktop + mobile (320 / 375 / 768 px).
 
 **Next (P1, after launch unblockers):**
@@ -180,13 +180,13 @@
 
 ## Phase 15 — Commerce and Fulfillment Readiness
 
-- [ ] Replace placeholder checkout links.
-- [ ] Confirm fulfillment configuration.
-- [ ] Confirm Stripe product names, prices, and metadata.
+- [x] Replace placeholder checkout links.
+- [x] Confirm fulfillment configuration.
+- [x] Confirm Stripe product names, prices, and metadata.
 - [x] Confirm download email, success page, refund copy, and license copy.
 - [ ] Confirm private PDF storage and signed download flow.
-- [ ] Run fulfillment health checks.
-- [ ] Run one full test purchase flow before launch.
+- [x] Run fulfillment health checks.
+- [x] Run one full test purchase flow before launch.
 
 **Gate:** [docs/LAUNCH_CHECKLIST.md](docs/LAUNCH_CHECKLIST.md)
 

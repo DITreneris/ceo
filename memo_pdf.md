@@ -67,11 +67,11 @@ Use this as a copy-paste gate before announcing paid PDFs.
   Keep `{CHECKOUT_SESSION_ID}` literally—Stripe substitutes it.
 - [ ] **Metadata** on each Payment Link: `product` = `beginners` | `advanced` (or your internal ids). Do not rely only on amount matching.
 - [ ] **Customer emails → Successful payments** enabled (Stripe receipt = second email you promise on the site).
-- [ ] **Webhook endpoint** on **YOUR_DOMAIN** only:
+- [ ] **Webhook endpoint** on **YOUR_DOMAIN** only. If the site uses Vercel `trailingSlash: true`, the URL **must** include the trailing slash — Stripe does not follow POST 308s:
   ```text
-  https://YOUR_DOMAIN/api/stripe-webhook
+  https://YOUR_DOMAIN/api/stripe-webhook/
   ```
-  Events: `checkout.session.completed`, `checkout.session.async_payment_succeeded`.
+  This repo: `https://www.promptanatomy.ceo/api/stripe-webhook/`. Events: `checkout.session.completed`, `checkout.session.async_payment_succeeded`.
 - [ ] Copy **Signing secret** (`whsec_...`) for that endpoint—not from a different host.
 
 ### 3.2 Vercel Production environment (single project = buyer-facing domain)

@@ -9,16 +9,18 @@
 
 ### Stripe Dashboard
 
-- [ ] Live products/prices: Operating $9.99 (`operating`), Strategic $19.99 (`strategic`)
-- [ ] Payment Links with `metadata.product` = `operating` | `strategic`
-- [ ] Success URL: `https://www.promptanatomy.ceo/success.html?session_id={CHECKOUT_SESSION_ID}`
-- [ ] Webhook: `https://www.promptanatomy.ceo/api/stripe-webhook` (events: `checkout.session.completed`, `checkout.session.async_payment_succeeded`)
-- [ ] Copy `whsec_...` into Vercel `STRIPE_WEBHOOK_SECRET`
+- [x] Live products/prices: Operating $9.99 (`price_1TZXGY…`, $9.99) · Strategic $19.99 (`price_1TZXJG…`, $19.99) — match local `.env` `STRIPE_PRICE_*`
+- [x] Payment Links `metadata.product` = `operating` | `strategic` (set 2026-09-02 via Stripe API; were empty)
+- [x] Success URL: `https://www.promptanatomy.ceo/success.html?session_id={CHECKOUT_SESSION_ID}` (set 2026-09-02; were `hosted_confirmation`)
+- [x] Webhook: `https://www.promptanatomy.ceo/api/stripe-webhook/` (trailing slash required — `vercel.json` `trailingSlash: true` 308s the no-slash URL; Stripe does not follow POST redirects)
+- [x] `STRIPE_WEBHOOK_SECRET` present in local `.env` / Vercel Production (same key set as other Stripe env)
+
+**Canonical host:** `www.promptanatomy.ceo` CNAME → Vercel. `ceo-teal.vercel.app` is the same Production project (identical `/en/` canonical + identical `fulfillment-health` payload). Do not point Stripe at the vercel.app alias.
 
 ### Vercel Production env
 
 - [x] `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET`, `STRIPE_PRICE_OPERATING_PDF`, `STRIPE_PRICE_STRATEGIC_PDF` (keys present in local `.env`; mirror on Vercel Production)
-- [ ] `UPSTASH_REDIS_REST_URL`, `UPSTASH_REDIS_REST_TOKEN` — **BLOCKER (2026-08-11):** hostname DNS `ENOTFOUND` locally and on production health (`redis: error`, `missing: []`). Replace Upstash DB credentials in `.env` + Vercel Production.
+- [x] `UPSTASH_REDIS_REST_URL`, `UPSTASH_REDIS_REST_TOKEN` — **2026-09-02:** local `PONG`; Production `GET /api/fulfillment-health/` → `{ "ok": true, "redis": "ok", "blobConfigured": true }` on `.ceo` (same project as `ceo-teal`). Do not commit `.env`.
 - [x] `DOWNLOAD_TOKEN_SECRET` (present locally)
 - [x] `RESEND_API_KEY`, `FULFILLMENT_FROM_EMAIL` (present locally)
 - [x] `PDF_OPERATING_SOURCE_URL`, `PDF_STRATEGIC_SOURCE_URL` (present; production `blobConfigured: true`)
@@ -29,13 +31,13 @@
 
 - [x] PDF blob sources configured (production health reports `blobConfigured: true`)
 - [x] [`config/sot.json`](../config/sot.json) `commerce.stripePaymentLinks` use live-format `buy.stripe.com` URLs
-- [ ] `allowPlaceholderCheckout: false` — **do not flip until Redis ping ok** (avoids paid checkout with broken fulfillment)
-- [ ] `npm run check:fulfillment` — Redis `PONG` (currently `fetch failed` / `ENOTFOUND`)
-- [ ] `GET /api/fulfillment-health/` on production → `{ "ok": true }` (trailing slash required; `trailingSlash: true`)
+- [x] `allowPlaceholderCheckout: false` — flipped 2026-09-02 after Operations live purchase + manual fulfill (webhook URL slash fix)
+- [x] `npm run check:fulfillment` — Redis `PONG` (2026-09-02, local `.env`)
+- [x] `GET /api/fulfillment-health/` on production → `{ "ok": true }` (trailing slash required)
 
 ### Test purchase
 
-- [ ] One live purchase per product: receipt + Resend email + `success.html` download link (blocked on Redis restore)
+- [x] One live Operations purchase on `.ceo` (2026-09-02). First success page failed: Stripe webhook was 308'd (`trailingSlash`). Webhook URL now ends with `/`; session fulfilled; Resend sent. Refresh success page or use the email link.
 
 ## Phase 16 — Asset freeze
 

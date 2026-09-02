@@ -4,7 +4,11 @@ Formatas pagal [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), versija
 
 ## [Unreleased]
 
-EN-US storefront journey + **Design System 1.1 Hardened** ([`docs/ds_improvement_plan.md`](docs/ds_improvement_plan.md) §16). Does not block Phase 15–17 launch ([`docs/LAUNCH_CHECKLIST.md`](docs/LAUNCH_CHECKLIST.md)).
+EN-US storefront journey + **Design System 1.1 Hardened** ([`docs/ds_improvement_plan.md`](docs/ds_improvement_plan.md) §16). Phase 15 commerce gate closed 2026-09-02 ([`docs/LAUNCH_CHECKLIST.md`](docs/LAUNCH_CHECKLIST.md)).
+
+### Fixed
+
+- **Phase 15 fulfillment (2026-09-02)** — Upstash Redis restored (`nearby-bass-181854`; `REDIS_KEY_PREFIX=ceo:`); Production `GET /api/fulfillment-health/` → `{ "ok": true, "redis": "ok" }` on `www.promptanatomy.ceo` and `ceo-teal.vercel.app` (same Vercel project). Stripe CEO Payment Links now `after_completion` redirect to `.ceo/success.html?session_id={CHECKOUT_SESSION_ID}` with `metadata.product` = `operating` | `strategic`. Webhook URL must be `https://www.promptanatomy.ceo/api/stripe-webhook/` — `vercel.json` `trailingSlash: true` 308s the no-slash path and Stripe does not follow POST redirects (first live Operations buy needed a manual fulfill). Buyer confirmed success-page **Download PDF**. `commerce.allowPlaceholderCheckout: false`. `success.html` polls `/api/download-link/` (trailing slash). Do not commit `.env`.
 
 ### Added
 

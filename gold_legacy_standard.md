@@ -126,7 +126,9 @@ Commerce invariants:
 
 ## 6. Fulfillment Standard (žr. [`memo_pdf.md`](memo_pdf.md))
 
-Same-domain rule: Stripe success URL + webhook URL + Vercel Production env + Redis store + download API privalo būti **vienas** buyer-facing host. Šiam repo: `https://www.promptanatomy.ceo`.
+Same-domain rule: Stripe success URL + webhook URL + Vercel Production env + Redis store + download API privalo būti **vienas** buyer-facing host. Šiam repo: `https://www.promptanatomy.ceo` (`ceo-teal.vercel.app` = tas pats Vercel projektas, ne Stripe host).
+
+Webhook: `https://www.promptanatomy.ceo/api/stripe-webhook/` — trailing slash privalomas (`trailingSlash: true` 308; Stripe POST redirectų neseka).
 
 Required fulfillment env (kanoninis sąrašas: [`.env.example`](.env.example)):
 

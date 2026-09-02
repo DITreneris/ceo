@@ -50,10 +50,10 @@ Fulfillment runbook: [`memo_pdf.md`](../memo_pdf.md). Launch gate: [`LAUNCH_CHEC
 
 **Redis (shared Upstash):** set `REDIS_KEY_PREFIX=ceo:` in Vercel + `.env` so keys are `ceo:fulfillment:...`, `ceo:download-token:...` (see `api/_lib/fulfillment.js`).
 
-## Launch blockers (not doc drift)
+## Launch status (Phase 15 closed 2026-09-02)
 
-- **Upstash Redis** — restore reachable `UPSTASH_REDIS_*` (2026-08-11 audit: DNS `ENOTFOUND`; production health `redis: error` with env keys otherwise present)
-- Flip `allowPlaceholderCheckout: false` only after `GET /api/fulfillment-health/` → `{ "ok": true }` (Payment Links already live-format in SOT)
-- One live test purchase per product
+- **Upstash Redis** — restored 2026-09-02 (`nearby-bass-181854`; local `PONG`; Production health `{ "ok": true, "redis": "ok" }`)
+- **Live Operations purchase confirmed** 2026-09-02 — success page download ready; Stripe webhook URL must keep trailing slash (`/api/stripe-webhook/`)
+- `allowPlaceholderCheckout: false` (flipped after that purchase)
 
 See [`todo.md`](../todo.md) Phases 15–17.

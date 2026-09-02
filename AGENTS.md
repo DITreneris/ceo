@@ -39,7 +39,7 @@ Kad agentai dirbtų paraleliai be konfliktų:
 | **PDF HTML/CSS** | Content → Design (serial per PDF) | `docs/pdf-source/*` | Du agentai ne redaguoja to paties HTML |
 | **Storefront** | UI/UX | `index.html`, `style.css`, `commerce.js` | Neliesti kol SOT promises neužrakinti; audit → `docs/STOREFRONT_AUDIT.md` |
 | **Export / assets** | Engineering/Ops | `npm run pdf:export`, `assets/pdf-covers/` | Tik po HTML stabilizacijos |
-| **Commerce live** | Ops + Orchestrator | Stripe Dashboard, Vercel env, `allowPlaceholderCheckout` | Ne paraleliai su masiniu `sot` rewrite |
+| **Commerce live** | Ops + Orchestrator | Stripe Dashboard, Vercel env, `allowPlaceholderCheckout` | Ne paraleliai su masiniu `sot` rewrite. Lesson (2026-09-02): Stripe webhook URL must end with `/` when `vercel.json` has `trailingSlash: true` — Stripe does not follow POST 308. |
 
 **Merge taisyklė:** vienas `sot.json` commitų seka — Orchestrator (F1) → Content (F2–F3) → QA `npm test`.
 

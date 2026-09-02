@@ -983,7 +983,7 @@
     ]
   },
   "commerce": {
-    "allowPlaceholderCheckout": true,
+    "allowPlaceholderCheckout": false,
     "stripePaymentLinks": {
       "operating": "https://buy.stripe.com/bJe28rgKE6J7eW85hKfjG09",
       "strategic": "https://buy.stripe.com/bJe14n51W8Rf29m8tWfjG0a"
