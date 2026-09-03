@@ -18,7 +18,7 @@ Vienas įėjimo taškas į aktyvią dokumentaciją.
 - [gold_legacy_standard.md](../gold_legacy_standard.md) - premium UI/PDF/commerce patterns.
 - [PAID_FLOW_TEST_BACKLOG.md](PAID_FLOW_TEST_BACKLOG.md) - commerce/a11y testų plėtros planas.
 - [STOREFRONT_AUDIT.md](STOREFRONT_AUDIT.md) - storefront vs locked SOT (resolved).
-- [pdf-content-v02.md](pdf-content-v02.md) - PDF turinio V2 blueprint (istorinė struktūra; dabartinė apimtis 21/43).
+- [pdf-content-v02.md](pdf-content-v02.md) - istorinis V2 expansion blueprint (21/43 jau shipped). Current work = maturity-in-place, not more pages.
 - [CHANGELOG.md](../CHANGELOG.md) - pakeitimų istorija (SemVer).
 - [MOBILE_UX_IMPROVEMENT_PLAN.md](MOBILE_UX_IMPROVEMENT_PLAN.md) - mobile hierarchija (planavimas).
 - [ds_improvement_plan.md](ds_improvement_plan.md) - design system iterations (DS 0.5 → 1.1), storefront consolidation.

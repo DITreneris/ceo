@@ -29,6 +29,8 @@ Use this block as the canonical reference when updating README, launch docs, Cur
 
 Locked copy and commerce: [`config/sot.json`](../config/sot.json) → `pdfGuides`, `commerce`, `productDecision`.
 
+**Interior copy (2026-09-03):** in-place maturity pass (When / Do / See / Done). Page counts and H2/TOC titles unchanged. Do not treat [`pdf-content-v02.md`](pdf-content-v02.md) expansion tables as a ticket to add pages.
+
 **Obsolete metrics (do not use as current state):** 12/28, 18/40, “watermarked preview” unless implemented in code.
 
 ## QA gates

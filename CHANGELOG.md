@@ -4,7 +4,7 @@ Formatas pagal [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), versija
 
 ## [Unreleased]
 
-EN-US storefront journey + **Design System 1.1 Hardened** ([`docs/ds_improvement_plan.md`](docs/ds_improvement_plan.md) §16). Phase 15 commerce gate closed 2026-09-02 ([`docs/LAUNCH_CHECKLIST.md`](docs/LAUNCH_CHECKLIST.md)).
+EN-US storefront journey + **Design System 1.1 Hardened** ([`docs/ds_improvement_plan.md`](docs/ds_improvement_plan.md) §16). Phase 15 commerce gate closed 2026-09-02 ([`docs/LAUNCH_CHECKLIST.md`](docs/LAUNCH_CHECKLIST.md)). PDF interior maturity pass 2026-09-03 (21/43 unchanged).
 
 ### Fixed
 
@@ -18,6 +18,7 @@ EN-US storefront journey + **Design System 1.1 Hardened** ([`docs/ds_improvement
 
 ### Changed
 
+- **PDF content maturity (2026-09-03)** — In-place writing pass on both paid playbooks (When / Do / See / Done). Same **21 / 43** pages and H2 titles; no `commerce` edits. Fast vs Deep prompts differentiated (not template clones). Dropped leftover voice (`Pair with`, Buyer check, Refund-risk, blank worksheet underscores). Sources: [`docs/pdf-source/operating-cadence.html`](docs/pdf-source/operating-cadence.html), [`docs/pdf-source/strategic-os.html`](docs/pdf-source/strategic-os.html). `npm run pdf:export` 21/43; preview PNGs regenerated; private Blob overwritten on the existing `paid-pdfs/` paths (Production env URLs unchanged). Lesson: do not follow [`docs/pdf-content-v02.md`](docs/pdf-content-v02.md) as an expansion ticket; `.page` is `overflow: hidden` — extra copy clips, it does not add a page.
 - **EN copy audit remediation** — US English grammar/idiom/naming pass: fulfillment strategic display name → `CEO AI Strategy Playbook` (binary filenames unchanged); Strategy First-7 page map corrected (`20–21` / `26` / `5, 27`); refund idiom → `no-questions-asked`; Product FAQ → `Want the full Prompt Anatomy training?` (LT replace keys synced; `/en/` FAQPage JSON-LD preserved by tightening Organization schema replace); community title → `Running operations with AI?`; generator live + dormant EN prompts/rules/library; PDF body polish + `npm run pdf:assets` (21/43); visual baselines refreshed for copy wrap.
 - **QW1b entity footer** — footer affiliation line matches hub sibling memo §3: `Part of Prompt Anatomy · Training & checkout → promptanatomy.app` with UTM `utm_source=ceo&utm_medium=entity_footer&utm_campaign=ecosystem`; LT regression string synced; hub map / hero CTAs unchanged.
 - **IA slim v4 (PDF + FAQ + ops panel)** — PDF section deduped (removed compare strip, which-playbook line, per-card trust, delivery blurb, testimonials, publisher strip, card buyer-promise); single section trust row; `buyerFaq` 5→3; footer Product FAQ 6→3 (JSON-LD synced); `.ops-control-panel` card with mode tab icons; journey step 4 **Reuse templates**; structure tests **148/148**.

@@ -105,6 +105,8 @@ Pipeline invariants:
 - Min PNG bytes: cover ≥40 KB, preview ≥15 KB, OG ≥20 KB ([`tests/structure.test.js`](tests/structure.test.js)).
 - Cover render naudoja `body.pdf-asset-export` mode — atskirta nuo regular print mode.
 - Render script naudoja `display = ''` (CSS default), NE `display = 'flex'` non-cover sekcijoms (kitaip layout sulūžta į horizontal columns).
+- **Content maturity (2026-09-03):** each interior page answers When / Do / See / Done. Fast vs Deep must differ in TASK and OUTPUT, not three swapped words. Do not follow [`docs/pdf-content-v02.md`](docs/pdf-content-v02.md) as an add-pages ticket.
+- **Clip trap:** `.page` is a fixed Letter frame with `overflow: hidden`. Extra sentences disappear. On overflow, cut copy — never add a 22nd or 44th `<section class="page">`.
 
 ## 5. Paid PDF Commerce Standard
 
@@ -199,6 +201,8 @@ Prieš merge:
 - Ar cover'is liko 5 elementų (eyebrow + title + subtitle + callout + footer)?
 - Ar callout `strong` gold ant violet?
 - Ar `Page X/Y` footer numeracija konsistentinė (21 / 43)?
+- Ar interior page atsako When / Do / See / Done (ne feature list)?
+- Ar tekstas netrūksta į footerį (`.page` yra `overflow: hidden`)?
 - Ar po cover/HTML keitimo paleidau `npm run pdf:assets`?
 - Ar `npm test` praėjo?
 - Ar `npm run build` regeneravo en/lt locale puslapius?
@@ -230,13 +234,13 @@ Sister repo ([`DITreneris/teacher`](https://github.com/DITreneris/teacher)):
 | Nav Playbooks “floating” with gap on the right | `#stickyCopyBtn` used `visibility: hidden` (still in flex layout) | `.is-hidden { display: none }` |
 | Depth tip looks like messy double frame | Full-width `.chip--tip` inside `.depth-bar` | `#depthTip.field-help` below bar |
 | Five headline layers above tool (IA v2) | strip + ops value + intro + duplicate use-case h2 | IA v3 inline use cases; slim ops header |
+| PDF page looks unfinished / text missing at footer | V02 expansion + `.page { overflow: hidden }` | Rewrite in place; compress prompt boilerplate; visually check clip |
 
 ## 12. Current Known Follow-Ups
 
 Šie nėra blokeriai, bet neturėtų būti pamiršti:
 
-- Real Stripe live URLs (`config/sot.json` `commerce.stripePaymentLinks`) — vis dar placeholder.
-- `commerce.allowPlaceholderCheckout` flip į `false` prieš production launch.
+- Stripe live URLs + `allowPlaceholderCheckout: false` — closed 2026-09-02 (Phase 15). Do not reopen as a first ticket.
 - Real testimonials prieš stronger paid promotion.
 - WebP siblings PDF cover'iams ([`scripts/optimize-pdf-covers.js`](scripts/optimize-pdf-covers.js)) — sharp dep optional.
 - Programmatic OG generation (satori) — current SVG pipeline pakanka MVP.
@@ -244,4 +248,4 @@ Sister repo ([`DITreneris/teacher`](https://github.com/DITreneris/teacher)):
 
 ---
 
-*Last updated: 2026-05-24. Reference baseline po IA v3, nav Playbooks CTA, depth tip field-help, ops form overflow fix.*
+*Last updated: 2026-09-03. PDF interior maturity-in-place (When/Do/See/Done); clip trap on `.page { overflow: hidden }`; Phase 15 commerce follow-ups closed.*

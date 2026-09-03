@@ -36,7 +36,7 @@ Kad agentai dirbtų paraleliai be konfliktų:
 |------|------------|--------|---------------------|
 | **SOT / kryptis** | Orchestrator | `config/sot.json` (`productDecision`, `commerce`, `brand`) | Content nekeičia `commerce` be O sign-off |
 | **Turinio blueprint** | Content | `config/sot.json` (`buyerProblems`, `pdfGuides`, `productBlueprint`) | Po F1 merge ant Orchestrator bazės |
-| **PDF HTML/CSS** | Content → Design (serial per PDF) | `docs/pdf-source/*` | Du agentai ne redaguoja to paties HTML |
+| **PDF HTML/CSS** | Content → Design (serial per PDF) | `docs/pdf-source/*` | Du agentai ne redaguoja to paties HTML. Lesson (2026-09-03): interior work is **maturity-in-place** (When/Do/See/Done), not V02 page adds. `.page` is a clipped Letter box (`overflow: hidden`) — cut copy on overflow, never add a 22nd/44th section. |
 | **Storefront** | UI/UX | `index.html`, `style.css`, `commerce.js` | Neliesti kol SOT promises neužrakinti; audit → `docs/STOREFRONT_AUDIT.md` |
 | **Export / assets** | Engineering/Ops | `npm run pdf:export`, `assets/pdf-covers/` | Tik po HTML stabilizacijos |
 | **Commerce live** | Ops + Orchestrator | Stripe Dashboard, Vercel env, `allowPlaceholderCheckout` | Ne paraleliai su masiniu `sot` rewrite. Lesson (2026-09-02): Stripe webhook URL must end with `/` when `vercel.json` has `trailingSlash: true` — Stripe does not follow POST 308. |

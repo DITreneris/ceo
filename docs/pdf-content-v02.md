@@ -4,6 +4,8 @@ Planning source for upgrading the two paid CEO PDF products from v1.1 into a str
 
 > **Shipped state (v2.1, 2026-05):** Operations **21 pages**, Strategy **43 pages** — see [`CURRENT_TRUTH.md`](CURRENT_TRUTH.md). Sections below that reference thinner page counts describe the **pre-v2.1** gap analysis, not current storefront promises.
 
+> **Maturity pass (2026-09-03):** V2.1 assets already shipped. Current work is **in-place writing** (When / Do / See / Done on existing pages), not more chapters or pages. Do not use the expansion tables below as a ticket to add content. Sources: `docs/pdf-source/operating-cadence.html`, `docs/pdf-source/strategic-os.html`.
+
 This document is for humans and agents before editing:
 
 - `docs/pdf-source/operating-cadence.html`

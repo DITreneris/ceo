@@ -80,8 +80,8 @@ npm run pdf:assets        # export PDFs → preview PNGs → OG cover
 |------|------|
 | [`style.css`](../style.css) | Storefront stiliai |
 | [`docs/pdf-source/pdf-print.css`](pdf-source/pdf-print.css) | PDF print stylesheet (Letter, gradients, callouts) + `body.pdf-asset-export` mode (734×950 storefront preview) |
-| [`docs/pdf-source/operating-cadence.html`](pdf-source/operating-cadence.html) | 18-page operating PDF source (v2.0) |
-| [`docs/pdf-source/strategic-os.html`](pdf-source/strategic-os.html) | 40-page strategic PDF source (v2.0) |
+| [`docs/pdf-source/operating-cadence.html`](pdf-source/operating-cadence.html) | 21-page operating PDF source (v2.1; 2026-09-03 maturity pass) |
+| [`docs/pdf-source/strategic-os.html`](pdf-source/strategic-os.html) | 43-page strategic PDF source (v2.1; 2026-09-03 maturity pass) |
 | [`assets/og/og-cover.svg`](../assets/og/og-cover.svg) | OG card source (1200×630) |
 | [`scripts/render-pdf-preview-pages.js`](../scripts/render-pdf-preview-pages.js) | Playwright section-by-section PNG renderer (cover + p2/p3/p4) |
 | [`scripts/export-pdfs.js`](../scripts/export-pdfs.js) | Playwright PDF export (Letter, page-count assertion) |
@@ -93,6 +93,8 @@ npm run pdf:assets        # export PDFs → preview PNGs → OG cover
 - [ ] Ar cover'is turi tik 5 elementus (eyebrow, title, subtitle, callout, footer)?
 - [ ] Ar callout `strong` yra gold (ne primary violet — kontrasto bug)?
 - [ ] Ar interior puslapis turi `.page-eyebrow` su gold tag?
+- [ ] Ar puslapis atsako When / Do / See / Done (ne telegrama, ne feature list)?
+- [ ] Ar tekstas netrūksta į footerį (`overflow: hidden` — extra copy dingsta)?
 - [ ] Ar footer page count `X/21` (operating) arba `X/43` (strategy) formatas konsistentinis?
 - [ ] Ar po cover/copy keitimo paleidau `npm run pdf:assets`?
 - [ ] Ar visų `*.png` storefront preview'ų sizes `>= 40 KB` (cover) / `>= 15 KB` (interior)?
@@ -133,4 +135,4 @@ Storefront UI (hero, ops center, PDF cards) naudoja atskirą failų medį — ž
 
 ---
 
-*Last updated: 2026-05-22. Atitinka [`gold_legacy_standard.md`](../gold_legacy_standard.md) baseline.*
+*Last updated: 2026-09-03. PDF sources 21/43 v2.1; interior maturity (When/Do/See/Done); clip check on `.page` overflow.*

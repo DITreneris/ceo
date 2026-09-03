@@ -41,15 +41,15 @@
 
 ## Phase 16 — Asset freeze
 
-- [ ] PDFs: `CEO_Operations_Playbook.pdf` (21 p), `CEO_Strategic_AI_OS.pdf` (43 p) — from `npm run pdf:export` (page gate in `scripts/export-pdfs.js`)
-- [ ] PNGs: `assets/pdf-covers/*` — from `npm run pdf:preview-images`
-- [ ] Storefront claims match SOT: page counts, playbook names, `buyerPromise`
-- [ ] Tag release / note versions in CHANGELOG
+- [x] PDFs: `CEO_Operations_Playbook.pdf` (21 p), `CEO_Strategic_AI_OS.pdf` (43 p) — from `npm run pdf:export` (page gate in `scripts/export-pdfs.js`) — 2026-09-03 maturity export + Blob overwrite (`paid-pdfs/ceo-operations-playbook.pdf`, `paid-pdfs/ceo-strategic-ai-os.pdf`). Env URLs unchanged (same path, `allowOverwrite`).
+- [x] PNGs: `assets/pdf-covers/*` — from `npm run pdf:preview-images` (covers unchanged; p2–p4 regenerated)
+- [x] Storefront claims match SOT: page counts, playbook names, `buyerPromise`
+- [x] Note versions in CHANGELOG Unreleased (no git tag unless asked)
 
 ## Phase 17 — Deploy gate
 
-- [ ] `npm run build`
-- [ ] `npm run test:mixed` (structure, lint, smoke, e2e, a11y)
+- [x] `npm run build` (2026-09-03)
+- [x] Release QA 2026-09-03: `npm test` 156/156; smoke 36; e2e 18; visual 5 (pdf-guides unchanged); pa11y 5 pages clean. `npm run test:mixed` smoke teardown hits `wmic.exe ENOENT` on this Windows — suites run separately against `serve :3300`.
 - [ ] Desktop + mobile buyer journey review
 - [ ] Deploy Vercel production only when Phase 15–16 complete
 

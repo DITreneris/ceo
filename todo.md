@@ -4,7 +4,7 @@
 
 **Product goal:** Transform this repo from a useful AI prompt/tool project into a CEO/COO-grade premium SaaS-style PDF product system: clear, practical, trustworthy, polished, repeatable, and commercially ready.
 
-**Current audit verdict (2026-09-02):** Redis + Stripe host + Operations live buy are green. Buyer confirmed success page Download PDF. Webhook must stay `https://www.promptanatomy.ceo/api/stripe-webhook/`. `allowPlaceholderCheckout: false`. Strategy ($19.99) test buy optional. Deploy local `success.html` trailing-slash fetch when convenient.
+**Current audit verdict (2026-09-03):** Phase 15 green. Maturity interiors exported 21/43 and uploaded to private Blob (same paths). Storefront previews (p2–p4) ready to deploy. Webhook must stay `https://www.promptanatomy.ceo/api/stripe-webhook/`. `allowPlaceholderCheckout: false`. Strategy ($19.99) test buy optional.
 
 ## Now → Next → Later
 
@@ -17,7 +17,8 @@
 
 **Next (P1, after launch unblockers):**
 
-- Phase 17 — Production deploy after Now items pass.
+- ~~PDF content maturity (in-place)~~ — **Done 2026-09-03:** Operations + Strategy rewritten to When/Do/See/Done. Still 21/43 pages. Commerce untouched. Blob overwritten on existing `paid-pdfs/` paths.
+- Phase 17 — Production deploy of storefront p2–p4 previews + docs (HTML already exported).
 - Phase 18 — Post-launch buyer feedback loop (sales, refunds, support emails).
 - ~~Design system consolidation~~ — **Done:** DS 1.1 Hardened ([`docs/ds_improvement_plan.md`](docs/ds_improvement_plan.md) §16). Optional later: 1.4b mobile DOM per [`docs/DS_MOBILE_DOM_SPIKE.md`](docs/DS_MOBILE_DOM_SPIKE.md).
 - ~~Max ROI activation (Weekly default, sample data, empty-until-input, Copy&open AI)~~ — **Done** (storefront; does not replace Phase 15–17).
