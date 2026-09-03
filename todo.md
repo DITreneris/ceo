@@ -13,12 +13,12 @@
 1. ~~Phase 15 — Restore Upstash Redis~~ — **Done 2026-09-02:** local `PONG`; Production health `{ "ok": true }`.
 2. ~~Phase 15 — One live Operations test purchase~~ — **Done 2026-09-02** (webhook slash fix + fulfill). Refresh success page or email link.
 3. ~~Phase 15 — Flip `allowPlaceholderCheckout: false`~~ — **Done 2026-09-02.**
-4. Phase 17 — Manual buyer-journey QA on desktop + mobile (320 / 375 / 768 px).
+4. ~~Phase 17 — Manual buyer-journey QA on desktop + mobile (320 / 375 / 768 px)~~ — **Done 2026-09-03** on live `/en/`.
 
 **Next (P1, after launch unblockers):**
 
 - ~~PDF content maturity (in-place)~~ — **Done 2026-09-03:** Operations + Strategy rewritten to When/Do/See/Done. Still 21/43 pages. Commerce untouched. Blob overwritten on existing `paid-pdfs/` paths.
-- Phase 17 — Production deploy of storefront p2–p4 previews + docs (HTML already exported).
+- ~~Phase 17 — Production deploy~~ — **Done 2026-09-03:** `da94ac1` on `ceo/main`; live p2–p4 match new assets.
 - Phase 18 — Post-launch buyer feedback loop (sales, refunds, support emails).
 - ~~Design system consolidation~~ — **Done:** DS 1.1 Hardened ([`docs/ds_improvement_plan.md`](docs/ds_improvement_plan.md) §16). Optional later: 1.4b mobile DOM per [`docs/DS_MOBILE_DOM_SPIKE.md`](docs/DS_MOBILE_DOM_SPIKE.md).
 - ~~Max ROI activation (Weekly default, sample data, empty-until-input, Copy&open AI)~~ — **Done** (storefront; does not replace Phase 15–17).
@@ -185,7 +185,7 @@
 - [x] Confirm fulfillment configuration.
 - [x] Confirm Stripe product names, prices, and metadata.
 - [x] Confirm download email, success page, refund copy, and license copy.
-- [ ] Confirm private PDF storage and signed download flow.
+- [x] Confirm private PDF storage and signed download flow — Blob overwrite 2026-09-03 on existing `paid-pdfs/` paths; health still `blobConfigured: true`. Refresh the 2026-09-02 email/success link to confirm new Operations bytes (same URL).
 - [x] Run fulfillment health checks.
 - [x] Run one full test purchase flow before launch.
 
@@ -205,9 +205,9 @@
 - [x] Run full QA.
 - [x] Run full smoke and e2e checks.
 - [x] Run accessibility checks.
-- [ ] Review the full buyer journey on desktop and mobile (320 / 375 / 768 px).
+- [x] Review the full buyer journey on desktop and mobile (320 / 375 / 768 px).
 - [x] Prepare production deploy.
-- [ ] Deploy only after content, PDFs, PNGs, payment, fulfillment, and QA all pass.
+- [x] Deploy only after content, PDFs, PNGs, payment, fulfillment, and QA all pass.
 
 **P0 dependency:** All Phase 15 items must be green first (live Stripe URLs + env + test purchase).
 

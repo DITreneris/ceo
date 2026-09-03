@@ -50,7 +50,7 @@
 
 - [x] `npm run build` (2026-09-03)
 - [x] Release QA 2026-09-03: `npm test` 156/156; smoke 36; e2e 18; visual 5 (pdf-guides unchanged); pa11y 5 pages clean. `npm run test:mixed` smoke teardown hits `wmic.exe ENOENT` on this Windows — suites run separately against `serve :3300`.
-- [ ] Desktop + mobile buyer journey review
-- [ ] Deploy Vercel production only when Phase 15–16 complete
+- [x] Desktop + mobile buyer journey review — 2026-09-03 live `/en/` at 1280 / 768 / 375 / 320: Stripe CTAs live; Operations preview serves p2–p4; `success.html` polls `/api/download-link/`
+- [x] Deploy Vercel production — `ceo/main` `da94ac1` (2026-09-03). Live p2–p4 byte sizes match the new assets.
 
 **Post-launch (Phase 18):** sales/refund/support review — not part of this gate.
