@@ -763,6 +763,24 @@ function run() {
     'Hero Prompt Anatomy lineage badges'
   )) passed++;
   else failed++;
+  if (assert(
+    html.includes('community-cta-secondary') &&
+      html.includes('utm_source=ceo&utm_medium=community&utm_campaign=ecosystem') &&
+      generatorFile.includes('COMMUNITY_HUB_URL'),
+    'Community Hub CTA has ceo/community UTM'
+  )) passed++;
+  else failed++;
+  if (assert(
+    html.includes('utm_source=ceo&utm_medium=faq&utm_campaign=ecosystem') &&
+      generatorFile.includes('FAQ_HUB_URL'),
+    'Footer Product FAQ training link has ceo/faq UTM'
+  )) passed++;
+  else failed++;
+  if (assert(
+    html.includes('href="https://www.promptanatomy.app/" class="badge" data-copy-hero-badge-parent'),
+    'Hero badge stays bare (no UTM)'
+  )) passed++;
+  else failed++;
   if (assert(html.includes('Turn scattered KPIs into a clear weekly CEO brief') && html.includes('data-copy-hero-headline'), 'Hero benefit-first headline (CEO brief)')) passed++;
   else failed++;
   if (

@@ -107,6 +107,8 @@ Pipeline invariants:
 - Render script naudoja `display = ''` (CSS default), NE `display = 'flex'` non-cover sekcijoms (kitaip layout sulūžta į horizontal columns).
 - **Content maturity (2026-09-03):** each interior page answers When / Do / See / Done. Fast vs Deep must differ in TASK and OUTPUT, not three swapped words. Do not follow [`docs/pdf-content-v02.md`](docs/pdf-content-v02.md) as an add-pages ticket.
 - **Clip trap:** `.page` is a fixed Letter frame with `overflow: hidden`. Extra sentences disappear. On overflow, cut copy — never add a 22nd or 44th `<section class="page">`.
+- **Export ≠ live (2026-09-03):** `npm run pdf:export` writes gitignored `api/_private/pdfs/`. Buyers get Vercel Blob. After this ship, Blob was overwritten on existing `paid-pdfs/` paths — Production `PDF_*_SOURCE_URL` unchanged. Next rewrite: `pdf:upload-blob` before claiming Production is current.
+- **test:mixed teardown:** on this Windows, `start-server-and-test` can exit 1 with `wmic.exe ENOENT` after a green smoke run. Re-run e2e / visual / a11y against `npx serve . -l 3300`.
 
 ## 5. Paid PDF Commerce Standard
 
@@ -248,4 +250,4 @@ Sister repo ([`DITreneris/teacher`](https://github.com/DITreneris/teacher)):
 
 ---
 
-*Last updated: 2026-09-03. PDF interior maturity-in-place (When/Do/See/Done); clip trap on `.page { overflow: hidden }`; Phase 15 commerce follow-ups closed.*
+*Last updated: 2026-09-03. Maturity pack live (Blob overwrite + p2–p4); export ≠ live; clip trap; Phase 15–17 closed for this slice.*

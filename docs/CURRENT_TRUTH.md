@@ -18,6 +18,7 @@ Use this block as the canonical reference when updating README, launch docs, Cur
 | **Storefront copy SOT** | `config/sot.json` → `copy.pdfStorefront`, `copy.hero` (secondary CTA → `#pdf-guides`) |
 | **PDF storefront (IA slim v4)** | Header + 2 lean cards + section trust row + **Purchase FAQ** (3 buyer items); no compare strip, testimonials, or publisher strip |
 | **FAQ split** | Footer **Product FAQ** (3 items, JSON-LD) vs `#pdf-guides-faq` **Purchase FAQ** (`buyerFaq` ×3) |
+| **Outbound UTM → `.app`** | Community CTA `utm_medium=community`; Product FAQ `faq`; entity footer `entity_footer`. All `utm_source=ceo&utm_campaign=ecosystem`. Hero badge + hub map stay bare. |
 | **Storefront UI theme** | **Light only** (gold experience). No dark-mode toggle; legacy `di_ops_center_theme` cleared on load. |
 
 ## Paid PDFs (v2.1)
@@ -29,7 +30,7 @@ Use this block as the canonical reference when updating README, launch docs, Cur
 
 Locked copy and commerce: [`config/sot.json`](../config/sot.json) → `pdfGuides`, `commerce`, `productDecision`.
 
-**Interior copy (2026-09-03):** in-place maturity pass (When / Do / See / Done). Page counts and H2/TOC titles unchanged. Do not treat [`pdf-content-v02.md`](pdf-content-v02.md) expansion tables as a ticket to add pages.
+**Interior copy (2026-09-03):** in-place maturity pass (When / Do / See / Done). Page counts and H2/TOC titles unchanged. Private Blob overwritten on existing `paid-pdfs/` paths (Production env URLs unchanged); storefront p2–p4 shipped `da94ac1`. Do not treat [`pdf-content-v02.md`](pdf-content-v02.md) expansion tables as a ticket to add pages.
 
 **Obsolete metrics (do not use as current state):** 12/28, 18/40, “watermarked preview” unless implemented in code.
 
@@ -57,5 +58,7 @@ Fulfillment runbook: [`memo_pdf.md`](../memo_pdf.md). Launch gate: [`LAUNCH_CHEC
 - **Upstash Redis** — restored 2026-09-02 (`nearby-bass-181854`; local `PONG`; Production health `{ "ok": true, "redis": "ok" }`)
 - **Live Operations purchase confirmed** 2026-09-02 — success page download ready; Stripe webhook URL must keep trailing slash (`/api/stripe-webhook/`)
 - `allowPlaceholderCheckout: false` (flipped after that purchase)
+
+**Phase 16–17 (2026-09-03):** maturity pack live — Blob + `/en/` previews. `pdf:export` still does not imply upload.
 
 See [`todo.md`](../todo.md) Phases 15–17.

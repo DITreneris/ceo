@@ -533,8 +533,8 @@ function buildLocaleHtml(locale) {
       'Įkūrėjams, CEO, COO ir vadovams, kurie turi savaitinę operacinę peržiūrą.'
     );
     html = html.replace(
-      'Explore the complete Prompt Anatomy training and all Hub modules at <a href="https://www.promptanatomy.app/" target="_blank" rel="noopener noreferrer">promptanatomy.app</a>.',
-      'Pilną Promptų anatomijos mokymą ir visus Hub modulius rasite <a href="https://www.promptanatomy.app/" target="_blank" rel="noopener noreferrer">promptanatomy.app</a>.'
+      'Explore the complete Prompt Anatomy training and all Hub modules at <a href="https://www.promptanatomy.app/?utm_source=ceo&utm_medium=faq&utm_campaign=ecosystem" target="_blank" rel="noopener noreferrer">promptanatomy.app</a>.',
+      'Pilną Promptų anatomijos mokymą ir visus Hub modulius rasite <a href="https://www.promptanatomy.app/?utm_source=ceo&utm_medium=faq&utm_campaign=ecosystem" target="_blank" rel="noopener noreferrer">promptanatomy.app</a>.'
     );
     html = html.replace(
       'Saved sessions are stored locally in your browser (localStorage). This page does not upload your inputs to a server.',

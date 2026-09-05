@@ -15,7 +15,7 @@
 | Storefront | `index.html`, `style.css`, `commerce.js` |
 | Locale build | `scripts/build-locale-pages.js` → `lt/`, `en/` |
 | PDF source | `docs/pdf-source/*.html`, `docs/pdf-print.css` — maturity-in-place (When/Do/See/Done), not V02 page adds; `.page` clips (`overflow: hidden`) |
-| Export | `npm run pdf:export` / `pdf:assets` → `scripts/export-pdfs.js` |
+| Export | `npm run pdf:export` / `pdf:assets` → `scripts/export-pdfs.js`. Export ≠ Blob — `pdf:upload-blob` after HTML freeze (done 2026-09-03, same `paid-pdfs/` paths). |
 | Fulfillment | `api/stripe-webhook.js`, `api/_lib/fulfillment.js`, `memo_pdf.md` |
 
 ## Language and tone (user-facing)

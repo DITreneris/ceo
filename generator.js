@@ -24,6 +24,8 @@
     };
     var ANATOMY_URL = 'https://www.promptanatomy.app/';
     var ENTITY_FOOTER_URL = 'https://www.promptanatomy.app/?utm_source=ceo&utm_medium=entity_footer&utm_campaign=ecosystem';
+    var COMMUNITY_HUB_URL = 'https://www.promptanatomy.app/?utm_source=ceo&utm_medium=community&utm_campaign=ecosystem';
+    var FAQ_HUB_URL = 'https://www.promptanatomy.app/?utm_source=ceo&utm_medium=faq&utm_campaign=ecosystem';
 
     /* ===== CONSTANTS ===== */
 
@@ -648,7 +650,7 @@
         if (communitySecondary) {
             communitySecondary.textContent = uiText('Atrask visus Hub modulius →', 'Explore all Hub modules →');
             communitySecondary.setAttribute('aria-label', uiText('Atrask visą Promptų anatomijos AI OS – visus Hub modulius (atidaroma naujame lange)', 'Explore the full Prompt Anatomy AI OS – all Hub modules (opens in new tab)'));
-            communitySecondary.setAttribute('href', ANATOMY_URL);
+            communitySecondary.setAttribute('href', COMMUNITY_HUB_URL);
         }
         var footerH3 = document.querySelector('[data-copy-footer-heading]');
         if (footerH3) {
@@ -722,10 +724,10 @@
             footerFaq.innerHTML = uiText(
                 '<details class="footer-faq-item"><summary class="footer-faq-q">Ar jūs saugote mano duomenis?</summary><div class="footer-faq-a">Sesijos išsaugomos tik tavo naršyklėje (localStorage). Šis puslapis nieko neįkelia į serverį.</div></details>' +
                 '<details class="footer-faq-item"><summary class="footer-faq-q">Kuo skiriasi Greita, Gilu ir Valdybai?</summary><div class="footer-faq-a">Greita pateikia trumpą prioritetų sąrašą. Gilu prideda analizę ir pagrindimą. Valdybai suformuoja trumpą formalią santrauką su rizikomis ir veiksmais.</div></details>' +
-                '<details class="footer-faq-item"><summary class="footer-faq-q">Nori pilnos DI operacinės sistemos?</summary><div class="footer-faq-a">Pilną Promptų anatomijos mokymą ir visus Hub modulius rasite <a href="https://www.promptanatomy.app/" target="_blank" rel="noopener noreferrer">promptanatomy.app</a>.</div></details>',
+                '<details class="footer-faq-item"><summary class="footer-faq-q">Nori pilnos DI operacinės sistemos?</summary><div class="footer-faq-a">Pilną Promptų anatomijos mokymą ir visus Hub modulius rasite <a href="' + FAQ_HUB_URL + '" target="_blank" rel="noopener noreferrer">promptanatomy.app</a>.</div></details>',
                 '<details class="footer-faq-item"><summary class="footer-faq-q">Do you store my data?</summary><div class="footer-faq-a">Saved sessions are stored locally in your browser (localStorage). This page does not upload your inputs to a server.</div></details>' +
                 '<details class="footer-faq-item"><summary class="footer-faq-q">What is the difference between Fast, Deep, and Board?</summary><div class="footer-faq-a">Fast gives a short prioritized answer, Deep adds analysis and rationale, and Board formats a concise executive summary with risks and actions.</div></details>' +
-                '<details class="footer-faq-item"><summary class="footer-faq-q">Want the full Prompt Anatomy training?</summary><div class="footer-faq-a">Explore the complete Prompt Anatomy training and all Hub modules at <a href="https://www.promptanatomy.app/" target="_blank" rel="noopener noreferrer">promptanatomy.app</a>.</div></details>'
+                '<details class="footer-faq-item"><summary class="footer-faq-q">Want the full Prompt Anatomy training?</summary><div class="footer-faq-a">Explore the complete Prompt Anatomy training and all Hub modules at <a href="' + FAQ_HUB_URL + '" target="_blank" rel="noopener noreferrer">promptanatomy.app</a>.</div></details>'
             );
         }
 
