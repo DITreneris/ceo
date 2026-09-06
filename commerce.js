@@ -125,7 +125,7 @@
       var html = '';
       def.pages.forEach(function (num) {
         var guideName = key === 'strategic' ? 'the CEO AI Strategy Playbook' : 'the CEO AI Operations Playbook';
-        html += '<figure class="pdf-preview-page"><img src="/assets/pdf-covers/' + key + '-p' + num + '.png" width="367" height="475" alt="Preview page ' + num + ' of ' + guideName + '"><figcaption>Page ' + num + ' (preview)</figcaption></figure>';
+        html += '<figure class="pdf-preview-page"><img src="/assets/pdf-covers/' + key + '-p' + num + '.png?v=2.1.3" width="367" height="475" alt="Preview page ' + num + ' of ' + guideName + '"><figcaption>Page ' + num + ' (preview)</figcaption></figure>';
       });
       pagesEl.innerHTML = html;
     }

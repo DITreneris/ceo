@@ -166,13 +166,13 @@ function run() {
   // --- Moduliniai failai ---
   if (assert(html.includes('href="style.css?v=2.1.2"'), 'Link į style.css (cache-busted)')) passed++;
   else failed++;
-  if (assert(html.includes('src="generator.js"'), 'Script src generator.js')) passed++;
+  if (assert(html.includes('src="generator.js?v=2.1.3"'), 'Script src generator.js')) passed++;
   else failed++;
-  if (assert(html.includes('src="copy.js"'), 'Script src copy.js')) passed++;
+  if (assert(html.includes('src="copy.js?v=2.1.3"'), 'Script src copy.js')) passed++;
   else failed++;
   if (
     assert(
-      html.includes('src="vendor/lucide.min.js"') && !html.includes('unpkg.com/lucide'),
+      html.includes('src="vendor/lucide.min.js?v=2.1.3"') && !html.includes('unpkg.com/lucide'),
       'Lucide UMD lokaliai (vendor/lucide.min.js), ne unpkg CDN'
     )
   ) {
@@ -223,7 +223,7 @@ function run() {
   if (
     assert(
       ltEntryFile &&
-        ltEntryFile.includes('src="/vendor/lucide.min.js"') &&
+        ltEntryFile.includes('src="/vendor/lucide.min.js?v=2.1.3"') &&
         !ltEntryFile.includes('unpkg.com/lucide'),
       'lt/index.html Lucide iš /vendor/lucide.min.js'
     )
@@ -233,7 +233,7 @@ function run() {
   if (
     assert(
       enEntryFile &&
-        enEntryFile.includes('src="/vendor/lucide.min.js"') &&
+        enEntryFile.includes('src="/vendor/lucide.min.js?v=2.1.3"') &&
         !enEntryFile.includes('unpkg.com/lucide'),
       'en/index.html Lucide iš /vendor/lucide.min.js'
     )
@@ -360,6 +360,13 @@ function run() {
   if (assert(html.includes('<meta property="og:image:width" content="1200"') && html.includes('<meta property="og:image:height" content="630"'), 'index.html og:image dydis 1200x630')) passed++;
   else failed++;
   if (assert(html.includes('<meta name="twitter:image"') && html.includes('<meta property="og:url"'), 'index.html turi twitter:image ir og:url')) passed++;
+  else failed++;
+  if (
+    assert(
+      html.includes('<meta property="og:url" content="https://www.promptanatomy.ceo/en/"'),
+      'index.html og:url baigiasi /en/'
+    )
+  ) passed++;
   else failed++;
   if (assert(ltEntryFile && /<meta\s+property="og:url"\s+content="[^"]*\/lt\/"/.test(ltEntryFile) && ltEntryFile.includes('content="lt_LT"'), 'lt/index.html og:url baigiasi /lt/ ir og:locale=lt_LT')) passed++;
   else failed++;
@@ -546,6 +553,8 @@ function run() {
   ) {
     passed++;
   } else failed++;
+  if (assert(html.includes('/assets/pdf-covers/operating.png?v=2.1.3') && html.includes('/assets/pdf-covers/strategic.png?v=2.1.3'), 'PDF viršelių src cache-bust ?v=2.1.3')) passed++;
+  else failed++;
   if (assert(html.includes('$9.99') && html.includes('$19.99'), 'PDF kainos $9.99 ir $19.99 index.html')) passed++;
   else failed++;
   if (
@@ -558,7 +567,7 @@ function run() {
   } else failed++;
   if (assert(html.includes('data-stripe-cta="operating"') && html.includes('data-stripe-cta="strategic"'), 'Stripe CTA data atributai')) passed++;
   else failed++;
-  if (assert(html.includes('src="commerce.js"'), 'commerce.js prijungtas index.html')) passed++;
+  if (assert(html.includes('src="commerce.js?v=2.1.3"'), 'commerce.js prijungtas index.html')) passed++;
   else failed++;
   if (
     assert(
@@ -698,8 +707,8 @@ function run() {
   if (
     assert(
       enEntryFile &&
-        enEntryFile.includes('/assets/pdf-covers/operating.png') &&
-        enEntryFile.includes('/assets/pdf-covers/strategic.png') &&
+        enEntryFile.includes('/assets/pdf-covers/operating.png?v=2.1.3') &&
+        enEntryFile.includes('/assets/pdf-covers/strategic.png?v=2.1.3') &&
         enEntryFile.includes('Can my leadership team use the playbook') &&
         enEntryFile.includes('#buyer-faq'),
       'en/index.html Product cover images + buyer FAQ JSON-LD'
@@ -797,6 +806,8 @@ function run() {
   else failed++;
   if (assert(commerceJs && commerceJs.includes("fetch('/config/sot.json'"), 'commerce.js krauna SOT iš root kelio locale puslapiams')) passed++;
   else failed++;
+  if (assert(commerceJs && commerceJs.includes('.png?v=2.1.3'), 'commerce.js PDF preview cache-bust ?v=2.1.3')) passed++;
+  else failed++;
   const fulfillmentLib = readFile(FULFILLMENT_LIB);
   if (assert(fulfillmentLib && fulfillmentLib.includes("id: 'operating'") && fulfillmentLib.includes('999'), 'fulfillment.js operating + 999 cent fallback')) passed++;
   else failed++;
@@ -812,6 +823,8 @@ function run() {
   ) {
     passed++;
   } else failed++;
+  if (assert(fulfillmentLib && fulfillmentLib.includes("new URL('/api/download/'"), 'fulfillment.js download URL has trailing slash')) passed++;
+  else failed++;
   if (
     assert(
       sot &&
@@ -822,8 +835,19 @@ function run() {
   ) {
     passed++;
   } else failed++;
+  const stripeWebhookFile = readFile(path.join(__dirname, '..', 'api', 'stripe-webhook.js'));
   if (assert(fs.existsSync(path.join(__dirname, '..', 'api', 'stripe-webhook.js')), 'api/stripe-webhook.js')) passed++;
   else failed++;
+  if (
+    assert(
+      stripeWebhookFile &&
+        stripeWebhookFile.includes("result.status === 'locked'") &&
+        stripeWebhookFile.includes('sendJson(res, 503'),
+      'stripe-webhook.js locked fulfillment returns 503'
+    )
+  ) {
+    passed++;
+  } else failed++;
   if (assert(fs.existsSync(path.join(__dirname, '..', 'api', 'download.js')), 'api/download.js')) passed++;
   else failed++;
   if (assert(fs.existsSync(path.join(__dirname, '..', 'api', 'download-link.js')), 'api/download-link.js')) passed++;
@@ -833,6 +857,17 @@ function run() {
   const successHtml = readFile(SUCCESS_PATH);
   if (assert(successHtml && successHtml.includes('success-page'), 'success.html egzistuoja')) passed++;
   else failed++;
+  if (
+    assert(
+      successHtml &&
+        successHtml.includes('var MAX_ATTEMPTS = 20') &&
+        successHtml.includes('function escapeHtml') &&
+        successHtml.includes('function isAllowedDownloadUrl'),
+      'success.html poll cap, escape, download URL allowlist'
+    )
+  ) {
+    passed++;
+  } else failed++;
   const termsHtml = readFile(TERMS_PATH);
   if (assert(termsHtml && termsHtml.includes('paid-pdf-license'), 'terms.html su paid-pdf-license')) passed++;
   else failed++;

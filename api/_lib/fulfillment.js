@@ -304,7 +304,7 @@ async function loadProductPdf(product) {
 }
 
 function buildDownloadUrl(token, origin) {
-  const url = new URL('/api/download', getSiteUrl(origin));
+  const url = new URL('/api/download/', getSiteUrl(origin));
   url.searchParams.set('t', token);
   return url.toString();
 }

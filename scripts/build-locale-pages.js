@@ -385,10 +385,14 @@ function buildLocaleHtml(locale) {
   var base = BASE_PATH || '';
   html = html.replace(/\bhref="favicon\.svg"/, 'href="' + base + '/favicon.svg"');
   html = html.replace(/\bhref="style\.css(\?[^"]*)?"/g, 'href="' + base + '/style.css?v=2.1.2"');
-  html = html.replace(/\bsrc="vendor\/lucide\.min\.js"/, 'src="' + base + '/vendor/lucide.min.js"');
-  html = html.replace(/\bsrc="generator\.js"/, 'src="' + base + '/generator.js"');
-  html = html.replace(/\bsrc="copy\.js"/, 'src="' + base + '/copy.js"');
-  html = html.replace(/\bsrc="commerce\.js"/, 'src="' + base + '/commerce.js"');
+  html = html.replace(/\bsrc="vendor\/lucide\.min\.js(\?[^"]*)?"/, 'src="' + base + '/vendor/lucide.min.js?v=2.1.3"');
+  html = html.replace(/\bsrc="generator\.js(\?[^"]*)?"/, 'src="' + base + '/generator.js?v=2.1.3"');
+  html = html.replace(/\bsrc="copy\.js(\?[^"]*)?"/, 'src="' + base + '/copy.js?v=2.1.3"');
+  html = html.replace(/\bsrc="commerce\.js(\?[^"]*)?"/, 'src="' + base + '/commerce.js?v=2.1.3"');
+  html = html.replace(
+    /\bsrc="(\/assets\/pdf-covers\/(?:operating|strategic)\.png)(\?[^"]*)?"/g,
+    'src="$1?v=2.1.3"'
+  );
   html = html.replace(/\bhref="privatumas\.html"/g, 'href="' + base + '/privatumas.html"');
   html = html.replace(/\bhref="terms\.html"/g, 'href="' + base + '/terms.html"');
   html = html.replace(/\bhref="privacy\.html"/g, 'href="' + base + '/privacy.html"');

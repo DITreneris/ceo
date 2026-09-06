@@ -8,6 +8,9 @@ EN-US storefront journey + **Design System 1.1 Hardened** ([`docs/ds_improvement
 
 ### Fixed
 
+- **Cache-bust JS and PDF images (2026-09-06)** — `generator.js`, `copy.js`, `commerce.js`, `vendor/lucide.min.js`, storefront covers, and preview PNGs use `?v=2.1.3` so `immutable` year-cache does not pin returning browsers to a stale unhashed URL. CSS stays `?v=2.1.2`.
+- **Webhook lock retry** — `checkout.session.completed` fulfillment `locked` now returns HTTP **503** (Stripe retries non-2xx) instead of 200. Email download links emit `/api/download/` (trailing slash).
+- **Success page poll** — cap 20 × 2s; escape `downloadUrl` / `maskedEmail`; allowlist same-origin `/api/download`. Root `og:url` aligned to `/en/`.
 - **Phase 15 fulfillment (2026-09-02)** — Upstash Redis restored (`nearby-bass-181854`; `REDIS_KEY_PREFIX=ceo:`); Production `GET /api/fulfillment-health/` → `{ "ok": true, "redis": "ok" }` on `www.promptanatomy.ceo` and `ceo-teal.vercel.app` (same Vercel project). Stripe CEO Payment Links now `after_completion` redirect to `.ceo/success.html?session_id={CHECKOUT_SESSION_ID}` with `metadata.product` = `operating` | `strategic`. Webhook URL must be `https://www.promptanatomy.ceo/api/stripe-webhook/` — `vercel.json` `trailingSlash: true` 308s the no-slash path and Stripe does not follow POST redirects (first live Operations buy needed a manual fulfill). Buyer confirmed success-page **Download PDF**. `commerce.allowPlaceholderCheckout: false`. `success.html` polls `/api/download-link/` (trailing slash). Do not commit `.env`.
 
 ### Added

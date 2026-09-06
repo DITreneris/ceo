@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex">
   <title>Download your PDF | AI Operations Center</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=2.1.2">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
 </head>
 <body class="success-page">
@@ -16,14 +16,39 @@
     </div>
     <p class="success-meta">Executive license: internal use for you and your immediate leadership team. <a href="terms.html#paid-pdf-license">Full license</a>.</p>
     <p class="success-meta">14-day no-questions-asked refund: reply to your Stripe receipt or email info@promptanatomy.app.</p>
-    <p><a href="index.html">← Back to AI Operations Center</a></p>
+    <p><a href="/en/">← Back to AI Operations Center</a></p>
   </main>
   <script>
     (function () {
+      var MAX_ATTEMPTS = 20;
       var params = new URLSearchParams(window.location.search);
       var sessionId = params.get('session_id') || '';
       var stateEl = document.getElementById('successState');
       var pattern = /^cs_(?:test|live)_[A-Za-z0-9]{20,}$/;
+      var attempt = 0;
+
+      function escapeHtml(value) {
+        return String(value == null ? '' : value)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      }
+
+      function isAllowedDownloadUrl(url) {
+        try {
+          var parsed = new URL(url, window.location.origin);
+          if (parsed.origin !== window.location.origin) return false;
+          var path = parsed.pathname;
+          return path === '/api/download' || path === '/api/download/';
+        } catch (_error) {
+          return false;
+        }
+      }
+
+      function showPrepareError() {
+        stateEl.innerHTML = '<p class="success-error">We could not prepare your download yet. Check your email or contact info@promptanatomy.app.</p>';
+      }
 
       if (!sessionId || !pattern.test(sessionId)) {
         stateEl.innerHTML = '<p class="success-error">Missing or invalid checkout session. Check your email for the download link.</p>';
@@ -31,19 +56,23 @@
       }
 
       function poll() {
+        attempt += 1;
         fetch('/api/download-link/?session_id=' + encodeURIComponent(sessionId), { credentials: 'same-origin' })
           .then(function (r) { return r.json().then(function (body) { return { status: r.status, body: body }; }); })
           .then(function (res) {
-            if (res.status === 200 && res.body.downloadUrl) {
-              stateEl.innerHTML = '<p>Your download is ready.</p><p><a class="success-download-btn" href="' + res.body.downloadUrl + '">Download PDF</a></p>' +
-                (res.body.maskedEmail ? '<p class="success-email">Sent to ' + res.body.maskedEmail + '</p>' : '');
+            if (res.status === 200 && res.body.downloadUrl && isAllowedDownloadUrl(res.body.downloadUrl)) {
+              var emailHtml = res.body.maskedEmail
+                ? '<p class="success-email">Sent to ' + escapeHtml(res.body.maskedEmail) + '</p>'
+                : '';
+              stateEl.innerHTML = '<p>Your download is ready.</p><p><a class="success-download-btn" href="' +
+                escapeHtml(res.body.downloadUrl) + '">Download PDF</a></p>' + emailHtml;
               return;
             }
-            if (res.status === 202) {
+            if (res.status === 202 && attempt < MAX_ATTEMPTS) {
               setTimeout(poll, 2000);
               return;
             }
-            stateEl.innerHTML = '<p class="success-error">We could not prepare your download yet. Check your email or contact info@promptanatomy.app.</p>';
+            showPrepareError();
           })
           .catch(function () {
             stateEl.innerHTML = '<p class="success-error">Connection error. Refresh this page or use the link in your email.</p>';
