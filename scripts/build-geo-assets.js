@@ -244,8 +244,8 @@ function buildLlmsFullTxt(sot) {
   lines.push('## See also');
   lines.push('');
   lines.push('- Curated map: ' + siteUrl + '/llms.txt');
-  lines.push('- Privacy: ' + siteUrl + '/privacy.html');
-  lines.push('- Terms: ' + siteUrl + '/terms.html');
+  lines.push('- Privacy: ' + siteUrl + '/privacy/');
+  lines.push('- Terms: ' + siteUrl + '/terms/');
   lines.push('');
 
   return lines.join('\n');

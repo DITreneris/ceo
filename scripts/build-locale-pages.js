@@ -394,8 +394,10 @@ function buildLocaleHtml(locale) {
     'src="$1?v=2.1.3"'
   );
   html = html.replace(/\bhref="privatumas\.html"/g, 'href="' + base + '/privatumas.html"');
-  html = html.replace(/\bhref="terms\.html"/g, 'href="' + base + '/terms.html"');
-  html = html.replace(/\bhref="privacy\.html"/g, 'href="' + base + '/privacy.html"');
+  html = html.replace(/\bhref="(?:\/)?terms\.html(#[^"]*)?"/g, 'href="' + base + '/terms/$1"');
+  html = html.replace(/\bhref="(?:\/)?privacy\.html"/g, 'href="' + base + '/privacy/"');
+  html = html.replace(/\bhref="(?:\/)?terms\/(#[^"]*)?"/g, 'href="' + base + '/terms/$1"');
+  html = html.replace(/\bhref="(?:\/)?privacy\/"/g, 'href="' + base + '/privacy/"');
 
   // 7. For lt: translate static HTML for crawlers/first paint (source is EN-first)
   if (locale === 'lt') {

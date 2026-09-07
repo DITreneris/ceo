@@ -292,12 +292,12 @@
       ],
       "optionalPages": [
         {
-          "url": "/privacy.html",
+          "url": "/privacy/",
           "label": "Privacy policy",
           "description": "Local browser storage; inputs are not uploaded to a server"
         },
         {
-          "url": "/terms.html",
+          "url": "/terms/",
           "label": "Terms",
           "description": "License and paid PDF terms"
         }
@@ -331,8 +331,8 @@
     "sitemap": {
       "include": [
         "/en/",
-        "/privacy.html",
-        "/terms.html"
+        "/privacy/",
+        "/terms/"
       ],
       "exclude": [
         "/lt/",

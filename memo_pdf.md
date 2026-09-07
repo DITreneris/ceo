@@ -230,8 +230,8 @@ All buyer-facing strings should be **American English** and aligned across:
 - PDF cards (price, license, refund, delivery promise),
 - `success.html`,
 - Resend HTML/text,
-- `terms.html#paid-pdf-license`,
-- `privacy.html` (analytics, payment processors).
+- `/terms/#paid-pdf-license`,
+- `/privacy/` (analytics, payment processors).
 
 **Copy safety (audit-driven):**
 

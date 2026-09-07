@@ -27,7 +27,7 @@ SOT: [`config/sot.json`](../config/sot.json) → `geo` (+ `pdfGuides.*.coverImag
 | Live retrieval / citations | `OAI-SearchBot`, `ChatGPT-User`, `Claude-SearchBot`, `Claude-User`, `PerplexityBot`, `Perplexity-User`, `Googlebot`, `Bingbot` |
 | Training / model grounding | `GPTBot`, `ClaudeBot`, `Google-Extended`, `CCBot`, `Applebot-Extended`, `meta-externalagent`, `Claude-Web`, `anthropic-ai` |
 
-Disallow: `/api/`, `/lt/`. Sitemap includes `/en/`, `privacy.html`, `terms.html` — excludes `/lt/`, `/api/`, and `success.html` (already `noindex`).
+Disallow: `/api/`, `/lt/`. Sitemap includes `/en/`, `/privacy/`, `/terms/` (slash URLs that `cleanUrls` + `trailingSlash` serve as 200). Excludes `/lt/`, `/api/`, and `success.html` (already `noindex`). `.html` aliases 308 and stay out of the sitemap.
 
 ## Entity
 

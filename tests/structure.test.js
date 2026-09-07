@@ -142,7 +142,7 @@ function run() {
   else failed++;
   if (assert(html.includes('id="toast"') && html.includes('role="status"'), 'Toast pranešimas')) passed++;
   else failed++;
-  if (assert(html.includes('privacy.html') && html.includes('terms.html') && !html.includes('Privatumas (LT)'), 'Footer rodo tik EN legal nuorodas')) passed++;
+  if (assert(html.includes('/privacy/') && html.includes('/terms/') && !html.includes('Privatumas (LT)'), 'Footer rodo tik EN legal nuorodas')) passed++;
   else failed++;
   if (assert(html.includes('promptanatomy.app') || html.includes('promptanatomy.info') || html.includes('promptanatomy.space') || html.includes('promptanatomy.cloud'), 'Nuoroda į Prompt Anatomy (hub)')) passed++;
   else failed++;
@@ -654,9 +654,13 @@ function run() {
     assert(
       sitemapXml &&
         sitemapXml.includes('/en/') &&
+        sitemapXml.includes('/privacy/') &&
+        sitemapXml.includes('/terms/') &&
+        sitemapXml.indexOf('/privacy.html') === -1 &&
+        sitemapXml.indexOf('/terms.html') === -1 &&
         sitemapXml.indexOf('/lt/') === -1 &&
         sitemapXml.indexOf('/success') === -1,
-      'sitemap.xml lists /en/ and excludes /lt/ and /success'
+      'sitemap.xml lists /en/ /privacy/ /terms/ and excludes .html aliases, /lt/, /success'
     )
   ) {
     passed++;
@@ -869,10 +873,32 @@ function run() {
     passed++;
   } else failed++;
   const termsHtml = readFile(TERMS_PATH);
-  if (assert(termsHtml && termsHtml.includes('paid-pdf-license'), 'terms.html su paid-pdf-license')) passed++;
-  else failed++;
   const privacyHtml = readFile(PRIVACY_PATH);
-  if (assert(privacyHtml && privacyHtml.includes('legal-page'), 'privacy.html legal-page')) passed++;
+  if (
+    assert(
+      termsHtml &&
+        termsHtml.includes('paid-pdf-license') &&
+        termsHtml.includes('href="https://www.promptanatomy.ceo/terms/"') &&
+        termsHtml.includes('href="/en/"') &&
+        termsHtml.includes('href="/privacy/"') &&
+        termsHtml.includes('href="/style.css'),
+      'terms.html license, slash canonical, root-absolute nav/assets'
+    )
+  )
+    passed++;
+  else failed++;
+  if (
+    assert(
+      privacyHtml &&
+        privacyHtml.includes('legal-page') &&
+        privacyHtml.includes('href="https://www.promptanatomy.ceo/privacy/"') &&
+        privacyHtml.includes('href="/en/"') &&
+        privacyHtml.includes('href="/terms/"') &&
+        privacyHtml.includes('href="/style.css'),
+      'privacy.html legal-page, slash canonical, root-absolute nav/assets'
+    )
+  )
+    passed++;
   else failed++;
   if (
     assert(

@@ -691,8 +691,8 @@
         if (copyrightText) {
             copyrightText.innerHTML = '&copy; 2026 Tomas Staniulis. ' +
                 uiText('Mokymų medžiaga. Visos teisės saugomos.', 'Training material. All rights reserved.') +
-                ' <a href="privacy.html">' + uiText('Privatumas', 'Privacy') + '</a> · ' +
-                '<a href="terms.html">' + uiText('Sąlygos', 'Terms') + '</a>';
+                ' <a href="/privacy/">' + uiText('Privatumas', 'Privacy') + '</a> · ' +
+                '<a href="/terms/">' + uiText('Sąlygos', 'Terms') + '</a>';
         }
         var hiddenTextarea = document.getElementById('hiddenTextarea');
         if (hiddenTextarea) hiddenTextarea.setAttribute('aria-label', uiText('Kopijuojamo teksto laukas', 'Text to copy field'));

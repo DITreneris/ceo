@@ -115,7 +115,18 @@ function getLocalAssetRefs(html) {
 
 function resolveAsset(pageRelPath, assetRef) {
   if (assetRef.startsWith('/')) {
-    return path.join(ROOT, assetRef.slice(1));
+    const fromRoot = path.join(ROOT, assetRef.slice(1));
+    if (fs.existsSync(fromRoot)) {
+      return fromRoot;
+    }
+    // Vercel cleanUrls + trailingSlash: /privacy/ → privacy.html
+    if (assetRef.endsWith('/')) {
+      const htmlFile = path.join(ROOT, assetRef.slice(1, -1) + '.html');
+      if (fs.existsSync(htmlFile)) {
+        return htmlFile;
+      }
+    }
+    return fromRoot;
   }
   return path.join(ROOT, path.dirname(pageRelPath), assetRef);
 }

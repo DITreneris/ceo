@@ -17,5 +17,5 @@
 - [Prompt Anatomy hub](https://www.promptanatomy.app/): Sister site for the full Prompt Anatomy system
 
 ## Optional
-- [Privacy policy](https://www.promptanatomy.ceo/privacy.html): Local browser storage; inputs are not uploaded to a server
-- [Terms](https://www.promptanatomy.ceo/terms.html): License and paid PDF terms
+- [Privacy policy](https://www.promptanatomy.ceo/privacy/): Local browser storage; inputs are not uploaded to a server
+- [Terms](https://www.promptanatomy.ceo/terms/): License and paid PDF terms

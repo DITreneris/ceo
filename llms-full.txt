@@ -47,5 +47,5 @@ This tool generates prompts and training material. Review AI outputs before usin
 ## See also
 
 - Curated map: https://www.promptanatomy.ceo/llms.txt
-- Privacy: https://www.promptanatomy.ceo/privacy.html
-- Terms: https://www.promptanatomy.ceo/terms.html
+- Privacy: https://www.promptanatomy.ceo/privacy/
+- Terms: https://www.promptanatomy.ceo/terms/
