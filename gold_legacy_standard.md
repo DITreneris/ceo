@@ -132,7 +132,7 @@ Commerce invariants:
 
 Same-domain rule: Stripe success URL + webhook URL + Vercel Production env + Redis store + download API privalo būti **vienas** buyer-facing host. Šiam repo: `https://www.promptanatomy.ceo` (`ceo-teal.vercel.app` = tas pats Vercel projektas, ne Stripe host).
 
-Webhook: `https://www.promptanatomy.ceo/api/stripe-webhook/` — trailing slash privalomas (`trailingSlash: true` 308; Stripe POST redirectų neseka).
+Webhook: `https://www.promptanatomy.ceo/api/stripe-webhook/` — trailing slash privalomas (`trailingSlash: true` 308; Stripe POST redirectų neseka). Shared Stripe account: non-CEO checkouts return 200 `ignored: not_ceo_product` (do not 500).
 
 Required fulfillment env (kanoninis sąrašas: [`.env.example`](.env.example)):
 

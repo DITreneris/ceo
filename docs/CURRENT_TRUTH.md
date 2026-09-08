@@ -57,6 +57,7 @@ Fulfillment runbook: [`memo_pdf.md`](../memo_pdf.md). Launch gate: [`LAUNCH_CHEC
 
 - **Upstash Redis** — restored 2026-09-02 (`nearby-bass-181854`; local `PONG`; Production health `{ "ok": true, "redis": "ok" }`)
 - **Live Operations purchase confirmed** 2026-09-02 — success page download ready; Stripe webhook URL must keep trailing slash (`/api/stripe-webhook/`)
+- **Shared Stripe account (2026-09-08)** — Hire `.help` $11.99 live buy (`cs_live_a1dFVB…`, empty metadata, success URL `.help`) was retried against this webhook as HTTP 500. Handler now 200-ignores non-CEO SKUs. CEO Payment Links must keep `metadata.product` = `operating` \| `strategic`.
 - `allowPlaceholderCheckout: false` (flipped after that purchase)
 
 **Phase 16–17 (2026-09-03):** maturity pack live — Blob + `/en/` previews. `pdf:export` still does not imply upload.

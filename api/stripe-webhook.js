@@ -64,6 +64,10 @@ module.exports = async function stripeWebhook(req, res) {
 
   try {
     const result = await fulfillCheckoutSession(stripe, event.data.object.id, getOrigin(req));
+    if (result.status === 'ignored') {
+      sendJson(res, 200, { received: true, ignored: 'not_ceo_product' });
+      return;
+    }
     if (result.status === 'locked') {
       sendJson(res, 503, { received: true, fulfillment: 'locked' });
       return;

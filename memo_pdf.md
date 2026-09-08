@@ -185,7 +185,8 @@ Paid buyers are not lost. After env/key fixes:
 |----------|---------|
 | `400` Invalid signature | Wrong `STRIPE_WEBHOOK_SECRET` or body parsed before verify |
 | `500` Fulfillment is not configured + `detail` lists env keys | Missing `PDF_*`, Redis, Resend, etc. |
-| `500` Fulfillment failed + `detail` | Runtime error—read `detail` (Stripe API, Resend, product mapping) |
+| `500` Fulfillment failed + `detail` | Runtime error—read `detail` (Stripe API, Resend). Unknown SKUs must **not** land here. |
+| `200` `{ ignored: "not_ceo_product" }` | Shared Stripe account: session is not a CEO PDF (`operating`/`strategic`). Ack so Stripe stops retrying. Hire (`.help`) and hub (`.app`) fulfill on their own hosts. |
 | `200` `{ fulfillment: "fulfilled" }` | Success |
 
 ### 5.2 `download-link` status

@@ -852,6 +852,24 @@ function run() {
   ) {
     passed++;
   } else failed++;
+  if (
+    assert(
+      stripeWebhookFile &&
+        stripeWebhookFile.includes("result.status === 'ignored'") &&
+        stripeWebhookFile.includes("ignored: 'not_ceo_product'"),
+      'stripe-webhook.js foreign checkout returns 200 ignored'
+    )
+  ) {
+    passed++;
+  } else failed++;
+  if (
+    assert(
+      fulfillmentLib && fulfillmentLib.includes("status: 'ignored'"),
+      'fulfillment.js returns ignored for non-CEO checkout sessions'
+    )
+  ) {
+    passed++;
+  } else failed++;
   if (assert(fs.existsSync(path.join(__dirname, '..', 'api', 'download.js')), 'api/download.js')) passed++;
   else failed++;
   if (assert(fs.existsSync(path.join(__dirname, '..', 'api', 'download-link.js')), 'api/download-link.js')) passed++;

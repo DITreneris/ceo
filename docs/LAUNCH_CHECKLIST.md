@@ -12,7 +12,7 @@
 - [x] Live products/prices: Operating $9.99 (`price_1TZXGY…`, $9.99) · Strategic $19.99 (`price_1TZXJG…`, $19.99) — match local `.env` `STRIPE_PRICE_*`
 - [x] Payment Links `metadata.product` = `operating` | `strategic` (set 2026-09-02 via Stripe API; were empty)
 - [x] Success URL: `https://www.promptanatomy.ceo/success.html?session_id={CHECKOUT_SESSION_ID}` (set 2026-09-02; were `hosted_confirmation`)
-- [x] Webhook: `https://www.promptanatomy.ceo/api/stripe-webhook/` (trailing slash required — `vercel.json` `trailingSlash: true` 308s the no-slash URL; Stripe does not follow POST redirects)
+- [x] Webhook: `https://www.promptanatomy.ceo/api/stripe-webhook/` (trailing slash required — `vercel.json` `trailingSlash: true` 308s the no-slash URL; Stripe does not follow POST redirects). Shared Stripe account: non-CEO `checkout.session.completed` must 200-ignore (`not_ceo_product`), not 500.
 - [x] `STRIPE_WEBHOOK_SECRET` present in local `.env` / Vercel Production (same key set as other Stripe env)
 
 **Canonical host:** `www.promptanatomy.ceo` CNAME → Vercel. `ceo-teal.vercel.app` is the same Production project (identical `/en/` canonical + identical `fulfillment-health` payload). Do not point Stripe at the vercel.app alias.

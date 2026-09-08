@@ -148,9 +148,8 @@ function getProductFromSession(session) {
     if (byTotal) return byTotal;
   }
 
-  throw new Error(
-    'Checkout Session does not contain a configured PDF product (metadata.product, price id, or $9.99/$19.99 amount).'
-  );
+  // Shared Stripe account: hub (.app) and Hire (.help) checkouts also hit this webhook.
+  return null;
 }
 
 function getCustomerEmail(session) {
@@ -365,6 +364,11 @@ async function fulfillCheckoutSession(stripe, sessionId, origin) {
     return { status: 'not_paid', sessionId };
   }
 
+  const product = getProductFromSession(session);
+  if (!product) {
+    return { status: 'ignored', sessionId };
+  }
+
   const fulfillmentKey = redisKey(`fulfillment:${session.id}`);
   const existing = await redisGetJson(fulfillmentKey);
   if (existing && existing.status === 'fulfilled') {
@@ -383,7 +387,6 @@ async function fulfillCheckoutSession(stripe, sessionId, origin) {
       return { status: 'already_fulfilled', sessionId };
     }
 
-    const product = getProductFromSession(session);
     await assertProductAssetAvailable(product);
     const email = getCustomerEmail(session);
     const token = createDownloadToken(session.id, product.id, DOWNLOAD_TOKEN_TTL_SECONDS);
