@@ -1,7 +1,7 @@
 'use strict';
 
 const Stripe = require('stripe');
-const { assertFulfillmentConfigured, fulfillCheckoutSession } = require('./_lib/fulfillment');
+const { assertFulfillmentConfigured, fulfillCheckoutSession, isForeignCheckout } = require('./_lib/fulfillment');
 
 function sendJson(res, statusCode, payload) {
   res.statusCode = statusCode;
@@ -62,8 +62,14 @@ module.exports = async function stripeWebhook(req, res) {
     return;
   }
 
+  const sessionObj = event.data.object;
+  if (isForeignCheckout(sessionObj)) {
+    sendJson(res, 200, { received: true, ignored: 'not_ceo_product' });
+    return;
+  }
+
   try {
-    const result = await fulfillCheckoutSession(stripe, event.data.object.id, getOrigin(req));
+    const result = await fulfillCheckoutSession(stripe, sessionObj.id, getOrigin(req));
     if (result.status === 'ignored') {
       sendJson(res, 200, { received: true, ignored: 'not_ceo_product' });
       return;

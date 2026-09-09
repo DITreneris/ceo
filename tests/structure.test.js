@@ -855,6 +855,7 @@ function run() {
   if (
     assert(
       stripeWebhookFile &&
+        stripeWebhookFile.includes('isForeignCheckout(sessionObj)') &&
         stripeWebhookFile.includes("result.status === 'ignored'") &&
         stripeWebhookFile.includes("ignored: 'not_ceo_product'"),
       'stripe-webhook.js foreign checkout returns 200 ignored'
@@ -864,7 +865,9 @@ function run() {
   } else failed++;
   if (
     assert(
-      fulfillmentLib && fulfillmentLib.includes("status: 'ignored'"),
+      fulfillmentLib &&
+        fulfillmentLib.includes('function isForeignCheckout') &&
+        fulfillmentLib.includes("status: 'ignored'"),
       'fulfillment.js returns ignored for non-CEO checkout sessions'
     )
   ) {

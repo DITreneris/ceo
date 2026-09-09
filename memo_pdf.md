@@ -149,14 +149,18 @@ Mixing modes produces confusing 500s or “no such session” errors.
 
 ### 4.3 Product mapping (defense in depth)
 
-Implement **all** of these in fulfillment code (we do):
+**Foreign first:** if `success_url` host is `promptanatomy.help` or `promptanatomy.app`, or hub `metadata.plan` is 3|6|9|12, return HTTP **200** `{ ignored: "not_ceo_product" }` — do not retrieve, do not map by cents. CEO `metadata.product` = `operating` | `strategic` always wins.
 
-1. `session.metadata.product` (set on Payment Link—**best**).
+CEO map (in order):
+
+1. `session.metadata.product` (Payment Link — **best**).
 2. `STRIPE_PRICE_*` env vs line item `price.id`.
-3. Line item `unit_amount` in cents.
-4. Session `amount_total` fallback (e.g. `499` / `999` for $4.99 / $9.99).
+3. Line item `unit_amount` 999 / 1999 cents.
+4. Session `amount_total` 999 / 1999 **only if the session is not foreign** (empty-metadata CEO rescue). Tax-inclusive totals will not match — do not treat tax as a product id. Do not use the old $4.99 / `499` fallback.
 
-**Incident:** Payment Link had `metadata: {}`; fulfillment still worked via `amount_total: 499` after env was fixed. Still add metadata for sister projects.
+Unmapped session with a `.ceo` success URL (no metadata, unknown price, amount not 999/1999) must **500** so Stripe retries. That is not `not_ceo_product`.
+
+**Incident:** Payment Link had `metadata: {}`; fulfillment still worked via amount after env was fixed. Still set `metadata.product` on CEO Payment Links.
 
 ### 4.4 One domain for money path
 
@@ -185,8 +189,8 @@ Paid buyers are not lost. After env/key fixes:
 |----------|---------|
 | `400` Invalid signature | Wrong `STRIPE_WEBHOOK_SECRET` or body parsed before verify |
 | `500` Fulfillment is not configured + `detail` lists env keys | Missing `PDF_*`, Redis, Resend, etc. |
-| `500` Fulfillment failed + `detail` | Runtime error—read `detail` (Stripe API, Resend). Unknown SKUs must **not** land here. |
-| `200` `{ ignored: "not_ceo_product" }` | Shared Stripe account: session is not a CEO PDF (`operating`/`strategic`). Ack so Stripe stops retrying. Hire (`.help`) and hub (`.app`) fulfill on their own hosts. |
+| `500` Fulfillment failed + `detail` | Runtime error—read `detail` (Stripe API, Resend). Also unmapped `.ceo` sessions (no metadata/price/999|1999). Hire/hub must **not** land here. |
+| `200` `{ ignored: "not_ceo_product" }` | Foreign marker: `success_url` host `.help`/`.app` or hub `metadata.plan`. Ack so Stripe stops. Those hosts fulfill on their own. |
 | `200` `{ fulfillment: "fulfilled" }` | Success |
 
 ### 5.2 `download-link` status

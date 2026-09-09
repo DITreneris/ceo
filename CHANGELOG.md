@@ -8,7 +8,7 @@ EN-US storefront journey + **Design System 1.1 Hardened** ([`docs/ds_improvement
 
 ### Fixed
 
-- **Shared-account webhook 500 (2026-09-08)** — `checkout.session.completed` for non-CEO products (Hire `.help` $11.99, hub 39/99) now returns HTTP **200** `{ ignored: "not_ceo_product" }` instead of 500. Same Stripe account delivers every checkout to this endpoint; Stripe had retried a 2026-09-05 Hire live buy 11 times. CEO `$9.99`/`$19.99` mapping unchanged.
+- **Shared-account webhook ignore (2026-09-09)** — HTTP **200** `{ ignored: "not_ceo_product" }` only when the session is marked foreign (`success_url` host `.help`/`.app`, or hub `metadata.plan` 3|6|9|12), including **before** Stripe `sessions.retrieve`. CEO `metadata.product` still wins. `amount_total` 999/1999 is a CEO last resort, not a Hire/hub mapper. Unmapped `.ceo` checkouts return **500** again so Stripe retries.
 - **Cache-bust JS and PDF images (2026-09-06)** — `generator.js`, `copy.js`, `commerce.js`, `vendor/lucide.min.js`, storefront covers, and preview PNGs use `?v=2.1.3` so `immutable` year-cache does not pin returning browsers to a stale unhashed URL. CSS stays `?v=2.1.2`.
 - **Webhook lock retry** — `checkout.session.completed` fulfillment `locked` now returns HTTP **503** (Stripe retries non-2xx) instead of 200. Email download links emit `/api/download/` (trailing slash).
 - **GSC legal URL hygiene (2026-09-07)** — sitemap, canonicals, storefront/legal/success links, and fulfillment emails use `/privacy/` and `/terms/` (the 200 URLs Google indexes). `.html` aliases still 308 via `cleanUrls` + `trailingSlash`. Root-absolute CSS/nav on legal + success pages so slash URLs do not resolve `style.css` under `/privacy/`.

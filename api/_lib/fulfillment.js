@@ -124,6 +124,37 @@ function getProductByAmountCents(amountCents) {
   return null;
 }
 
+const CEO_PRODUCT_IDS = new Set(['operating', 'strategic', 'operating-pdf', 'strategic-pdf']);
+const HUB_PLAN_IDS = new Set(['3', '6', '9', '12']);
+const FOREIGN_SUCCESS_HOSTS = new Set(['promptanatomy.help', 'promptanatomy.app']);
+
+function getSuccessUrlHostname(successUrl) {
+  if (!successUrl || typeof successUrl !== 'string') return '';
+  try {
+    const hostname = new URL(successUrl).hostname.toLowerCase();
+    return hostname.startsWith('www.') ? hostname.slice(4) : hostname;
+  } catch (_error) {
+    return '';
+  }
+}
+
+function isCeoProductMetadata(session) {
+  const productId = session && session.metadata ? session.metadata.product : '';
+  return typeof productId === 'string' && CEO_PRODUCT_IDS.has(productId);
+}
+
+function isForeignCheckout(session) {
+  if (isCeoProductMetadata(session)) return false;
+
+  const plan = session && session.metadata ? session.metadata.plan : undefined;
+  if (plan !== undefined && plan !== null && HUB_PLAN_IDS.has(String(plan))) {
+    return true;
+  }
+
+  const host = getSuccessUrlHostname(session && session.success_url);
+  return FOREIGN_SUCCESS_HOSTS.has(host);
+}
+
 function getProductFromSession(session) {
   const metadataProduct = session && session.metadata ? getProductById(session.metadata.product) : null;
   if (metadataProduct) return metadataProduct;
@@ -143,12 +174,12 @@ function getProductFromSession(session) {
     if (byUnit) return byUnit;
   }
 
-  if (session && typeof session.amount_total === 'number') {
+  // amount_total is a CEO last resort only — never map a .help/.app checkout by cents.
+  if (!isForeignCheckout(session) && session && typeof session.amount_total === 'number') {
     const byTotal = getProductByAmountCents(session.amount_total);
     if (byTotal) return byTotal;
   }
 
-  // Shared Stripe account: hub (.app) and Hire (.help) checkouts also hit this webhook.
   return null;
 }
 
@@ -364,9 +395,15 @@ async function fulfillCheckoutSession(stripe, sessionId, origin) {
     return { status: 'not_paid', sessionId };
   }
 
+  if (isForeignCheckout(session)) {
+    return { status: 'ignored', sessionId };
+  }
+
   const product = getProductFromSession(session);
   if (!product) {
-    return { status: 'ignored', sessionId };
+    throw new Error(
+      'Checkout Session does not contain a configured PDF product (metadata.product, price id, or $9.99/$19.99 amount).'
+    );
   }
 
   const fulfillmentKey = redisKey(`fulfillment:${session.id}`);
@@ -485,6 +522,8 @@ module.exports = {
   assertFulfillmentConfigured,
   checkFulfillmentHealth,
   listMissingFulfillmentEnv,
+  isForeignCheckout,
+  getProductFromSession,
   fulfillCheckoutSession,
   loadProductPdf,
   resolveDownload,
