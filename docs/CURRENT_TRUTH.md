@@ -55,7 +55,7 @@ Fulfillment runbook: [`memo_pdf.md`](../memo_pdf.md). Launch gate: [`LAUNCH_CHEC
 
 ## Launch status (Phase 15 closed 2026-09-02)
 
-- **Upstash Redis** — restored 2026-09-02 (`nearby-bass-181854`; local `PONG`; Production health `{ "ok": true, "redis": "ok" }`)
+- **Upstash Redis** — restored 2026-09-02 (`REDIS_KEY_PREFIX=ceo:`; local `PONG`; Production health `{ "ok": true, "redis": "ok" }`)
 - **Live Operations purchase confirmed** 2026-09-02 — success page download ready; Stripe webhook URL must keep trailing slash (`/api/stripe-webhook/`)
 - **Shared Stripe account (2026-09-08 / 2026-09-09)** — Hire `.help` $11.99 live buy (`cs_live_a1dFVB…`, empty metadata, success URL `.help`) was retried against this webhook as HTTP 500. Handler 200-ignores **foreign markers** (`success_url` host `.help`/`.app`, hub `metadata.plan` 3|6|9|12), including before Stripe retrieve. Failed CEO map on a `.ceo` URL still 500s so Stripe retries. CEO Payment Links must keep `metadata.product` = `operating` \| `strategic`.
 - `allowPlaceholderCheckout: false` (flipped after that purchase)

@@ -12,3 +12,11 @@ playwright.config.js
 *.local.md
 AGENTS.md
 todo.md
+README.md
+memo_pdf.md
+CHANGELOG.md
+.env.example
+gold_legacy_standard.md
+pdf_content_v02.md
+scripts/
+privatumas.html

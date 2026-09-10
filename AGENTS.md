@@ -36,7 +36,7 @@ Kad agentai dirbtų paraleliai be konfliktų:
 |------|------------|--------|---------------------|
 | **SOT / kryptis** | Orchestrator | `config/sot.json` (`productDecision`, `commerce`, `brand`) | Content nekeičia `commerce` be O sign-off |
 | **Turinio blueprint** | Content | `config/sot.json` (`buyerProblems`, `pdfGuides`, `productBlueprint`) | Po F1 merge ant Orchestrator bazės |
-| **PDF HTML/CSS** | Content → Design (serial per PDF) | `docs/pdf-source/*` | Du agentai ne redaguoja to paties HTML. Lesson (2026-09-03): interior work is **maturity-in-place** (When/Do/See/Done), not V02 page adds. `.page` is a clipped Letter box (`overflow: hidden`) — cut copy on overflow, never add a 22nd/44th section. |
+| **PDF HTML/CSS** | Content → Design (serial per PDF) | `docs/pdf-source/*.html` (operator-local; gitignored) + `pdf-print.css` (tracked) | Du agentai ne redaguoja to paties HTML. Interiors stay off GitHub HEAD. Lesson (2026-09-03): interior work is **maturity-in-place** (When/Do/See/Done), not V02 page adds. `.page` is a clipped Letter box (`overflow: hidden`) — cut copy on overflow, never add a 22nd/44th section. |
 | **Storefront** | UI/UX | `index.html`, `style.css`, `commerce.js` | Neliesti kol SOT promises neužrakinti; audit → `docs/STOREFRONT_AUDIT.md` |
 | **Export / assets** | Engineering/Ops | `npm run pdf:export`, `assets/pdf-covers/` | Tik po HTML stabilizacijos. Lesson (2026-09-03): `pdf:export` does not update buyer files — run `pdf:upload-blob` (same `paid-pdfs/` paths, env URLs stay). On this Windows, `test:mixed` smoke teardown can fail `wmic.exe ENOENT`; run smoke/e2e/visual/a11y against `serve :3300`. |
 | **Commerce live** | Ops + Orchestrator | Stripe Dashboard, Vercel env, `allowPlaceholderCheckout` | Ne paraleliai su masiniu `sot` rewrite. Lesson (2026-09-02): Stripe webhook URL must end with `/` when `vercel.json` has `trailingSlash: true` — Stripe does not follow POST 308. Lesson (2026-09-08/09): one Stripe account fans out `checkout.session.completed` to every endpoint — `.ceo` must 200-ignore Hire/hub SKUs (`success_url` host or hub `plan`), not 500; unmapped `.ceo` still 500. |
@@ -66,6 +66,8 @@ Kad agentai dirbtų paraleliai be konfliktų:
 | `docs/STYLEGUIDE.md` | PDF/storefront dizaino SOT |
 | `gold_legacy_standard.md` | Premium UI/PDF/commerce patterns |
 | `docs/PAID_FLOW_TEST_BACKLOG.md` | Commerce/a11y testų backlog |
+| `docs/GEO_STACK.md` | AI crawlers, llms.txt, sitemap, schema |
+| `docs/DESIGN-SYSTEM.md` | Storefront tokens + components (DS 1.1) |
 
-- Visa kita dokumentacija laikoma archyve (`docs/archive/`) arba planavimo lygiu (`docs/pre_deploy_plan.md`), jei nėra aiškiai grąžinta į aktyvią zoną.
+- Planning and history live under `docs/INDEX.md` (not daily SOT). Archive stays in `docs/archive/`.
 - Prieš docs pakeitimus: [`docs/CURRENT_TRUTH.md`](docs/CURRENT_TRUTH.md).

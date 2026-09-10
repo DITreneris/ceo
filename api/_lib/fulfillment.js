@@ -77,12 +77,11 @@ async function checkFulfillmentHealth() {
       redis: ping === 'PONG' ? 'ok' : String(ping),
       blobConfigured
     };
-  } catch (error) {
+  } catch (_error) {
     return {
       ok: false,
       missing: [],
       redis: 'error',
-      redisDetail: error && error.message ? String(error.message) : 'Redis ping failed',
       blobConfigured
     };
   }

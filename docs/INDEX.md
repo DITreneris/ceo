@@ -1,44 +1,47 @@
-# Dokumentacijos indeksas
+# Documentation index
 
-Vienas įėjimo taškas į aktyvią dokumentaciją.
+Single entry for active docs. English. Before editing README, launch, or governance files, read [CURRENT_TRUTH.md](CURRENT_TRUTH.md).
 
-## Kanoninis SOT
+## Canonical SOT
 
-- [CURRENT_TRUTH.md](CURRENT_TRUTH.md) — 21/43 PDF, EN-first, Vercel production, QA vartai (užrakinta 2026-05-21).
+- [CURRENT_TRUTH.md](CURRENT_TRUTH.md) — 21/43 PDFs, EN-first, Vercel production, QA gates.
 
-## Aktyvūs dokumentai
+## Daily SOT
 
-- [README.md](../README.md) - projekto esmė ir paleidimas.
-- [README.md#kalbos-ir-lokalizacija-sot](../README.md#kalbos-ir-lokalizacija-sot) - **SOT:** EN-only vystymas, USA lokalizacija; `/lt/` tik legacy/regression testams.
-- [AGENTS.md](../AGENTS.md#kalbos-ir-lokalizacija-sot) - agentų politika ir lanes.
-- [todo.md](../todo.md) - fazės, demand Now/Next/Later, Phase 18 log.
-- [roadmap.md](roadmap.md) - 90-day Manage spoke GTM (demand / harvest to `.app`).
-- [memo_pdf.md](../memo_pdf.md) - Stripe + Vercel fulfillment runbook.
-- [LAUNCH_CHECKLIST.md](LAUNCH_CHECKLIST.md) - Stripe/Vercel/deploy gate (Phases 15–17).
-- [STYLEGUIDE.md](STYLEGUIDE.md) - PDF ir storefront dizaino standartas.
-- [gold_legacy_standard.md](../gold_legacy_standard.md) - premium UI/PDF/commerce patterns.
-- [PAID_FLOW_TEST_BACKLOG.md](PAID_FLOW_TEST_BACKLOG.md) - commerce/a11y testų plėtros planas.
-- [STOREFRONT_AUDIT.md](STOREFRONT_AUDIT.md) - storefront vs locked SOT (resolved).
-- [pdf-content-v02.md](pdf-content-v02.md) - istorinis V2 expansion blueprint (21/43 jau shipped). Current work = maturity-in-place, not more pages.
-- [CHANGELOG.md](../CHANGELOG.md) - pakeitimų istorija (SemVer).
-- [MOBILE_UX_IMPROVEMENT_PLAN.md](MOBILE_UX_IMPROVEMENT_PLAN.md) - mobile hierarchija (planavimas).
-- [ds_improvement_plan.md](ds_improvement_plan.md) - design system iterations (DS 0.5 → 1.1), storefront consolidation.
-- [hero_refactor.md](hero_refactor.md) - hero layout, glass preview card, scroll spy stepper, 2-CTA contract.
-- [ops_workspace_plan.md](ops_workspace_plan.md) - operations workspace clarity DOM contract, SOT keys, journey.
-- [GEO_STACK.md](GEO_STACK.md) - AI crawlers, llms.txt / llms-full.txt, sitemap, schema + SSR buyer FAQ (EN `/en/` only).
-- [GEO_CITATION_PROMPTS.md](GEO_CITATION_PROMPTS.md) - monthly ChatGPT / Perplexity / Claude citation checks, including US outcome JTBD queries.
-- [DESIGN-SYSTEM.md](DESIGN-SYSTEM.md) - storefront tokens + components (DS 1.1); visual regression: `npm run test:visual`.
-- [DS_MOBILE_DOM_SPIKE.md](DS_MOBILE_DOM_SPIKE.md) - optional 1.4b mobile DOM reorder (gated).
-- [COMPONENT-RULES.md](COMPONENT-RULES.md) - contribution rules for new UI.
-- [USER_JOURNEY_ANALYSIS.md](USER_JOURNEY_ANALYSIS.md) - vartotojo kelionės analizė.
-- [LT_EN_UI_UX_REPORT.md](LT_EN_UI_UX_REPORT.md) - istorinė LT/EN ataskaita (iki 2026-05).
+- [README.md](../README.md) — product, launch, QA.
+- [AGENTS.md](../AGENTS.md#kalbos-ir-lokalizacija-sot) — EN-only policy, lanes, merge order.
+- [todo.md](../todo.md) — phases, demand Now/Next/Later, Phase 18 log.
+- [roadmap.md](roadmap.md) — 90-day Manage spoke GTM (demand / harvest to `.app`).
+- [memo_pdf.md](../memo_pdf.md) — Stripe + Vercel fulfillment runbook.
+- [LAUNCH_CHECKLIST.md](LAUNCH_CHECKLIST.md) — Stripe / Vercel / deploy gate (Phases 15–17).
+- [STYLEGUIDE.md](STYLEGUIDE.md) — PDF and storefront design SOT.
+- [gold_legacy_standard.md](../gold_legacy_standard.md) — premium UI / PDF / commerce patterns.
+- [PAID_FLOW_TEST_BACKLOG.md](PAID_FLOW_TEST_BACKLOG.md) — commerce / a11y test backlog.
+- [GEO_STACK.md](GEO_STACK.md) — AI crawlers, llms.txt / llms-full.txt, sitemap, schema + SSR buyer FAQ (`/en/` only).
+- [DESIGN-SYSTEM.md](DESIGN-SYSTEM.md) — storefront tokens + components (DS 1.1); visual regression: `npm run test:visual`.
 
-## Planavimas / istoriniai (ne operacinis SOT)
+## Planning / historical (not daily SOT)
 
-- [pre_deploy_plan.md](pre_deploy_plan.md) - brand alignment planas (M1–M3); **ne** kasdienis deploy šaltinis — žr. `LAUNCH_CHECKLIST.md` + `memo_pdf.md`.
+- [STOREFRONT_AUDIT.md](STOREFRONT_AUDIT.md) — storefront vs locked SOT (resolved).
+- [pdf-content-v02.md](pdf-content-v02.md) — historical V2 expansion blueprint (21/43 already shipped). Current work is maturity-in-place, not more pages.
+- [CHANGELOG.md](../CHANGELOG.md) — SemVer history.
+- [MOBILE_UX_IMPROVEMENT_PLAN.md](MOBILE_UX_IMPROVEMENT_PLAN.md) — mobile hierarchy (planning).
+- [ds_improvement_plan.md](ds_improvement_plan.md) — design system iterations (DS 0.5 → 1.1).
+- [hero_refactor.md](hero_refactor.md) — hero layout, glass preview, scroll spy, 2-CTA contract.
+- [ops_workspace_plan.md](ops_workspace_plan.md) — operations workspace DOM contract.
+- [GEO_CITATION_PROMPTS.md](GEO_CITATION_PROMPTS.md) — monthly citation checks.
+- [DS_MOBILE_DOM_SPIKE.md](DS_MOBILE_DOM_SPIKE.md) — optional 1.4b mobile DOM reorder (gated).
+- [COMPONENT-RULES.md](COMPONENT-RULES.md) — contribution rules for new UI.
+- [USER_JOURNEY_ANALYSIS.md](USER_JOURNEY_ANALYSIS.md) — journey analysis.
+- [LT_EN_UI_UX_REPORT.md](LT_EN_UI_UX_REPORT.md) — historical LT/EN report (through 2026-05).
+- [pre_deploy_plan.md](pre_deploy_plan.md) — brand alignment (M1–M3); not the daily deploy source — use `LAUNCH_CHECKLIST.md` + `memo_pdf.md`.
 
-## Archyvas
+Paid PDF HTML interiors are operator-local. See [pdf-source/README.md](pdf-source/README.md).
 
-- [archive/pre-github-cleanup_2026-03/](archive/pre-github-cleanup_2026-03/) - prieš publikavimą iškelti dokumentai (įsk. senas `DEPLOYMENT.md`).
-- [archive/legacy-di-promptu-biblioteka_2026-02/](archive/legacy-di-promptu-biblioteka_2026-02/) - senesnė DI promptų medžiaga.
-- [archive/legacy-vaizdo-generatorius_2026-02/](archive/legacy-vaizdo-generatorius_2026-02/) - ankstesnio projekto medžiaga.
+## Archive (not daily SOT)
+
+Do not use these as current operating truth.
+
+- [archive/pre-github-cleanup_2026-03/](archive/pre-github-cleanup_2026-03/) — docs lifted before publish (includes old `DEPLOYMENT.md`).
+- [archive/legacy-di-promptu-biblioteka_2026-02/](archive/legacy-di-promptu-biblioteka_2026-02/) — older prompt-library material.
+- [archive/legacy-vaizdo-generatorius_2026-02/](archive/legacy-vaizdo-generatorius_2026-02/) — earlier project material.

@@ -1,57 +1,17 @@
-# DEPRECATED — GitHub Pages (legacy static mirror only)
-# Production: Vercel (vercel.json, api/* fulfillment). See README.md and docs/CURRENT_TRUTH.md.
-# This workflow may still run on main for regression; do not use as buyer-facing production host.
-# Reikalavimas (jei paliekama): Repo Settings → Pages → GitHub Actions
+# DEPRECATED — GitHub Pages. Production is Vercel only (vercel.json, api/*).
+# Do not use as a buyer-facing host. Unpublish Pages in GitHub Settings if still live.
+# Merge gate: .github/workflows/ci.yml
 
-name: Deploy to GitHub Pages
+name: Deploy to GitHub Pages (disabled)
 
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: pages
-  cancel-in-progress: true
 
 jobs:
-  test:
+  skipped:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-      - run: npm ci
-      - run: npx playwright install --with-deps chromium
-      - run: npm test
-      - run: npm run test:smoke
-      - name: Accessibility check (pa11y)
-        run: npm run test:a11y
-        env:
-          CI: true
-
-  deploy:
-    needs: test
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
-    environment:
-      name: github-pages
-      url: ${{ steps.deploy.outputs.page_url }}
-    steps:
-      - uses: actions/checkout@v4
-      - name: Prepare Pages artifact
-        run: |
-          mkdir -p _site
-          cp index.html privatumas.html style.css generator.js copy.js favicon.svg _site/
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: _site
-      - id: deploy
-        uses: actions/deploy-pages@v4
+      - run: echo "GitHub Pages deploy is disabled. Production is Vercel."

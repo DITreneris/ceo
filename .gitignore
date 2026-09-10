@@ -47,6 +47,9 @@ npm-debug.log*
 # ─── Paid PDF binaries ───
 api/_private/pdfs/*.pdf
 
+# ─── Paid PDF HTML interiors (operator-local; print CSS stays tracked) ───
+docs/pdf-source/*.html
+
 # ─── PDF authoring debug artifacts ───
 scripts/pdf-cover-*.png
 scripts/cover-preview.png

@@ -266,7 +266,7 @@ Centralize commerce copy in `config/sot.json#commerce` where possible; hydrate U
 | ~14:52 | Resend **200**, `fulfillment: fulfilled` | Correct `sk_live_...` + full env; manual event replay |
 | After deploy | `fulfillment-health` **ok** | All required env present |
 
-**Session reference (live test):** `cs_live_a1GWQ6J4J87WC3zNf9ChGyMoU4VgeP7S1Ybdmbhyy9lIj4F4bOUM6DtzEg`, event `evt_1TXg79GYF93wS2Kahle9jaUe`, $4.99 Beginners, Payment Link `plink_1TXdozGYF93wS2KabE5nEKfw`.
+**Session reference (live test):** `cs_live_a1GWQ6…`, event `evt_1TXg79…`, $4.99 Beginners, Payment Link `plink_1TXdoz…`.
 
 ---
 
