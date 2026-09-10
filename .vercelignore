@@ -18,5 +18,14 @@ CHANGELOG.md
 .env.example
 gold_legacy_standard.md
 pdf_content_v02.md
-scripts/
 privatumas.html
+# Operator-only — keep build-geo-assets.js and build-locale-pages.js for npm run build
+scripts/upload-pdfs-to-blob.js
+scripts/export-pdfs.js
+scripts/check-fulfillment-env.js
+scripts/render-pdf-preview-pages.js
+scripts/optimize-pdf-covers.js
+scripts/trace-og.js
+scripts/lint-html.js
+scripts/fix-partition-css.js
+scripts/partition-storefront-css.js
