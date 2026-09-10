@@ -275,6 +275,10 @@
     color: rgba(255, 255, 255, 0.78);
     margin: var(--space-8) 0 0;
 }
+.ops-output-upsell.is-hidden,
+.ops-output-upsell[hidden] {
+    display: none;
+}
 .ops-output-upsell a {
     color: var(--accent-gold);
     font-weight: 600;

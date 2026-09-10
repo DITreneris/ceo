@@ -58,7 +58,8 @@ Kad agentai dirbtų paraleliai be konfliktų:
 | `README.md` | Paleidimas, QA/deploy santrauka |
 | `docs/INDEX.md` | Dokumentacijos žemėlapis |
 | `docs/CURRENT_TRUTH.md` | Kanoniniai faktai (21/43, EN-first, Vercel) |
-| `todo.md` | Fazės ir launch blockeriai |
+| `todo.md` | Fazės, demand Now/Next/Later, Phase 18 log |
+| `docs/roadmap.md` | 90-day Manage spoke GTM (demand / harvest) |
 | `AGENTS.md` | Agentų lanes ir merge taisyklės |
 | `memo_pdf.md` | Stripe + fulfillment runbook |
 | `docs/LAUNCH_CHECKLIST.md` | Phases 15–17 gate |

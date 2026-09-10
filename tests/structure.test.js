@@ -776,12 +776,18 @@ function run() {
     'Hero Prompt Anatomy lineage badges'
   )) passed++;
   else failed++;
-  if (assert(
-    html.includes('community-cta-secondary') &&
-      html.includes('utm_source=ceo&utm_medium=community&utm_campaign=ecosystem') &&
-      generatorFile.includes('COMMUNITY_HUB_URL'),
-    'Community Hub CTA has ceo/community UTM'
-  )) passed++;
+  var hubPrimarySnippet =
+    'class="btn btn--primary community-cta-primary"';
+  var hubPrimaryIdx = html.indexOf(hubPrimarySnippet);
+  var hubPrimarySlice = hubPrimaryIdx >= 0 ? html.slice(Math.max(0, hubPrimaryIdx - 200), hubPrimaryIdx + hubPrimarySnippet.length) : '';
+  var hubPrimaryOk =
+    hubPrimaryIdx >= 0 &&
+    hubPrimarySlice.includes('utm_source=ceo&utm_medium=community&utm_campaign=ecosystem') &&
+    html.includes('class="btn btn--secondary community-cta-secondary"') &&
+    html.includes('t.me/prompt_anatomy') &&
+    generatorFile.includes('COMMUNITY_HUB_URL') &&
+    generatorFile.includes("locale === 'lt'");
+  if (assert(hubPrimaryOk, 'EN community Hub is primary with ceo/community UTM; LT keeps Telegram primary in generator')) passed++;
   else failed++;
   if (assert(
     html.includes('utm_source=ceo&utm_medium=faq&utm_campaign=ecosystem') &&

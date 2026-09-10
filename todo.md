@@ -2,34 +2,41 @@
 
 **Source of truth:** Build only for **EN-US / USA**. Audience: founders, CEOs, COOs, executive teams, AI consultants, and business operators. `/lt/` stays as a direct legacy/regression path only. Do not add EU compliance scope.
 
-**Product goal:** Transform this repo from a useful AI prompt/tool project into a CEO/COO-grade premium SaaS-style PDF product system: clear, practical, trustworthy, polished, repeatable, and commercially ready.
+**Product goal:** Manage spoke ([promptanatomy.ceo](https://www.promptanatomy.ceo/en/)) is live. Self-sustain via (1) free weekly brief proof, (2) PDF cash ($9.99 / $19.99), (3) harvest CEO/COO attention to [promptanatomy.app](https://www.promptanatomy.app/) (39/99 EUR). Training checkout stays on `.app`. Demand GTM: [`docs/roadmap.md`](docs/roadmap.md).
 
-**Current audit verdict (2026-09-03):** Phase 15 green. Maturity interiors exported 21/43 and uploaded to private Blob (same paths). Storefront previews (p2–p4) ready to deploy. Webhook must stay `https://www.promptanatomy.ceo/api/stripe-webhook/`. `allowPlaceholderCheckout: false`. Strategy ($19.99) test buy optional.
+**Launch status (2026-09-03):** Phases 15–17 closed. Maturity interiors 21/43 on Blob. Webhook must stay `https://www.promptanatomy.ceo/api/stripe-webhook/`. `allowPlaceholderCheckout: false`. Strategy ($19.99) test buy optional.
 
 ## Now → Next → Later
 
-**Now (P0, must close before paid promotion):**
+**Now (P0 — demand; product already launched):**
 
-1. ~~Phase 15 — Restore Upstash Redis~~ — **Done 2026-09-02:** local `PONG`; Production health `{ "ok": true }`.
-2. ~~Phase 15 — One live Operations test purchase~~ — **Done 2026-09-02** (webhook slash fix + fulfill). Refresh success page or email link.
-3. ~~Phase 15 — Flip `allowPlaceholderCheckout: false`~~ — **Done 2026-09-02.**
-4. ~~Phase 17 — Manual buyer-journey QA on desktop + mobile (320 / 375 / 768 px)~~ — **Done 2026-09-03** on live `/en/`.
+1. Phase 18 weekly log (table below) — Stripe sales, refunds, support, hub `utm_source=ceo`.
+2. LinkedIn 2–3×/week from the Monday brief. Pillars: unclear ROI · random prompting · weak ownership. Share only `https://www.promptanatomy.ceo/en/`.
+3. Confirm Production UTM: `community` / `faq` / `entity_footer` (`utm_source=ceo&utm_campaign=ecosystem`). Hero badge stays bare.
+4. Phase 17b — canonical address, version labels, quick picks (hygiene before paid promotion).
 
-**Next (P1, after launch unblockers):**
+**Next (P1 — conversion code):**
 
-- ~~PDF content maturity (in-place)~~ — **Done 2026-09-03:** Operations + Strategy rewritten to When/Do/See/Done. Still 21/43 pages. Commerce untouched. Blob overwritten on existing `paid-pdfs/` paths.
-- ~~Phase 17 — Production deploy~~ — **Done 2026-09-03:** `da94ac1` on `ceo/main`; live p2–p4 match new assets.
-- Phase 18 — Post-launch buyer feedback loop (sales, refunds, support emails).
-- ~~Design system consolidation~~ — **Done:** DS 1.1 Hardened ([`docs/ds_improvement_plan.md`](docs/ds_improvement_plan.md) §16). Optional later: 1.4b mobile DOM per [`docs/DS_MOBILE_DOM_SPIKE.md`](docs/DS_MOBILE_DOM_SPIKE.md).
-- ~~Max ROI activation (Weekly default, sample data, empty-until-input, Copy&open AI)~~ — **Done** (storefront; does not replace Phase 15–17).
-- Remaining engagement Should: post-copy Operations-first upsell; mobile View brief chip (no DOM reorder); funnel events (copy/sample/Stripe).
+- ~~EN community: Hub primary (gold), Telegram secondary~~ — **Done 2026-09-10** (EN static + generator LT branch).
+- ~~Operations-first post-copy upsell~~ — **Done 2026-09-10** (hidden until Copy; CTA → `#operating-pdf`).
+- Optional Strategy ($19.99) live test buy.
+- ~~PDF content maturity / Phase 17 deploy / DS 1.1 / Max ROI activation~~ — **Done 2026-09-03** (see Build history).
 
-**Later (P2, optional follow-ups, not launch-blocking):**
+**Later (P2):**
 
-- WebP siblings: `npm i -D sharp && npm run optimize:covers` → add `<picture>` `<source>` tags in `index.html` PDF cards.
-- Programmatic OG generation (satori) — current SVG pipeline pakanka MVP.
+- Named testimonials before any paid ads.
+- Mobile View brief chip (no DOM reorder).
+- WebP siblings: `npm i -D sharp && npm run optimize:covers` → `<picture>` in PDF cards.
+- Programmatic OG (satori) — SVG pipeline enough for MVP.
 - CSP enforcement (currently Report-Only).
-- Real named testimonials prieš stronger paid promotion.
+
+**WON'T:**
+
+- Bounce experiment (structural one-pager + copy-out).
+- Custom funnel events until >100 visitors.
+- LT product copy / third PDF SKU.
+- Paid ads to $9.99.
+- Redis reopen as first ticket; mint `ceo` wing; point Stripe at `ceo-teal.vercel.app`.
 
 ## Latest delta — PDF Assets Premium Reset (2026-05-21)
 
@@ -43,6 +50,10 @@
 | 6 — QA | done | `npm run pdf:assets` (21/21 + 43/43), 8 PNG + OG verify, `npm test` 103/103, `npm run build`. |
 | 7 — Gold patterns | done | `docs/STYLEGUIDE.md`, `gold_legacy_standard.md`, `scripts/optimize-pdf-covers.js`, `npm run optimize:covers` (sharp-optional). |
 | 8 — OG thumbnail refit | done | Removed eyebrow, subhead, trust pills, card kickers `PLAYBOOK 01/02`, page badges, and tagline. Single-word card titles `Operations` / `Strategy` at 52 px. Asymmetric gold accent — Operations highlighted, Strategy neutral. Footer wordmark 28 px + right-aligned price `$9.99 + $19.99`. Stale `og:image:alt` fixed across all `index.html`. Cache-bust `?v=3` → `?v=4`. `npm test` 103/103. Post-deploy validators (LinkedIn Inspector, FB Debugger, opengraph.xyz) require manual re-scrape after Vercel publish. |
+
+## Build history (closed) — Phases 1–17
+
+Phases 1–17 shipped the free weekly brief + two paid PDFs + Stripe fulfillment. Do not reopen as Now work. Details below remain for audit.
 
 ## Phase 1 — Product Direction
 
@@ -213,16 +224,31 @@
 
 ## Phase 17b — Canonical Contact Consistency
 
-- [ ] **Canonical business contact — verify all match:**
+- [x] **Canonical business contact — verified 2026-09-10:**
   - Prompt Anatomy · 1311 Park St · Unit #654 · Alameda, CA 94501 · info@promptanatomy.app
-  - Sources: `config/sot.json#legal.address` (SOT), `index.html #footerAddress`, `en/index.html #footerAddress`, `docs/pdf-source/operating-cadence.html` p.20 contact block, `docs/pdf-source/strategic-os.html` p.43 contact block.
-  - Verify all match after `npm run pdf:export`.
-- [ ] **PDF version labels:** operating-cadence.html "Length" = 21 pages · Version 2.1; strategic-os.html = 43 pages · Version 2.1.
-- [ ] **Quick picks QA:** CEO quick picks (p.21 ops) and Strategic shortcuts (p.42 strategy) render correctly in exported PDFs — no overflow, icons visible, copy-paste works.
+  - Matches: `config/sot.json#legal.address`, `index.html #footerAddress`, PDF contact blocks in `operating-cadence.html` / `strategic-os.html`, privacy/terms.
+- [x] **PDF version labels:** operating-cadence Length = 21 pages · Version 2.1; strategic-os Length = 43 pages · Version 2.1 (license pages).
+- [x] **Quick picks QA (source):** CEO quick picks (ops p.21) and Strategic shortcuts (strategy p.42) have icons + paste blocks + footers; no page adds. Re-export + Blob upload only when shipping a PDF content release.
 
-## Phase 18 — Post-Launch Iteration
+## Phase 18 — Post-Launch Iteration (weekly log)
 
-- [ ] Review sales, refunds, support emails, and buyer questions.
-- [ ] Identify which PDF pages create confusion or strongest value.
-- [ ] Improve copy, templates, and previews based on real buyer feedback.
-- [ ] Plan the next PDF module only after the first launch proves demand.
+**Cadence:** 15 minutes each Monday. Artifact = this table (append a row; do not invent chrome).
+
+| Week | Stripe sales | Refunds | Support | Hub utm_source=ceo | Notes |
+|------|--------------|---------|---------|--------------------|-------|
+| 2026-09-15 | | | | | |
+
+**Also track (operator, not code):**
+
+- [ ] LinkedIn posts shipped this week (target 2–3; pillars ROI / ownership / weekly cadence).
+- [ ] Buyer questions that imply PDF page confusion or strongest value.
+- [ ] Copy / preview tweaks only after real buyer signal.
+- [ ] Next PDF module only after demand proved (PDF sales or hub `ceo` UTM > 0).
+
+**Stop rule:** After ~12 LinkedIn posts and ~45 days, if still 0 PDF sales and 0 hub `utm_source=ceo` → reassess pillars and distribution, not storefront chrome. See [`docs/roadmap.md`](docs/roadmap.md).
+
+---
+
+## Build history (closed) — Phases 1–17
+
+Phases 1–17 shipped the free weekly brief + two paid PDFs + Stripe fulfillment. Do not reopen as Now work. Details below remain for audit.

@@ -347,10 +347,24 @@
     var el = document.querySelector('[data-copy-ops-upsell]');
     if (!el) return;
     if (config.copy.opsUpsell) {
-      var href = config.copy.opsUpsellHref || '#pdf-guides';
-      var cta = config.copy.opsUpsellCta || 'See playbooks';
+      var href = config.copy.opsUpsellHref || '#operating-pdf';
+      var cta = config.copy.opsUpsellCta || 'See Operations playbook';
       el.innerHTML = escapeHtmlText(config.copy.opsUpsell) + ' <a href="' + escapeHtmlText(href) + '">' + escapeHtmlText(cta) + '</a>.';
+      // Post-copy reveal: stay hidden until generator.js shows after a successful Copy.
+      el.classList.add('is-hidden');
+      el.setAttribute('hidden', '');
     }
+  }
+
+  function revealOpsUpsell() {
+    var el = document.querySelector('[data-copy-ops-upsell]');
+    if (!el) return;
+    el.classList.remove('is-hidden');
+    el.removeAttribute('hidden');
+  }
+
+  if (typeof window !== 'undefined') {
+    window.revealOpsUpsell = revealOpsUpsell;
   }
 
   function initPdfStorefrontCopy(config) {

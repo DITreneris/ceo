@@ -11,7 +11,8 @@ Vienas įėjimo taškas į aktyvią dokumentaciją.
 - [README.md](../README.md) - projekto esmė ir paleidimas.
 - [README.md#kalbos-ir-lokalizacija-sot](../README.md#kalbos-ir-lokalizacija-sot) - **SOT:** EN-only vystymas, USA lokalizacija; `/lt/` tik legacy/regression testams.
 - [AGENTS.md](../AGENTS.md#kalbos-ir-lokalizacija-sot) - agentų politika ir lanes.
-- [todo.md](../todo.md) - fazės ir launch blockeriai.
+- [todo.md](../todo.md) - fazės, demand Now/Next/Later, Phase 18 log.
+- [roadmap.md](roadmap.md) - 90-day Manage spoke GTM (demand / harvest to `.app`).
 - [memo_pdf.md](../memo_pdf.md) - Stripe + Vercel fulfillment runbook.
 - [LAUNCH_CHECKLIST.md](LAUNCH_CHECKLIST.md) - Stripe/Vercel/deploy gate (Phases 15–17).
 - [STYLEGUIDE.md](STYLEGUIDE.md) - PDF ir storefront dizaino standartas.

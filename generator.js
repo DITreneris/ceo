@@ -641,16 +641,35 @@
             );
         }
         var communityPrimary = document.querySelector('.community-cta-primary');
-        if (communityPrimary) {
-            communityPrimary.textContent = uiText('Prisijungti prie Telegram bendruomenės', 'Join Telegram community');
-            communityPrimary.setAttribute('aria-label', uiText('Atidaryti Promptų anatomija Telegram bendruomenę naujame lange', 'Open Prompt Anatomy Telegram community in new tab'));
-            communityPrimary.setAttribute('href', 'https://t.me/prompt_anatomy');
-        }
         var communitySecondary = document.querySelector('.community-cta-secondary');
-        if (communitySecondary) {
-            communitySecondary.textContent = uiText('Atrask visus Hub modulius →', 'Explore all Hub modules →');
-            communitySecondary.setAttribute('aria-label', uiText('Atrask visą Promptų anatomijos AI OS – visus Hub modulius (atidaroma naujame lange)', 'Explore the full Prompt Anatomy AI OS – all Hub modules (opens in new tab)'));
-            communitySecondary.setAttribute('href', COMMUNITY_HUB_URL);
+        var telegramHref = 'https://t.me/prompt_anatomy';
+        var telegramLabel = uiText('Prisijungti prie Telegram bendruomenės', 'Join Telegram community');
+        var telegramAria = uiText('Atidaryti Promptų anatomija Telegram bendruomenę naujame lange', 'Open Prompt Anatomy Telegram community in new tab');
+        var hubLabel = uiText('Atrask visus Hub modulius →', 'Explore all Hub modules →');
+        var hubAria = uiText('Atrask visą Promptų anatomijos AI OS – visus Hub modulius (atidaroma naujame lange)', 'Explore the full Prompt Anatomy AI OS – all Hub modules (opens in new tab)');
+        // EN: Hub primary (harvest). LT legacy: Telegram primary (regression path).
+        if (locale === 'lt') {
+            if (communityPrimary) {
+                communityPrimary.textContent = telegramLabel;
+                communityPrimary.setAttribute('aria-label', telegramAria);
+                communityPrimary.setAttribute('href', telegramHref);
+            }
+            if (communitySecondary) {
+                communitySecondary.textContent = hubLabel;
+                communitySecondary.setAttribute('aria-label', hubAria);
+                communitySecondary.setAttribute('href', COMMUNITY_HUB_URL);
+            }
+        } else {
+            if (communityPrimary) {
+                communityPrimary.textContent = hubLabel;
+                communityPrimary.setAttribute('aria-label', hubAria);
+                communityPrimary.setAttribute('href', COMMUNITY_HUB_URL);
+            }
+            if (communitySecondary) {
+                communitySecondary.textContent = telegramLabel;
+                communitySecondary.setAttribute('aria-label', telegramAria);
+                communitySecondary.setAttribute('href', telegramHref);
+            }
         }
         var footerH3 = document.querySelector('[data-copy-footer-heading]');
         if (footerH3) {
@@ -1330,6 +1349,17 @@
         return fromAttr || uiText('Pirmiausia pridėk kontekstą arba išbandyk pavyzdį.', 'Add context or try sample data first.');
     }
 
+    function revealOpsUpsellIfPresent() {
+        if (typeof window.revealOpsUpsell === 'function') {
+            window.revealOpsUpsell();
+            return;
+        }
+        var el = document.querySelector('[data-copy-ops-upsell]');
+        if (!el) return;
+        el.classList.remove('is-hidden');
+        el.removeAttribute('hidden');
+    }
+
     function doCopyOutput() {
         var text = getCopyablePromptText();
         if (!String(text || '').trim()) {
@@ -1339,10 +1369,12 @@
         if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
             navigator.clipboard.writeText(text).then(function () {
                 showToastIfAvailable();
+                revealOpsUpsellIfPresent();
             });
         } else {
             fallbackCopy(text);
             showToastIfAvailable();
+            revealOpsUpsellIfPresent();
         }
         return true;
     }

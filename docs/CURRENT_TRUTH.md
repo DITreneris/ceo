@@ -62,4 +62,4 @@ Fulfillment runbook: [`memo_pdf.md`](../memo_pdf.md). Launch gate: [`LAUNCH_CHEC
 
 **Phase 16–17 (2026-09-03):** maturity pack live — Blob + `/en/` previews. `pdf:export` still does not imply upload.
 
-See [`todo.md`](../todo.md) Phases 15–17.
+See [`todo.md`](../todo.md) Phases 15–17 (build closed). Post-launch operating SOT: [`todo.md`](../todo.md) (engineering + Phase 18 log) + [`roadmap.md`](roadmap.md) (90-day demand GTM).

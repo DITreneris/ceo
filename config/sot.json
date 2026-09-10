@@ -231,9 +231,9 @@
         }
       ]
     },
-    "opsUpsell": "Want the full weekly cadence in print? See the CEO PDF playbooks.",
-    "opsUpsellCta": "See playbooks",
-    "opsUpsellHref": "#pdf-guides"
+    "opsUpsell": "Want the full weekly cadence in print?",
+    "opsUpsellCta": "See Operations playbook",
+    "opsUpsellHref": "#operating-pdf"
   },
   "seo": {
     "canonicalPath": "/en/",
