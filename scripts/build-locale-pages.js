@@ -298,8 +298,8 @@ function getLocaleMeta(locale) {
     return {
       lang: 'en-US',
       path: 'en',
-      title: (sot.seo && sot.seo.title) || 'Turn Scattered KPIs into a Weekly CEO Brief | AI Operations Center',
-      description: (sot.seo && sot.seo.description) || 'Turn KPIs, runway, and pipeline into a CEO-ready weekly operating brief in ~5 minutes.'
+      title: (sot.seo && sot.seo.title) || 'Turn KPIs into a Weekly CEO Brief | AI Operations Center',
+      description: (sot.seo && sot.seo.description) || 'Build a CEO-ready weekly operating brief from KPIs, runway, and pipeline in ~5 minutes. Free tool; optional playbooks from $9.99.'
     };
   }
   return LOCALE_META.lt;
