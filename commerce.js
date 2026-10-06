@@ -161,21 +161,6 @@
   function initHeroCopy(config) {
     if (!config || !config.copy || !config.copy.hero) return;
     var h = config.copy.hero;
-    if (h.badgeParent) {
-      var badgeParent = document.querySelector('[data-copy-hero-badge-parent]');
-      if (badgeParent) {
-        if (h.badgeParent.label) badgeParent.textContent = h.badgeParent.label;
-        if (h.badgeParent.href) badgeParent.setAttribute('href', h.badgeParent.href);
-        if (h.badgeParent.ariaLabel) badgeParent.setAttribute('aria-label', h.badgeParent.ariaLabel);
-      }
-    }
-    if (h.badgeSpinoff) {
-      var badgeSpinoff = document.querySelector('[data-copy-hero-badge-spinoff]');
-      if (badgeSpinoff) {
-        if (h.badgeSpinoff.label) badgeSpinoff.textContent = h.badgeSpinoff.label;
-        if (h.badgeSpinoff.ariaLabel) badgeSpinoff.setAttribute('aria-label', h.badgeSpinoff.ariaLabel);
-      }
-    }
     if (h.eyebrow) setHookText('[data-copy-hero-eyebrow]', h.eyebrow);
     if (h.headlineBenefit) setHookText('[data-copy-hero-headline]', h.headlineBenefit);
     if (h.lead) setHookText('[data-copy-hero-lead]', h.lead);

@@ -3,16 +3,13 @@
     body { padding-top: 74px; font-size: var(--text-md); }
     .container { padding: 24px 16px; }
     .top-nav-inner { padding: 10px 16px; gap: 10px; }
-    .top-nav-brand { font-size: var(--text-14); min-width: 0; }
+    .top-nav-brand { min-width: 0; }
     .top-nav-brand-text-full { display: none; }
-    .top-nav-brand-text-short { display: inline; }
     .top-nav-playbooks-link.btn--nav-secondary { font-size: var(--text-nav); padding: 0 12px; }
     .top-nav-copy-btn { font-size: var(--text-nav); padding: 0 12px; }
     .top-nav-actions { margin-left: auto; }
     .header { padding: 28px 24px; }
     .ops-sample-btn { margin-left: 0; width: 100%; }
-    .header-badges .badge-spinoff { display: none; }
-    .header-badges .badge { font-size: var(--text-2xs); padding: 4px 10px; min-height: 32px; }
     .header h1 { font-size: var(--text-3xl); }
     .header p { font-size: var(--text-md); }
     /* Horizontal progress: numbers on top, labels below, connecting line */
@@ -112,14 +109,14 @@
         border: 1px solid var(--border); box-shadow: none;
     }
     .header .header-cta .cta-button-outline:hover {
-        background: var(--surface-0); color: var(--primary); border-color: var(--primary-200);
+        background: var(--surface-0); color: var(--brand-navy); border-color: var(--brand-navy);
     }
     /* Primary CTA stays strong but softer shadow (no glow) */
     .header .header-cta .cta-button {
-        box-shadow: var(--shadow-tab-focus);
+        box-shadow: var(--shadow-cta-navy);
     }
     .header .header-cta .cta-button:hover {
-        box-shadow: var(--shadow-tab-hover);
+        box-shadow: var(--shadow-cta-navy);
     }
     /* Modes: neutral, active = subtle border + tint (not full violet) */
     .ops-control-panel {

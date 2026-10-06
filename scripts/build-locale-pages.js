@@ -379,16 +379,20 @@ function buildLocaleHtml(locale) {
       /<meta\s+name="twitter:description"\s+content="[^"]*"\s*\/?>/,
       '<meta name="twitter:description" content="' + LT_SOCIAL.ogDescription + '">'
     );
+    html = html.replace(
+      /<meta\s+property="og:site_name"\s+content="[^"]*"\s*\/?>/,
+      '<meta property="og:site_name" content="Promptų Anatomija">'
+    );
   }
 
   // 6. Asset paths: root-relative so they resolve from /lt/ or /en/ (and with BASE_PATH for GitHub Pages)
   var base = BASE_PATH || '';
-  html = html.replace(/\bhref="favicon\.svg"/, 'href="' + base + '/favicon.svg"');
-  html = html.replace(/\bhref="style\.css(\?[^"]*)?"/g, 'href="' + base + '/style.css?v=2.1.2"');
+  html = html.replace(/\bhref="favicon\.svg(?:\?[^"]*)?"/, 'href="' + base + '/favicon.svg?v=2.1.4"');
+  html = html.replace(/\bhref="style\.css(\?[^"]*)?"/g, 'href="' + base + '/style.css?v=2.1.7"');
   html = html.replace(/\bsrc="vendor\/lucide\.min\.js(\?[^"]*)?"/, 'src="' + base + '/vendor/lucide.min.js?v=2.1.3"');
-  html = html.replace(/\bsrc="generator\.js(\?[^"]*)?"/, 'src="' + base + '/generator.js?v=2.1.3"');
+  html = html.replace(/\bsrc="generator\.js(\?[^"]*)?"/, 'src="' + base + '/generator.js?v=2.1.4"');
   html = html.replace(/\bsrc="copy\.js(\?[^"]*)?"/, 'src="' + base + '/copy.js?v=2.1.3"');
-  html = html.replace(/\bsrc="commerce\.js(\?[^"]*)?"/, 'src="' + base + '/commerce.js?v=2.1.3"');
+  html = html.replace(/\bsrc="commerce\.js(\?[^"]*)?"/, 'src="' + base + '/commerce.js?v=2.1.4"');
   html = html.replace(
     /\bsrc="(\/assets\/pdf-covers\/(?:operating|strategic)\.png)(\?[^"]*)?"/g,
     'src="$1?v=2.1.3"'
@@ -403,9 +407,9 @@ function buildLocaleHtml(locale) {
   if (locale === 'lt') {
     html = html.replace('>Skip to content</a>', '>Pereiti prie turinio</a>');
     html = html.replace('aria-label="Quick navigation"', 'aria-label="Greita navigacija"');
-    html = html.replace('aria-label="AI Operations Center"', 'aria-label="DI Operacinis Centras"');
-    html = html.replace('>AI Operations Center</span>', '>DI Operacinis Centras</span>');
-    html = html.replace('>AI OC</span>', '>DI OC</span>');
+    html = html.replace('aria-label="Prompt Anatomy"', 'aria-label="Promptų Anatomija"');
+    html = html.replace('>Prompt</span>', '>Promptų</span>');
+    html = html.replace('>Anatomy</span>', '>Anatomija</span>');
     html = html.replace('aria-label="Language selection"', 'aria-label="Kalbos pasirinkimas"');
     html = html.replace('aria-label="Switch to Lithuanian"', 'aria-label="Perjungti į lietuvių kalbą"');
     html = html.replace('>Copy prompt</button>', '>Kopijuoti užklausą</button>');

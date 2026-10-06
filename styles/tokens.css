@@ -42,7 +42,7 @@
     --shadow-tab-hover: 0 4px 12px rgba(74, 20, 140, 0.25);
     --shadow-tab-rest: 0 1px 3px rgba(74, 20, 140, 0.08);
 
-    --nav-bar-bg: #270D48;
+    --nav-bar-bg: #0b1320;
 
     --space-4: 4px;
     --space-10: 10px;
@@ -76,6 +76,13 @@
     --primary-300: #9575CD;
     --primary-700: #4A148C;
     --primary-900: #1A0A2E;
+
+    --brand-navy: #0b1320;
+    --brand-gold: #cfa73a;
+    --brand-tile-border: rgb(255 255 255 / 0.10);
+    --cta-brand-from: #ffcc33;
+    --cta-brand-to: #ffb300;
+    --shadow-cta-navy: 0 8px 22px rgba(11, 19, 32, 0.12);
 
     --accent-gold: #FFB300;
     --accent-gold-hover: #FFA000;

@@ -107,7 +107,7 @@
 }
 .btn--nav-secondary {
     background: var(--white);
-    color: var(--primary);
+    color: var(--brand-navy);
     border: 1px solid rgba(255, 255, 255, 0.35);
     min-height: 44px;
     padding: 0 var(--space-16);
@@ -118,7 +118,7 @@
 }
 .btn--nav-secondary:hover {
     background: var(--primary-50);
-    color: var(--primary-dark);
+    color: var(--brand-navy);
     border-color: rgba(255, 255, 255, 0.5);
     box-shadow: var(--shadow-medium);
 }

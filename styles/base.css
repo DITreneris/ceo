@@ -71,10 +71,8 @@ body {
     left: 0;
     right: 0;
     z-index: 2000;
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    background: linear-gradient(180deg, rgba(39, 13, 72, 0.94) 0%, rgba(30, 8, 58, 0.92) 100%);
-    border-bottom: 1px solid rgba(124, 67, 189, 0.4);
+    background: var(--nav-bar-bg);
+    border-bottom: 1px solid var(--brand-tile-border);
 }
 
 .top-nav-inner {
@@ -89,20 +87,44 @@ body {
 .top-nav-brand {
     color: var(--white);
     text-decoration: none;
-    font-weight: 700;
+    font-weight: 900;
     white-space: nowrap;
     margin-right: auto;
     display: flex;
     align-items: center;
+}
+
+.brand-lockup {
+    display: inline-flex;
+    align-items: center;
     gap: var(--space-8);
 }
 
-.top-nav-brand-text-short {
-    display: none;
+.brand-tile {
+    width: 36px;
+    height: 36px;
+    flex: 0 0 36px;
+    display: block;
+    border-radius: var(--r-btn);
+    border: 1px solid var(--brand-tile-border);
+    box-sizing: border-box;
+    overflow: hidden;
 }
 
-.top-nav-brand .icon {
-    color: var(--accent-gold);
+.top-nav-brand-text-full {
+    font-size: var(--text-md);
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    line-height: 1;
+}
+
+.brand-word {
+    color: var(--white);
+    font-weight: 900;
+}
+
+.brand-word--accent {
+    color: var(--brand-gold);
 }
 
 .top-nav-actions {

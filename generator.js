@@ -398,11 +398,11 @@
         if (stickyCopy) stickyCopy.textContent = uiText('Kopijuoti užklausą', 'Copy prompt');
 
         var brandLink = document.querySelector('.top-nav-brand');
-        if (brandLink) brandLink.setAttribute('aria-label', uiText('DI Operacinis Centras', 'AI Operations Center'));
-        var brandTextFull = document.querySelector('.top-nav-brand-text-full');
-        if (brandTextFull) brandTextFull.textContent = uiText('DI Operacinis Centras', 'AI Operations Center');
-        var brandTextShort = document.querySelector('.top-nav-brand-text-short');
-        if (brandTextShort) brandTextShort.textContent = uiText('DI OC', 'AI OC');
+        if (brandLink) brandLink.setAttribute('aria-label', 'Promptų Anatomija');
+        var brandWordFirst = document.querySelector('[data-brand-word="first"]');
+        var brandWordSecond = document.querySelector('[data-brand-word="second"]');
+        if (brandWordFirst) brandWordFirst.textContent = 'Promptų';
+        if (brandWordSecond) brandWordSecond.textContent = 'Anatomija';
 
         var h1 = document.querySelector('[data-copy-hero-headline]');
         if (h1) h1.textContent = uiText('DI Operacinis Centras', 'Turn scattered KPIs into a clear weekly CEO brief');

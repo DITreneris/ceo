@@ -87,15 +87,6 @@
   ],
   "copy": {
     "hero": {
-      "badgeParent": {
-        "label": "Prompt Anatomy",
-        "href": "https://www.promptanatomy.app/",
-        "ariaLabel": "Return to Prompt Anatomy Hub (opens in new tab)"
-      },
-      "badgeSpinoff": {
-        "label": "Hub module: Operations",
-        "ariaLabel": "Prompt Anatomy Hub module: Operations (CEO/COO)"
-      },
       "headlineBenefit": "Turn scattered KPIs into a clear weekly CEO brief",
       "lead": "Turn scattered AI use into structured weekly priorities.\nAdd KPIs, blockers, and context — ready in 5 minutes.",
       "ctaMeta": "Free · No account · ~5 min",
@@ -279,7 +270,7 @@
       "ecosystem": [
         {
           "url": "https://www.promptanatomy.app/",
-          "label": "Prompt Anatomy AI Operating System",
+          "label": "Prompt Anatomy",
           "description": "Product hub for training and modules"
         }
       ],

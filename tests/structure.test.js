@@ -164,9 +164,9 @@ function run() {
   else failed++;
 
   // --- Moduliniai failai ---
-  if (assert(html.includes('href="style.css?v=2.1.2"'), 'Link į style.css (cache-busted)')) passed++;
+  if (assert(html.includes('href="style.css?v=2.1.7"'), 'Link į style.css (cache-busted)')) passed++;
   else failed++;
-  if (assert(html.includes('src="generator.js?v=2.1.3"'), 'Script src generator.js')) passed++;
+  if (assert(html.includes('src="generator.js?v=2.1.4"'), 'Script src generator.js')) passed++;
   else failed++;
   if (assert(html.includes('src="copy.js?v=2.1.3"'), 'Script src copy.js')) passed++;
   else failed++;
@@ -287,9 +287,11 @@ function run() {
   if (
     assert(
       styleFile &&
-        styleFile.includes("@import url('styles/sections.css?v=2.1.2')") &&
-        styleFile.includes("@import url('styles/base.css?v=2.1.2')"),
-      'style.css @import cache-bust ?v=2.1.2 on partitioned CSS'
+        styleFile.includes("@import url('styles/tokens.css?v=2.1.5')") &&
+        styleFile.includes("@import url('styles/sections.css?v=2.1.6')") &&
+        styleFile.includes("@import url('styles/base.css?v=2.1.5')") &&
+        styleFile.includes("@import url('styles/responsive.css?v=2.1.6')"),
+      'style.css @import cache-bust on partitioned CSS'
     )
   ) {
     passed++;
@@ -567,7 +569,7 @@ function run() {
   } else failed++;
   if (assert(html.includes('data-stripe-cta="operating"') && html.includes('data-stripe-cta="strategic"'), 'Stripe CTA data atributai')) passed++;
   else failed++;
-  if (assert(html.includes('src="commerce.js?v=2.1.3"'), 'commerce.js prijungtas index.html')) passed++;
+  if (assert(html.includes('src="commerce.js?v=2.1.4"'), 'commerce.js prijungtas index.html')) passed++;
   else failed++;
   if (
     assert(
@@ -769,11 +771,35 @@ function run() {
   if (assert(commerceJs && commerceJs.includes('initOpsUpsell'), 'commerce.js initOpsUpsell')) passed++;
   else failed++;
   if (assert(
-    html.includes('header-badges') &&
-      html.includes('data-copy-hero-badge-parent') &&
-      html.includes('Prompt Anatomy') &&
-      html.includes('Hub module: Operations'),
-    'Hero Prompt Anatomy lineage badges'
+    !html.includes('header-badges') &&
+      !html.includes('data-copy-hero-badge-parent') &&
+      !html.includes('Hub module: Operations') &&
+      html.includes('data-copy-hero-headline'),
+    'Hero starts at the headline; lineage badges removed'
+  )) passed++;
+  else failed++;
+  if (assert(
+    html.includes('aria-label="Prompt Anatomy"') &&
+      html.includes('data-brand-word="first"') &&
+      html.includes('data-brand-word="second"') &&
+      html.includes('href="#main-content" class="top-nav-brand"') &&
+      enEntryFile &&
+      enEntryFile.includes('content="Prompt Anatomy"') &&
+      ltEntryFile &&
+      ltEntryFile.includes('og:site_name" content="Promptų Anatomija"') &&
+      ltEntryFile.includes('aria-label="Promptų Anatomija"') &&
+      ltEntryFile.includes('>Promptų</span>') &&
+      ltEntryFile.includes('>Anatomija</span>'),
+    'Nav lockup is Prompt Anatomy; LT og:site_name is Promptų Anatomija'
+  )) passed++;
+  else failed++;
+  if (assert(
+    responsiveCss &&
+      responsiveCss.includes('.header .header-cta .cta-button') &&
+      responsiveCss.includes('box-shadow: var(--shadow-cta-navy)') &&
+      !responsiveCss.includes('--shadow-tab-focus') &&
+      !responsiveCss.includes('--shadow-tab-hover'),
+    'Mobile hero CTA shadow uses navy, not the violet tab shadow'
   )) passed++;
   else failed++;
   var hubPrimarySnippet =
@@ -796,8 +822,9 @@ function run() {
   )) passed++;
   else failed++;
   if (assert(
-    html.includes('href="https://www.promptanatomy.app/" class="badge" data-copy-hero-badge-parent'),
-    'Hero badge stays bare (no UTM)'
+    !html.includes('data-copy-hero-badge-parent') &&
+      html.includes('utm_medium=entity_footer'),
+    'Hero has no hub badge; entity footer keeps the .app link'
   )) passed++;
   else failed++;
   if (assert(html.includes('Turn scattered KPIs into a clear weekly CEO brief') && html.includes('data-copy-hero-headline'), 'Hero benefit-first headline (CEO brief)')) passed++;

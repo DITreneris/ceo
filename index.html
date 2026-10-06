@@ -14,7 +14,7 @@
     <meta property="og:description" content="Free CEO/COO weekly operating brief for measurable priorities. Cadence and board playbooks from $9.99.">
     <meta property="og:locale" content="en_US">
     <meta property="og:url" content="https://www.promptanatomy.ceo/en/">
-    <meta property="og:site_name" content="AI Operations Center">
+    <meta property="og:site_name" content="Prompt Anatomy">
     <meta property="og:image" content="https://www.promptanatomy.ceo/assets/og/og-cover.png?v=4">
     <meta property="og:image:secure_url" content="https://www.promptanatomy.ceo/assets/og/og-cover.png?v=4">
     <meta property="og:image:type" content="image/png">
@@ -96,15 +96,15 @@
       }
     }
     </script>
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg?v=2.1.4">
     <!-- First-paint shell: faster meaningful frame for crawlers and Vercel deployment thumbnails -->
-    <link rel="preload" href="style.css?v=2.1.2" as="style">
+    <link rel="preload" href="style.css?v=2.1.7" as="style">
     <style>
       /* LCP shell — must match styles/tokens.css :root (surface, nav, hero, type) */
       :root {
         --surface-0: #F6F7FB;
         --text: #1E1F25;
-        --nav-bar-bg: #270D48;
+        --nav-bar-bg: #0b1320;
         --hero-soft-start: #F5EDFF;
         --hero-soft-end: #E9DCFF;
         --r-hero: 24px;
@@ -116,7 +116,7 @@
       .header { background: linear-gradient(165deg, var(--hero-soft-start) 0%, var(--hero-soft-end) 100%); padding: 36px 48px; border-radius: var(--r-hero); }
       .header h1 { font-size: var(--text-hero); font-weight: 800; margin: 0 0 12px; max-width: 20ch; }
     </style>
-    <link rel="stylesheet" href="style.css?v=2.1.2">
+    <link rel="stylesheet" href="style.css?v=2.1.7">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'; this.onload=null;">
@@ -129,10 +129,14 @@
 
     <nav class="top-nav" aria-label="Quick navigation">
         <div class="top-nav-inner">
-            <a href="#main-content" class="top-nav-brand" aria-label="AI Operations Center">
-                <i data-lucide="command" class="icon icon--sm"></i>
-                <span class="top-nav-brand-text-full">AI Operations Center</span>
-                <span class="top-nav-brand-text-short" aria-hidden="true">AI OC</span>
+            <a href="#main-content" class="top-nav-brand" aria-label="Prompt Anatomy">
+                <span class="brand-lockup">
+                    <svg class="brand-tile" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true">
+                        <rect width="32" height="32" fill="#0b1320"/>
+                        <path fill="#cfa73a" transform="translate(4 3)" d="M13.5 1.5 4.5 14.25h6L8.25 22.5 19.5 9.75h-6L13.5 1.5z"/>
+                    </svg>
+                    <span class="top-nav-brand-text-full"><span class="brand-word" data-brand-word="first">Prompt</span> <span class="brand-word brand-word--accent" data-brand-word="second">Anatomy</span></span>
+                </span>
             </a>
             <div class="top-nav-actions">
                 <a href="#pdf-guides" class="top-nav-playbooks-link btn btn--nav-secondary" data-copy-nav-playbooks-cta aria-label="View PDF playbooks from $9.99">Playbooks</a>
@@ -148,10 +152,6 @@
         <header class="header">
             <div class="hero-layout">
                 <div class="hero-content">
-                    <div class="header-badges">
-                        <a href="https://www.promptanatomy.app/" class="badge" data-copy-hero-badge-parent target="_blank" rel="noopener noreferrer" aria-label="Return to Prompt Anatomy Hub (opens in new tab)">Prompt Anatomy</a>
-                        <span class="badge badge-spinoff" role="status" data-copy-hero-badge-spinoff aria-label="Prompt Anatomy Hub module: Operations (CEO/COO)">Hub module: Operations</span>
-                    </div>
                     <h1 data-copy-hero-headline>Turn scattered KPIs into a clear weekly CEO brief</h1>
                     <p class="header-lead" data-copy-hero-lead>Turn scattered AI use into structured weekly priorities.<br>Add KPIs, blockers, and context — ready in 5 minutes.</p>
                     <div class="header-cta">
@@ -606,9 +606,9 @@
     </div>
 
     <script src="vendor/lucide.min.js?v=2.1.3"></script>
-    <script src="generator.js?v=2.1.3"></script>
+    <script src="generator.js?v=2.1.4"></script>
     <script src="copy.js?v=2.1.3"></script>
-    <script src="commerce.js?v=2.1.3"></script>
+    <script src="commerce.js?v=2.1.4"></script>
     <script>
       window.va =
         window.va ||
