@@ -50,6 +50,9 @@ api/_private/pdfs/*.pdf
 # ─── Paid PDF HTML interiors (operator-local; print CSS stays tracked) ───
 docs/pdf-source/*.html
 
+# Local research only. Recorded 2026-10-11: keep_local_do_not_build.
+report.txt
+
 # ─── PDF authoring debug artifacts ───
 scripts/pdf-cover-*.png
 scripts/cover-preview.png

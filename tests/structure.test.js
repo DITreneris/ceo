@@ -164,7 +164,7 @@ function run() {
   else failed++;
 
   // --- Moduliniai failai ---
-  if (assert(html.includes('href="style.css?v=2.1.7"'), 'Link į style.css (cache-busted)')) passed++;
+  if (assert(html.includes('href="style.css?v=2.1.8"'), 'Link į style.css (cache-busted)')) passed++;
   else failed++;
   if (assert(html.includes('src="generator.js?v=2.1.4"'), 'Script src generator.js')) passed++;
   else failed++;
@@ -288,8 +288,8 @@ function run() {
     assert(
       styleFile &&
         styleFile.includes("@import url('styles/tokens.css?v=2.1.5')") &&
-        styleFile.includes("@import url('styles/sections.css?v=2.1.6')") &&
-        styleFile.includes("@import url('styles/base.css?v=2.1.5')") &&
+        styleFile.includes("@import url('styles/sections.css?v=2.1.8')") &&
+        styleFile.includes("@import url('styles/base.css?v=2.1.8')") &&
         styleFile.includes("@import url('styles/responsive.css?v=2.1.6')"),
       'style.css @import cache-bust on partitioned CSS'
     )
@@ -982,6 +982,31 @@ function run() {
   } else if (sot && sot.commerce && sot.commerce.allowPlaceholderCheckout !== false) {
     console.log('\u2139\uFE0F  Publish gate: allowPlaceholderCheckout=true — placeholder Stripe URL leidžiamos');
   }
+
+  const footerSummary = 'Free brief on this page. Paid playbooks are in the section above.';
+  const localeBuild = readFile(path.join(__dirname, '..', 'scripts', 'build-locale-pages.js'));
+  if (
+    assert(
+      sot &&
+        sot.copy &&
+        sot.copy.footer &&
+        sot.copy.footer.summary === footerSummary &&
+        !sot.copy.footer.summary.includes('below') &&
+        html.includes(footerSummary),
+      'Footer summary matches SOT and does not say playbooks are below'
+    )
+  ) {
+    passed++;
+  } else failed++;
+  if (
+    assert(
+      localeBuild &&
+        localeBuild.includes('>Add KPIs, blockers, and context — ready in 5 minutes.</p>'),
+      'build-locale-pages.js lead needle matches the one-line hero'
+    )
+  ) {
+    passed++;
+  } else failed++;
 
   console.log('\n---');
   console.log(`Rezultatas: ${passed} praeina, ${failed} nepraeina.`);

@@ -388,7 +388,7 @@ function buildLocaleHtml(locale) {
   // 6. Asset paths: root-relative so they resolve from /lt/ or /en/ (and with BASE_PATH for GitHub Pages)
   var base = BASE_PATH || '';
   html = html.replace(/\bhref="favicon\.svg(?:\?[^"]*)?"/, 'href="' + base + '/favicon.svg?v=2.1.4"');
-  html = html.replace(/\bhref="style\.css(\?[^"]*)?"/g, 'href="' + base + '/style.css?v=2.1.7"');
+  html = html.replace(/\bhref="style\.css(\?[^"]*)?"/g, 'href="' + base + '/style.css?v=2.1.8"');
   html = html.replace(/\bsrc="vendor\/lucide\.min\.js(\?[^"]*)?"/, 'src="' + base + '/vendor/lucide.min.js?v=2.1.3"');
   html = html.replace(/\bsrc="generator\.js(\?[^"]*)?"/, 'src="' + base + '/generator.js?v=2.1.4"');
   html = html.replace(/\bsrc="copy\.js(\?[^"]*)?"/, 'src="' + base + '/copy.js?v=2.1.3"');
@@ -415,10 +415,6 @@ function buildLocaleHtml(locale) {
     html = html.replace('>Copy prompt</button>', '>Kopijuoti užklausą</button>');
 
     html = html.replace('>Turn scattered KPIs into a clear weekly CEO brief</h1>', '>DI Operacinis Centras</h1>');
-    html = html.replace(
-      '>Enter revenue, runway, pipeline, blockers, and team context. Get a structured weekly priority brief for leadership alignment in about 5 minutes.</p>',
-      '>Įvesk pajamas, rezervą ir kontekstą. Gauk paruoštą CEO promptą maždaug per 5 min.</p>'
-    );
     html = html.replace('>Not another AI chat. A structured operating layer for executive decision-making.</p>', '');
     html = html.replace('aria-label="Open generator in operations center">Open generator</a>', 'aria-label="Atidaryti generatorių operaciniame centre">Atidaryti generatorių</a>');
     html = html.replace(
@@ -426,14 +422,14 @@ function buildLocaleHtml(locale) {
       'aria-label="Kurti savaitės brief operaciniame centre">Kurti savaitės brief</a>'
     );
     html = html.replace('aria-label="View PDF playbooks">View playbooks ↓</a>', 'aria-label="Peržiūrėti PDF playbooks">Playbooks ↓</a>');
-    html = html.replace('>Free · No account · ~5 min</p>', '>Nemokama · Be paskyros · ~5 min</p>');
+    html = html.replace('>Free · No account</p>', '>Nemokama · Be paskyros</p>');
     html = html.replace(
-      '>Add KPIs, blockers, and context.<br>Get structured priorities in 5 minutes.</p>',
-      '>Įvesk KPI, blockerius ir kontekstą.<br>Gauk struktūruotus prioritetus per 5 min.</p>'
+      '>Add KPIs, blockers, and context — ready in 5 minutes.</p>',
+      '>Įvesk KPI, blockerius ir kontekstą — paruošta per 5 min.</p>'
     );
     html = html.replace('>This week\'s priorities</p>', '>Šios savaitės prioritetai</p>');
     html = html.replace('>Add your context</h2>', '>Pridėk kontekstą</h2>');
-    html = html.replace('>Build your weekly brief</h2>', '>Kurk savaitės brief</h2>');
+    html = html.replace('>Set mode and context</h2>', '>Režimas ir kontekstas</h2>');
     html = html.replace(
       'aria-label="Fill the weekly form with sample CEO data">Try sample data</button>',
       'aria-label="Užpildyti savaitės formą pavyzdiniais duomenimis">Išbandyti pavyzdį</button>'

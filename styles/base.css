@@ -50,7 +50,7 @@
 
 /* ===== BODY ===== */
 body {
-    font-family: 'Inter', -apple-system, sans-serif;
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
     background: var(--surface-0);
     color: var(--text);
     line-height: 1.6;
@@ -147,7 +147,7 @@ body {
     cursor: pointer;
     min-height: 44px;
     padding: 0 14px;
-    font-family: 'Inter', sans-serif;
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
     font-weight: 700;
     font-size: var(--text-sm);
     transition: background var(--duration-normal) var(--ease-out), border-color var(--duration-normal) var(--ease-out);

@@ -410,7 +410,7 @@
         if (hLead) {
             hLead.textContent = uiText(
                 'Įvesk pajamas, rezervą ir kontekstą. Gauk paruoštą CEO promptą maždaug per 5 min.',
-                'Add KPIs, blockers, and context. Get structured priorities in 5 minutes.'
+                'Add KPIs, blockers, and context — ready in 5 minutes.'
             );
         }
 
@@ -433,8 +433,8 @@
 
         var heroMeta = document.querySelector('[data-copy-hero-meta]');
         if (heroMeta) heroMeta.textContent = uiText(
-            'TOP vadovams CEO / COO · Nemokama · Be paskyros · ~5 min',
-            'For CEOs & COOs · Free · No account · ~5 min'
+            'Nemokama · Be paskyros',
+            'Free · No account'
         );
 
         var ctaPrimary = document.querySelector('.header-cta .cta-button');

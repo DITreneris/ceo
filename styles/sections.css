@@ -150,7 +150,7 @@
     color: var(--text-disabled);
     font-size: var(--text-nav);
     font-weight: 800;
-    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-family: ui-monospace, "Cascadia Mono", "Segoe UI Mono", Consolas, monospace;
     font-variant-numeric: tabular-nums;
     letter-spacing: 0.02em;
 }
@@ -387,7 +387,7 @@
 
 .hero-prompt-card__priority {
     flex-shrink: 0;
-    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-family: ui-monospace, "Cascadia Mono", "Segoe UI Mono", Consolas, monospace;
     font-size: var(--text-nav);
     font-weight: 800;
     color: var(--accent-gold);
@@ -566,7 +566,7 @@
     border-radius: calc(var(--r-btn) - 2px);
     cursor: pointer;
     position: relative;
-    font-family: 'Inter', sans-serif;
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
     font-size: var(--text-14);
     font-weight: 700;
     color: var(--text-light);
@@ -689,7 +689,7 @@
     border: 1px solid var(--border-subtle);
     border-radius: 999px;
     cursor: pointer;
-    font-family: 'Inter', sans-serif;
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
     font-size: var(--text-sm);
     font-weight: 600;
     color: var(--text-light);
@@ -836,7 +836,7 @@
     border: 1px solid var(--border);
     border-radius: var(--r-btn);
     font-size: var(--text-md);
-    font-family: 'Inter', sans-serif;
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
     font-weight: 500;
     color: var(--text);
     outline: none;
@@ -1068,7 +1068,7 @@ textarea.ops-output-text {
     border-radius: var(--r-btn);
     font-size: var(--text-base);
     font-weight: 900;
-    font-family: 'Inter', sans-serif;
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -1141,7 +1141,7 @@ textarea.ops-output-text {
     background: rgba(255, 255, 255, 0.08);
     color: var(--white);
     cursor: pointer;
-    font-family: 'Inter', sans-serif;
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
     font-size: var(--text-nav);
     font-weight: 700;
     line-height: 1.2;
@@ -1211,7 +1211,7 @@ textarea.ops-output-text {
     border: 1px solid var(--border);
     border-radius: var(--r-btn);
     cursor: pointer;
-    font-family: 'Inter', sans-serif;
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
     font-size: var(--text-nav);
     font-weight: 600;
     color: var(--primary);
@@ -1349,7 +1349,7 @@ textarea.ops-output-text {
         ". value value value";
     gap: 6px var(--space-16);
     cursor: pointer;
-    font-family: 'Inter', sans-serif;
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
     text-align: left;
     transition: box-shadow var(--duration-normal) var(--ease-out), border-color var(--duration-normal) var(--ease-out);
 }
@@ -1460,7 +1460,7 @@ textarea.ops-output-text {
 }
 
 .library-card-prompt {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: ui-monospace, "Cascadia Mono", "Segoe UI Mono", Consolas, monospace;
     font-size: var(--text-sm);
     line-height: 1.55;
     color: var(--text-light);
@@ -1496,7 +1496,7 @@ textarea.ops-output-text {
     border: 1px solid var(--border-subtle);
     border-radius: var(--r-btn);
     cursor: pointer;
-    font-family: 'Inter', sans-serif;
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
     font-size: var(--text-sm);
     font-weight: 600;
     color: var(--primary);
@@ -1675,7 +1675,7 @@ textarea.ops-output-text {
 .rules-anatomy-blocks {
     display: inline-block;
     margin-top: 4px;
-    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-family: ui-monospace, "Cascadia Mono", "Segoe UI Mono", Consolas, monospace;
     font-size: var(--text-nav);
     color: var(--primary);
     font-weight: 600;
@@ -1833,7 +1833,7 @@ a.footer-address-label:focus-visible {
     border: 1px solid var(--border-subtle);
     border-radius: var(--r-btn);
     font-size: var(--text-sm);
-    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-family: ui-monospace, "Cascadia Mono", "Segoe UI Mono", Consolas, monospace;
 }
 .hub-map-context {
     font-size: var(--text-sm);
@@ -1987,7 +1987,7 @@ a.footer-address-label:focus-visible {
 
 /* ===== LEGAL / STANDALONE PAGES ===== */
 body.legal-page {
-    font-family: 'Inter', -apple-system, sans-serif;
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
     background: var(--surface-0);
     color: var(--text);
     line-height: 1.6;
