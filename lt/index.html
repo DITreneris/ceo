@@ -35,11 +35,15 @@
     {
       "@context": "https://schema.org",
       "@type": "WebApplication",
+      "@id": "https://www.promptanatomy.ceo/en/#app",
       "name": "AI Operations Center",
       "applicationCategory": "BusinessApplication",
       "operatingSystem": "Web",
-      "description": "A free web tool that turns KPIs, runway, and pipeline into a CEO-ready weekly operating brief in about 5 minutes.",
+      "description": "Browser-based executive prompt builder for US CEOs and COOs. Enter KPIs, project status, and board questions to generate a structured prompt for ChatGPT, Claude, or Gemini.",
       "url": "https://www.promptanatomy.ceo/en/",
+      "publisher": {
+        "@id": "https://www.promptanatomy.ceo/#organization"
+      },
       "offers": {
         "@type": "Offer",
         "price": "0",
@@ -51,6 +55,7 @@
     {
       "@context": "https://schema.org",
       "@type": "FAQPage",
+      "@id": "https://www.promptanatomy.ceo/en/#product-faq",
       "mainEntity": [
         {
           "@type": "Question",
@@ -66,14 +71,6 @@
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Greita pateikia trumpą prioritetų sąrašą. Gilu prideda analizę ir pagrindimą. Valdybai suformuoja trumpą formalią santrauką su rizikomis ir veiksmais."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Nori pilnos DI operacinės sistemos?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Pilną Promptų anatomijos mokymą ir Hub modulius rasite https://www.promptanatomy.app/"
           }
         }
       ]
@@ -101,7 +98,7 @@
     </script>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2.1.4">
     <!-- First-paint shell: faster meaningful frame for crawlers and Vercel deployment thumbnails -->
-    <link rel="preload" href="/style.css?v=2.1.8" as="style">
+    <link rel="preload" href="/style.css?v=2.1.9" as="style">
     <style>
       /* LCP shell — must match styles/tokens.css :root (surface, nav, hero, type) */
       :root {
@@ -119,7 +116,7 @@
       .header { background: linear-gradient(165deg, var(--hero-soft-start) 0%, var(--hero-soft-end) 100%); padding: 36px 48px; border-radius: var(--r-hero); }
       .header h1 { font-size: var(--text-hero); font-weight: 800; margin: 0 0 12px; max-width: 20ch; }
     </style>
-    <link rel="stylesheet" href="/style.css?v=2.1.8">
+    <link rel="stylesheet" href="/style.css?v=2.1.9">
 </head>
 <body>
     <a href="#main-content" class="skip-link">Pereiti prie turinio</a>
@@ -498,10 +495,10 @@
         <!-- LIBRARY -->
         <section class="library-section" id="library">
             <h2 class="collapsible-heading">
-                <button class="collapsible-toggle" id="libraryToggle" type="button" aria-expanded="false" aria-controls="libraryBody">
+                <button class="collapsible-toggle" id="libraryToggle" type="button" aria-expanded="false" aria-controls="libraryBody" aria-describedby="libraryDesc">
                     <span class="step-badge" aria-hidden="true">4</span>
                     <span class="collapsible-title">Template library</span>
-                    <span class="collapsible-value">Ready-made prompt templates — apply in form or copy</span>
+                    <span class="collapsible-value" id="libraryDesc" aria-hidden="true">Ready-made prompt templates — apply in form or copy</span>
                     <span class="collapsible-count" id="libraryTemplateCount">6 templates</span>
                     <span class="collapsible-chevron" aria-hidden="true">▾</span>
                 </button>
@@ -516,10 +513,10 @@
         <!-- RULES -->
         <section class="rules-section" id="rules">
             <h2 class="collapsible-heading">
-                <button class="collapsible-toggle" id="rulesToggle" type="button" aria-expanded="false" aria-controls="rulesBody">
+                <button class="collapsible-toggle" id="rulesToggle" type="button" aria-expanded="false" aria-controls="rulesBody" aria-describedby="rulesDesc">
                     <span class="step-badge" aria-hidden="true"><i data-lucide="shield-check" class="icon icon--sm"></i></span>
                     <span class="collapsible-title">Executive decision rules</span>
-                    <span class="collapsible-value">Decision framework — every prompt follows these principles</span>
+                    <span class="collapsible-value" id="rulesDesc" aria-hidden="true">Decision framework — every prompt follows these principles</span>
                     <span class="collapsible-chevron" aria-hidden="true">▾</span>
                 </button>
             </h2>
@@ -527,9 +524,53 @@
                 <ul class="rules-list" id="rulesList">
                     <!-- Populated by generator.js -->
                 </ul>
+                <div class="rules-methodology" id="rulesMethodology">
+                    <h3 class="rules-subtitle">Prompt Anatomy 6-Block Executive Framework</h3>
+                    <p class="rules-intro">Every prompt generated in the AI Operations Center structures executive context across six functional blocks so ChatGPT, Claude, or Gemini returns a decision-ready brief rather than generic advice:</p>
+                    <dl class="rules-methodology-grid">
+                        <div class="rules-block-card">
+                            <dt>1. Meta (Role &amp; Decision Mandate)</dt>
+                            <dd>Sets the executive lens (CEO, COO, or Board advisor), operating cadence, and decision horizon.</dd>
+                        </div>
+                        <div class="rules-block-card">
+                            <dt>2. Input (KPIs, Baseline &amp; Constraints)</dt>
+                            <dd>Anchors weekly revenue, costs, cash balance, runway, active project status, and pipeline facts.</dd>
+                        </div>
+                        <div class="rules-block-card">
+                            <dt>3. Output (Decision-Ready Format)</dt>
+                            <dd>Enforces a 1-page brief layout where every action names an Owner, Deadline, and target KPI.</dd>
+                        </div>
+                        <div class="rules-block-card">
+                            <dt>4. Reasoning (Trade-offs &amp; Bottlenecks)</dt>
+                            <dd>Requires root-cause diagnosis of delivery or pipeline bottlenecks before proposing new initiatives.</dd>
+                        </div>
+                        <div class="rules-block-card">
+                            <dt>5. Quality (Fact vs. Assumption Verification)</dt>
+                            <dd>Separates stated metrics from estimates and flags missing numbers to confirm before acting.</dd>
+                        </div>
+                        <div class="rules-block-card">
+                            <dt>6. Advanced (Risk &amp; Scenario Stress-Test)</dt>
+                            <dd>Surfaces the single highest-probability execution risk and its mitigation for leadership sign-off.</dd>
+                        </div>
+                    </dl>
+                </div>
+                <div class="rules-worked-example" id="rulesWorkedExample">
+                    <h3 class="rules-subtitle">Worked Example: Weekly KPI Input to Reviewed CEO Brief</h3>
+                    <div class="rules-example-columns">
+                        <div class="rules-example-box">
+                            <h4 class="rules-example-heading">1. Sample Executive Input (Weekly Mode)</h4>
+                            <p class="rules-example-text"><strong>Weekly data:</strong> Revenue $310k (vs. $340k plan); Costs $365k; Net burn $55k/week; Cash $2.75M (~11.5 months runway at current burn).<br><strong>Active projects:</strong> Enterprise onboarding v2 delayed 9 days by the customer&rsquo;s SOC 2 security questionnaire; Q4 pricing tier rollout on track.<br><strong>Pipeline:</strong> $1.15M weighted; 3 late-stage renewals ($180k ARR) awaiting SLA sign-off.<br><strong>Question:</strong> Which projects do we prioritize and what are the top 3 actions this week?</p>
+                        </div>
+                        <div class="rules-example-box">
+                            <h4 class="rules-example-heading">2. Reviewed Brief Output (Fast depth)</h4>
+                            <p class="rules-example-text"><strong>Missing data to confirm:</strong> Aged AR over 45 days; churn risk on the 3 renewals.<br><strong>1. Close the 3 renewals ($180k ARR):</strong> COO + Legal finalize SLA redlines | by Thursday noon | KPI: 3 of 3 signed by Friday.<br><strong>2. Unblock Enterprise onboarding v2:</strong> VP Eng + Security Lead close open SOC 2 questionnaire items | by Wednesday 5 PM | KPI: go-live slip held at 9 days.<br><strong>3. Cut net burn:</strong> CFO freezes net-new contractor spend | by Monday EOD | KPI: net burn under $45k/week until revenue is back on plan.<br><strong>Top risk:</strong> A renewal stalls on SLA terms and its ARR slips past quarter end. Mitigation: CEO calls each renewal&rsquo;s executive sponsor by Wednesday.</p>
+                        </div>
+                    </div>
+                </div>
                 <p class="rules-anatomy-hint">
                     Šios taisyklės grindžiamos <a href="https://www.promptanatomy.app/" target="_blank" rel="noopener noreferrer">Promptų anatomijos</a> 6-block metodologija:
                     <span class="rules-anatomy-blocks">Meta · Input · Output · Reasoning · Quality · Advanced</span>
+                    — designed by <strong>Tomas Staniulis</strong> (Founder, Prompt Anatomy · AI governance &amp; executive operations).
                 </p>
             </div>
         </section>
@@ -543,7 +584,7 @@
 
         <!-- FOOTER -->
         <footer class="footer">
-            <h3 data-copy-footer-heading>Weekly operating cadence for executive teams <span class="icon-wrap" aria-hidden="true"><i data-lucide="sparkles" class="icon icon--md"></i></span></h3>
+            <h2 class="footer-heading" data-copy-footer-heading>Weekly operating cadence for executive teams <span class="icon-wrap" aria-hidden="true"><i data-lucide="sparkles" class="icon icon--md"></i></span></h2>
             <p class="footer-summary" data-copy-footer-summary>Free brief on this page. Paid playbooks are in the section above.</p>
             <p class="footer-product-link" data-copy-footer-product-link>Promptų Anatomijos ekosistema · Mokymai ir checkout → <a href="https://www.promptanatomy.app/?utm_source=ceo&utm_medium=entity_footer&utm_campaign=ecosystem" target="_blank" rel="noopener noreferrer">promptanatomy.app</a></p>
 
@@ -565,7 +606,7 @@
             <div class="footer-faq" role="group" aria-label="Product FAQ">
                 <details class="footer-faq-item">
                     <summary class="footer-faq-q">Ar jūs saugote mano duomenis?</summary>
-                    <div class="footer-faq-a">Saved sessions are stored locally in your browser (localStorage). This page does not upload your inputs to a server.</div>
+                    <div class="footer-faq-a">Saved sessions are stored locally in your browser (localStorage). This page does not upload your inputs to a server. When you copy and paste a prompt into ChatGPT, Claude, or Gemini, that conversation is governed by your chosen AI assistant's privacy settings.</div>
                 </details>
                 <details class="footer-faq-item">
                     <summary class="footer-faq-q">Kuo skiriasi Greita, Gilu ir Valdybai?</summary>

@@ -164,7 +164,7 @@ function run() {
   else failed++;
 
   // --- Moduliniai failai ---
-  if (assert(html.includes('href="style.css?v=2.1.8"'), 'Link į style.css (cache-busted)')) passed++;
+  if (assert(html.includes('href="style.css?v=2.1.9"'), 'Link į style.css (cache-busted)')) passed++;
   else failed++;
   if (assert(html.includes('src="generator.js?v=2.1.4"'), 'Script src generator.js')) passed++;
   else failed++;
@@ -288,9 +288,9 @@ function run() {
     assert(
       styleFile &&
         styleFile.includes("@import url('styles/tokens.css?v=2.1.5')") &&
-        styleFile.includes("@import url('styles/sections.css?v=2.1.8')") &&
+        styleFile.includes("@import url('styles/sections.css?v=2.1.9')") &&
         styleFile.includes("@import url('styles/base.css?v=2.1.8')") &&
-        styleFile.includes("@import url('styles/responsive.css?v=2.1.6')"),
+        styleFile.includes("@import url('styles/responsive.css?v=2.1.9')"),
       'style.css @import cache-bust on partitioned CSS'
     )
   ) {
@@ -1003,6 +1003,33 @@ function run() {
       localeBuild &&
         localeBuild.includes('>Add KPIs, blockers, and context — ready in 5 minutes.</p>'),
       'build-locale-pages.js lead needle matches the one-line hero'
+    )
+  ) {
+    passed++;
+  } else failed++;
+  if (
+    assert(
+      enEntryFile &&
+        !enEntryFile.includes('ReturnByMail') &&
+        !enEntryFile.includes('OfferShippingDetails') &&
+        enEntryFile.includes('https://www.promptanatomy.ceo/en/#operations-playbook') &&
+        enEntryFile.includes('https://www.promptanatomy.ceo/en/#strategy-playbook') &&
+        enEntryFile.includes('https://www.promptanatomy.ceo/en/#app') &&
+        enEntryFile.includes('https://www.promptanatomy.ceo/favicon.svg'),
+      'en/index.html digital Product JSON-LD has @id links, no physical shipping/ReturnByMail, and favicon logo'
+    )
+  ) {
+    passed++;
+  } else failed++;
+  if (
+    assert(
+      html.includes('id="rulesMethodology"') &&
+        html.includes('id="rulesWorkedExample"') &&
+        html.includes('aria-describedby="libraryDesc"') &&
+        html.includes('aria-describedby="rulesDesc"') &&
+        html.includes('<h2 class="footer-heading" data-copy-footer-heading>') &&
+        generatorFile.includes('QUALITY & VERIFICATION RULES:'),
+      '6-block methodology + worked example in #rules, clean collapsible h2 aria-describedby, footer h2, and generator verification rules'
     )
   ) {
     passed++;

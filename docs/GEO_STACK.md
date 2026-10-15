@@ -1,6 +1,6 @@
 # GEO stack (AI crawlers + structured discovery)
 
-**Status:** Hardened 2026-08-09 · **Policy:** EN-only; no edits to root `index.html` frontpage template. Legitimate GEO only (no prompt-injection / jailbreak “LLM SEO”).
+**Status:** Schema pass 2026-10-15 · **Policy:** EN-only. Hero H1, lead, and primary CTA stay frozen. Legitimate GEO only (no prompt-injection / jailbreak “LLM SEO”).
 
 ## What ships
 
@@ -31,6 +31,8 @@ Disallow: `/api/`, `/lt/`. Sitemap includes `/en/`, `/privacy/`, `/terms/` (slas
 
 ## Entity
 
+- **Organization logo (JSON-LD):** `https://www.promptanatomy.ceo/favicon.svg`. Social `og:image` stays `assets/og/og-cover.png`.
+- **Digital Product offers:** `InStock`, seller `#organization`, finite return window, free return. No `OfferShippingDetails` and no `ReturnByMail`. `@id`: `/en/#operations-playbook`, `/en/#strategy-playbook`.
 - **Organization:** Prompt Anatomy — hub [promptanatomy.app](https://www.promptanatomy.app/)
 - **Founder:** Tomas Staniulis — [LinkedIn](https://www.linkedin.com/in/staniulis/), [X](https://x.com/TStaniulis_NFT)
 - **Brand social:** [@promptanatomy](https://twitter.com/promptanatomy), [Telegram](https://t.me/prompt_anatomy)

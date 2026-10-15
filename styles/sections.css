@@ -1629,6 +1629,7 @@ textarea.ops-output-text {
     text-align: center;
     box-shadow: var(--shadow-card);
 }
+.footer h2,
 .footer h3 {
     font-size: var(--text-2xl);
     font-weight: 800;
@@ -1679,6 +1680,72 @@ textarea.ops-output-text {
     font-size: var(--text-nav);
     color: var(--primary);
     font-weight: 600;
+}
+
+.rules-methodology,
+.rules-worked-example {
+    margin-top: var(--space-20);
+    padding-top: var(--space-16);
+    border-top: 1px solid var(--border-subtle);
+}
+.rules-subtitle {
+    font-size: var(--text-md);
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: var(--space-8);
+}
+.rules-intro {
+    font-size: var(--text-sm);
+    color: var(--text-light);
+    line-height: 1.55;
+    margin-bottom: var(--space-12);
+}
+.rules-methodology-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-12);
+    margin: 0;
+}
+.rules-block-card {
+    padding: var(--space-12) var(--space-16);
+    background: var(--surface-1);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--r-btn);
+}
+.rules-block-card dt {
+    font-size: var(--text-sm);
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: var(--space-4);
+}
+.rules-block-card dd {
+    margin: 0;
+    font-size: var(--text-sm);
+    color: var(--text-light);
+    line-height: 1.45;
+}
+.rules-example-columns {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--space-12);
+}
+.rules-example-box {
+    padding: var(--space-16);
+    background: var(--surface-1);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--r-btn);
+}
+.rules-example-heading {
+    font-size: var(--text-sm);
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: var(--space-8);
+}
+.rules-example-text {
+    font-size: var(--text-sm);
+    color: var(--text-light);
+    line-height: 1.55;
+    margin: 0;
 }
 
 .tags {

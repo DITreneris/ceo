@@ -127,39 +127,12 @@ function injectGeoSchema(html, sot) {
 
   function digitalOfferExtras() {
     return {
-      shippingDetails: {
-        '@type': 'OfferShippingDetails',
-        shippingRate: {
-          '@type': 'MonetaryAmount',
-          value: 0,
-          currency: 'USD'
-        },
-        deliveryTime: {
-          '@type': 'ShippingDeliveryTime',
-          handlingTime: {
-            '@type': 'QuantitativeValue',
-            minValue: 0,
-            maxValue: 0,
-            unitCode: 'DAY'
-          },
-          transitTime: {
-            '@type': 'QuantitativeValue',
-            minValue: 0,
-            maxValue: 0,
-            unitCode: 'DAY'
-          }
-        },
-        shippingDestination: {
-          '@type': 'DefinedRegion',
-          addressCountry: 'US'
-        }
-      },
+      seller: { '@id': orgId },
       hasMerchantReturnPolicy: {
         '@type': 'MerchantReturnPolicy',
         applicableCountry: 'US',
         returnPolicyCategory: 'https://schema.org/MerchantReturnFiniteReturnWindow',
         merchantReturnDays: refundDays,
-        returnMethod: 'https://schema.org/ReturnByMail',
         returnFees: 'https://schema.org/FreeReturn'
       }
     };
@@ -179,11 +152,18 @@ function injectGeoSchema(html, sot) {
   function productForGuide(key) {
     var guide = sot.pdfGuides[key];
     var price = sot.commerce && sot.commerce.pricing ? sot.commerce.pricing[key] : null;
+    var productId = key === 'strategic' ? enUrl + '#strategy-playbook' : enUrl + '#operations-playbook';
+    var category =
+      key === 'strategic'
+        ? 'Digital Executive Strategy Playbook (PDF)'
+        : 'Digital Business Playbook (PDF)';
     return {
       '@context': 'https://schema.org',
       '@type': 'Product',
+      '@id': productId,
       name: guide.label,
       description: guide.buyerPromise,
+      category: category,
       image: resolveCoverImage(guide),
       brand: {
         '@type': 'Brand',
@@ -241,7 +221,7 @@ function injectGeoSchema(html, sot) {
         '@type': 'HowToStep',
         position: 2,
         name: 'Add business context',
-        text: 'Enter revenue, expenses, cash, runway, and context. The brief updates live.'
+        text: 'Fill the fields or load sample data, then copy the structured prompt and run it in ChatGPT, Claude, or Gemini to produce your brief.'
       },
       {
         '@type': 'HowToStep',
@@ -388,7 +368,7 @@ function buildLocaleHtml(locale) {
   // 6. Asset paths: root-relative so they resolve from /lt/ or /en/ (and with BASE_PATH for GitHub Pages)
   var base = BASE_PATH || '';
   html = html.replace(/\bhref="favicon\.svg(?:\?[^"]*)?"/, 'href="' + base + '/favicon.svg?v=2.1.4"');
-  html = html.replace(/\bhref="style\.css(\?[^"]*)?"/g, 'href="' + base + '/style.css?v=2.1.8"');
+  html = html.replace(/\bhref="style\.css(\?[^"]*)?"/g, 'href="' + base + '/style.css?v=2.1.9"');
   html = html.replace(/\bsrc="vendor\/lucide\.min\.js(\?[^"]*)?"/, 'src="' + base + '/vendor/lucide.min.js?v=2.1.3"');
   html = html.replace(/\bsrc="generator\.js(\?[^"]*)?"/, 'src="' + base + '/generator.js?v=2.1.4"');
   html = html.replace(/\bsrc="copy\.js(\?[^"]*)?"/, 'src="' + base + '/copy.js?v=2.1.3"');
@@ -543,7 +523,7 @@ function buildLocaleHtml(locale) {
       'Pilną Promptų anatomijos mokymą ir visus Hub modulius rasite <a href="https://www.promptanatomy.app/?utm_source=ceo&utm_medium=faq&utm_campaign=ecosystem" target="_blank" rel="noopener noreferrer">promptanatomy.app</a>.'
     );
     html = html.replace(
-      'Saved sessions are stored locally in your browser (localStorage). This page does not upload your inputs to a server.',
+      'Saved sessions are stored locally in your browser (localStorage). This page does not upload your inputs to a server. When you copy and paste a prompt into ChatGPT, Claude, or Gemini, that conversation is governed by your chosen AI assistant\'s privacy settings.',
       'Sesijos išsaugomos tik tavo naršyklėje (localStorage). Šis puslapis neįkelia tavo įvesties į serverį.'
     );
     html = html.replace('Pick a mode (Strategic/Daily/Weekly), choose depth (Fast/Deep/Board), fill the form, copy the prompt.', 'Pasirink režimą (Strateginis / Dienos / Savaitės), gylį (Greita / Gilu / Valdybai), užpildyk formą, nukopijuok promptą.');
@@ -556,15 +536,10 @@ function buildLocaleHtml(locale) {
     html = html.replace('"name": "What is AI Operations Center?"', '"name": "Kas yra DI Operacinis Centras?"');
     html = html.replace('"name": "Who is it for?"', '"name": "Kam skirta?"');
     html = html.replace('"name": "How do I use it?"', '"name": "Kaip naudoti?"');
-    html = html.replace('"name": "Want the full Prompt Anatomy training?"', '"name": "Nori pilnos DI operacinės sistemos?"');
     html = html.replace('"name": "Do you store my data?"', '"name": "Ar jūs saugote mano duomenis?"');
     html = html.replace('"name": "What is the difference between Fast, Deep, and Board?"', '"name": "Kuo skiriasi Greita, Gilu ir Valdybai?"');
     html = html.replace(
-      '"text": "Explore the complete Prompt Anatomy training and Hub modules at https://www.promptanatomy.app/"',
-      '"text": "Pilną Promptų anatomijos mokymą ir Hub modulius rasite https://www.promptanatomy.app/"'
-    );
-    html = html.replace(
-      '"text": "Saved sessions are stored locally in your browser (localStorage). This page does not upload your inputs to a server."',
+      '"text": "Saved sessions are stored locally in your browser (localStorage). This page does not upload your inputs to a server. When you copy and paste a prompt into ChatGPT, Claude, or Gemini, that conversation is governed by your chosen AI assistant\'s privacy settings."',
       '"text": "Sesijos saugomos tik tavo naršyklėje (localStorage). Šis puslapis neįkelia įvesties į serverį."'
     );
 

@@ -722,7 +722,7 @@
         if (rulesHint) {
             rulesHint.innerHTML = uiText(
                 'Šios taisyklės grindžiamos <a href="' + ANATOMY_URL + '" target="_blank" rel="noopener noreferrer">Promptų anatomijos</a> 6-block metodologija: <span class="rules-anatomy-blocks">Meta · Input · Output · Reasoning · Quality · Advanced</span>',
-                'These rules follow <a href="' + ANATOMY_URL + '" target="_blank" rel="noopener noreferrer">Prompt Anatomy</a>\'s 6-block methodology: <span class="rules-anatomy-blocks">Meta · Input · Output · Reasoning · Quality · Advanced</span>'
+                'These rules follow <a href="' + ANATOMY_URL + '" target="_blank" rel="noopener noreferrer">Prompt Anatomy</a>\'s 6-block methodology: <span class="rules-anatomy-blocks">Meta · Input · Output · Reasoning · Quality · Advanced</span> — designed by <strong>Tomas Staniulis</strong> (Founder, Prompt Anatomy · AI governance &amp; executive operations).'
             );
         }
 
@@ -744,7 +744,7 @@
                 '<details class="footer-faq-item"><summary class="footer-faq-q">Ar jūs saugote mano duomenis?</summary><div class="footer-faq-a">Sesijos išsaugomos tik tavo naršyklėje (localStorage). Šis puslapis nieko neįkelia į serverį.</div></details>' +
                 '<details class="footer-faq-item"><summary class="footer-faq-q">Kuo skiriasi Greita, Gilu ir Valdybai?</summary><div class="footer-faq-a">Greita pateikia trumpą prioritetų sąrašą. Gilu prideda analizę ir pagrindimą. Valdybai suformuoja trumpą formalią santrauką su rizikomis ir veiksmais.</div></details>' +
                 '<details class="footer-faq-item"><summary class="footer-faq-q">Nori pilnos DI operacinės sistemos?</summary><div class="footer-faq-a">Pilną Promptų anatomijos mokymą ir visus Hub modulius rasite <a href="' + FAQ_HUB_URL + '" target="_blank" rel="noopener noreferrer">promptanatomy.app</a>.</div></details>',
-                '<details class="footer-faq-item"><summary class="footer-faq-q">Do you store my data?</summary><div class="footer-faq-a">Saved sessions are stored locally in your browser (localStorage). This page does not upload your inputs to a server.</div></details>' +
+                '<details class="footer-faq-item"><summary class="footer-faq-q">Do you store my data?</summary><div class="footer-faq-a">Saved sessions are stored locally in your browser (localStorage). This page does not upload your inputs to a server. When you copy and paste a prompt into ChatGPT, Claude, or Gemini, that conversation is governed by your chosen AI assistant\'s privacy settings.</div></details>' +
                 '<details class="footer-faq-item"><summary class="footer-faq-q">What is the difference between Fast, Deep, and Board?</summary><div class="footer-faq-a">Fast gives a short prioritized answer, Deep adds analysis and rationale, and Board formats a concise executive summary with risks and actions.</div></details>' +
                 '<details class="footer-faq-item"><summary class="footer-faq-q">Want the full Prompt Anatomy training?</summary><div class="footer-faq-a">Explore the complete Prompt Anatomy training and all Hub modules at <a href="' + FAQ_HUB_URL + '" target="_blank" rel="noopener noreferrer">promptanatomy.app</a>.</div></details>'
             );
@@ -810,6 +810,10 @@
         parts.push('');
         parts.push(uiText('GYLIS: ', 'DEPTH: ') + depth.instruction);
         parts.push('');
+        if (locale !== 'lt') {
+            parts.push('QUALITY & VERIFICATION RULES:\n- Separate stated facts from assumptions; if critical KPIs or baselines are missing, list "Missing data to confirm:" before finalizing recommendations.\n- Every recommended action must specify: Action | Owner | Deadline | Expected KPI impact.\n- Flag the single highest-probability execution risk and its mitigation.');
+            parts.push('');
+        }
         parts.push(uiText('IŠVESTIES FORMATAS: ', 'OUTPUT FORMAT: ') + depth.format);
 
         return parts.join('\n');
@@ -847,6 +851,10 @@
         parts.push('');
         parts.push(uiText('GYLIS: ', 'DEPTH: ') + depth.instruction);
         parts.push('');
+        if (locale !== 'lt') {
+            parts.push('QUALITY & VERIFICATION RULES:\n- Separate stated facts from assumptions; if critical numbers are missing, list "Missing data to confirm:" first.\n- Every recommended action must specify: Action | Owner | Deadline | Metric to watch.\n- Flag the #1 operational bottleneck or risk for today.');
+            parts.push('');
+        }
         parts.push(uiText('IŠVESTIES FORMATAS: ', 'OUTPUT FORMAT: ') + depth.format);
 
         return parts.join('\n');
@@ -889,6 +897,10 @@
         parts.push('');
         parts.push(uiText('GYLIS: ', 'DEPTH: ') + depth.instruction);
         parts.push('');
+        if (locale !== 'lt') {
+            parts.push('QUALITY & VERIFICATION RULES:\n- Separate stated facts from assumptions; if critical KPIs or baselines are missing, list "Missing data to confirm:" before finalizing recommendations.\n- Every recommended action must specify: Action | Owner | Deadline | Expected KPI impact.\n- Flag the single highest-probability execution risk this week and its mitigation.');
+            parts.push('');
+        }
         parts.push(uiText('IŠVESTIES FORMATAS: ', 'OUTPUT FORMAT: ') + depth.format);
 
         return parts.join('\n');

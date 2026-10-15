@@ -230,7 +230,7 @@
       "lt"
     ],
     "title": "Turn KPIs into a Weekly CEO Brief | AI Operations Center",
-    "description": "Build a CEO-ready weekly operating brief from KPIs, runway, and pipeline in ~5 minutes. Free tool; optional playbooks from $9.99."
+    "description": "Free AI prompt builder for CEOs and COOs: turn KPIs, runway, and pipeline into a CEO-ready weekly operating brief. Playbooks from $9.99."
   },
   "geo": {
     "siteUrl": "https://www.promptanatomy.ceo",
@@ -299,7 +299,7 @@
     },
     "entity": {
       "organizationId": "https://www.promptanatomy.ceo/#organization",
-      "logo": "https://www.promptanatomy.ceo/assets/og/og-cover.png",
+      "logo": "https://www.promptanatomy.ceo/favicon.svg",
       "founderId": "https://www.promptanatomy.ceo/#founder",
       "founder": {
         "name": "Tomas Staniulis",

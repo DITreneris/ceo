@@ -44,7 +44,7 @@
     .ops-journey-steps li:last-child::after {
         display: none;
     }
-    .ops-journey-step {
+    .ops-journey-steps .ops-journey-step {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -55,25 +55,27 @@
         font-size: var(--text-2xs);
         line-height: 1.2;
         text-align: center;
+        white-space: normal;
+        overflow-wrap: break-word;
         background: transparent;
         border: none;
         box-shadow: none;
         color: var(--text);
     }
-    .ops-journey-step:hover:not(.is-active) { background: transparent; color: var(--primary); }
-    .ops-journey-step.is-active { background: transparent; border: none; box-shadow: none; color: var(--text); }
-    .ops-journey-step-num {
+    .ops-journey-steps .ops-journey-step:hover:not(.is-active) { background: transparent; color: var(--primary); }
+    .ops-journey-steps .ops-journey-step.is-active { background: transparent; border: none; box-shadow: none; color: var(--text); }
+    .ops-journey-steps .ops-journey-step-num {
         width: 28px;
         height: 28px;
         min-width: 28px;
         font-size: var(--text-nav);
         font-weight: 800;
     }
-    .ops-journey-step.is-active .ops-journey-step-num {
+    .ops-journey-steps .ops-journey-step.is-active .ops-journey-step-num {
         background: var(--primary);
         color: var(--white);
     }
-    .ops-journey-step:not(.is-active) .ops-journey-step-num {
+    .ops-journey-steps .ops-journey-step:not(.is-active) .ops-journey-step-num {
         background: var(--surface-0);
         border: 1px solid var(--border);
         color: var(--text-light);
@@ -151,6 +153,7 @@
     .ops-output-copy { margin-left: auto; }
     .ops-sessions-actions { width: 100%; justify-content: flex-start; }
     .library-grid { grid-template-columns: 1fr; }
+    .rules-methodology-grid { grid-template-columns: 1fr; }
     .ops-center { padding: var(--space-20); }
     .toast { left: 16px; right: 16px; bottom: 16px; }
     .ops-tool-launchers-list {
@@ -176,7 +179,7 @@
     .header .header-cta .cta-button-outline { width: 100%; max-width: 280px; justify-content: center; }
     .header-cta-meta { font-size: var(--text-nav); }
     .ops-journey-steps { margin-bottom: var(--space-12); }
-    .ops-journey-step { font-size: var(--text-micro); padding: 0 2px; }
+    .ops-journey-steps .ops-journey-step { font-size: var(--text-micro); padding: 0 2px; }
     .ops-center { padding: var(--space-16); }
     .collapsible-toggle {
         grid-template-columns: auto 1fr;

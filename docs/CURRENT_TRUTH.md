@@ -12,7 +12,7 @@ Use this block as the canonical reference when updating README, launch docs, Cur
 | **`/en/`** = canonical public storefront; **`/`** 308 → `/en/` on Vercel | `vercel.json` redirects; `npm run build` → `en/index.html` |
 | **`/lt/`** = legacy/regression only (`noindex`) | [`AGENTS.md`](../AGENTS.md) |
 | **GEO assets** | `robots.txt`, `sitemap.xml`, `llms.txt`, `llms-full.txt` from `npm run build` → [`scripts/build-geo-assets.js`](../scripts/build-geo-assets.js); sitemap loc `/en/`, `/privacy/`, `/terms/` (slash 200s, not `.html`); EN schema + SSR buyer FAQ → [`scripts/build-locale-pages.js`](../scripts/build-locale-pages.js); SOT: `config/sot.json` → `geo`; runbook [`GEO_STACK.md`](GEO_STACK.md) |
-| **Entity** | Prompt Anatomy; founder **Tomas Staniulis** — hub [`promptanatomy.app`](https://www.promptanatomy.app/); JSON-LD on built `/en/` only (root `index.html` template unchanged) |
+| **Entity** | Prompt Anatomy; founder **Tomas Staniulis** — hub [`promptanatomy.app`](https://www.promptanatomy.app/). Built `/en/` adds Person, WebSite, Product×2, HowTo, buyer FAQ. Root template owns WebApplication (`#app`) and product FAQPage (`#product-faq`). `geo.entity.logo` is `/favicon.svg` (not the OG card). Digital Product offers have no shipping or `ReturnByMail`. |
 | Free tool + paid PDF storefront on same site | [`index.html`](../index.html) `#pdf-guides` |
 | **Homepage section order** | Hero → Operations center → **PDF guides** → Template library → Economic discipline rules → Community (aligned with sister [`DITreneris/teacher`](https://github.com/DITreneris/teacher)) |
 | **Storefront copy SOT** | `config/sot.json` → `copy.pdfStorefront`, `copy.hero` (secondary CTA → `#pdf-guides`) |
