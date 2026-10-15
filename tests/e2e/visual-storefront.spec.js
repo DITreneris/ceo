@@ -3,6 +3,8 @@ const { test, expect } = require('@playwright/test');
 async function stabilizeForScreenshot(page) {
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.evaluate(() => document.fonts.ready);
+  // The fixed top nav otherwise paints over whichever section is scrolled under it.
+  await page.addStyleTag({ content: '.top-nav { visibility: hidden !important; }' });
 }
 
 test.describe('visual storefront regression', () => {
